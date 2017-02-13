@@ -33,6 +33,7 @@ import org.eclipse.osee.orcs.core.ds.QueryData;
 import org.eclipse.osee.orcs.core.ds.QueryEngine;
 import org.eclipse.osee.orcs.search.ApplicabilityQuery;
 import org.eclipse.osee.orcs.search.BranchQuery;
+import org.eclipse.osee.orcs.search.DeepQuery;
 import org.eclipse.osee.orcs.search.QueryBuilder;
 import org.eclipse.osee.orcs.search.QueryFactory;
 import org.eclipse.osee.orcs.search.TransactionQuery;
@@ -204,5 +205,10 @@ public class QueryFactoryImpl implements QueryFactory {
    @Override
    public ApplicabilityQuery applicabilityQuery() {
       return new ApplicabilityQueryImpl(applicabilityDsQuery, this, orcsApi);
+   }
+
+   @Override
+   public DeepQuery deepQuery() {
+      return queryEngine.createDeepQuery();
    }
 }

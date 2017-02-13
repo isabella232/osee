@@ -910,4 +910,9 @@ public class BranchEndpointImpl implements BranchEndpoint {
       rel.setTypeId(chStmt.getString("rel_link_type_id"));
       return rel;
    }
+
+   @Override
+   public Response deepAttribute(BranchId branch, AttributeTypeId attributeType, String[] values) {
+      return null;
+   }
 }

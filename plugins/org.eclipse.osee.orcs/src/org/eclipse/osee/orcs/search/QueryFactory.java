@@ -35,4 +35,6 @@ public interface QueryFactory {
    ApplicabilityQuery applicabilityQuery();
 
    QueryBuilder fromOrcsScript(String orcsScript);
+
+   DeepQuery deepQuery();
 }

@@ -62,6 +62,7 @@ import org.eclipse.osee.orcs.db.internal.sql.SelectiveArtifactSqlWriter;
 import org.eclipse.osee.orcs.db.internal.sql.SqlHandlerFactory;
 import org.eclipse.osee.orcs.db.internal.sql.join.SqlJoinFactory;
 import org.eclipse.osee.orcs.search.QueryFactory;
+import org.eclipse.osee.orcs.search.DeepQuery;
 import org.eclipse.osee.orcs.search.TupleQuery;
 
 /**
@@ -79,6 +80,8 @@ public class QueryEngineImpl implements QueryEngine {
    private final SqlHandlerFactory handlerFactory;
    private final OrcsTokenService tokenService;
    private final IResourceManager resourceManager;
+   private final TupleQuery tupleQuery;
+   private final ArtifactTypes artifactTypeService;
 
    public QueryEngineImpl(QueryCallableFactory artifactQueryEngineFactory, QuerySqlContextFactory branchSqlContextFactory, QuerySqlContextFactory txSqlContextFactory, QueryCallableFactory allQueryEngineFactory, JdbcClient jdbcClient, SqlJoinFactory sqlJoinFactory, SqlHandlerFactory handlerFactory, SqlObjectLoader sqlObjectLoader, OrcsTokenService tokenService, KeyValueStore keyValue, IResourceManager resourceManager) {
       this.artifactQueryEngineFactory = artifactQueryEngineFactory;
@@ -92,6 +95,7 @@ public class QueryEngineImpl implements QueryEngine {
       this.keyValue = keyValue;
       this.handlerFactory = handlerFactory;
       this.resourceManager = resourceManager;
+      this.tupleQuery = new TupleQueryImpl(jdbcClient, sqlJoinFactory, keyValue, tokenService);
    }
 
    @Override
@@ -151,7 +155,12 @@ public class QueryEngineImpl implements QueryEngine {
 
    @Override
    public TupleQuery createTupleQuery() {
-      return new TupleQueryImpl(jdbcClient, sqlJoinFactory, keyValue, tokenService);
+      return tupleQuery;
+   }
+
+@Override
+   public DeepQuery createDeepQuery() {
+      return new DeepQueryImpl(jdbcClient, artifactTypeService, sqlJoinFactory.createIdJoinQuery());
    }
 
    @Override
