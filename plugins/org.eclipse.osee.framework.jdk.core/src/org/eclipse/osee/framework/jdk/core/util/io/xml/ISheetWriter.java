@@ -13,6 +13,7 @@
 
 package org.eclipse.osee.framework.jdk.core.util.io.xml;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -21,6 +22,18 @@ import java.util.Collection;
  * @author Ryan D. Brooks
  */
 public interface ISheetWriter {
+
+   /**
+    * Use this to start a sheet that will use a its own writer (rather than a shared writer for all sheets)
+    * 
+    * @param worksheetName
+    * @param columnCount
+    * @param out
+    * @throws IOException
+    */
+   public void startSheet(String worksheetName, int columnCount, Appendable out) throws IOException;
+
+   public void startSheet(String worksheetName, int columnCount, File file) throws IOException;
 
    public void startSheet(String worksheetName, int columnCount) throws IOException;
 
