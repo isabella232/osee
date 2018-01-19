@@ -30,7 +30,6 @@ import org.eclipse.osee.ats.api.IAtsConfigObject;
 import org.eclipse.osee.ats.api.util.SkipAtsConfigJsonWriter;
 import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.framework.core.util.JsonUtil;
-import org.eclipse.osee.jaxrs.mvc.IdentityView;
 import org.eclipse.osee.orcs.OrcsApi;
 
 /**
@@ -99,8 +98,7 @@ public class ConfigsJsonWriter implements MessageBodyWriter<Collection<IAtsConfi
          writer = jsonFactory.createGenerator(entityStream);
          writer.writeStartArray();
          for (IAtsConfigObject program : programs) {
-            ConfigJsonWriter.addProgramObject(atsApi, program, annotations, writer,
-               matches(IdentityView.class, annotations));
+           ConfigJsonWriter.addProgramObject(atsApi, program, annotations, writer,);
          }
          writer.writeEndArray();
       } finally {

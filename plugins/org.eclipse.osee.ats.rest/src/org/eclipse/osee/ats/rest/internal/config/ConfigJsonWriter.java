@@ -55,7 +55,6 @@ import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.type.HashCollection;
 import org.eclipse.osee.framework.jdk.core.type.ResultSet;
 import org.eclipse.osee.framework.jdk.core.util.DateUtil;
-import org.eclipse.osee.jaxrs.mvc.IdentityView;
 import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
 import org.eclipse.osee.orcs.data.AttributeReadable;
@@ -115,7 +114,7 @@ public class ConfigJsonWriter implements MessageBodyWriter<IAtsConfigObject> {
       }
    }
 
-   public static void addProgramObject(IAtsServer atsApi, IAtsObject atsObject, Annotation[] annotations, JsonGenerator writer, boolean identityView) throws IOException, JsonGenerationException, JsonProcessingException {
+   public static void addProgramObject(IAtsServer atsApi, IAtsObject atsObject, Annotation[] annotations, JsonGenerator writer) throws IOException, JsonGenerationException, JsonProcessingException {
       ArtifactReadable artifact = atsApi.getArtifact(atsObject);
       writer.writeStartObject();
       writer.writeNumberField("id", atsObject.getId());
@@ -123,87 +122,75 @@ public class ConfigJsonWriter implements MessageBodyWriter<IAtsConfigObject> {
       writer.writeStringField("Description", atsObject.getDescription());
 
       if (atsObject instanceof IAtsTeamDefinition) {
-         if (!identityView) {
-            writer.writeArrayFieldStart("version");
-            for (ArtifactReadable verArt : artifact.getRelated(AtsRelationTypes.TeamDefinitionToVersion_Version)) {
-               IAtsVersion version = atsApi.getVersionService().getVersionById(verArt);
+         writer.writeArrayFieldStart("version");
+         for (ArtifactReadable verArt : artifact.getRelated(AtsRelationTypes.TeamDefinitionToVersion_Version)) {
+            IAtsVersion version = atsApi.getVersionService().getVersionId(verArt);
                addProgramObject(atsApi, version, annotations, writer, true);
-            }
-            writer.writeEndArray();
          }
+         writer.writeEndArray();
       }
       if (atsObject instanceof IAtsVersion) {
-         if (!identityView) {
-            writer.writeArrayFieldStart("workflow");
-            for (ArtifactReadable workArt : artifact.getRelated(
-               AtsRelationTypes.TeamWorkflowTargetedForVersion_TeamWorkflow)) {
-               addArtifactIdentity(writer, workArt);
-            }
-            writer.writeEndArray();
+         writer.writeArrayFieldStart("workflow");
+         for (ArtifactReadable workArt : artifact.getRelated(
+            AtsRelationTypes.TeamWorkflowTargetedForVersion_TeamWorkflow)) {
+            addArtifactIdentity(writer, workArt);
          }
+         writer.writeEndArray();
       } else if (atsObject instanceof IAtsInsertionActivity) {
          IAtsInsertionActivity activity = (IAtsInsertionActivity) atsObject;
          writer.writeBooleanField("Active", activity.isActive());
-         if (!identityView) {
-            writer.writeArrayFieldStart("insertion");
-            for (ArtifactReadable insertion : artifact.getRelated(
-               AtsRelationTypes.InsertionToInsertionActivity_Insertion)) {
-               addArtifactIdentity(writer, insertion);
-            }
-            writer.writeEndArray();
-            writer.writeArrayFieldStart("workpackage");
-            for (ArtifactReadable workPackage : artifact.getRelated(
-               AtsRelationTypes.InsertionActivityToWorkPackage_WorkPackage)) {
-               addArtifactIdentity(writer, workPackage);
-            }
-            writer.writeEndArray();
+         writer.writeArrayFieldStart("insertion");
+         for (ArtifactReadable insertion : artifact.getRelated(
+            AtsRelationTypes.InsertionToInsertionActivity_Insertion)) {
+            addArtifactIdentity(writer, insertion);
          }
+         writer.writeEndArray();
+         writer.writeArrayFieldStart("workpackage");
+         for (ArtifactReadable workPackage : artifact.getRelated(
+            AtsRelationTypes.InsertionActivityToWorkPackage_WorkPackage)) {
+            addArtifactIdentity(writer, workPackage);
+         }
+         writer.writeEndArray();
       } else if (atsObject instanceof IAtsInsertion) {
          IAtsInsertion insertion = (IAtsInsertion) atsObject;
          writer.writeBooleanField("Active", insertion.isActive());
-         if (!identityView) {
-            writer.writeArrayFieldStart("program");
-            for (ArtifactReadable program : artifact.getRelated(AtsRelationTypes.ProgramToInsertion_Program)) {
-               addArtifactIdentity(writer, program);
-            }
-            writer.writeEndArray();
-            writer.writeArrayFieldStart("insertionactivity");
-            for (ArtifactReadable activity : artifact.getRelated(
-               AtsRelationTypes.InsertionToInsertionActivity_InsertionActivity)) {
-               addArtifactIdentity(writer, activity);
-            }
-            writer.writeEndArray();
+         writer.writeArrayFieldStart("program");
+         for (ArtifactReadable program : artifact.getRelated(AtsRelationTypes.ProgramToInsertion_Program)) {
+            addArtifactIdentity(writer, program);
          }
+         writer.writeEndArray();
+         writer.writeArrayFieldStart("insertionactivity");
+         for (ArtifactReadable activity : artifact.getRelated(
+            AtsRelationTypes.InsertionToInsertionActivity_InsertionActivity)) {
+            addArtifactIdentity(writer, activity);
+         }
+         writer.writeEndArray();
       } else if (atsObject instanceof IAtsProgram) {
          IAtsProgram program = (IAtsProgram) atsObject;
          writer.writeStringField("Namespace", atsApi.getProgramService().getNamespace(program));
          writer.writeBooleanField("Active", program.isActive());
-         if (!identityView) {
-            writer.writeArrayFieldStart("country");
-            for (ArtifactReadable country : artifact.getRelated(AtsRelationTypes.CountryToProgram_Country)) {
-               addArtifactIdentity(writer, country);
-            }
-            writer.writeEndArray();
-            writer.writeArrayFieldStart("insertion");
-            for (ArtifactReadable insertion : artifact.getRelated(AtsRelationTypes.ProgramToInsertion_Insertion)) {
-               addArtifactIdentity(writer, insertion);
-            }
-            writer.writeEndArray();
+         writer.writeArrayFieldStart("country");
+         for (ArtifactReadable country : artifact.getRelated(AtsRelationTypes.CountryToProgram_Country)) {
+            addArtifactIdentity(writer, country);
          }
+         writer.writeEndArray();
+         writer.writeArrayFieldStart("insertion");
+         for (ArtifactReadable insertion : artifact.getRelated(AtsRelationTypes.ProgramToInsertion_Insertion)) {
+            addArtifactIdentity(writer, insertion);
+         }
+         writer.writeEndArray();
       } else if (atsObject instanceof IAtsCountry) {
          IAtsCountry country = (IAtsCountry) atsObject;
-         if (!identityView) {
-            writer.writeArrayFieldStart("programs");
-            Collection<IAtsProgram> programs = atsApi.getProgramService().getPrograms(country);
-            for (IAtsProgram program : programs) {
-               writer.writeStartObject();
-               writer.writeNumberField("id", program.getId());
-               writer.writeStringField("name", program.getName());
-               writer.writeBooleanField("active", program.isActive());
-               writer.writeEndObject();
-            }
-            writer.writeEndArray();
+         writer.writeArrayFieldStart("programs");
+         Collection<IAtsProgram> programs = atsApi.getProgramService().getPrograms(country);
+         for (IAtsProgram program : programs) {
+            writer.writeStartObject();
+            writer.writeNumberField("id", program.getId());
+            writer.writeStringField("name", program.getName());
+            writer.writeBooleanField("active", program.isActive());
+            writer.writeEndObject();
          }
+         writer.writeEndArray();
       } else if (atsObject instanceof IAgileTeam) {
          IAgileTeam team = (IAgileTeam) atsObject;
          writer.writeBooleanField("Active", team.isActive());
@@ -235,9 +222,7 @@ public class ConfigJsonWriter implements MessageBodyWriter<IAtsConfigObject> {
          writer.writeStringField("Backlog Id", backlogArt.isValid() ? backlogArt.getIdString() : "");
          writer.writeStringField("Backlog", backlogArt.isValid() ? backlogArt.getName() : "");
       }
-      if (!identityView) {
-         addAttributeData(writer, artifact, Collections.emptyList(), atsApi);
-      }
+      addAttributeData(writer, artifact, Collections.emptyList(), atsApi);
       writer.writeEndObject();
    }
 

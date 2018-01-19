@@ -29,7 +29,6 @@ import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.workflow.WorkItemArray;
 import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.framework.core.util.JsonUtil;
-import org.eclipse.osee.jaxrs.mvc.IdentityView;
 import org.eclipse.osee.orcs.OrcsApi;
 
 /**
@@ -69,15 +68,6 @@ public class WorkItemArrayJsonWriter implements MessageBodyWriter<WorkItemArray>
       return assignableFrom && MediaType.APPLICATION_JSON_TYPE.equals(mediaType);
    }
 
-   private boolean matches(Class<? extends Annotation> toMatch, Annotation[] annotations) {
-      for (Annotation annotation : annotations) {
-         if (annotation.annotationType().isAssignableFrom(toMatch)) {
-            return true;
-         }
-      }
-      return false;
-   }
-
    @Override
    public void writeTo(WorkItemArray workItemArray, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
       JsonGenerator writer = null;
@@ -86,8 +76,7 @@ public class WorkItemArrayJsonWriter implements MessageBodyWriter<WorkItemArray>
          writer.writeStartObject();
          writer.writeArrayFieldStart("workItems");
          for (IAtsWorkItem workItem : workItemArray.getWorkItems()) {
-            WorkItemJsonWriter.addWorkItem(atsApi, workItem, annotations, writer,
-               matches(IdentityView.class, annotations), Collections.emptyList());
+            WorkItemJsonWriter.addWorkItem(atsApi, workItem, annotations, writer, Collections.emptyList());
          }
          writer.writeEndArray();
          writer.writeEndObject();
