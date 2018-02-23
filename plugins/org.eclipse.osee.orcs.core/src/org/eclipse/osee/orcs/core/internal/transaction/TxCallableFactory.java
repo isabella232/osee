@@ -91,8 +91,7 @@ public class TxCallableFactory {
 
          private TransactionResult doCommit() throws Exception {
             TransactionData changes = txManager.createChangeData(txData);
-            Callable<TransactionResult> callable = txDataStore.commitTransaction(getSession(), changes);
-            return callable.call();
+            return txDataStore.commitTransaction(getSession(), changes).call();
          }
       };
    }
