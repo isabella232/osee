@@ -54,6 +54,7 @@ import org.eclipse.osee.orcs.core.ds.criteria.CriteriaArtifactGuids;
 import org.eclipse.osee.orcs.core.ds.criteria.CriteriaArtifactIds;
 import org.eclipse.osee.orcs.core.ds.criteria.CriteriaArtifactTxComment;
 import org.eclipse.osee.orcs.core.ds.criteria.CriteriaArtifactType;
+import org.eclipse.osee.orcs.core.ds.criteria.CriteriaAttributeHash;
 import org.eclipse.osee.orcs.core.ds.criteria.CriteriaAttributeKeywords;
 import org.eclipse.osee.orcs.core.ds.criteria.CriteriaAttributeRaw;
 import org.eclipse.osee.orcs.core.ds.criteria.CriteriaAttributeTypeExists;
@@ -287,8 +288,10 @@ public final class QueryData implements QueryBuilder, HasOptions, HasBranch {
       return branch;
    }
 
-   public void select(AttributeTypeToken attributeType) {
+   @Override
+   public QueryBuilder select(AttributeTypeToken attributeType) {
       this.attributeType = attributeType;
+      return this;
    }
 
    @Override
@@ -498,6 +501,21 @@ public final class QueryData implements QueryBuilder, HasOptions, HasBranch {
    @Override
    public QueryBuilder andAttributeIs(AttributeTypeId attributeType, String value) {
       return addAndCheck(new CriteriaAttributeRaw(Collections.singleton(attributeType), Collections.singleton(value)));
+   }
+
+   @Override
+   public QueryBuilder andAttribute(AttributeTypeId attributeType, String value, QueryOption option, boolean caseSensitive) {
+      return addAndCheck(new CriteriaAttributeHash(attributeType, value, option, caseSensitive));
+   }
+
+   @Override
+   public QueryBuilder andAttribute(AttributeTypeId attributeType, Collection<String> values, QueryOption option, boolean caseSensitive) {
+      return addAndCheck(new CriteriaAttributeHash(attributeType, values, option, caseSensitive));
+   }
+
+   @Override
+   public QueryBuilder andAttribute(String value, QueryOption option, boolean caseSensitive) {
+      return addAndCheck(new CriteriaAttributeHash(value, option, caseSensitive));
    }
 
    @Override

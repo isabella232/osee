@@ -680,6 +680,14 @@ public class SqlTable extends NamedBase {
       OSEE_OAUTH_TOKEN_TABLE.createIndex("OSEE_OAUTH_TOKEN__TK_IDX", false, OSEE_OAUTH_TOKEN_TOKEN_KEY.getName());
    }
 
+   public static final SqlTable SEARCH_HASH = new SqlTable("osee_search_hash", "sh", 1);
+   public static final SqlColumn SEARCH_HASH_APP_ID = TXS_TABLE.addColumn("APP_ID", JDBCType.BIGINT);
+   public static final SqlColumn SEARCH_HASH_HASH = TXS_TABLE.addColumn("HASH", JDBCType.BIGINT);
+   public static final SqlColumn SEARCH_HASH_GAMMA_ID = TXS_TABLE.addColumn("GAMMA_ID", JDBCType.BIGINT);
+   static {
+      TXS_TABLE.setPrimaryKeyConstraint(SEARCH_HASH_APP_ID, SEARCH_HASH_HASH, SEARCH_HASH_GAMMA_ID);
+   }
+
    private final String aliasPrefix;
    private final ObjectType objectType;
    private final ChainingArrayList<@NonNull SqlColumn> columns;

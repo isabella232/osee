@@ -19,6 +19,7 @@ import java.util.Set;
 import java.util.concurrent.Future;
 import org.eclipse.osee.framework.core.OrcsTokenService;
 import org.eclipse.osee.framework.core.data.Branch;
+import org.eclipse.osee.framework.core.data.GammaId;
 import org.eclipse.osee.framework.core.executor.CancellableCallable;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
@@ -29,6 +30,7 @@ import org.eclipse.osee.logger.Log;
 import org.eclipse.osee.orcs.OrcsSession;
 import org.eclipse.osee.orcs.core.ds.IndexerData;
 import org.eclipse.osee.orcs.core.ds.QueryEngineIndexer;
+import org.eclipse.osee.orcs.db.internal.search.SearchTermHash;
 import org.eclipse.osee.orcs.db.internal.search.indexer.callable.DeleteTagSetDatabaseTxCallable;
 import org.eclipse.osee.orcs.db.internal.search.indexer.callable.IndexerDatabaseStatisticsCallable;
 import org.eclipse.osee.orcs.db.internal.search.indexer.callable.PurgeAllTagsDatabaseCallable;
@@ -157,4 +159,13 @@ public class QueryEngineIndexerImpl implements QueryEngineIndexer {
       systemCollector.removeCollector(collector);
    }
 
+   @Override
+   public int createTermHashes(Iterable<GammaId> gammaIds) {
+      return new SearchTermHash(jdbcClient, joinFactory).createTermHashes(gammaIds);
+   }
+
+   @Override
+   public int createTermHashes(AttributeTypeId attributeType) {
+      return new SearchTermHash(jdbcClient, joinFactory).createTermHashes(attributeType);
+   }
 }

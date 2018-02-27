@@ -18,7 +18,9 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
+import org.eclipse.osee.framework.core.data.AttributeTypeId;
 import org.eclipse.osee.framework.core.data.Branch;
+import org.eclipse.osee.framework.core.data.GammaId;
 import org.eclipse.osee.framework.core.executor.CancellableCallable;
 
 /**
@@ -32,7 +34,7 @@ public interface QueryIndexer {
 
    Callable<List<Future<?>>> indexResources(Iterable<Long> gammaIds, IndexerCollector... collector);
 
-   void indexAttrTypeIds(Iterable<Long> gammaIds);
+   void indexAttrTypeIds(Iterable<Long> attrTypeIds);
 
    void indexMissingByAttrTypeIds(Iterable<Long> attrTypeIds);
 
@@ -42,4 +44,7 @@ public interface QueryIndexer {
 
    CancellableCallable<Integer> purgeAllIndexes();
 
+   int createTermHashes(Iterable<GammaId> gammaIds);
+
+   int createTermHashes(AttributeTypeId attributeType);
 }
