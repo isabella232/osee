@@ -14,7 +14,6 @@
 package org.eclipse.osee.framework.ui.skynet.render.dsl;
 
 import org.eclipse.osee.framework.core.enums.PresentationType;
-import org.eclipse.osee.framework.skynet.core.artifact.Attribute;
 
 
 /**
@@ -75,7 +74,4 @@ public abstract class AbstractDslWordMlCreator {
 
       return textString;
    }
-
-   public abstract boolean isArtifactAttribute(Attribute<?> attribute);
-
 }
