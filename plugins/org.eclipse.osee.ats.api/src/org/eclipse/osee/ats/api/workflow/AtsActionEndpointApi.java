@@ -248,4 +248,9 @@ public interface AtsActionEndpointApi {
    @Produces({MediaType.APPLICATION_JSON})
    public XResultData syncJiraAndPersist();
 
+   @GET
+   @Path("{actionableItem}/changeReport")
+   @Produces(MediaType.APPLICATION_JSON)
+   List<String[]> getChanges(@PathParam("actionableItem") ArtifactId actionableItem);
+
 }

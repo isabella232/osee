@@ -46,6 +46,7 @@ import org.eclipse.osee.ats.api.data.AtsArtifactTypes;
 import org.eclipse.osee.ats.api.data.AtsAttributeTypes;
 import org.eclipse.osee.ats.api.data.AtsRelationTypes;
 import org.eclipse.osee.ats.api.query.IAtsQuery;
+import org.eclipse.osee.ats.api.query.IAtsQueryService;
 import org.eclipse.osee.ats.api.team.ChangeType;
 import org.eclipse.osee.ats.api.team.IAtsTeamDefinition;
 import org.eclipse.osee.ats.api.user.AtsUser;
@@ -57,6 +58,7 @@ import org.eclipse.osee.ats.api.workflow.ActionResult;
 import org.eclipse.osee.ats.api.workflow.AtsActionEndpointApi;
 import org.eclipse.osee.ats.api.workflow.Attribute;
 import org.eclipse.osee.ats.api.workflow.AttributeKey;
+import org.eclipse.osee.ats.api.workflow.IAtsBranchService;
 import org.eclipse.osee.ats.api.workflow.IAtsTeamWorkflow;
 import org.eclipse.osee.ats.api.workflow.NewActionData;
 import org.eclipse.osee.ats.api.workflow.NewActionResult;
@@ -82,6 +84,7 @@ import org.eclipse.osee.framework.core.data.OseeClient;
 import org.eclipse.osee.framework.core.data.TransactionId;
 import org.eclipse.osee.framework.core.data.UserId;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
+import org.eclipse.osee.framework.core.data.TransactionToken;
 import org.eclipse.osee.framework.core.enums.QueryOption;
 import org.eclipse.osee.framework.core.model.change.ChangeItem;
 import org.eclipse.osee.framework.jdk.core.result.XResultData;
@@ -95,23 +98,25 @@ import org.eclipse.osee.jaxrs.mvc.IdentityView;
 import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
 import org.eclipse.osee.orcs.search.QueryBuilder;
+import org.eclipse.osee.orcs.transaction.TransactionFactory;
 
 /**
  * @author Donald G. Dunne
  */
 @Path("action")
 public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
-
    private final OrcsApi orcsApi;
    private static final String ATS_UI_ACTION_PREFIX = "/ui/action/ID";
    private final AtsApi atsApi;
 
    @HeaderParam(OseeClient.OSEE_ACCOUNT_ID)
    private UserId accountId;
+   private final IAtsQueryService atsQueryService;
 
    public AtsActionEndpointImpl(AtsApi atsApi, OrcsApi orcsApi) {
       this.atsApi = atsApi;
       this.orcsApi = orcsApi;
+      atsQueryService = atsApi.getQueryService();
    }
 
    @Override
@@ -135,7 +140,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @GET
    @Produces({MediaType.APPLICATION_JSON})
    public List<IAtsWorkItem> getAction(@PathParam("ids") String ids) {
-      List<IAtsWorkItem> workItems = atsApi.getQueryService().getWorkItemsByIds(ids);
+      List<IAtsWorkItem> workItems = atsQueryService.getWorkItemsByIds(ids);
       return workItems;
    }
 
@@ -148,7 +153,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @GET
    @Produces({MediaType.APPLICATION_JSON})
    public List<IAtsWorkItem> getActionDetails(@PathParam("ids") String ids) {
-      List<IAtsWorkItem> workItems = atsApi.getQueryService().getWorkItemsByIds(ids);
+      List<IAtsWorkItem> workItems = atsQueryService.getWorkItemsByIds(ids);
       return workItems;
    }
 
@@ -164,7 +169,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @Produces({MediaType.APPLICATION_JSON})
    public List<IAtsWorkItem> getActionChildren(@PathParam("ids") String ids) {
       List<IAtsWorkItem> children = new LinkedList<>();
-      for (ArtifactToken action : atsApi.getQueryService().getArtifactsByIds(ids)) {
+      for (ArtifactToken action : atsQueryService.getArtifactsByIds(ids)) {
          for (ArtifactToken childWf : atsApi.getRelationResolver().getRelated(action,
             AtsRelationTypes.ActionToWorkflow_TeamWorkflow)) {
             IAtsWorkItem child = atsApi.getWorkItemService().getWorkItem(childWf);
@@ -203,7 +208,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @Produces(MediaType.APPLICATION_JSON)
    public List<String> getUnreleasedVersionNames(@PathParam("id") String id) {
       List<String> versions = new LinkedList<>();
-      IAtsTeamWorkflow teamWf = atsApi.getQueryService().getTeamWf(atsApi.getQueryService().getArtifactById(id));
+      IAtsTeamWorkflow teamWf = atsQueryService.getTeamWf(atsQueryService.getArtifactById(id));
       IAtsTeamDefinition targedVersionsTeamDef =
          atsApi.getTeamDefinitionService().getTeamDefHoldingVersions(teamWf.getTeamDefinition());
       if (targedVersionsTeamDef != null) {
@@ -225,7 +230,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @Produces(MediaType.APPLICATION_JSON)
    public List<String> getTransitionToStateNames(@PathParam("id") String id) {
       List<String> states = new LinkedList<>();
-      IAtsTeamWorkflow teamWf = atsApi.getQueryService().getTeamWf(atsApi.getQueryService().getArtifactById(id));
+      IAtsTeamWorkflow teamWf = atsQueryService.getTeamWf(atsQueryService.getArtifactById(id));
       states.add(teamWf.getStateDefinition().getDefaultToState().getName());
       for (IAtsStateDefinition state : teamWf.getStateDefinition().getToStates()) {
          if (!states.contains(state.getName())) {
@@ -266,7 +271,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
          List<String> items = Arrays.asList(values.split("\\s*,\\s*"));
          List<ArtifactId> artIds = Collections.transform(items, ArtifactId::valueOf);
 
-         Collection<ArtifactToken> tokens = atsApi.getQueryService().getArtifacts(artIds, versionBranch);
+         Collection<ArtifactToken> tokens = atsQueryService.getArtifacts(artIds, versionBranch);
          for (ArtifactToken token : tokens) {
             requirements.add(
                String.format("{ \"reqUuid\": \"%s\", \"reqName\": \"%s\" }", token.getIdString(), token.getName()));
@@ -280,7 +285,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @GET
    @Produces({MediaType.APPLICATION_JSON})
    public Attribute getActionAttributeByType(@PathParam("id") String id, @PathParam("attrTypeId") AttributeTypeToken attributeType) {
-      IAtsWorkItem workItem = atsApi.getQueryService().getWorkItem(id);
+      IAtsWorkItem workItem = atsQueryService.getWorkItem(id);
       ActionOperations ops = new ActionOperations(null, workItem, atsApi, orcsApi);
       return ops.getActionAttributeValues(attributeType, workItem);
    }
@@ -292,7 +297,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @Produces({MediaType.APPLICATION_JSON})
    public Attribute setActionAttributeByType(@PathParam("id") String id, @PathParam("attrTypeIdOrKey") String attrTypeIdOrKey, List<String> values) {
       Conditions.assertNotNull(values, "values can not be null");
-      IAtsWorkItem workItem = atsApi.getQueryService().getWorkItemsByIds(id).iterator().next();
+      IAtsWorkItem workItem = atsQueryService.getWorkItemsByIds(id).iterator().next();
       IAtsChangeSet changes = atsApi.createChangeSet("Set attr by type/key [" + attrTypeIdOrKey + "]");
       AtsUser asUser = atsApi.getUserService().getUserByAccountId(accountId);
       AttributeTypeToken attrTypeId = null;
@@ -418,7 +423,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @GET
    @Produces({MediaType.TEXT_HTML})
    public Response cancelAction(@PathParam("id") String id) {
-      IAtsWorkItem workItem = atsApi.getQueryService().getWorkItem(id);
+      IAtsWorkItem workItem = atsQueryService.getWorkItem(id);
       if (workItem.isInWork()) {
          Conditions.assertNotNull(workItem, "workItem can not be found");
          AtsUser asUser = atsApi.getUserService().getUserByAccountId(accountId);
@@ -439,7 +444,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @Produces({MediaType.APPLICATION_JSON})
    @Consumes({MediaType.APPLICATION_JSON})
    public Collection<ArtifactToken> setByArtifactToken(@PathParam("workItemId") String workItemId, @PathParam("changeType") String changeType, Collection<ArtifactToken> artifacts) {
-      IAtsWorkItem workItem = atsApi.getQueryService().getWorkItem(workItemId);
+      IAtsWorkItem workItem = atsQueryService.getWorkItem(workItemId);
       AtsUser asUser = atsApi.getUserService().getUserByAccountId(accountId);
       ActionOperations ops = new ActionOperations(asUser, workItem, atsApi, orcsApi);
       return ops.setByArtifactToken(workItem, changeType, artifacts);
@@ -456,8 +461,8 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @Produces({MediaType.APPLICATION_JSON})
    public String getActionStateFromLegacyPcrId(@PathParam("ids") String ids) {
       List<IAtsWorkItem> workItems = new ArrayList<>();
-      for (String id : atsApi.getQueryService().getIdsFromStr(ids)) {
-         ArtifactToken action = atsApi.getQueryService().getArtifactByLegacyPcrId(id);
+      for (String id : atsQueryService.getIdsFromStr(ids)) {
+         ArtifactToken action = atsQueryService.getArtifactByLegacyPcrId(id);
          if (action != null) {
             IAtsWorkItem workItem = atsApi.getWorkItemService().getWorkItem(action);
             workItems.add(workItem);
@@ -471,7 +476,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
    @GET
    @Produces({MediaType.APPLICATION_JSON})
    public String getActionState(@PathParam("ids") String ids) {
-      List<IAtsWorkItem> workItems = atsApi.getQueryService().getWorkItemsByIds(ids);
+      List<IAtsWorkItem> workItems = atsQueryService.getWorkItemsByIds(ids);
       return atsApi.getActionFactory().getActionStateJson(workItems);
    }
 
@@ -487,7 +492,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
       Set<IAtsWorkItem> workItems = new HashSet<>();
       MultivaluedMap<String, String> queryParameters = uriInfo.getQueryParameters(true);
       Set<Entry<String, List<String>>> entrySet = queryParameters.entrySet();
-      IAtsQuery query = atsApi.getQueryService().createQuery(WorkItemType.WorkItem);
+      IAtsQuery query = atsQueryService.createQuery(WorkItemType.WorkItem);
       Collection<IAtsTeamDefinition> teams = new LinkedList<>();
       for (Entry<String, List<String>> entry : entrySet) {
          if (entry.getKey().equals("Title")) {
@@ -509,7 +514,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
             query.andAttr(AtsAttributeTypes.IPT, entry.getValue().iterator().next());
          } else if (entry.getKey().equals("Team")) {
             for (String teamId : entry.getValue()) {
-               IAtsTeamDefinition team = atsApi.getQueryService().getConfigItem(Long.valueOf(teamId));
+               IAtsTeamDefinition team = atsQueryService.getConfigItem(Long.valueOf(teamId));
                if (team != null) {
                   teams.add(team);
                }
@@ -538,8 +543,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
             }
             query.andWorkItemType(workItemTypes.toArray(new WorkItemType[workItemTypes.size()]));
          } else if (entry.getKey().equals("Version")) {
-            IAtsVersion version =
-               atsApi.getQueryService().getConfigItem(Long.valueOf(entry.getValue().iterator().next()));
+            IAtsVersion version = atsQueryService.getConfigItem(Long.valueOf(entry.getValue().iterator().next()));
             query.andVersion(version);
          }
          // else, attempt to resolve as attribute type id or name
@@ -705,7 +709,7 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
       }
       List<IAtsActionableItem> aias = new ArrayList<>();
       IAtsActionableItem aia =
-         atsApi.getQueryService().createQuery(AtsArtifactTypes.ActionableItem).andName(actionableItems).getOneOrDefault(
+         atsQueryService.createQuery(AtsArtifactTypes.ActionableItem).andName(actionableItems).getOneOrDefault(
             IAtsActionableItem.class, IAtsActionableItem.SENTINEL);
       if (aia.isInvalid()) {
          return RestUtil.returnBadRequest(String.format("actionableItems [%s] is not valid", actionableItems));
@@ -830,4 +834,29 @@ public final class AtsActionEndpointImpl implements AtsActionEndpointApi {
       return results;
    }
 
+   @Override
+   public List<String[]> getChanges(ArtifactId actionableItem) {
+      Collection<IAtsTeamWorkflow> workflows =
+         atsQueryService.createQuery(WorkItemType.TeamWorkflow).andActionableItem(actionableItem).getItems(
+            IAtsTeamWorkflow.class);
+      List<String[]> changes = new ArrayList<>();
+      IAtsBranchService branchService = atsApi.getBranchService();
+      TransactionFactory transactionFactory = orcsApi.getTransactionFactory();
+
+      // take algorithm from org.eclipse.osee.ats.branch.AtsBranchManager.getChangeData(IAtsTeamWorkflow, ICommitConfigItem)
+      for (IAtsTeamWorkflow workflow : workflows) {
+
+         String compareResults = "no changes";
+         if (branchService.isWorkingBranchInWork(workflow)) {
+            BranchId branch = branchService.getWorkingBranch(workflow);
+            compareResults = transactionFactory.comparedToParent(branch).getChanges().toString();
+         } else if (branchService.isCommittedBranchExists(workflow)) {
+            TransactionToken transactionId = branchService.getEarliestTransactionId(workflow);
+            compareResults = transactionFactory.comparedToPreviousTx(transactionId).getChanges().toString();
+         }
+         // art_id, artifact_type, name, artifact last change date
+         changes.add(new String[] {workflow.getName(), compareResults});
+      }
+      return changes;
+   }
 }
