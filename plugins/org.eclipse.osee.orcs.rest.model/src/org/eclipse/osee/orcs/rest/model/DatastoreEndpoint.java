@@ -39,7 +39,7 @@ public interface DatastoreEndpoint {
    @Path("initialize")
    @Consumes(MediaType.TEXT_PLAIN)
    @Produces(MediaType.APPLICATION_JSON)
-   TransactionId initialize();
+   TransactionId initialize(String largeAttributeStorePath);
 
    @POST
    @Path("synonyms")

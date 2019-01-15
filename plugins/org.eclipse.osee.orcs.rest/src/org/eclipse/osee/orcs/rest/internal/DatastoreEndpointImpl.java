@@ -65,8 +65,8 @@ public class DatastoreEndpointImpl implements DatastoreEndpoint {
    }
 
    @Override
-   public TransactionId initialize() {
-      return adminOps.createDatastoreAndSystemBranches();
+   public TransactionId initialize(String largeAttributeStorePath) {
+      return adminOps.createDatastoreAndSystemBranches(largeAttributeStorePath);
    }
 
    @Override

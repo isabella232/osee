@@ -72,12 +72,6 @@ public class AttributeProviderTest {
    }
 
    @Test(expected = OseeCoreException.class)
-   public void testInitializationException2() throws Exception {
-      AttributeProvider provider = new AttributeProvider();
-      provider.getBinaryDataPath();
-   }
-
-   @Test(expected = OseeCoreException.class)
    public void testInitializationException3() throws Exception {
       MockSystemPreferences properties = new MockSystemPreferences() {
          @Override

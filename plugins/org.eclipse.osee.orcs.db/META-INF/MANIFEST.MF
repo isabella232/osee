@@ -50,5 +50,6 @@ Import-Package: com.google.common.base,
  org.eclipse.osee.orcs.core.internal.tuple,
  org.eclipse.osee.orcs.data,
  org.eclipse.osee.orcs.search,
+ org.eclipse.osee.orcs.transaction,
  org.osgi.framework,
  org.osgi.service.component.annotations

@@ -77,11 +77,11 @@ public class OrcsAdminImpl implements OrcsAdmin {
    }
 
    @Override
-   public TransactionId createDatastoreAndSystemBranches() {
+   public TransactionId createDatastoreAndSystemBranches(String largeAttributeStorePath) {
       ActivityLog activityLog = orcsApi.getActivityLog();
       try {
          activityLog.setEnabled(false);
-         dataStoreAdmin.createDataStore();
+         dataStoreAdmin.createDataStore(largeAttributeStorePath);
          return new CreateSystemBranches(orcsApi).create();
       } finally {
          activityLog.setEnabled(true);

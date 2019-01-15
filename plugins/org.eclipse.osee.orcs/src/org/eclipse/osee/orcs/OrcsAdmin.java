@@ -29,7 +29,7 @@ public interface OrcsAdmin {
 
    Callable<OrcsMetaData> createFetchOrcsMetaData();
 
-   TransactionId createDatastoreAndSystemBranches();
+   TransactionId createDatastoreAndSystemBranches(String largeAttributeStorePath);
 
    Callable<OrcsMetaData> migrateDatastore();
 

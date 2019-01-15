@@ -76,7 +76,7 @@ public class ExchangeProvider implements IResourceProvider {
       return exchangeDataPath;
    }
 
-   public String getBinaryDataPath() {
+   private String getBinaryDataPath() {
       ensureInitialized();
       return binaryDataPath;
    }
