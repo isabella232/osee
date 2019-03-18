@@ -147,8 +147,6 @@ public class AtsApiServerImpl extends AtsApiImpl implements AtsApiServer {
       addAtsDatabaseConversion(new ConvertWorkDefinitionsToJava());
 
       loadAtsConfigCache();
-
-      logger.info("ATS Application started");
    }
 
    private void loadAtsConfigCache() {
