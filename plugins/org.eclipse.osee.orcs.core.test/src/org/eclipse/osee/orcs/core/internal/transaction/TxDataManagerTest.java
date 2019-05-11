@@ -105,7 +105,7 @@ public class TxDataManagerTest {
 
    private TxDataManager txDataManager;
    private TxData txDataReal;
-   private final Collection<AttributeTypeToken> types = Arrays.asList(Name, Category);
+   private final Collection<AttributeTypeToken<?>> types = Arrays.asList(Name, Category);
    private String r1Guid;
    private String r2Guid;
    private String r3Guid;

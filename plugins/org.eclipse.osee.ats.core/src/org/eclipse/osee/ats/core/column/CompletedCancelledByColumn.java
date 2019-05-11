@@ -18,7 +18,7 @@ import org.eclipse.osee.ats.api.IAtsObject;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.data.AtsAttributeTypes;
 import org.eclipse.osee.ats.api.user.AtsUser;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeString;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 
 /**
@@ -45,7 +45,7 @@ public class CompletedCancelledByColumn extends AbstractServicesColumn {
       String userId = null;
       if (obj instanceof IAtsWorkItem) {
          IAtsWorkItem workItem = (IAtsWorkItem) obj;
-         AttributeTypeToken type = null;
+         AttributeTypeString type = null;
          if (workItem.isCompleted()) {
             type = AtsAttributeTypes.CompletedBy;
          } else if (workItem.isCancelled()) {

@@ -54,7 +54,7 @@ public class AttributeFactory {
       this.tokenService = tokenService;
    }
 
-   public <T> Attribute<T> createAttributeWithDefaults(AttributeContainer container, ArtifactData artifactData, AttributeTypeToken attributeType) {
+   public <T> Attribute<T> createAttributeWithDefaults(AttributeContainer container, ArtifactData artifactData, AttributeTypeToken<T> attributeType) {
       AttributeData<T> data = dataFactory.create(artifactData, tokenService.getAttributeType(attributeType.getId()));
       return createAttribute(container, data, true, true);
    }

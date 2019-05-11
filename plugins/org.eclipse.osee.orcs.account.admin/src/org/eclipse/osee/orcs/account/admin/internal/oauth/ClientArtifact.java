@@ -139,5 +139,4 @@ public class ClientArtifact extends BaseIdentity<String> implements OAuthClient 
    public InputStream getInput() {
       return artifact.getSoleAttributeValue(CoreAttributeTypes.ImageContent);
    }
-
 }

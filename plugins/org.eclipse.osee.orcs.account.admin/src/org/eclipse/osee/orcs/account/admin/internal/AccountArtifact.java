@@ -41,7 +41,7 @@ public class AccountArtifact extends BaseId implements Account, ArtifactId {
 
    @Override
    public boolean isActive() {
-      return artifact.getSoleAttributeValue(CoreAttributeTypes.Active, false);
+      return artifact.getSoleAttributeValue(CoreAttributeTypes.Active, Boolean.FALSE);
    }
 
    @Override

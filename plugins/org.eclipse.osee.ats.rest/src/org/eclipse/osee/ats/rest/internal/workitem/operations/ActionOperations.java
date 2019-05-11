@@ -65,7 +65,7 @@ public class ActionOperations {
    public Attribute setActionAttributeByType(String id, String attrTypeIdOrKey, List<String> values) {
       Conditions.assertNotNull(values, "values can not be null");
       IAtsChangeSet changes = atsApi.createChangeSet("set attr by type or key " + attrTypeIdOrKey);
-      AttributeTypeGeneric<?> attrTypeId = null;
+      AttributeTypeToken<?> attrTypeId = null;
       if (attrTypeIdOrKey.equals(AttributeKey.Title.name())) {
          changes.setSoleAttributeValue(workItem, CoreAttributeTypes.Name, values.iterator().next());
          attrTypeId = CoreAttributeTypes.Name;
@@ -194,11 +194,12 @@ public class ActionOperations {
       return null;
    }
 
-   private AttributeTypeGeneric<?> getAttributeType(String id) {
+   private AttributeTypeToken<?> getAttributeType(String id) {
       return orcsApi.tokenService().getAttributeType(Long.valueOf(id));
    }
 
-   public Attribute getActionAttributeValues(AttributeTypeToken attributeType, IAtsWorkItem workItem) {
+   public Attribute getActionAttributeValues(AttributeTypeToken<?> attributeType, IAtsWorkItem workItem) {
+   private Attribute getActionAttributeValues(AttributeTypeToken<?> attrType, IAtsWorkItem workItem) {
       Attribute attribute = new Attribute();
       attribute.setArtId(workItem.getStoreObject());
       attribute.setAttributeType(attributeType);

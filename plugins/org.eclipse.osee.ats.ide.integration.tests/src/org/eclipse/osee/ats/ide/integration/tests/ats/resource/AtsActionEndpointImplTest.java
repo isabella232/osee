@@ -415,7 +415,7 @@ public class AtsActionEndpointImplTest extends AbstractRestTest {
       teamWf.reloadAttributesAndRelations();
       teamWf = testAttributeTypeMatchesRestAttributes(AtsAttributeTypes.PercentRework);
       Assert.assertEquals((Integer) 4, AtsApiService.get().getAttributeResolver().getSoleAttributeValue(
-         (IAtsObject) teamWf, AtsAttributeTypes.PercentRework, 1.0));
+         (IAtsObject) teamWf, AtsAttributeTypes.PercentRework, 1));
    }
 
    @Test
@@ -442,7 +442,7 @@ public class AtsActionEndpointImplTest extends AbstractRestTest {
 
       teamWf.reloadAttributesAndRelations();
       teamWf = testAttributeTypeMatchesRestAttributes(AtsAttributeTypes.NeedBy);
-      Date date2 = (Date) AtsApiService.get().getAttributeResolver().getSoleAttributeValue((IAtsObject) teamWf,
+      Date date2 = AtsApiService.get().getAttributeResolver().getSoleAttributeValue((IAtsObject) teamWf,
          AtsAttributeTypes.NeedBy, null);
       Long dateTime = date2.getTime();
       Assert.assertEquals(446579845, dateTime.intValue());
@@ -654,7 +654,7 @@ public class AtsActionEndpointImplTest extends AbstractRestTest {
          AtsApiService.get().getAttributeResolver().getSoleAttributeValue(teamWf, AtsAttributeTypes.Priority, ""));
       Assert.assertEquals(ai, teamWf.getActionableItems().iterator().next());
       Assert.assertEquals(needBy,
-         AtsApiService.get().getAttributeResolver().getSoleAttributeValue(teamWf, AtsAttributeTypes.NeedBy, ""));
+         AtsApiService.get().getAttributeResolver().getSoleAttributeValue(teamWf, AtsAttributeTypes.NeedBy, null));
       Assert.assertEquals("Blue Team",
          AtsApiService.get().getAttributeResolver().getSoleAttributeValue(teamWf, AtsAttributeTypes.ColorTeam, ""));
       Assert.assertEquals("My IPT",

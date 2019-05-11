@@ -38,7 +38,7 @@ import org.eclipse.osee.framework.skynet.core.artifact.Attribute;
 public class AtsAttributeResolverServiceImpl extends AbstractAtsAttributeResolverServiceImpl {
 
    @Override
-   public <T> T getSoleAttributeValue(IAtsObject atsObject, AttributeTypeToken attributeType, T defaultReturnValue) {
+   public <T> T getSoleAttributeValue(IAtsObject atsObject, AttributeTypeToken<T> attributeType, T defaultReturnValue) {
       return getArtifact(atsObject).getSoleAttributeValue(attributeType, defaultReturnValue);
 
    }
@@ -127,7 +127,7 @@ public class AtsAttributeResolverServiceImpl extends AbstractAtsAttributeResolve
 
    @SuppressWarnings({"unchecked"})
    @Override
-   public <T> Collection<IAttribute<T>> getAttributes(IAtsObject atsObject, AttributeTypeToken attributeType) {
+   public <T> Collection<IAttribute<T>> getAttributes(IAtsObject atsObject, AttributeTypeToken<T> attributeType) {
       List<IAttribute<T>> attrs = new ArrayList<>();
       for (Attribute<Object> attr : getArtifact(atsObject).getAttributes(attributeType)) {
          attrs.add((IAttribute<T>) attr);
@@ -214,7 +214,7 @@ public class AtsAttributeResolverServiceImpl extends AbstractAtsAttributeResolve
    }
 
    @Override
-   public <T> T getSoleAttributeValue(ArtifactId artifact, AttributeTypeToken attributeType, T defaultValue) {
+   public <T> T getSoleAttributeValue(ArtifactId artifact, AttributeTypeToken<T> attributeType, T defaultValue) {
       if (getArtifact(artifact) != null) {
          return getArtifact(artifact).getSoleAttributeValue(attributeType, defaultValue);
       }
@@ -237,11 +237,11 @@ public class AtsAttributeResolverServiceImpl extends AbstractAtsAttributeResolve
 
    @SuppressWarnings({"unchecked"})
    @Override
-   public <T> Collection<IAttribute<T>> getAttributes(ArtifactId artifact, AttributeTypeToken attributeType) {
+   public <T> Collection<IAttribute<T>> getAttributes(ArtifactId artifact, AttributeTypeToken<T> attributeType) {
       Assert.isNotNull(artifact, "Artifact can not be null");
       Assert.isNotNull(attributeType, "Attribute Type can not be null");
       List<IAttribute<T>> attributes = new LinkedList<>();
-      for (Attribute<Object> attr : getArtifact(artifact).getAttributes(attributeType)) {
+      for (Attribute<?> attr : getArtifact(artifact).getAttributes(attributeType)) {
          attributes.add((IAttribute<T>) attr);
       }
       return attributes;

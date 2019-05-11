@@ -131,7 +131,7 @@ public class AtsQueryServiceImpl extends AbstractAtsQueryService {
 
       TransactionId transaction = TransactionId.SENTINEL;
       try {
-         IAttribute<Object> attr = getAttrById(userArt, data.getId());
+         IAttribute<String> attr = getAttrById(userArt, data.getId());
          if (attr == null) {
             changes.addAttribute(userArt, CoreAttributeTypes.AtsActionSearch, jaxRsApi.toJson(data));
          } else {
@@ -147,10 +147,10 @@ public class AtsQueryServiceImpl extends AbstractAtsQueryService {
       return transaction;
    }
 
-   private IAttribute<Object> getAttrById(ArtifactId artifact, Long attrId) {
-      for (IAttribute<Object> attr : atsApi.getAttributeResolver().getAttributes(artifact,
+   private IAttribute<String> getAttrById(ArtifactId artifact, Long attrId) {
+      for (IAttribute<String> attr : atsApi.getAttributeResolver().getAttributes(artifact,
          CoreAttributeTypes.AtsActionSearch)) {
-         String jsonValue = (String) attr.getValue();
+         String jsonValue = attr.getValue();
          try {
             AtsSearchData data = fromJson(jsonValue);
             if (attrId.equals(data.getId())) {
@@ -171,7 +171,7 @@ public class AtsQueryServiceImpl extends AbstractAtsQueryService {
 
       TransactionId transaction = TransactionId.SENTINEL;
       try {
-         IAttribute<Object> attr = getAttrById(userArt, data.getId());
+         IAttribute<String> attr = getAttrById(userArt, data.getId());
          if (attr != null) {
             changes.deleteAttribute(userArt, attr);
             transaction = changes.execute();
@@ -187,9 +187,9 @@ public class AtsQueryServiceImpl extends AbstractAtsQueryService {
    public AtsSearchData getSearch(AtsUser atsUser, Long id) {
       try {
          ArtifactId userArt = atsApi.getStoreObject(atsUser);
-         IAttribute<Object> attr = getAttrById(userArt, id);
+         IAttribute<String> attr = getAttrById(userArt, id);
          if (attr != null) {
-            AtsSearchData existing = fromJson((String) attr.getValue());
+            AtsSearchData existing = fromJson(attr.getValue());
             if (existing != null) {
                return existing;
             }

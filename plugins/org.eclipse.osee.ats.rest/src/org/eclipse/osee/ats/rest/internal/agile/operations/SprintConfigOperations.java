@@ -94,7 +94,7 @@ public class SprintConfigOperations {
       return sprintConfig;
    }
 
-   private void updatePointsIfNecessary(String newPointsStr, SprintConfigurations sprintConfig, IAgileSprint sprint, AttributeTypeToken attrType, IAtsChangeSet changes) {
+   private void updatePointsIfNecessary(String newPointsStr, SprintConfigurations sprintConfig, IAgileSprint sprint, AttributeTypeToken<Integer> attrType, IAtsChangeSet changes) {
       if (Strings.isValid(newPointsStr)) {
          try {
             if (Strings.isInValid(newPointsStr)) {
@@ -117,7 +117,7 @@ public class SprintConfigOperations {
       }
    }
 
-   private void updateDateIfNecessary(String newDateStr, SprintConfigurations sprintConfig, IAgileSprint sprint, AttributeTypeToken attrType, IAtsChangeSet changes) {
+   private void updateDateIfNecessary(String newDateStr, SprintConfigurations sprintConfig, IAgileSprint sprint, AttributeTypeToken<Date> attrType, IAtsChangeSet changes) {
       if (Strings.isValid(newDateStr)) {
          try {
             if (Strings.isInValid(newDateStr)) {

@@ -24,7 +24,6 @@ import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.AttributeId;
-import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.IAttribute;
@@ -106,33 +105,33 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
    }
 
    @Override
-   public int getAttributeCount(AttributeTypeToken type) {
+   public int getAttributeCount(AttributeTypeToken<?> type) {
       return attributes.sizeByKey(type);
    }
 
    @Override
-   public int getAttributeCount(AttributeTypeToken type, DeletionFlag deletionFlag) {
+   public int getAttributeCount(AttributeTypeToken<?> type, DeletionFlag deletionFlag) {
       throw new UnsupportedOperationException();
    }
 
    @Override
-   public Collection<AttributeTypeToken> getValidAttributeTypes() {
+   public Collection<AttributeTypeToken<?>> getValidAttributeTypes() {
       throw new UnsupportedOperationException();
    }
 
    @Override
-   public Collection<AttributeTypeToken> getExistingAttributeTypes() {
+   public Collection<AttributeTypeToken<?>> getExistingAttributeTypes() {
       return attributes.keySet();
    }
 
    @Override
-   public <T> T getSoleAttributeValue(AttributeTypeToken attributeType) {
+   public <T> T getSoleAttributeValue(AttributeTypeToken<T> attributeType) {
       List<T> values = getAttributeValues(attributeType);
       ensureSole(attributeType, values);
       return values.iterator().next();
    }
 
-   private void ensureSole(AttributeTypeToken attributeType, Collection<?> values) {
+   private void ensureSole(AttributeTypeToken<?> attributeType, Collection<?> values) {
       if (values == null || values.size() < 1) {
          throw new AttributeDoesNotExist("Attribute of type [%s] could not be found on [%s]", attributeType,
             getIdString());
@@ -148,12 +147,12 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
    }
 
    @Override
-   public <T> T getSoleAttributeValue(AttributeTypeToken attributeType, DeletionFlag flag, T defaultValue) {
+   public <T> T getSoleAttributeValue(AttributeTypeToken<T> attributeType, DeletionFlag flag, T defaultValue) {
       throw new UnsupportedOperationException();
    }
 
    @Override
-   public <T> T getSoleAttributeValue(AttributeTypeToken attributeType, T defaultValue) {
+   public <T> T getSoleAttributeValue(AttributeTypeToken<T> attributeType, T defaultValue) {
       List<T> values = getAttributeValues(attributeType);
       if (values == null) {
          return defaultValue;
@@ -168,12 +167,12 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
    }
 
    @Override
-   public String getSoleAttributeAsString(AttributeTypeToken attributeType) {
+   public String getSoleAttributeAsString(AttributeTypeToken<?> attributeType) {
       return getSoleAttributeValue(attributeType).toString();
    }
 
    @Override
-   public String getSoleAttributeAsString(AttributeTypeToken attributeType, String defaultValue) {
+   public String getSoleAttributeAsString(AttributeTypeToken<?> attributeType, String defaultValue) {
       Object value = getSoleAttributeValue(attributeType, null);
       if (value == null) {
          return defaultValue;
@@ -182,7 +181,7 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
    }
 
    @Override
-   public Long getSoleAttributeId(AttributeTypeToken attributeType) {
+   public Long getSoleAttributeId(AttributeTypeToken<?> attributeType) {
       List<IAttribute<?>> list = attributes.getValues(attributeType);
       ensureNotMoreThanOne(attributeType, list.size());
       return list.iterator().next().getId();
@@ -200,7 +199,7 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
 
    @SuppressWarnings("unchecked")
    @Override
-   public <T> List<T> getAttributeValues(AttributeTypeToken attributeType) {
+   public <T> List<T> getAttributeValues(AttributeTypeToken<T> attributeType) {
       if (attributes.isEmpty()) {
          throw new OseeStateException("attributes not loaded for artifact [%s]", getIdString());
       }
@@ -210,6 +209,10 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
          return null;
       }
       return (List<T>) values.stream().map(IAttribute::getValue).collect(Collectors.toList());
+   }
+
+   public void putAttributeValue(AttributeTypeToken<?> attributeType, Object value) {
+
    }
 
    @SuppressWarnings("unchecked")
@@ -226,7 +229,7 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
       return (List<T>) values.stream().map(IAttribute::getValue).collect(Collectors.toList());
    }
 
-   public void putAttributeValue(AttributeTypeGeneric<?> attributeType, IAttribute<?> attribute) {
+   public void putAttributeValue(AttributeTypeToken<?> attributeType, IAttribute<?> attribute) {
       attributes.put(attributeType, attribute);
    }
 
@@ -250,7 +253,7 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
    }
 
    @Override
-   public <T> ResultSet<? extends AttributeReadable<T>> getAttributes(AttributeTypeToken attributeType) {
+   public <T> ResultSet<? extends AttributeReadable<T>> getAttributes(AttributeTypeToken<T> attributeType) {
       throw new UnsupportedOperationException();
    }
 
@@ -260,7 +263,7 @@ public final class ArtifactReadableImpl extends BaseId implements ArtifactReadab
    }
 
    @Override
-   public <T> ResultSet<? extends AttributeReadable<T>> getAttributes(AttributeTypeToken attributeType, DeletionFlag deletionFlag) {
+   public <T> ResultSet<? extends AttributeReadable<T>> getAttributes(AttributeTypeToken<T> attributeType, DeletionFlag deletionFlag) {
       throw new UnsupportedOperationException();
    }
 

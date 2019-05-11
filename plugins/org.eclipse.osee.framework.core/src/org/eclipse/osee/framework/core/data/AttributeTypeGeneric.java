@@ -20,7 +20,7 @@ import org.eclipse.osee.framework.jdk.core.type.NamedIdDescription;
 /**
  * @author Ryan D. Brooks
  */
-public abstract class AttributeTypeGeneric<T> extends NamedIdDescription implements AttributeTypeToken {
+public abstract class AttributeTypeGeneric<T> extends NamedIdDescription implements AttributeTypeToken<T> {
    public static final AttributeTypeString SENTINEL =
       AttributeTypeToken.createString(Id.SENTINEL, NamespaceToken.OSEE, Named.SENTINEL, Named.SENTINEL, "", "");
 

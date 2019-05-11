@@ -146,7 +146,7 @@ public class TransactionBuilderImplTest {
 
    @Test
    public void testCopyArtifactWithList() {
-      Collection<AttributeTypeToken> attributesToDuplicate = Arrays.asList(Name, Annotation);
+      Collection<AttributeTypeToken<?>> attributesToDuplicate = Arrays.asList(Name, Annotation);
 
       factory.copyArtifact(expectedAuthor, attributesToDuplicate);
 

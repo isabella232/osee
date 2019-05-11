@@ -26,8 +26,8 @@ import org.eclipse.osee.framework.jdk.core.type.NamedId;
 /**
  * @author Ryan D. Brooks
  */
-
-public interface AttributeTypeToken extends AttributeTypeId, FullyNamed, HasDescription, NamedId {
+public interface AttributeTypeToken<T> extends AttributeTypeId, FullyNamed, HasDescription, NamedId {
+   static final AttributeTypeToken<Object> SENTINEL = valueOf(Id.SENTINEL, Named.SENTINEL);
    static final AttributeTypeGeneric<?> SENTINEL = valueOf(Id.SENTINEL, Named.SENTINEL);
    static final String APPLICATION_ZIP = "application/zip";
    static final String TEXT_CALENDAR = "text/calendar";

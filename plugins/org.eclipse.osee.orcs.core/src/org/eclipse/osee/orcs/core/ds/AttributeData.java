@@ -20,7 +20,7 @@ import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 /**
  * @author Roberto E. Escobar
  */
-public interface AttributeData<T> extends OrcsData<AttributeTypeGeneric<T>>, AttributeId {
+public interface AttributeData<T> extends OrcsData<AttributeTypeToken<T>>, AttributeId {
 
    ArtifactId getArtifactId();
 

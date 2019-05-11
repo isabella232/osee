@@ -148,13 +148,17 @@ public class OrcsCollectorWriter {
                AttributeTypeToken attrType = getAttributeType(orcsApi.tokenService(), owAttribute.getType());
 
                if (artifact.getAttributeCount(attrType) <= 1 && owAttribute.getValues().size() <= 1) {
-                  String currValue = artifact.getSoleAttributeAsString(attrType, null);
+                  Object value = artifact.getSoleAttributeValue(attrType, null);
+                  String currValue = null;
+                  if (value != null) {
+                     currValue = value.toString();
+                  }
 
                   String newValue = null;
                   if (owAttribute.getValues().size() == 1) {
                      Object object = owAttribute.getValues().iterator().next();
                      if (object != null) {
-                        newValue = owAttribute.getValues().iterator().next().toString();
+                        newValue = object.toString();
                      }
                   }
 
@@ -195,10 +199,9 @@ public class OrcsCollectorWriter {
                      }
                   } else if (attrType.isDate()) {
                      try {
-                        Date currVal = artifact.getSoleAttributeValue(attrType, null);
                         Date newVal = getDate(newValue);
-                        if (currVal == null || currVal.compareTo(newVal) != 0) {
-                           logChange(artifact, attrType, DateUtil.getMMDDYYHHMM(currVal),
+                        if (value == null || ((Date) value).compareTo(newVal) != 0) {
+                           logChange(artifact, attrType, DateUtil.getMMDDYYHHMM((Date) value),
                               DateUtil.getMMDDYYHHMM(newVal));
                            TransactionBuilder tx = getTransaction();
                            tx.setSoleAttributeValue(artifact, attrType, newVal);
@@ -277,7 +280,7 @@ public class OrcsCollectorWriter {
       return null;
    }
 
-   protected static AttributeTypeToken getAttributeType(OrcsTokenService tokenService, OwAttributeType attributeType) {
+   protected static AttributeTypeToken<?> getAttributeType(OrcsTokenService tokenService, OwAttributeType attributeType) {
       AttributeTypeToken attributeTypeToken = AttributeTypeToken.SENTINEL;
       if (attributeType != null && attributeType.isValid()) {
          attributeTypeToken = tokenService.getAttributeTypeOrSentinel(attributeType.getId());

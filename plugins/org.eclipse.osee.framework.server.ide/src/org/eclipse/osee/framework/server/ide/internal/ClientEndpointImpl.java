@@ -171,7 +171,8 @@ public class ClientEndpointImpl implements ClientEndpoint {
          for (ArtifactReadable userArt : orcsApi.getQueryFactory().fromBranch(CoreBranches.COMMON).andTypeEquals(
             CoreArtifactTypes.User).and(CoreAttributeTypes.Name, userIdOrName,
                QueryOption.CONTAINS_MATCH_OPTIONS).getResults()) {
-            results.add(userArt.getSoleAttributeValue(CoreAttributeTypes.UserId, null));
+            String defaultValue = null;
+            results.add(userArt.getSoleAttributeValue(CoreAttributeTypes.UserId, defaultValue));
          }
       }
       return results;

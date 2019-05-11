@@ -26,7 +26,7 @@ import org.eclipse.osee.orcs.data.AttributeReadable;
  * @author Roberto E. Escobar
  * @author Andrew M. Finkbeiner
  */
-public interface Attribute<T> extends OrcsWriteable, AttributeReadable<T>, HasOrcsData<AttributeTypeGeneric<T>, AttributeData<T>> {
+public interface Attribute<T> extends OrcsWriteable, AttributeReadable<T>, HasOrcsData<AttributeTypeToken<T>, AttributeData<T>> {
 
    void setValue(T value);
 

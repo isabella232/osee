@@ -180,7 +180,7 @@ public final class SafetyInformationAccumulator {
       writer.writeRow((Object[]) currentRowValues);
    }
 
-   private String writeCriticality(ArtifactReadable art, AttributeTypeToken thisType, String[] currentRowValues, int col) {
+   private String writeCriticality(ArtifactReadable art, AttributeTypeToken<?> thisType, String[] currentRowValues, int col) {
       String current = art.getSoleAttributeAsString(thisType, "Error");
       if ("Error".equals(current)) {
          writeCell("Error: invalid content", currentRowValues, col);
