@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import org.eclipse.osee.framework.core.OrcsTokenService;
 import org.eclipse.osee.framework.core.data.ArtifactId;
@@ -67,6 +68,7 @@ import org.eclipse.osee.orcs.core.ds.criteria.CriteriaRelationTypeSideNotExists;
 import org.eclipse.osee.orcs.core.internal.search.CallableQueryFactory;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
 import org.eclipse.osee.orcs.data.AttributeReadable;
+import org.eclipse.osee.orcs.search.ArtifactQuerySelection;
 import org.eclipse.osee.orcs.search.Match;
 import org.eclipse.osee.orcs.search.QueryBuilder;
 import org.eclipse.osee.orcs.search.QueryFactory;
@@ -91,6 +93,7 @@ public final class QueryData implements QueryBuilder, HasOptions, HasBranch {
    private final HashMap<SqlTable, String> mainAliases = new HashMap<>(4);
    private QueryType queryType;
    private boolean followCausesChild = true;
+   private Supplier<?> selectInto;
 
    public QueryData(QueryData parentQueryData, QueryFactory queryFactory, QueryEngine queryEngine, CallableQueryFactory artQueryFactory, OrcsTokenService tokenService, BranchId branch, ArtifactId view) {
       this.parentQueryData = parentQueryData;
@@ -139,6 +142,21 @@ public final class QueryData implements QueryBuilder, HasOptions, HasBranch {
    @Override
    public Options getOptions() {
       return options;
+   }
+
+   @Override
+   public <R> ArtifactQuerySelection<R> selectInto(Supplier<R> receiver) {
+      return new ArtifactQuerySelection<>(receiver);
+   }
+
+   @Override
+   public <R> ArtifactQuerySelection<R> selectInto(R receiver) {
+      return new ArtifactQuerySelection<>(receiver);
+   }
+
+   @Override
+   public <T> void selectAtt(AttributeTypeToken<T> attributeType, Consumer<T> consumer) {
+
    }
 
    public boolean isSelectQueryType() {
