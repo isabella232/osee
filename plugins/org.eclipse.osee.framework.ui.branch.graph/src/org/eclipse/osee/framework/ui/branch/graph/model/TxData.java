@@ -31,11 +31,11 @@ public class TxData {
    private final Date timeStamp;
    private final String comment;
    private final TransactionDetailsType txType;
-   private final int commitArtId;
+   private final Long commitArtId;
    private final BranchId branch;
    private final Long txId;
 
-   public TxData(BranchId branch, UserId authorId, Date timeStamp, String comment, TransactionDetailsType txType, int commitArtId, long txId) {
+   public TxData(BranchId branch, UserId authorId, Date timeStamp, String comment, TransactionDetailsType txType, Long commitArtId, long txId) {
       this.authorId = authorId;
       this.timeStamp = timeStamp;
       this.comment = comment;
@@ -85,7 +85,7 @@ public class TxData {
    /**
     * @return the commitArtId
     */
-   public int getCommitArtId() {
+   public Long getCommitArtId() {
       return commitArtId;
    }
 
