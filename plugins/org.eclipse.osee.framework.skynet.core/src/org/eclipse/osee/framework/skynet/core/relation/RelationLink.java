@@ -62,7 +62,7 @@ public class RelationLink implements HasBranch, IRelationLink {
 
    private boolean useBackingData;
 
-   public RelationLink(ArtifactToken artifactA, ArtifactToken artifactB, BranchId branch, RelationTypeToken relationType, int relationId, GammaId gammaId, String rationale, ModificationType modificationType, ApplicabilityId applicabilityId) {
+   public RelationLink(ArtifactToken artifactA, ArtifactToken artifactB, BranchId branch, RelationTypeToken relationType, Long relationId, GammaId gammaId, String rationale, ModificationType modificationType, ApplicabilityId applicabilityId) {
       this.relationType = relationType;
       this.relationId = relationId;
       this.gammaId = gammaId;
@@ -306,7 +306,7 @@ public class RelationLink implements HasBranch, IRelationLink {
       ArtifactCache.updateCachedArtifact(artifactB);
    }
 
-   public void internalSetRelationId(int relationId) {
+   public void internalSetRelationId(Long relationId) {
       this.relationId = relationId;
    }
 

@@ -27,13 +27,13 @@ import org.eclipse.osee.framework.core.model.TransactionDelta;
 public final class AttributeChangeBuilder extends ChangeBuilder {
    private final String isValue;
    private String wasValue;
-   private final int attrId;
+   private final long attrId;
    private final AttributeTypeToken attributeType;
    private final ModificationType artModType;
    private final String isUri;
    private String wasUri;
 
-   public AttributeChangeBuilder(BranchId branch, ArtifactTypeId artifactType, GammaId sourceGamma, ArtifactId artId, TransactionDelta txDelta, ModificationType modType, boolean isHistorical, String isValue, String wasValue, int attrId, AttributeTypeToken attributeType, ModificationType artModType, String isUri, String wasUri) {
+   public AttributeChangeBuilder(BranchId branch, ArtifactTypeId artifactType, GammaId sourceGamma, ArtifactId artId, TransactionDelta txDelta, ModificationType modType, boolean isHistorical, String isValue, String wasValue, long attrId, AttributeTypeToken attributeType, ModificationType artModType, String isUri, String wasUri) {
       super(branch, artifactType, sourceGamma, artId, txDelta, modType, isHistorical);
       this.isValue = isValue;
       this.wasValue = wasValue;
@@ -60,7 +60,7 @@ public final class AttributeChangeBuilder extends ChangeBuilder {
       return wasValue;
    }
 
-   public int getAttrId() {
+   public long getAttrId() {
       return attrId;
    }
 

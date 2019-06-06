@@ -59,7 +59,7 @@ public class AttributeChange implements FrameworkEvent {
    protected Long attrTypeGuid;
    @XmlElement(required = true)
    protected String modTypeGuid;
-   protected int attributeId;
+   protected long attributeId;
    protected GammaId gammaId;
    @XmlElement(required = true)
    protected List<Object> data;
@@ -82,11 +82,11 @@ public class AttributeChange implements FrameworkEvent {
       this.modTypeGuid = value;
    }
 
-   public int getAttributeId() {
+   public long getAttributeId() {
       return attributeId;
    }
 
-   public void setAttributeId(int value) {
+   public void setAttributeId(long value) {
       this.attributeId = value;
    }
 

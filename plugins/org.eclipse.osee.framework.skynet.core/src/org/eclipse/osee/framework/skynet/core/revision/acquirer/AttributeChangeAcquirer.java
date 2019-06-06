@@ -46,7 +46,7 @@ import org.eclipse.osee.jdbc.JdbcStatement;
  * @author Jeff C. Phillips
  */
 public class AttributeChangeAcquirer extends ChangeAcquirer {
-   private final Map<Integer, ChangeBuilder> attributesWasValueCache = new HashMap<>();
+   private final Map<Long, ChangeBuilder> attributesWasValueCache = new HashMap<>();
    private int previousAttrId = -1;
 
    public AttributeChangeAcquirer(BranchId sourceBranch, TransactionToken transactionId, IProgressMonitor monitor, Artifact specificArtifact, Set<ArtifactId> artIds, ArrayList<ChangeBuilder> changeBuilders, Set<ArtifactId> newAndDeletedArtifactIds) {
@@ -111,7 +111,7 @@ public class AttributeChangeAcquirer extends ChangeAcquirer {
          TransactionDelta txDelta = new TransactionDelta(fromTransactionId, toTransactionId);
 
          while (chStmt.next()) {
-            int attrId = chStmt.getInt("attr_id");
+            long attrId = chStmt.getLong("attr_id");
             ArtifactId artId = ArtifactId.valueOf(chStmt.getLong("art_id"));
             GammaId sourceGamma = GammaId.valueOf(chStmt.getLong("gamma_id"));
             AttributeTypeToken attributeType = AttributeTypeManager.getAttributeType(chStmt.getLong("attr_type_id"));

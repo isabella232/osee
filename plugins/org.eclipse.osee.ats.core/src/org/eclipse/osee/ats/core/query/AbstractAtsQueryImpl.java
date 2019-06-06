@@ -383,7 +383,7 @@ public abstract class AbstractAtsQueryImpl implements IAtsQuery {
          // team def, ai, version are all covered by team search
 
          // Start with known task ids
-         addIdCriteria(taskReviewIds);
+         queryAndLocalIds(taskReviewIds);
 
          addEvConfigCriteria();
 
@@ -824,7 +824,7 @@ public abstract class AbstractAtsQueryImpl implements IAtsQuery {
 
    private void addVersionCriteria() {
       if (versionId != null && versionId > 0) {
-         queryAndRelatedToLocalIds(AtsRelationTypes.TeamWorkflowTargetedForVersion_Version,
+         queryAndRelatedToLocalIds(AtsRelationTypes.TeamWorkflowTargetedForVersion_Version, Long.valueOf(versionUuid));
             ArtifactId.valueOf(versionId));
       }
    }
@@ -895,17 +895,7 @@ public abstract class AbstractAtsQueryImpl implements IAtsQuery {
       }
    }
 
-   private void addIdCriteria(Collection<Long> ids) {
-      if (ids != null) {
-         List<Integer> artIds = new LinkedList<>();
-         for (Long id : ids) {
-            artIds.add(id.intValue());
-         }
-
-      }
-   }
-
-   public abstract void queryAndIds(Collection<? extends ArtifactId> artIds);
+   public abstract void queryAndLocalIds(List<Long> artIds);
 
    public void addProgramCriteria() {
       if (!isInsertionSpecified()) {

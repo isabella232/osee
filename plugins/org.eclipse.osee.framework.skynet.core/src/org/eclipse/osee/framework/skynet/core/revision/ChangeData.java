@@ -137,7 +137,7 @@ public class ChangeData {
       Set<Artifact> artifacts = new HashSet<>();
       if (kindType == KindType.Artifact || kindType == KindType.ArtifactOrRelation || kindType == KindType.Relation) {
          if (!isEmpty()) {
-            HashMap<Integer, Boolean> excludeArtifact = new HashMap<>();
+            HashMap<Long, Boolean> excludeArtifact = new HashMap<>();
             for (Change change : changes) {
                Artifact artifact = change.getChangeArtifact();
 
@@ -145,7 +145,7 @@ public class ChangeData {
                if (artifactTypesToIgnore != null && !artifactTypesToIgnore.isEmpty()) {
                   try {
                      if (change instanceof AttributeChange) {
-                        Integer id = artifact.getArtId();
+                        Long id = artifact.getArtId();
                         long typeId = change.getItemTypeId().getId();
                         AttributeTypeToken attributeType = AttributeTypeManager.getAttributeType(typeId);
                         if (excludeArtifact.containsKey(id)) {
@@ -190,7 +190,7 @@ public class ChangeData {
             if (artifactTypesToIgnore != null && !artifactTypesToIgnore.isEmpty()) {
                Set<Artifact> excludeList = new HashSet<>();
                for (Artifact artifactToCheck : artifacts) {
-                  Integer id = artifactToCheck.getArtId();
+                  Long id = artifactToCheck.getArtId();
                   Boolean remove = excludeArtifact.get(id);
                   if (remove != null) {
                      if (remove) {

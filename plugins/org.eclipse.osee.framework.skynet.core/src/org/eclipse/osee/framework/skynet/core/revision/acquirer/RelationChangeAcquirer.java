@@ -79,7 +79,7 @@ public class RelationChangeAcquirer extends ChangeAcquirer {
          while (chStmt.next()) {
             ArtifactId aArtId = ArtifactId.valueOf(chStmt.getLong("a_art_id"));
             ArtifactId bArtId = ArtifactId.valueOf(chStmt.getLong("b_art_id"));
-            int relLinkId = chStmt.getInt("rel_link_id");
+            Long relLinkId = chStmt.getLong("rel_link_id");
 
             if (!getNewAndDeletedArtifactIds().contains(aArtId) && !getNewAndDeletedArtifactIds().contains(bArtId)) {
                ModificationType modificationType = ModificationType.valueOf(chStmt.getInt("mod_type"));

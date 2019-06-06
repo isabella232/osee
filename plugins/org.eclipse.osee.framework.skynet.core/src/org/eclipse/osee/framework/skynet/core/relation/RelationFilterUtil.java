@@ -38,7 +38,7 @@ public class RelationFilterUtil {
       return new FirstSideRelatedArtIdMatcher(artifactId, side.isSideA());
    }
 
-   public static RelationMatcher createFindFirstRelationLinkIdMatcher(int relLinkId) {
+   public static RelationMatcher createFindFirstRelationLinkIdMatcher(long relLinkId) {
       return new FirstRelationLinkIdMatcher(relLinkId);
    }
 
@@ -78,9 +78,9 @@ public class RelationFilterUtil {
    }
    private static final class FirstRelationLinkIdMatcher implements RelationMatcher {
 
-      private final int relLinkId;
+      private final long relLinkId;
 
-      public FirstRelationLinkIdMatcher(int relLinkId) {
+      public FirstRelationLinkIdMatcher(long relLinkId) {
          this.relLinkId = relLinkId;
       }
 

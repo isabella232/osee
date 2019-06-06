@@ -19,7 +19,7 @@ package org.eclipse.osee.account.admin;
  * @author Roberto E. Escobar
  */
 public enum AccountField {
-   LOCAL_ID,
+   ID,
    GUID,
    EMAIL,
    DISPLAY_NAME,

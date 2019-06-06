@@ -27,7 +27,7 @@ public class LocalIdValidator extends AbstractValidator {
 
    @Override
    public AccountField getFieldType() {
-      return AccountField.LOCAL_ID;
+      return AccountField.ID;
    }
 
    @Override

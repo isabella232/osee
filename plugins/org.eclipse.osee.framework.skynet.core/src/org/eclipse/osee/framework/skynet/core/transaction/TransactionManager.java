@@ -134,7 +134,7 @@ public final class TransactionManager {
    }
 
    public static Long getCommitArtId(TransactionId tx) {
-      return (long) getTransaction(tx).getCommit();
+      return getTransaction(tx).getCommitArtId();
    }
 
    public synchronized static Collection<TransactionRecord> getCommittedArtifactTransactionIds(ArtifactId artifact) {

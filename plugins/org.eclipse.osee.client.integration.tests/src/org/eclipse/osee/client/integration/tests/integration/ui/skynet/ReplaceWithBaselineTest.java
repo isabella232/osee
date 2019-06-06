@@ -481,11 +481,11 @@ public final class ReplaceWithBaselineTest {
 
       private ArtifactId artifactId;
       private RelationTypeSide relationType;
-      private int bArtifactId;
+      private Long bArtifactId;
 
       private AttributeId attrId;
 
-      private int cArtId;
+      private Long cArtId;
 
       public TestData(Item item, ChangeItem changeItem, boolean isBaseline) {
          this.item = item;
@@ -493,11 +493,11 @@ public final class ReplaceWithBaselineTest {
          this.isBaseline = isBaseline;
       }
 
-      public int getcArtId() {
+      public Long getcArtId() {
          return cArtId;
       }
 
-      public void setcArtId(int cArtId) {
+      public void setcArtId(Long cArtId) {
          this.cArtId = cArtId;
       }
 
@@ -517,11 +517,11 @@ public final class ReplaceWithBaselineTest {
          this.relationType = relationType;
       }
 
-      public int getbArtifactId() {
+      public Long getbArtifactId() {
          return bArtifactId;
       }
 
-      public void setbArtifactId(int bArtifactId) {
+      public void setbArtifactId(Long bArtifactId) {
          this.bArtifactId = bArtifactId;
       }
 

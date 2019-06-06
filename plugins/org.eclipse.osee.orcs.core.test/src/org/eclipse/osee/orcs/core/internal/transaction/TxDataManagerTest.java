@@ -410,9 +410,9 @@ public class TxDataManagerTest {
       when(proxyManager.asExternalArtifact(session, artifact2)).thenReturn(readable2);
 
       ArtifactData data = Mockito.mock(ArtifactData.class);
-      when(artifact1.getOrcsData()).thenReturn(data);
       when(artifact2.getOrcsData()).thenReturn(data);
       when(data.isExistingVersionUsed()).thenReturn(false);
+      when(artifact2.getUuid()).thenReturn(9837834587623L);
 
       ArtifactReadable actual = txDataManager.copyArtifact(txDataReal, COMMON, readable1);
 
@@ -442,6 +442,7 @@ public class TxDataManagerTest {
    }
 
    //org.eclipse.osee.orcs.api.OrcsTransactionTest.testCopyArtifact() already provides a higher fidelity test of copy artifact
+      when(sourceArtifact.getLocalId()).thenReturn(234579082L);
 
    @Test
    public void testCopyArtifactId() {
@@ -451,10 +452,10 @@ public class TxDataManagerTest {
       when(proxyManager.asExternalArtifact(session, artifact2)).thenReturn(readable2);
 
       ArtifactData data = Mockito.mock(ArtifactData.class);
-      when(data.getLocalId()).thenReturn(-1);
-      when(artifact1.getOrcsData()).thenReturn(data);
+      when(data.getLocalId()).thenReturn(-1L);
       when(artifact2.getOrcsData()).thenReturn(data);
       when(data.isExistingVersionUsed()).thenReturn(false);
+      when(artifact2.getUuid()).thenReturn(9837834587623L);
 
       ArtifactReadable actual = txDataManager.copyArtifact(txDataReal, COMMON, artifactId1);
 

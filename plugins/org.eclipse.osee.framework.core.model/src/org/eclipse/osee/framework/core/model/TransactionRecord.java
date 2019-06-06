@@ -36,12 +36,13 @@ public class TransactionRecord extends BaseId implements TransactionToken, Adapt
    private Long buildId;
 
    public TransactionRecord(Long id, BranchId branch, String comment, Date time, UserId authorArtId, Long commitArtId, TransactionDetailsType txType, Long buildId) {
+   public TransactionRecord(Long id, BranchId branch, String comment, Date time, UserId author, Long commitArtId, TransactionDetailsType txType, , Long buildId) {
       super(id);
       this.branch = branch;
       this.buildId = buildId;
       this.comment = Strings.intern(comment);
       this.time = time;
-      this.authorArtId = authorArtId;
+      this.author = author;
       this.commitArtId = commitArtId;
       this.txType = txType;
    }
@@ -60,10 +61,10 @@ public class TransactionRecord extends BaseId implements TransactionToken, Adapt
    }
 
    public UserId getAuthor() {
-      return authorArtId;
+      return author;
    }
 
-   public Long getCommit() {
+   public Long getCommitArtId() {
       return commitArtId;
    }
 
@@ -79,8 +80,8 @@ public class TransactionRecord extends BaseId implements TransactionToken, Adapt
       this.time = time;
    }
 
-   public void setAuthor(UserId authorArtId) {
-      this.authorArtId = authorArtId;
+   public void setAuthor(UserId author) {
+      this.author = author;
    }
 
    public void setCommit(Long commitArtId) {

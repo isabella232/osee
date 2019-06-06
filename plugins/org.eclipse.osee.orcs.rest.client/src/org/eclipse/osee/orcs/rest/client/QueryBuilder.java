@@ -192,4 +192,5 @@ public interface QueryBuilder {
    List<ArtifactId> getIds();
 
    QueryBuilder getQueryBuilder();
+
 }
