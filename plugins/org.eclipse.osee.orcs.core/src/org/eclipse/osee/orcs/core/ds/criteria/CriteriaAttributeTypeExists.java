@@ -23,7 +23,6 @@ import org.eclipse.osee.orcs.core.ds.Options;
  * @author Roberto E. Escobar
  */
 public class CriteriaAttributeTypeExists extends Criteria {
-
    private final Collection<AttributeTypeId> attributeTypes;
 
    public CriteriaAttributeTypeExists(Collection<AttributeTypeId> attributeTypes) {
@@ -35,8 +34,9 @@ public class CriteriaAttributeTypeExists extends Criteria {
    }
 
    @Override
-   public void checkValid(Options options) {
+   public boolean checkValid(Options options) {
       Conditions.checkNotNullOrEmpty(getTypes(), "attribute types");
+      return true;
    }
 
    @Override

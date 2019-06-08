@@ -21,13 +21,11 @@ import org.eclipse.osee.orcs.core.ds.Options;
  * @author Roberto E. Escobar
  */
 public class CriteriaBranchName extends Criteria implements BranchCriteria {
-
    private final boolean isPattern;
    private final boolean isPatternIgnoreCase;
    private final String value;
 
    public CriteriaBranchName(String value, boolean isPattern, boolean isPatternIgnoreCase) {
-      super();
       this.value = value;
       this.isPattern = isPattern;
       this.isPatternIgnoreCase = isPatternIgnoreCase;
@@ -42,8 +40,9 @@ public class CriteriaBranchName extends Criteria implements BranchCriteria {
    }
 
    @Override
-   public void checkValid(Options options) {
+   public boolean checkValid(Options options) {
       Conditions.checkNotNullOrEmpty(getValue(), "branch name value");
+      return true;
    }
 
    @Override
@@ -54,5 +53,4 @@ public class CriteriaBranchName extends Criteria implements BranchCriteria {
    public boolean isPatternIgnoreCase() {
       return isPatternIgnoreCase;
    }
-
 }

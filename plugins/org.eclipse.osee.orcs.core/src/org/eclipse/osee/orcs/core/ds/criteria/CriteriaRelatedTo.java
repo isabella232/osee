@@ -50,6 +50,7 @@ public class CriteriaRelatedTo extends RelationTypeCriteria<RelationTypeSide> {
    }
 
    @Override
+      return true;
    public String toString() {
       return "CriteriaRelatedTo [relationTypeSide=" + getType() + ", artifactIds=" + artifactIds + "]";
    }

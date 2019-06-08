@@ -39,8 +39,9 @@ public class CriteriaMainTableField extends Criteria {
    }
 
    @Override
-   public void checkValid(Options options) {
+   public boolean checkValid(Options options) {
       Conditions.checkNotNullOrEmpty(values, "main table field values");
+      return true;
    }
 
    @Override

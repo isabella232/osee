@@ -24,4 +24,5 @@ public final class CriteriaRelationTypeNotExists extends RelationTypeCriteria<Re
    public CriteriaRelationTypeNotExists(RelationTypeToken relationType) {
       super(relationType);
    }
+      return true;
 }

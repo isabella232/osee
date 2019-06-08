@@ -29,7 +29,6 @@ import org.eclipse.osee.orcs.core.ds.Options;
  * @author Roberto E. Escobar
  */
 public class CriteriaAttributeKeywords extends Criteria {
-
    private final OrcsTokenService tokenService;
    private final Collection<AttributeTypeId> attributeTypes;
    private final Collection<String> values;
@@ -37,7 +36,6 @@ public class CriteriaAttributeKeywords extends Criteria {
    private final boolean includeAllTypes;
 
    public CriteriaAttributeKeywords(boolean includeAllTypes, Collection<AttributeTypeId> attributeTypes, OrcsTokenService tokenService, Collection<String> values, QueryOption... options) {
-      super();
       this.includeAllTypes = includeAllTypes;
       this.tokenService = tokenService;
       this.attributeTypes = attributeTypes;
@@ -66,11 +64,12 @@ public class CriteriaAttributeKeywords extends Criteria {
    }
 
    @Override
-   public void checkValid(Options options) {
+   public boolean checkValid(Options options) {
       Conditions.checkNotNullOrEmpty(getValues(), "search value");
       Conditions.checkNotNullOrEmpty(getTypes(), "attribute types");
       checkMultipleValues();
       checkNotTaggable();
+      return true;
    }
 
    @Override
