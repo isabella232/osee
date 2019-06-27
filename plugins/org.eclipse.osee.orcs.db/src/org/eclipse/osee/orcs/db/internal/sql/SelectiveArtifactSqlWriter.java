@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.osee.framework.core.data.AttributeTypeId;
 import org.eclipse.osee.framework.core.enums.SqlTable;
+import org.eclipse.osee.framework.core.enums.ObjectType;
 import org.eclipse.osee.framework.jdk.core.type.Id;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.jdbc.JdbcClient;
@@ -292,6 +293,18 @@ public class SelectiveArtifactSqlWriter extends AbstractSqlWriter {
    @Override
    public void writeGroupAndOrder() {
       // only add ordering on the outer query in build()
+   }
+
+   @Override
+   public String addTable(TableEnum table, ObjectType objectType) {
+      String prefix;
+      if (table.equals(TableEnum.TXS_TABLE)) {
+         prefix = table.getPrefix() + objectType.getPrefix();
+      } else {
+         prefix = table.getPrefix();
+      }
+      String alias = getNextAlias(prefix, objectType);
+      return addTable(table, alias);
    }
 
    @Override

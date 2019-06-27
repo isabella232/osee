@@ -383,7 +383,7 @@ public abstract class AbstractSqlWriter implements HasOptions {
       return getNextAlias(table.getPrefix(), table.getObjectType());
    }
 
-   private String getNextAlias(String prefix, ObjectType type) {
+   protected String getNextAlias(String prefix, ObjectType type) {
       return getAliasManager().getNextAlias(prefix, type);
    }
 
@@ -409,6 +409,10 @@ public abstract class AbstractSqlWriter implements HasOptions {
 
    public String addTable(SqlTable table, ObjectType objectType) {
       String alias = getNextAlias(table.getPrefix(), objectType);
+      return addTable(table, alias);
+   }
+
+   protected String addTable(TableEnum table, String alias) {
       tableEntries.add(String.format("%s %s", table.getName(), alias));
       return alias;
    }
