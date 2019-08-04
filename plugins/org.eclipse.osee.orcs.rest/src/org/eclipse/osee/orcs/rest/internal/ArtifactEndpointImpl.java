@@ -49,6 +49,7 @@ import org.eclipse.osee.orcs.rest.model.search.artifact.SearchRequest;
 import org.eclipse.osee.orcs.rest.model.search.artifact.SearchResponse;
 import org.eclipse.osee.orcs.search.Match;
 import org.eclipse.osee.orcs.search.QueryBuilder;
+import org.eclipse.osee.orcs.search.QueryFactory;
 import org.eclipse.osee.orcs.transaction.TransactionBuilder;
 
 /**
@@ -63,12 +64,14 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
    private final BranchId branch;
    private final UserId account;
    private final UriInfo uriInfo;
+   private final QueryFactory queryFactory;
 
    public ArtifactEndpointImpl(OrcsApi orcsApi, BranchId branch, UserId account, UriInfo uriInfo) {
       this.orcsApi = orcsApi;
       this.account = account;
       this.uriInfo = uriInfo;
       this.branch = branch;
+      queryFactory = orcsApi.getQueryFactory();
    }
 
    @Override
@@ -76,7 +79,7 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
       long startTime = System.currentTimeMillis();
 
       SearchQueryBuilder searchQueryBuilder = DslFactory.createQueryBuilder(orcsApi);
-      QueryBuilder builder = searchQueryBuilder.build(orcsApi.getQueryFactory(), params);
+      QueryBuilder builder = searchQueryBuilder.build(queryFactory, params);
 
       builder.includeDeletedArtifacts(params.isIncludeDeleted());
 
@@ -124,7 +127,7 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
 
    @Override
    public String getRootChildrenAsHtml() {
-      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
+      QueryBuilder query = queryFactory.fromBranch(branch);
       ArtifactReadable rootArtifact = query.andIsHeirarchicalRootArtifact().getArtifact();
       HtmlWriter writer = new HtmlWriter(uriInfo, orcsApi);
       return writer.toHtml(rootArtifact.getChildren());
@@ -133,18 +136,18 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
    @Override
    public String getArtifactAsHtml(ArtifactId artifactId) {
       HtmlWriter writer = new HtmlWriter(uriInfo, orcsApi);
-      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
+      QueryBuilder query = queryFactory.fromBranch(branch);
       return writer.toHtml(query.andId(artifactId).getResults());
    }
 
    @Override
    public ArtifactToken getArtifactToken(ArtifactId artifactId) {
-      return orcsApi.getQueryFactory().fromBranch(branch).andId(artifactId).asArtifactToken();
+      return queryFactory.fromBranch(branch).andId(artifactId).asArtifactToken();
    }
 
    @Override
    public AttributeEndpoint getAttributes(ArtifactId artifactId) {
-      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
+      QueryBuilder query = queryFactory.fromBranch(branch);
       return new AttributeEndpointImpl(artifactId, branch, orcsApi, query, uriInfo);
    }
 
@@ -176,7 +179,7 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
     */
    @Override
    public List<ArtifactToken> getArtifactTokensByAttribute(AttributeTypeToken attributeType, List<String> values, boolean exists, ArtifactTypeToken artifactType) {
-      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
+      QueryBuilder query = queryFactory.fromBranch(branch);
       return getArtifactXByAttribute(query, attributeType, values, exists, artifactType, query::asArtifactTokens);
    }
 
@@ -187,7 +190,7 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
     */
    @Override
    public List<ArtifactId> getArtifactIdsByAttribute(AttributeTypeToken attributeType, List<String> values, boolean exists, ArtifactTypeToken artifactType) {
-      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
+      QueryBuilder query = queryFactory.fromBranch(branch);
       return getArtifactXByAttribute(query, attributeType, values, exists, artifactType, query::asArtifactIds);
    }
 
@@ -198,13 +201,13 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
     */
    @Override
    public List<Map<String, Object>> getArtifactMaps(AttributeTypeToken attributeType, String representation, List<String> values, boolean exists, ArtifactTypeToken artifactType, ArtifactId view) {
-      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch, view);
+      QueryBuilder query = queryFactory.fromBranch(branch, view);
       return getArtifactXByAttribute(query, attributeType, values, exists, artifactType, query::asArtifactMaps);
    }
 
    @Override
    public List<ArtifactToken> getArtifactTokensByType(ArtifactTypeToken artifactType) {
-      return orcsApi.getQueryFactory().fromBranch(branch).andTypeEquals(artifactType).asArtifactTokens();
+      return queryFactory.fromBranch(branch).andTypeEquals(artifactType).asArtifactTokens();
    }
 
    @Override
@@ -224,7 +227,7 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
 
    @Override
    public List<ArtifactId> getArtifactIdsByType(ArtifactTypeToken artifactType) {
-      return orcsApi.getQueryFactory().fromBranch(branch).andTypeEquals(artifactType).asArtifactIds();
+      return queryFactory.fromBranch(branch).andTypeEquals(artifactType).asArtifactIds();
    }
 
    @Override
