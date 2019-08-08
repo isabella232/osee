@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.nebula.widgets.xviewer.core.model.CustomizeData;
-import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.IAtsObject;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.notify.IAtsNotifier;
@@ -31,6 +30,7 @@ import org.eclipse.osee.ats.api.workflow.log.IAtsLogFactory;
 import org.eclipse.osee.ats.api.workflow.state.IAtsStateFactory;
 import org.eclipse.osee.ats.core.util.AtsObjects;
 import org.eclipse.osee.ats.core.workflow.WorkItem;
+import org.eclipse.osee.ats.rest.IAtsServer;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
@@ -55,11 +55,10 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
    private final IAtsStateFactory stateFactory;
    private final IAtsLogFactory logFactory;
    private final IAtsNotifier notifier;
-   private final AtsApi atsApi;
-
+   private final IAtsServer atsApi;
    private final JdbcService jdbcService;
 
-   public AtsStoreServiceImpl(AtsApi atsApi, OrcsApi orcsApi, IAtsStateFactory stateFactory, IAtsLogFactory logFactory, IAtsNotifier notifier) {
+   public AtsStoreServiceImpl(IAtsServer atsApi, OrcsApi orcsApi, IAtsStateFactory stateFactory, IAtsLogFactory logFactory, IAtsNotifier notifier) {
       this.atsApi = atsApi;
       this.orcsApi = orcsApi;
       this.logFactory = logFactory;
@@ -102,7 +101,7 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
 
    @Override
    public boolean isDeleted(IAtsObject atsObject) {
-      return ((ArtifactReadable) atsApi.getQueryService().getArtifact(atsObject)).isDeleted();
+      return atsApi.getArtifact(atsObject).isDeleted();
    }
 
    @Override
@@ -161,7 +160,7 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
 
    @Override
    public ArtifactTypeToken getArtifactType(IAtsObject atsObject) {
-      return getArtifactType(atsApi.getQueryService().getArtifact(atsObject.getStoreObject()));
+      return atsApi.getArtifact(atsObject).getArtifactType();
    }
 
    @Override
@@ -177,17 +176,12 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
 
    @Override
    public TransactionId getTransactionId(IAtsWorkItem workItem) {
-      TransactionId transId = TransactionId.SENTINEL;
-      ArtifactId artifact = atsApi.getQueryService().getArtifact(workItem.getId());
-      if (artifact instanceof ArtifactReadable) {
-         transId = ((ArtifactReadable) artifact).getTransaction();
-      }
-      return transId;
+      return atsApi.getArtifact(workItem.getId()).getTransaction();
    }
 
    @Override
    public boolean isDeleted(ArtifactId artifact) {
-      return ((ArtifactReadable) atsApi.getQueryService().getArtifact(artifact)).isDeleted();
+      return atsApi.getArtifact(artifact).isDeleted();
    }
 
    @Override
@@ -249,7 +243,7 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
 
    @Override
    public String getSafeName(ArtifactId art) {
-      return ((ArtifactReadable) atsApi.getQueryService().getArtifact(art)).getSafeName();
+      return atsApi.getArtifact(art).getSafeName();
    }
 
    @Override

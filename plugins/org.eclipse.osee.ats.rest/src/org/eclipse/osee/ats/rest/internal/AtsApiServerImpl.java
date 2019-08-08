@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.eclipse.nebula.widgets.xviewer.core.model.CustomizeData;
+import org.eclipse.osee.ats.api.IAtsObject;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.agile.IAgileService;
 import org.eclipse.osee.ats.api.ai.IAtsActionableItemService;
@@ -59,9 +60,12 @@ import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.IUserGroupService;
 import org.eclipse.osee.framework.core.enums.CoreArtifactTypes;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
+import org.eclipse.osee.framework.core.enums.CoreBranches;
 import org.eclipse.osee.framework.core.server.OseeInfo;
 import org.eclipse.osee.framework.jdk.core.type.OseeArgumentException;
 import org.eclipse.osee.orcs.OrcsApi;
+import org.eclipse.osee.orcs.data.ArtifactReadable;
+import org.eclipse.osee.orcs.search.QueryFactory;
 
 /**
  * @author Donald G Dunne
@@ -79,9 +83,11 @@ public class AtsApiServerImpl extends AtsApiImpl implements AtsApiServer {
    private final Map<String, IAtsDatabaseConversion> externalConversions = new ConcurrentHashMap<>();
    private AtsActionEndpointApi actionEndpoint;
    private IAtsHealthService healthService;
+   private QueryFactory queryFactory;
 
    public void setOrcsApi(OrcsApi orcsApi) {
       this.orcsApi = orcsApi;
+      queryFactory = orcsApi.getQueryFactory();
    }
 
    @Override
@@ -374,6 +380,33 @@ public class AtsApiServerImpl extends AtsApiImpl implements AtsApiServer {
    @Override
    public boolean isIde() {
       return false;
+   }
+   @Override
+   public ArtifactReadable getArtifact(IAtsObject atsObject) {
+      if (atsObject.getStoreObject() instanceof ArtifactReadable) {
+         return (ArtifactReadable) atsObject.getStoreObject();
+      }
+      return getArtifact(atsObject.getId());
+   }
+
+   @Override
+   public ArtifactReadable getArtifact(Long artifactId) {
+      return getArtifact(ArtifactId.valueOf(artifactId));
+   }
+
+   @Override
+   public ArtifactReadable getArtifact(ArtifactId artifactId) {
+      return queryFactory.fromBranch(CoreBranches.COMMON).andId(artifactId).asArtifact();
+   }
+
+   @Override
+   public ArtifactToken getArtifactToken(ArtifactId artifactId) {
+      return queryFactory.fromBranch(CoreBranches.COMMON).andId(artifactId).asArtifactToken();
+   }
+
+   @Override
+   public ArtifactToken getArtifactToken(Long artifactId) {
+      return getArtifactToken(ArtifactId.valueOf(artifactId));
    }
 
    @Override

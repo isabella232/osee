@@ -22,10 +22,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.data.AtsArtifactTypes;
 import org.eclipse.osee.ats.api.workflow.AtsActionUiEndpointApi;
+import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.ats.rest.internal.util.ActionPage;
 import org.eclipse.osee.ats.rest.internal.util.RestUtil;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
@@ -40,10 +40,10 @@ import org.eclipse.osee.orcs.data.ArtifactReadable;
 @Path("/ui/action")
 public final class AtsActionUiEndpointImpl implements AtsActionUiEndpointApi {
 
-   private final AtsApi atsApi;
+   private final AtsApiServer atsApi;
    private final Log logger;
 
-   public AtsActionUiEndpointImpl(AtsApi atsApi, Log logger) {
+   public AtsActionUiEndpointImpl(AtsApiServer atsApi, Log logger) {
       this.atsApi = atsApi;
       this.logger = logger;
    }

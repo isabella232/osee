@@ -101,7 +101,7 @@ public class TokenSearchOperations {
     * @return ArtifactTokens in artifacts that have attribute matching value in database. Excludes binary attribute
     * values.
     */
-   public static Collection<ArtifactToken> getArtifactTokensMatchingAttrValue(BranchId branch, Collection<ArtifactToken> artifacts, AttributeTypeToken attributeType, Object value, OrcsApi orcsApi, JdbcService jdbcService) {
+   public static Collection<ArtifactToken> getArtifactTokensMatchingAttrValue(BranchId branch, Collection<ArtifactToken> artifacts, AttributeTypeToken attributeType, Object value, JdbcService jdbcService) {
       List<Long> artIds = new LinkedList<>();
       Map<Long, ArtifactToken> artIdToTokenMap = new HashMap<>();
       String ids = "";
@@ -128,5 +128,4 @@ public class TokenSearchOperations {
       }
       return results;
    }
-
 }

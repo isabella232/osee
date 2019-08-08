@@ -25,7 +25,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
-import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.workflow.WorkItemArray;
 import org.eclipse.osee.ats.rest.AtsApiServer;
@@ -40,7 +39,7 @@ import org.eclipse.osee.orcs.OrcsApi;
 @Provider
 public class WorkItemArrayJsonWriter implements MessageBodyWriter<WorkItemArray> {
    private JsonFactory jsonFactory;
-   private AtsApi atsApiServer;
+   private IAtsServer atsApi;
    private OrcsApi orcsApi;
 
    public void setOrcsApi(OrcsApi orcsApi) {
@@ -87,7 +86,7 @@ public class WorkItemArrayJsonWriter implements MessageBodyWriter<WorkItemArray>
          writer.writeStartObject();
          writer.writeArrayFieldStart("workItems");
          for (IAtsWorkItem workItem : workItemArray.getWorkItems()) {
-            WorkItemJsonWriter.addWorkItem(atsApiServer, orcsApi, workItem, annotations, writer,
+            WorkItemJsonWriter.addWorkItem(atsApi, workItem, annotations, writer,
                matches(IdentityView.class, annotations), Collections.emptyList());
          }
          writer.writeEndArray();

@@ -13,9 +13,9 @@
 
 package org.eclipse.osee.ats.rest.internal.agile.operations;
 
-import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.agile.AgileReportType;
 import org.eclipse.osee.ats.api.agile.IAgileSprintHtmlOperation;
+import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.ats.rest.internal.agile.AgileEndpointImpl;
 import org.eclipse.osee.framework.jdk.core.type.IResourceRegistry;
 
@@ -24,17 +24,17 @@ import org.eclipse.osee.framework.jdk.core.type.IResourceRegistry;
  */
 public class SprintSummaryOperation implements IAgileSprintHtmlOperation {
 
-   private final AtsApi atsApi;
+   private final AtsApiServer atsApi;
    private final IResourceRegistry registry;
 
-   public SprintSummaryOperation(AtsApi atsApi, IResourceRegistry registry) {
+   public SprintSummaryOperation(AtsApiServer atsApi, IResourceRegistry registry) {
       this.atsApi = atsApi;
       this.registry = registry;
    }
 
    @Override
    public String getReportHtml(long teamId, long sprintId) {
-      AgileEndpointImpl agileEp = new AgileEndpointImpl(atsApi, registry, null, null);
+      AgileEndpointImpl agileEp = new AgileEndpointImpl(atsApi, registry, null);
       return agileEp.getSprintSummary(teamId, sprintId);
    }
 
@@ -42,5 +42,4 @@ public class SprintSummaryOperation implements IAgileSprintHtmlOperation {
    public AgileReportType getReportType() {
       return AgileReportType.Summary;
    }
-
 }

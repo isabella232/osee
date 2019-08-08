@@ -91,7 +91,7 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
    @Path("my/{userArtId}")
    @Produces(MediaType.APPLICATION_JSON)
    public Collection<IAtsWorkItem> getMyWorld(@PathParam("userArtId") ArtifactId userArtId) {
-      ArtifactReadable userArt = (ArtifactReadable) atsApiServer.getQueryService().getArtifact(userArtId);
+      ArtifactReadable userArt = atsServer.getArtifact(userArtId);
       AtsUser userById =
          atsApiServer.getUserService().getUserByUserId(userArt.getSoleAttributeValue(CoreAttributeTypes.UserId));
       Collection<IAtsWorkItem> myWorldItems =
@@ -106,7 +106,7 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
    @Produces(MediaType.TEXT_HTML)
    public String getMyWorldUI(@PathParam("userArtId") ArtifactId userArtId) {
       StringBuilder sb = new StringBuilder();
-      ArtifactReadable userArt = (ArtifactReadable) atsApiServer.getQueryService().getArtifact(userArtId);
+      ArtifactReadable userArt = atsServer.getArtifact(userArtId);
       AtsUser userById =
          atsApiServer.getUserService().getUserByUserId(userArt.getSoleAttributeValue(CoreAttributeTypes.UserId));
       Collection<IAtsWorkItem> myWorldItems =
@@ -122,7 +122,7 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
    @Produces(MediaType.TEXT_HTML)
    public String getMyWorldUICustomized(@PathParam("userArtId") ArtifactId userArtId, @PathParam("customizeGuid") String customizeGuid) {
       ElapsedTime time = new ElapsedTime("start");
-      ArtifactReadable userArt = (ArtifactReadable) atsApiServer.getQueryService().getArtifact(userArtId);
+      ArtifactReadable userArt = atsServer.getArtifact(userArtId);
       AtsUser userById =
          atsApiServer.getUserService().getUserByUserId(userArt.getSoleAttributeValue(CoreAttributeTypes.UserId));
       Conditions.checkNotNull(userById, "User by Id " + userArtId);
@@ -149,12 +149,8 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
    }
 
    @Override
-   @GET
-   @Path("coll/{collectorId}")
-   @Produces(MediaType.APPLICATION_JSON)
-   public Collection<IAtsWorkItem> getCollection(@PathParam("collectorId") ArtifactId collectorId) {
-      ArtifactReadable collectorArt = (ArtifactReadable) atsApiServer.getQueryService().getArtifact(collectorId);
-      return getCollection(collectorArt);
+   public Collection<IAtsWorkItem> getCollection(ArtifactId userArtId) {
+      return getCollection(atsServer.getArtifact(userArtId));
    }
 
    private Collection<IAtsWorkItem> getCollection(ArtifactReadable collectorArt) {
@@ -177,7 +173,7 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
    @Produces(MediaType.TEXT_HTML)
    public String getCollectionUI(@PathParam("collectorId") ArtifactId collectorId) {
       StringBuilder sb = new StringBuilder();
-      ArtifactReadable collectorArt = (ArtifactReadable) atsApiServer.getQueryService().getArtifact(collectorId);
+      ArtifactReadable collectorArt = atsServer.getArtifact(collectorId);
       getDefaultUiTable(sb, "Collection - " + collectorArt.getName(), getCollection(collectorId));
       return sb.toString();
    }
@@ -195,7 +191,7 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
 
       // get work items
       ElapsedTime getWorkItems = new ElapsedTime("get work items");
-      ArtifactReadable collectorArt = (ArtifactReadable) atsApiServer.getQueryService().getArtifact(collectorId);
+      ArtifactReadable collectorArt = atsServer.getArtifact(collectorId);
       Collection<IAtsWorkItem> collectorItems = getCollection(collectorArt);
       getWorkItems.end();
 

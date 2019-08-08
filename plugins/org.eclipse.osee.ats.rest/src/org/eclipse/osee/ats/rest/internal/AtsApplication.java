@@ -137,7 +137,7 @@ public class AtsApplication extends Application {
       singletons.add(new AtsWorldEndpointImpl(atsApiServer));
       singletons.add(new AtsHealthEndpointImpl(atsApiServer, jdbcService));
       singletons.add(new AtsWorkDefEndpointImpl(atsApiServer, orcsApi));
-      singletons.add(new AgileEndpointImpl(atsApiServer, registry, jdbcService, orcsApi));
+      singletons.add(new AgileEndpointImpl(atsApiServer, registry, jdbcService));
       singletons.add(new CountryEndpointImpl(atsApiServer));
       singletons.add(new ProgramEndpointImpl(atsApiServer));
       singletons.add(new InsertionEndpointImpl(atsApiServer));

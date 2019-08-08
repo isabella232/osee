@@ -26,7 +26,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
-import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.IAtsConfigObject;
 import org.eclipse.osee.ats.api.util.SkipAtsConfigJsonWriter;
 import org.eclipse.osee.ats.rest.AtsApiServer;
@@ -40,7 +39,7 @@ import org.eclipse.osee.orcs.OrcsApi;
 @Provider
 public class ConfigsJsonWriter implements MessageBodyWriter<Collection<IAtsConfigObject>> {
    private JsonFactory jsonFactory;
-   private AtsApi atsApiServer;
+   private IAtsServer atsApiServer;
    private OrcsApi orcsApi;
 
    public void setOrcsApi(OrcsApi orcsApi) {
@@ -100,7 +99,7 @@ public class ConfigsJsonWriter implements MessageBodyWriter<Collection<IAtsConfi
          writer = jsonFactory.createGenerator(entityStream);
          writer.writeStartArray();
          for (IAtsConfigObject program : programs) {
-            ConfigJsonWriter.addProgramObject(atsApiServer, orcsApi, program, annotations, writer,
+            ConfigJsonWriter.addProgramObject(atsApi, program, annotations, writer,
                matches(IdentityView.class, annotations));
          }
          writer.writeEndArray();

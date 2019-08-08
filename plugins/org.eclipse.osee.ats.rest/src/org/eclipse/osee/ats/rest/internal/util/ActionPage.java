@@ -18,7 +18,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.data.AtsArtifactTypes;
 import org.eclipse.osee.ats.api.data.AtsAttributeTypes;
@@ -30,10 +29,10 @@ import org.eclipse.osee.ats.api.workdef.IAtsWidgetDefinition;
 import org.eclipse.osee.ats.api.workdef.IAtsWorkDefinition;
 import org.eclipse.osee.ats.api.workflow.IAtsTeamWorkflow;
 import org.eclipse.osee.ats.api.workflow.state.IAtsStateManager;
+import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.IOseeBranch;
-import org.eclipse.osee.framework.core.exception.OseeWrappedException;
 import org.eclipse.osee.framework.core.util.OseeInf;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.type.ViewModel;
@@ -61,7 +60,7 @@ public class ActionPage {
    private String pageTemplate;
    private IAtsWorkItem workItem;
    private final ArtifactReadable action;
-   private final AtsApi atsApi;
+   private final AtsApiServer atsApi;
    private final Log logger;
    private boolean addTransition = false;
    private static final List<String> roleKeys = Arrays.asList("role", "userId", "completed", "hoursSpent");
@@ -70,12 +69,12 @@ public class ActionPage {
    private static List<String> ignoredWidgets;
    private final boolean details;
 
-   public ActionPage(Log logger, AtsApi atsApi, IAtsWorkItem workItem, boolean details) {
+   public ActionPage(Log logger, AtsApiServer atsApi, IAtsWorkItem workItem, boolean details) {
       this(logger, atsApi, (ArtifactReadable) workItem.getStoreObject(), details);
       this.workItem = workItem;
    }
 
-   public ActionPage(Log logger, AtsApi atsApi, ArtifactReadable action, boolean details) {
+   public ActionPage(Log logger, AtsApiServer atsApi, ArtifactReadable action, boolean details) {
       this.logger = logger;
       this.atsApi = atsApi;
       this.action = action;
@@ -129,12 +128,12 @@ public class ActionPage {
       return workItem.getStateMgr().getAssigneesStr();
    }
 
-   public static String getTeamStr(AtsApi atsApi, ArtifactReadable action) {
+   public static String getTeamStr(AtsApiServer atsApi, ArtifactReadable action) {
       String results = "";
       ArtifactId artId = atsApi.getAttributeResolver().getSoleArtifactIdReference(action,
          AtsAttributeTypes.TeamDefinitionReference, ArtifactId.SENTINEL);
       if (artId.isValid()) {
-         results = atsApi.getQueryService().getArtifact(artId).getName();
+         results = atsApi.getArtifactToken(artId).getName();
       } else {
          ArtifactReadable teamWf = getParentTeamWf(action);
          if (teamWf.isValid() && teamWf.notEqual(action)) {

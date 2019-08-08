@@ -23,7 +23,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
@@ -64,7 +63,7 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
 
    private static final String ATS_UI_ACTION_PREFIX = "/ats/ui/action/ID";
    private JsonFactory jsonFactory;
-   private AtsApi atsApiServer;
+   private IAtsServer atsApi;
    private OrcsApi orcsApi;
 
    public void setOrcsApi(OrcsApi orcsApi) {
@@ -104,11 +103,11 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
    }
 
    @Override
-   public void writeTo(IAtsWorkItem config, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
+   public void writeTo(IAtsWorkItem config, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException {
       JsonGenerator writer = null;
       try {
          writer = jsonFactory.createGenerator(entityStream);
-         addWorkItem(atsApiServer, orcsApi, config, annotations, writer, matches(IdentityView.class, annotations),
+         addWorkItem(atsApi, config, annotations, writer, matches(IdentityView.class, annotations),
             Collections.emptyList());
       } finally {
          if (writer != null) {
@@ -117,8 +116,7 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
       }
    }
 
-   protected static void addWorkItem(AtsApi atsApi, OrcsApi orcsApi, IAtsWorkItem workItem, Annotation[] annotations, JsonGenerator writer, boolean identityView, List<WorkItemWriterOptions> options) throws IOException, JsonGenerationException, JsonProcessingException {
-
+   protected static void addWorkItem(IAtsServer atsApi, IAtsWorkItem workItem, Annotation[] annotations, JsonGenerator writer, boolean identityView, List<WorkItemWriterOptions> options) throws IOException {
       ArtifactReadable workItemArt = (ArtifactReadable) workItem.getStoreObject();
       writer.writeStartObject();
       writer.writeNumberField("id", workItem.getId());
@@ -133,7 +131,7 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
       String actionUrl = AtsUtil.getActionUrl(atsId, ATS_UI_ACTION_PREFIX, atsApi);
       writer.writeStringField("actionLocation", actionUrl);
       if (!identityView) {
-         ConfigJsonWriter.addAttributeData(writer, workItemArt, options, atsApi, orcsApi);
+         ConfigJsonWriter.addAttributeData(writer, workItemArt, options, atsApi);
          writer.writeStringField("TeamName", ActionPage.getTeamStr(atsApi, workItemArt));
          writer.writeStringField("Assignees", workItem.getStateMgr().getAssigneesStr());
          if (options.contains(WorkItemWriterOptions.WriteRelatedAsTokens)) {
@@ -171,7 +169,7 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
       writer.writeEndObject();
    }
 
-   protected static void addWorkItemWithIds(AtsApi atsApi, OrcsApi orcsApi, IAtsWorkItem workItem, Annotation[] annotations, JsonGenerator writer, boolean identityView, List<WorkItemWriterOptions> options) throws IOException, JsonGenerationException, JsonProcessingException {
+   protected static void addWorkItemWithIds(IAtsServer atsApi, IAtsWorkItem workItem, Annotation[] annotations, JsonGenerator writer, boolean identityView, List<WorkItemWriterOptions> options) throws IOException, JsonGenerationException, JsonProcessingException {
       ArtifactReadable workItemArt = (ArtifactReadable) workItem.getStoreObject();
       writer.writeStartObject();
       writer.writeNumberField("id", workItem.getId());
@@ -181,7 +179,7 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
       String actionUrl = AtsUtil.getActionUrl(atsId, ATS_UI_ACTION_PREFIX, atsApi);
       writer.writeStringField("actionLocation", actionUrl);
       if (!identityView) {
-         ConfigJsonWriter.addAttributeDataWithIds(writer, workItemArt, options, atsApi, orcsApi);
+         ConfigJsonWriter.addAttributeDataWithIds(writer, workItemArt, options, atsApi);
          writer.writeStringField("TeamName", ActionPage.getTeamStr(atsApi, workItemArt));
          writeAssignees(writer, workItemArt, workItem);
          writeType(writer, workItemArt, workItem, "ChangeType", AtsAttributeTypes.ChangeType);

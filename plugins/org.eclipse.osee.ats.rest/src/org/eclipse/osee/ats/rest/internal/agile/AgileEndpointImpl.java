@@ -93,6 +93,7 @@ import org.eclipse.osee.ats.core.agile.SprintUtil;
 import org.eclipse.osee.ats.core.agile.operations.SprintBurndownOperations;
 import org.eclipse.osee.ats.core.agile.operations.SprintBurnupOperations;
 import org.eclipse.osee.ats.core.util.chart.LineChart;
+import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.ats.rest.internal.agile.operations.EndpointOperations;
 import org.eclipse.osee.ats.rest.internal.agile.operations.KanbanOperations;
 import org.eclipse.osee.ats.rest.internal.agile.operations.ProgramOperations;
@@ -119,7 +120,6 @@ import org.eclipse.osee.framework.jdk.core.util.SortOrder;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 import org.eclipse.osee.jaxrs.OseeWebApplicationException;
 import org.eclipse.osee.jdbc.JdbcService;
-import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
 import org.eclipse.osee.template.engine.PageCreator;
 import org.eclipse.osee.template.engine.PageFactory;
@@ -134,17 +134,15 @@ public class AgileEndpointImpl implements AgileEndpointApi {
 
    @Context
    private UriInfo uriInfo;
-   private final AtsApi atsApi;
+   private final AtsApiServer atsApi;
    private final IResourceRegistry resourceRegistry;
    private final JdbcService jdbcService;
-   private final OrcsApi orcsApi;
    private EndpointOperations endpointOps;
 
-   public AgileEndpointImpl(AtsApi atsApi, IResourceRegistry resourceRegistry, JdbcService jdbcService, OrcsApi orcsApi) {
+   public AgileEndpointImpl(AtsApiServer atsApi, IResourceRegistry resourceRegistry, JdbcService jdbcService) {
       this.atsApi = atsApi;
       this.resourceRegistry = resourceRegistry;
       this.jdbcService = jdbcService;
-      this.orcsApi = orcsApi;
    }
 
    public void setUriInfo(UriInfo uriInfo) {
@@ -178,7 +176,7 @@ public class AgileEndpointImpl implements AgileEndpointApi {
    @Path("program/{programId}/token")
    @Produces(MediaType.APPLICATION_JSON)
    public JaxAtsObject getProgramToken(@PathParam("programId") ArtifactId programId) {
-      ArtifactToken token = atsApi.getQueryService().getArtifactToken(programId);
+      ArtifactToken token = atsApi.getArtifactToken(programId);
       return toAtsObjToken(token);
    }
 
@@ -198,7 +196,7 @@ public class AgileEndpointImpl implements AgileEndpointApi {
       ProgramOperations ops = new ProgramOperations(atsApi);
       AtwNode atwTree = ops.getAtwTree(aProgram);
 
-      return "[" + orcsApi.jaxRsApi().toJson(atwTree) + "]";
+      return "[" + atsApi.jaxRsApi().toJson(atwTree) + "]";
    }
 
    @Override
@@ -218,7 +216,7 @@ public class AgileEndpointImpl implements AgileEndpointApi {
    private RestResult deleteProgramItem(long itemId, String itemName) {
       RestResult result = new RestResult();
       try {
-         ArtifactToken programBacklogItem = atsApi.getQueryService().getArtifact(itemId);
+         ArtifactToken programBacklogItem = atsApi.getArtifactToken(itemId);
          if (programBacklogItem == null) {
             result.getResult().errorf("Invalid %s Id %s", itemName, itemId);
          } else {
@@ -330,7 +328,8 @@ public class AgileEndpointImpl implements AgileEndpointApi {
          featureItem.getResults().errorf("Program Id %s not found", programId);
          return featureItem;
       }
-      ArtifactToken parentBacklogItem = atsApi.getQueryService().getArtifact(featureItem.getSelectedId());
+      ArtifactToken parentBacklogItem = atsApi.getArtifactToken(featureItem.getSelectedId());
+
       if (parentBacklogItem.isOfType(AtsArtifactTypes.AgileProgramFeature)) {
          parentBacklogItem = atsApi.getRelationResolver().getParent(parentBacklogItem);
       }
@@ -678,7 +677,7 @@ public class AgileEndpointImpl implements AgileEndpointApi {
       if (!relatedSprints.isEmpty()) {
          Collection<ArtifactToken> inWorkSprints =
             TokenSearchOperations.getArtifactTokensMatchingAttrValue(atsApi.getAtsBranch(), relatedSprints,
-               AtsAttributeTypes.CurrentStateType, StateType.Working.name(), orcsApi, jdbcService);
+               AtsAttributeTypes.CurrentStateType, StateType.Working.name(), jdbcService);
 
          for (ArtifactToken sprintArt : inWorkSprints) {
             sprints.add(sprintArt);
@@ -935,7 +934,7 @@ public class AgileEndpointImpl implements AgileEndpointApi {
       if (id == null || id <= 0) {
          id = Lib.generateArtifactIdAsInt();
       }
-      ArtifactToken teamArt = atsApi.getQueryService().getArtifact(newBacklog.getTeamId());
+      ArtifactToken teamArt = atsApi.getArtifactToken(newBacklog.getTeamId());
       if (!atsApi.getRelationResolver().getRelated(teamArt, AtsRelationTypes.AgileTeamToBacklog_Backlog).isEmpty()) {
          throw new OseeWebApplicationException(Status.BAD_REQUEST, "Backlog already set for team %s",
             teamArt.toStringWithId());
@@ -1071,7 +1070,7 @@ public class AgileEndpointImpl implements AgileEndpointApi {
       try {
          String custDataStr = OseeInf.getResourceContents("atsConfig/DefaultAgileCustomization.json", getClass());
          if (Strings.isValid(custDataStr)) {
-            result = orcsApi.jaxRsApi().readValue(custDataStr, CustomizeData.class);
+            result = atsApi.jaxRsApi().readValue(custDataStr, CustomizeData.class);
          }
       } catch (Exception ex) {
          ex.printStackTrace();
