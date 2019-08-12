@@ -595,25 +595,23 @@ public class OrcsApplicabilityOps implements OrcsApplicability {
                results.errorf("Product Name is already in use.");
                return results;
             }
-            if ((xView.isInvalid())) {
-               try {
-                  UserId user = account;
-                  if (user == null) {
-                     user = SystemUser.OseeSystem;
-                  }
-                  TransactionBuilder tx = orcsApi.getTransactionFactory().createTransaction(branch, user,
-                     "Create View " + view.toStringWithId());
-                  createUpdateViewDefinition(view, tx);
-                  tx.commit();
+            try {
+               UserId user = account;
+               if (user == null) {
+                  user = SystemUser.OseeSystem;
+               }
+               TransactionBuilder tx = orcsApi.getTransactionFactory().createTransaction(branch, user,
+                  "Create View " + view.toStringWithId());
+               createUpdateViewDefinition(view, tx);
+               tx.commit();
                   ViewDefinition newView = getView(view.getName(), branch);
                   TransactionBuilder tx2 = orcsApi.getTransactionFactory().createTransaction(branch, user,
                      "Create Config and Base applicabilities on new view: " + view.getName());
                   tx2.createApplicabilityForView(ArtifactId.valueOf(newView.getId()), "Base");
                   tx2.createApplicabilityForView(ArtifactId.valueOf(newView.getId()), "Config = " + view.getName());
                   tx2.commit();
-               } catch (Exception ex) {
-                  results.error(Lib.exceptionToString(ex));
-               }
+            } catch (Exception ex) {
+               results.error(Lib.exceptionToString(ex));
             }
             //If copyFrom indicated; set applicability for each feature to match
             if (view.getCopyFrom().isValid()) {
