@@ -90,7 +90,11 @@ public interface IAtsChangeSet {
 
    void addNotificationEvent(AtsNotificationEvent notifyEvent);
 
-   void unrelateAll(Object object, RelationTypeSide relationType);
+   /**
+    * Delete relations of type relationType between the given artifact and all artifacts on the side specified by
+    * relationType.
+    */
+   void unrelateAll(Object artifact, RelationTypeSide relationType);
 
    void setRelation(Object object1, RelationTypeSide relationType, Object object2);
 
