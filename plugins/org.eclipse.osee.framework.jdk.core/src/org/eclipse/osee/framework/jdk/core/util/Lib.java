@@ -397,8 +397,7 @@ public final class Lib {
    }
 
    public static ChangeSet inputStreamToChangeSet(InputStream in, String charset) throws IOException {
-      InputStreamReader reader = new InputStreamReader(in, charset);
-      try {
+      try (InputStreamReader reader = new InputStreamReader(in, charset)) {
          ChangeSet set = new ChangeSet();
          char[] chars = new char[8000];
          int readCount = 0;
@@ -406,8 +405,6 @@ public final class Lib {
             set.insertBefore(0, chars, 0, readCount, true);
          }
          return set;
-      } finally {
-         close(reader);
       }
    }
 

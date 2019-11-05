@@ -56,4 +56,6 @@ public interface OrcsApi extends OseeApi {
 
    ActivityLog getActivityLog();
 
+
+   void ast();
 }

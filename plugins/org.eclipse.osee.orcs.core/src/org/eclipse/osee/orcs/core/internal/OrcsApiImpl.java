@@ -16,9 +16,16 @@ package org.eclipse.osee.orcs.core.internal;
 import org.eclipse.osee.activity.api.ActivityLog;
 import org.eclipse.osee.framework.core.OseeApiBase;
 import org.eclipse.osee.framework.core.access.IAccessControlService;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.ITypeRoot;
+import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTParser;
+import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.TransactionId;
 import org.eclipse.osee.framework.core.executor.ExecutorAdmin;
+import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.util.GUID;
 import org.eclipse.osee.jdbc.JdbcService;
 import org.eclipse.osee.logger.Log;
@@ -283,4 +290,24 @@ public class OrcsApiImpl extends OseeApiBase implements OrcsApi {
    public ActivityLog getActivityLog() {
       return activityLog;
    }
+   }
+
+   @Override
+   public void ast() {
+      try {
+         ASTParser parser = ASTParser.newParser(AST.JLS8);
+         parser.setSource("package org.eclipse.osee.orcs.core.internal;".toCharArray());
+         parser.setKind(ASTParser.K_COMPILATION_UNIT);
+
+         CompilationUnit unit = (CompilationUnit) parser.createAST(new NullProgressMonitor());
+         AST ast = unit.getAST();
+
+         ITypeRoot typeRoot = unit.getTypeRoot();
+         IMethod[] methods = typeRoot.findPrimaryType().getMethods();
+         for (IMethod method : methods) {
+            System.out.print(method);
+         }
+      } catch (Exception ex) {
+         throw OseeCoreException.wrap(ex);
+      }
 }
