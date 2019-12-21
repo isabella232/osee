@@ -14,6 +14,7 @@
 package org.eclipse.osee.orcs.rest.model;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -65,4 +66,8 @@ public interface DatastoreEndpoint {
    @Produces(MediaType.APPLICATION_JSON)
    void updateBootstrapUser();
 
+   @DELETE
+   @Path("unused/blobs")
+   @Produces(MediaType.APPLICATION_JSON)
+   long purgeUnusedBinaryAttributes();
 }

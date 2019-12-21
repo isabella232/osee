@@ -51,4 +51,6 @@ public interface OrcsAdmin {
 
    void registerMissingOrcsTypeJoins();
 
+   long purgeUnusedBinaryAttributes();
+
 }

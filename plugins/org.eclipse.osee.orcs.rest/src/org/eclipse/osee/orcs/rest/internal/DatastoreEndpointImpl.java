@@ -113,4 +113,9 @@ public class DatastoreEndpointImpl implements DatastoreEndpoint {
    public void updateBootstrapUser() {
       adminOps.updateBootstrapUser(accountId);
    }
+
+   @Override
+   public long purgeUnusedBinaryAttributes() {
+      return adminOps.purgeUnusedBinaryAttributes();
+   }
 }

@@ -37,4 +37,6 @@ public interface DataStoreAdmin {
 
    void updateBootstrapUser(UserId accountId);
 
+   long purgeUnusedBinaryAttributes();
+
 }

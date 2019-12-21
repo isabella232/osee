@@ -262,4 +262,9 @@ public class OrcsAdminImpl implements OrcsAdmin {
    public void updateBootstrapUser(UserId accountId) {
       dataStoreAdmin.updateBootstrapUser(accountId);
    }
+
+   @Override
+   public long purgeUnusedBinaryAttributes() {
+      return dataStoreAdmin.purgeUnusedBinaryAttributes();
+   }
 }
