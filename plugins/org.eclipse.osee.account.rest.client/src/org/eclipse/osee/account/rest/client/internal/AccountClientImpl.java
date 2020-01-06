@@ -45,6 +45,7 @@ import org.eclipse.osee.account.rest.model.AccountSessionDetailsData;
 import org.eclipse.osee.account.rest.model.AccountWebPreferences;
 import org.eclipse.osee.account.rest.model.SubscriptionData;
 import org.eclipse.osee.framework.core.data.ArtifactId;
+import org.eclipse.osee.framework.core.data.OseeClient;
 import org.eclipse.osee.framework.jdk.core.type.ResultSet;
 import org.eclipse.osee.framework.jdk.core.type.ResultSets;
 import org.eclipse.osee.jaxrs.client.JaxRsClient;
@@ -71,7 +72,7 @@ public class AccountClientImpl implements AccountClient {
       client = JaxRsClient.newBuilder().properties(properties).build();
       String address = properties != null ? (String) properties.get(OSEE_APPLICATION_SERVER) : null;
       if (address == null) {
-         address = System.getProperty(OSEE_APPLICATION_SERVER, "");
+         address = OseeClient.getOseeApplicationServer();
       }
       baseUri = UriBuilder.fromUri(address).build();
    }

@@ -44,6 +44,7 @@ import org.eclipse.osee.framework.jdk.core.result.XResultData;
 import org.eclipse.osee.framework.jdk.core.result.table.ExampleTableData;
 import org.eclipse.osee.framework.jdk.core.type.ViewModel;
 import org.eclipse.osee.framework.jdk.core.util.Lib;
+import org.eclipse.osee.orcs.OrcsAdmin;
 import org.eclipse.osee.orcs.OrcsApi;
 
 /**
@@ -210,14 +211,24 @@ public final class AtsConfigEndpointImpl implements AtsConfigEndpointApi {
 
    @Override
    public XResultData demoDbInit() {
-      XResultData rd = new XResultData();
+      OrcsAdmin adminOps = orcsApi.getAdminOps();
+      String types = OseeInf.getResourceContents("orcsTypes/OseeTypes_ATS.osee", getClass());
+      types += OseeInf.getResourceContents("orcsTypes/OseeTypes_Demo.osee", getClass());
+
+      adminOps.createDatastoreAndSystemBranches(types);
+      adminOps.createDemoBranches();
+
+      XResultData atsResults = atsDbInit();
+
+      XResultData demoResults = new XResultData();
       try {
          AtsDbConfigDemoOp config = new AtsDbConfigDemoOp(atsApi);
          config.run();
       } catch (Exception ex) {
-         rd.error(Lib.exceptionToString(ex));
+         demoResults.error(Lib.exceptionToString(ex));
       }
-      return rd;
+      atsResults.addRaw(demoResults.toString());
+      return atsResults;
    }
 
    @Override

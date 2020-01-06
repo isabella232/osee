@@ -36,8 +36,6 @@ import org.eclipse.osee.orcs.rest.model.TypesEndpoint;
  */
 public interface OseeClient {
 
-   String OSEE_APPLICATION_SERVER = org.eclipse.osee.framework.core.data.OseeClient.OSEE_APPLICATION_SERVER;
-
    QueryBuilder createQueryBuilder(BranchId branch);
 
    BranchEndpoint getBranchEndpoint();

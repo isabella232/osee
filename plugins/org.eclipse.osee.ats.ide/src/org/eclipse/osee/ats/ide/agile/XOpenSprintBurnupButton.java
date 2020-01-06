@@ -28,8 +28,6 @@ public class XOpenSprintBurnupButton extends AbstractXOpenSprintBurnupButton {
 
    @Override
    public String getUrl() {
-      return System.getProperty(
-         OseeClient.OSEE_APPLICATION_SERVER) + "/ats/agile/team/" + getAgileTeam().getIdString() + "/sprint/" + sprint.getIdString() + "/burnup/chart/ui";
+      return OseeClient.getOseeApplicationServer() + "/ats/agile/team/" + getAgileTeam().getIdString() + "/sprint/" + sprint.getIdString() + "/burnup/chart/ui";
    }
-
 }

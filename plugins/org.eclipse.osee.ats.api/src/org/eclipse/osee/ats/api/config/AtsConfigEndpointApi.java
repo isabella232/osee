@@ -95,7 +95,11 @@ public interface AtsConfigEndpointApi {
    @Produces(MediaType.APPLICATION_JSON)
    public XResultData alive();
 
-   @PUT
+   /**
+    * Create an new OSEE database instance with ATS configured for demo (additional demo data will be moved from client
+    * at a later date). This includes the ORCS calls to create the database schema and the system and demo branches.
+    */
+   @POST
    @Path("init/demo")
    @Produces(MediaType.APPLICATION_JSON)
    public XResultData demoDbInit();

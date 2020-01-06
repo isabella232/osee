@@ -13,9 +13,9 @@
 
 package org.eclipse.osee.jdbc;
 
-import static org.eclipse.osee.jdbc.JdbcConstants.JDBC_SERVER__LOCAL_CONNECTIONS;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.eclipse.osee.framework.core.data.OseeClient;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 import org.eclipse.osee.jdbc.JdbcConstants.JdbcDriverType;
 import org.eclipse.osee.jdbc.JdbcConstants.PoolExhaustedAction;
@@ -33,7 +33,7 @@ import org.eclipse.osee.jdbc.internal.SimpleConnectionProvider;
 /**
  * Class used to configure and build JdbcClient instances. JdbcClients for a particular database only needs to be
  * created once. Clients are thread-safe. Database connections are typically managed by a connection pool.
- * 
+ *
  * @author Roberto E. Escobar
  */
 public final class JdbcClientBuilder extends JdbcClientConfig {
@@ -292,10 +292,8 @@ public final class JdbcClientBuilder extends JdbcClientConfig {
    public JdbcClientBuilder fromType(JdbcDriverType type, String db, String host, int port) {
       dbDriver(type.getDriver());
 
-      String dbHost = host;
-      if (JdbcDriverType.hsql == type && !Strings.isValid(dbHost)) {
-         dbHost = JDBC_SERVER__LOCAL_CONNECTIONS;
-      }
+      String dbHost = OseeClient.getOseeApplicationServer();
+
       dbUri(type.getUriFormat(), type.getPrefix(), dbHost, port, db);
 
       switch (type) {
@@ -318,5 +316,4 @@ public final class JdbcClientBuilder extends JdbcClientConfig {
       }
       return this;
    }
-
 }

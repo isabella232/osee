@@ -14,13 +14,12 @@
 package org.eclipse.osee.framework.core.server.internal;
 
 import java.io.ByteArrayInputStream;
-import java.net.InetAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import org.eclipse.osee.framework.core.data.OseeClient;
 import org.eclipse.osee.framework.core.data.OseeCodeVersion;
 import org.eclipse.osee.framework.core.data.OseeServerInfo;
 import org.eclipse.osee.framework.core.operation.Operations;
@@ -96,12 +95,8 @@ public class ApplicationServerManager implements IApplicationServerManager {
    }
 
    private static OseeServerInfo createOseeServerInfo(Log logger, ApplicationServerDataStore dataStore, String... defaultVersions) {
-      String serverAddress = "127.0.0.1";
-      try {
-         serverAddress = InetAddress.getLocalHost().getCanonicalHostName();
-      } catch (UnknownHostException ex) {
-         //
-      }
+      String serverAddress = OseeClient.getOseeApplicationServer();
+
       int port = OseeServerProperties.getOseeApplicationServerPort();
       String scheme = OseeServerProperties.getOseeApplicationServerScheme();
       URI uri = null;
