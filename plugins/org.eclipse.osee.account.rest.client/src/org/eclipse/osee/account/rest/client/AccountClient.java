@@ -72,8 +72,6 @@ public interface AccountClient {
 
    AccountWebPreferences getAccountWebPreferencesByUniqueField(ArtifactId accountId);
 
-   boolean isLocalHost();
-
    String getBaseUri();
 
 }

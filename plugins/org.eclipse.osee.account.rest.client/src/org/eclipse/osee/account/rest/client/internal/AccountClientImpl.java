@@ -21,7 +21,6 @@ import static org.eclipse.osee.account.rest.model.AccountContexts.ACCOUNT_LOGOUT
 import static org.eclipse.osee.account.rest.model.AccountContexts.ACCOUNT_PREFERENCES;
 import static org.eclipse.osee.account.rest.model.AccountContexts.ACCOUNT_SESSSIONS;
 import static org.eclipse.osee.account.rest.model.AccountContexts.ACCOUNT_USERNAME_TEMPLATE;
-import static org.eclipse.osee.framework.core.data.OseeClient.OSEE_APPLICATION_SERVER;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -70,10 +69,7 @@ public class AccountClientImpl implements AccountClient {
 
    public void update(Map<String, Object> properties) {
       client = JaxRsClient.newBuilder().properties(properties).build();
-      String address = properties != null ? (String) properties.get(OSEE_APPLICATION_SERVER) : null;
-      if (address == null) {
-         address = OseeClient.getOseeApplicationServer();
-      }
+      String address = OseeClient.getOseeApplicationServer();
       baseUri = UriBuilder.fromUri(address).build();
    }
 
@@ -291,11 +287,6 @@ public class AccountClientImpl implements AccountClient {
             return unsubscribeUri;
          }
       };
-   }
-
-   @Override
-   public boolean isLocalHost() {
-      return baseUri.toString().contains("localhost");
    }
 
    @Override

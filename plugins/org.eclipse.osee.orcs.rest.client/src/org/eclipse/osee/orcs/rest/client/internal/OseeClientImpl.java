@@ -85,11 +85,8 @@ public class OseeClientImpl implements OseeClient, QueryExecutor {
 
    public void update(Map<String, Object> properties) {
       client = JaxRsClient.newBuilder().properties(properties).build();
-      String address = properties != null ? (String) properties.get(
-         org.eclipse.osee.framework.core.data.OseeClient.OSEE_APPLICATION_SERVER) : null;
-      if (address == null) {
-         address = org.eclipse.osee.framework.core.data.OseeClient.getOseeApplicationServer();
-      }
+      String address = org.eclipse.osee.framework.core.data.OseeClient.getOseeApplicationServer();
+
       if (Strings.isValid(address)) {
          orcsUri = UriBuilder.fromUri(address).path("orcs").build();
          searchUriBuilder = UriBuilder.fromUri(address).path("orcs/branch/{branch-uuid}/artifact/search/v1");
