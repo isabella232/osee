@@ -29,6 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactTypeId;
+import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.TransactionId;
 import org.eclipse.osee.framework.core.data.TransactionToken;
@@ -61,6 +62,7 @@ public class ArtifactQueryBuilder {
    private ArtifactId artifactId;
    private Collection<? extends ArtifactId> artifactIds;
    private final Collection<? extends ArtifactTypeId> artifactTypes;
+   private ArtifactTypeToken artifactTypeWithInheritence;
    private final DeletionFlag allowDeleted;
    private final LoadLevel loadLevel;
    private boolean emptyCriteria = false;
@@ -125,6 +127,11 @@ public class ArtifactQueryBuilder {
       this(null, ArtifactId.SENTINEL, null, null, artifactTypes, branch, TransactionToken.SENTINEL, allowDeleted,
          loadLevel);
       emptyCriteria = artifactTypes.isEmpty();
+   }
+
+   public ArtifactQueryBuilder(ArtifactTypeToken artifactTypeWithInheritence, BranchId branch, LoadLevel loadLevel, DeletionFlag allowDeleted) {
+      this(null, ArtifactId.SENTINEL, null, null, null, branch, TransactionToken.SENTINEL, allowDeleted, loadLevel);
+      this.artifactTypeWithInheritence = artifactTypeWithInheritence;
    }
 
    public ArtifactQueryBuilder(BranchId branch, LoadLevel loadLevel, DeletionFlag allowDeleted) {

@@ -376,15 +376,12 @@ public class ArtifactQuery {
    }
 
    public static List<Artifact> getArtifactListFromTypeWithInheritence(ArtifactTypeToken artifactType, BranchId branch, DeletionFlag allowDeleted) {
-      Collection<ArtifactTypeToken> artifactTypes = artifactType.getAllDescendantTypes();
-      artifactTypes.add(artifactType);
-      return getArtifactListFromTypes(artifactTypes, branch, allowDeleted);
+      return new ArtifactQueryBuilder(artifactType, branch, ALL, allowDeleted).getArtifacts(1000, null);
    }
 
    public static int getArtifactCountFromTypeWithInheritence(ArtifactTypeToken artifactType, BranchId branch, DeletionFlag allowDeleted) {
-      Collection<ArtifactTypeToken> artifactTypes = artifactType.getAllDescendantTypes();
-      artifactTypes.add(artifactType);
-      return getArtifactCountFromTypes(artifactTypes, branch, allowDeleted);
+      ArtifactQueryBuilder builder = new ArtifactQueryBuilder(artifactType, branch, ALL, allowDeleted);
+      return builder.countArtifacts();
    }
 
    public static int getArtifactCountFromTypes(Collection<? extends ArtifactTypeId> artifactTypes, BranchId branch, DeletionFlag allowDeleted) {
