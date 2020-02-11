@@ -476,13 +476,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.hsqldb"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-         
-   <plugin
          id="org.eclipse.jetty.http"
          download-size="0"
          install-size="0"

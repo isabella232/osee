@@ -109,7 +109,7 @@ public final class ImageManager {
    }
 
    public static ImageDescriptor createImageDescriptor(String symbolicBundleName, String imageFileName) {
-      return AbstractUIPlugin.imageDescriptorFromPlugin(symbolicBundleName, "OSEE-INF/images" + "/" + imageFileName);
+      return AbstractUIPlugin.imageDescriptorFromPlugin(symbolicBundleName, "OSEE-INF/images/" + imageFileName);
    }
 
    public static KeyedImage createKeyedImage(String imageKey, ImageDescriptor descriptor) {
