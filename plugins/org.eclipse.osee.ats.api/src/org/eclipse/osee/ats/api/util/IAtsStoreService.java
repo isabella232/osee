@@ -87,8 +87,6 @@ public interface IAtsStoreService {
 
    boolean isProductionDb();
 
-   boolean isHistorical(IAtsObject atsObject);
-
    JdbcService getJdbcService();
 
    default Map<ArtifactId, ArtifactTypeToken> getArtifactTypes(Collection<ArtifactId> artIds, OrcsTokenService tokenService) {
@@ -101,7 +99,6 @@ public interface IAtsStoreService {
       return artIdToType;
    }
 
-   boolean isHistorical(ArtifactId artifact);
 
    boolean isReadOnly(IAtsWorkItem workItem);
 

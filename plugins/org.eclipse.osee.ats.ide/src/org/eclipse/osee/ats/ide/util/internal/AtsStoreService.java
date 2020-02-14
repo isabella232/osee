@@ -214,16 +214,6 @@ public class AtsStoreService implements IAtsStoreService {
    }
 
    @Override
-   public boolean isHistorical(IAtsObject atsObject) {
-      return AtsApiService.get().getQueryServiceIde().getArtifact(atsObject).isHistorical();
-   }
-
-   @Override
-   public boolean isHistorical(ArtifactId artifact) {
-      return AtsApiService.get().getQueryServiceIde().getArtifact(artifact).isHistorical();
-   }
-
-   @Override
    public void clearCaches(IAtsWorkItem workItem) {
       ((WorkItem) workItem).clearCaches();
       ((AbstractWorkflowArtifact) workItem.getStoreObject()).clearCaches();

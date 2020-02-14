@@ -101,7 +101,6 @@ public class WfeHeaderComposite extends Composite {
          new WfeTeamAndIdsHeader(this, SWT.NONE, workItem, editor);
          createTargetVersionAndAssigneeHeader(this, currentStateXWidgetPage, editor.getToolkit());
 
-         createLatestHeader(this, editor.getToolkit());
          if (workItem.isTeamWorkflow()) {
             actionableItemHeader = new WfeActionableItemHeader(this, editor.getToolkit(), workItem, editor);
          }
@@ -211,14 +210,6 @@ public class WfeHeaderComposite extends Composite {
          comp.setLayout(ALayout.getZeroMarginLayout(6, false));
 
          new WfeWorkPackage(comp, SWT.NONE, workItem, editor);
-      }
-   }
-
-   private void createLatestHeader(Composite comp, XFormToolkit toolkit) {
-      if (AtsApiService.get().getStoreService().isHistorical(workItem)) {
-         Label label = toolkit.createLabel(comp,
-            "This is a historical version of this " + workItem.getArtifactTypeName() + " and can not be edited; Select \"Open Latest\" to view/edit latest version.");
-         label.setForeground(Displays.getSystemColor(SWT.COLOR_RED));
       }
    }
 

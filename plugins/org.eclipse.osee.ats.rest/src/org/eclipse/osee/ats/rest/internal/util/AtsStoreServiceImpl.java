@@ -207,16 +207,6 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
    }
 
    @Override
-   public boolean isHistorical(IAtsObject atsObject) {
-      return ((ArtifactReadable) atsApi.getQueryService().getArtifact(atsObject)).isHistorical();
-   }
-
-   @Override
-   public boolean isHistorical(ArtifactId artifact) {
-      return ((ArtifactReadable) atsApi.getQueryService().getArtifact(artifact)).isHistorical();
-   }
-
-   @Override
    public boolean isReadOnly(IAtsWorkItem workItem) {
       throw new UnsupportedOperationException("unsupported on server");
    }
@@ -228,7 +218,7 @@ public class AtsStoreServiceImpl implements IAtsStoreService {
 
    @Override
    public void reloadArts(Collection<ArtifactToken> artifacts) {
-      // do needed on server, but don't exception
+      // not needed on server, but don't exception
    }
 
    @Override
