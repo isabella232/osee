@@ -61,7 +61,7 @@ public class AgileProgramOperations {
          agileProgramArt =
             changes.createArtifact(AtsArtifactTypes.AgileProgram, agileProgram.getName(), agileProgram.getId());
          changes.setSoleAttributeValue(agileProgramArt, AtsAttributeTypes.Active, true);
-         ArtifactId topAgileFolder = AgileFolders.getOrCreateTopAgileFolder(atsApi, userArt, changes);
+         ArtifactId topAgileFolder = AgileFolders.getOrCreateTopAgileFolder(atsApi, changes);
          if (topAgileFolder.notEqual(atsApi.getRelationResolver().getParent(agileProgramArt))) {
             changes.unrelateFromAll(CoreRelationTypes.DefaultHierarchical_Parent, agileProgramArt);
             changes.addChild(topAgileFolder, agileProgramArt);

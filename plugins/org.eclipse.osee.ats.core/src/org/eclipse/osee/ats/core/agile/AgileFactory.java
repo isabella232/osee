@@ -55,9 +55,6 @@ public class AgileFactory {
    }
 
    public static IAgileTeam createAgileTeam(Log logger, AtsApi atsApi, JaxNewAgileTeam newTeam) {
-      org.eclipse.osee.framework.core.data.ArtifactId userArt =
-         atsApi.getQueryService().getArtifact((IAtsObject) atsApi.getUserService().getCurrentUser());
-
       ArtifactId agileTeamArt = atsApi.getQueryService().getArtifact(newTeam.getId());
       if (agileTeamArt == null) {
 
@@ -65,7 +62,7 @@ public class AgileFactory {
 
          agileTeamArt = changes.createArtifact(AtsArtifactTypes.AgileTeam, newTeam.getName(), newTeam.getId());
          changes.setSoleAttributeValue(agileTeamArt, AtsAttributeTypes.Active, true);
-         ArtifactId topAgileFolder = AgileFolders.getOrCreateTopAgileFolder(atsApi, userArt, changes);
+         ArtifactId topAgileFolder = AgileFolders.getOrCreateTopAgileFolder(atsApi, changes);
 
          if (Strings.isNumeric(newTeam.getProgramId())) {
             ArtifactId programArt = atsApi.getQueryService().getArtifact(Long.valueOf(newTeam.getProgramId()));
@@ -99,7 +96,7 @@ public class AgileFactory {
          changes.setSoleAttributeValue(agileTeamArt, AtsAttributeTypes.Description, team.getDescription());
       }
       changes.setSoleAttributeValue(agileTeamArt, AtsAttributeTypes.Active, team.isActive());
-      ArtifactId topAgileFolder = AgileFolders.getOrCreateTopAgileFolder(atsApi, userArt, changes);
+      ArtifactId topAgileFolder = AgileFolders.getOrCreateTopAgileFolder(atsApi, changes);
       if (topAgileFolder.notEqual(atsApi.getRelationResolver().getParent(agileTeamArt))) {
          changes.unrelateFromAll(CoreRelationTypes.DefaultHierarchical_Parent, agileTeamArt);
          changes.addChild(topAgileFolder, agileTeamArt);
@@ -167,8 +164,6 @@ public class AgileFactory {
    }
 
    public static IAgileFeatureGroup createAgileFeatureGroup(Log logger, AtsApi atsApi, JaxAgileFeatureGroup newFeatureGroup) {
-      ArtifactId userArt = atsApi.getQueryService().getArtifact((IAtsObject) atsApi.getUserService().getCurrentUser());
-
       IAtsChangeSet changes = atsApi.createChangeSet("Create new Agile Feature Group");
 
       ArtifactId featureGroupArt =
@@ -176,7 +171,7 @@ public class AgileFactory {
       changes.setSoleAttributeValue(featureGroupArt, AtsAttributeTypes.Active, newFeatureGroup.isActive());
 
       ArtifactId featureGroupFolder =
-         AgileFolders.getOrCreateTopFeatureGroupFolder(atsApi, newFeatureGroup.getTeamId(), userArt, changes);
+         AgileFolders.getOrCreateTopFeatureGroupFolder(atsApi, newFeatureGroup.getTeamId(), changes);
       changes.addChild(featureGroupFolder, featureGroupArt);
 
       ArtifactId team = AgileFolders.getTeamFolder(atsApi, newFeatureGroup.getTeamId());
