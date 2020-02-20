@@ -32,7 +32,7 @@ import org.eclipse.osee.ats.ide.util.PromptChangeUtil;
 import org.eclipse.osee.ats.ide.util.xviewer.column.XViewerAtsAttributeValueColumn;
 import org.eclipse.osee.ats.ide.workflow.teamwf.TeamWorkFlowArtifact;
 import org.eclipse.osee.framework.core.data.AttributeTypeEnum;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.logging.OseeLevel;
 import org.eclipse.osee.framework.logging.OseeLog;
@@ -83,7 +83,7 @@ public class PriorityColumnUI extends XViewerAtsAttributeValueColumn {
       return newXCol;
    }
 
-   public static boolean promptChangePriority(final Collection<? extends TeamWorkFlowArtifact> teams, AttributeTypeToken attrTypeToken, boolean persist) {
+   public static boolean promptChangePriority(final Collection<? extends TeamWorkFlowArtifact> teams, AttributeTypeGeneric<?> attrTypeToken, boolean persist) {
 
       try {
          for (TeamWorkFlowArtifact team : teams) {

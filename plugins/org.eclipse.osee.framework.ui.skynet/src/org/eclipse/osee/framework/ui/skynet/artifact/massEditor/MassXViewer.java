@@ -29,6 +29,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.nebula.widgets.xviewer.XViewer;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerColumn;
 import org.eclipse.osee.framework.access.AccessControlManager;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.enums.PermissionEnum;
 import org.eclipse.osee.framework.core.enums.PresentationType;
@@ -110,12 +111,12 @@ public class MassXViewer extends XViewer implements IMassViewerEventHandler {
       }
       try {
          if (AttributeTypeManager.typeExists(colName)) {
-            AttributeTypeToken attributeType = AttributeTypeManager.getType(colName);
             Set<Artifact> artifacts = new HashSet<>();
             for (TreeItem item : treeItems) {
                artifacts.add((Artifact) item.getData());
             }
-            if (ArtifactPromptChange.promptChangeAttribute(attributeType, artifacts, false)) {
+            if (ArtifactPromptChange.promptChangeAttribute(AttributeTypeManager.getAttributeType(colName), artifacts,
+               false)) {
                refresh();
                editor.onDirtied();
             }
@@ -150,7 +151,8 @@ public class MassXViewer extends XViewer implements IMassViewerEventHandler {
       }
       try {
          if (AttributeTypeManager.typeExists(colName)) {
-            AttributeTypeToken attributeType = null;
+            AttributeTypeGeneric<?> attributeType = null;
+
             try {
                attributeType = AttributeTypeManager.getType(colName);
             } catch (OseeTypeDoesNotExist ex) {

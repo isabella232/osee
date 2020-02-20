@@ -64,6 +64,7 @@ import org.eclipse.osee.ats.ide.workflow.sprint.SprintArtifact;
 import org.eclipse.osee.ats.ide.workflow.task.TaskArtifact;
 import org.eclipse.osee.ats.ide.workflow.teamwf.TeamWorkFlowArtifact;
 import org.eclipse.osee.ats.ide.workflow.transition.TransitionToMenu;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.enums.PresentationType;
 import org.eclipse.osee.framework.jdk.core.result.XResultData;
@@ -247,7 +248,7 @@ public class WorldXViewer extends XViewer implements ISelectedAtsArtifacts, IPer
       }
 
       XResultData rData = new XResultData();
-      AttributeTypeToken attributeType = null;
+      AttributeTypeGeneric<?> attributeType = null;
       if (treeColumn.getData() instanceof IAttributeColumn) {
          attributeType = ((IAttributeColumn) treeColumn.getData()).getAttributeType();
       }

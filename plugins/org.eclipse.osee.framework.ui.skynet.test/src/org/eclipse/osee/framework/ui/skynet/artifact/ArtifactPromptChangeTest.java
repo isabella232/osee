@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import org.eclipse.osee.framework.core.access.PermissionStatus;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeId;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeId;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.BranchId;
@@ -119,7 +120,11 @@ public class ArtifactPromptChangeTest {
 
    private static class MockPromptFactory implements IPromptFactory {
       @Override
+<<<<<<< HEAD
       public IHandlePromptChange createPrompt(AttributeTypeToken attributeType, String displayName, Collection<? extends Artifact> artifacts, boolean persist, boolean multiLine) {
+=======
+      public IHandlePromptChange createPrompt(AttributeTypeGeneric<?> attributeType, String displayName, Collection<? extends Artifact> artifacts, boolean persist, boolean multiLine) {
+>>>>>>> f09ad7a724... refactor[TW16547]: Use AttributeTypeGeneric with ArtifactPrompt
          return new TestPromptChange(attributeType, persist);
       }
    }

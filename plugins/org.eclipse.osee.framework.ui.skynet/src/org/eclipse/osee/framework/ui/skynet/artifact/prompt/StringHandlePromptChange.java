@@ -17,6 +17,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Collection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeId;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
@@ -30,13 +31,13 @@ import org.eclipse.osee.framework.ui.skynet.widgets.dialog.EntryDialog;
  */
 public class StringHandlePromptChange implements IHandlePromptChange {
    private final EntryDialog entryDialog;
-   private final AttributeTypeToken attributeType;
+   private final AttributeTypeGeneric<?> attributeType;
    private final boolean persist;
    private final boolean multiLine;
    private final Collection<? extends Artifact> artifacts;
    private final NumberFormat format;
 
-   public StringHandlePromptChange(AttributeTypeToken attributeType, boolean persist, String displayName, Collection<? extends Artifact> artifacts, NumberFormat format, boolean multiLine) {
+   public StringHandlePromptChange(AttributeTypeGeneric<?> attributeType, boolean persist, String displayName, Collection<? extends Artifact> artifacts, NumberFormat format, boolean multiLine) {
       this.attributeType = attributeType;
       this.persist = persist;
       this.artifacts = artifacts;
@@ -72,7 +73,7 @@ public class StringHandlePromptChange implements IHandlePromptChange {
       }
    }
 
-   private static void updateSmaAttributes(final Collection<? extends Artifact> artifacts, AttributeTypeToken attributeType, NumberFormat format, EntryDialog entryDialog) {
+   private static void updateSmaAttributes(final Collection<? extends Artifact> artifacts, AttributeTypeGeneric<?> attributeType, NumberFormat format, EntryDialog entryDialog) {
       for (Artifact artifact : artifacts) {
          String value = entryDialog.getEntry();
          String safeValue = getSafeValue(value, format, attributeType);
