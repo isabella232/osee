@@ -630,7 +630,7 @@ public class Artifact extends NamedIdBase implements ArtifactToken, Adaptable, F
       return Collections.oneOrSentinel(getAttributes(attributeType), null);
    }
 
-   private <T> Attribute<T> getOrCreateSoleAttribute(AttributeTypeId attributeType) {
+   private <T> Attribute<T> getOrCreateSoleAttribute(AttributeTypeGeneric<?> attributeType) {
       Attribute<T> attribute = getSoleAttribute(attributeType);
       if (attribute == null) {
          if (!isAttributeTypeValid(attributeType)) {
@@ -646,7 +646,7 @@ public class Artifact extends NamedIdBase implements ArtifactToken, Adaptable, F
     * Return he existing attribute value or the default value from a newly initialized attribute if none previously
     * existed
     */
-   public final <T> T getOrInitializeSoleAttributeValue(AttributeTypeId attributeType) {
+   public final <T> T getOrInitializeSoleAttributeValue(AttributeTypeGeneric<?> attributeType) {
       Attribute<T> attribute = getOrCreateSoleAttribute(attributeType);
       return attribute.getValue();
    }
@@ -821,7 +821,7 @@ public class Artifact extends NamedIdBase implements ArtifactToken, Adaptable, F
       getOrCreateSoleAttribute(attributeType).setValue(value);
    }
 
-   public final <T> void setSoleAttributeFromString(AttributeTypeId attributeType, String value) {
+   public final <T> void setSoleAttributeFromString(AttributeTypeGeneric<?> attributeType, String value) {
       getOrCreateSoleAttribute(attributeType).setFromString(value);
    }
 

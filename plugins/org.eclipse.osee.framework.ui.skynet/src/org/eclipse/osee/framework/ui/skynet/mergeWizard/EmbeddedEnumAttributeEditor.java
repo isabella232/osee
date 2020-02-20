@@ -155,5 +155,4 @@ public class EmbeddedEnumAttributeEditor implements IEmbeddedAttributeEditor {
    public boolean canFinish() {
       return true;
    }
-
 }
