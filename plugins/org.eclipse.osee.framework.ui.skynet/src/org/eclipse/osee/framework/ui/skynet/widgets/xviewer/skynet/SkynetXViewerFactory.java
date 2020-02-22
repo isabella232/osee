@@ -26,6 +26,7 @@ import org.eclipse.nebula.widgets.xviewer.core.model.XViewerAlign;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerColumn;
 import org.eclipse.nebula.widgets.xviewer.customize.IXViewerCustomizations;
 import org.eclipse.nebula.widgets.xviewer.customize.XViewerCustomizations;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.logging.OseeLevel;
@@ -51,7 +52,7 @@ public abstract class SkynetXViewerFactory extends XViewerFactory {
    public SkynetXViewerFactory(String namespace, IOseeTreeReportProvider reportProvider) {
       super(namespace);
       this.reportProvider = reportProvider;
-      for (AttributeTypeToken attributeType : AttributeTypeManager.getAllTypes()) {
+      for (AttributeTypeGeneric<?> attributeType : AttributeTypeManager.getAllTypes()) {
          attrColumns.add(getAttributeColumn(attributeType));
       }
    }
@@ -80,7 +81,7 @@ public abstract class SkynetXViewerFactory extends XViewerFactory {
       }
    }
 
-   public static XViewerColumn getAttributeColumn(AttributeTypeToken attributeType) {
+   public static XViewerColumn getAttributeColumn(AttributeTypeGeneric<?> attributeType) {
       return new AttributeColumn("attribute." + attributeType.getName(), attributeType.getName(), attributeType, 75,
          XViewerAlign.Left, false, XViewerAttributeSortDataType.get(attributeType), false, null);
    }
@@ -127,14 +128,14 @@ public abstract class SkynetXViewerFactory extends XViewerFactory {
       // Add attribute types used next
       for (AttributeTypeToken attributeType : attrTypesUsed) {
          if (!attrNames.contains(attributeType.getName())) {
-            columns.add(getAttributeColumn(attributeType));
+            columns.add(getAttributeColumn(AttributeTypeManager.getAttributeType(attributeType.getId())));
             attrNames.add(attributeType.getName());
          }
       }
       // Add remainder last
       for (AttributeTypeToken attributeType : attributeTypes) {
          if (!attrNames.contains(attributeType.getName())) {
-            columns.add(getAttributeColumn(attributeType));
+            columns.add(getAttributeColumn(AttributeTypeManager.getAttributeType(attributeType.getId())));
             attrNames.add(attributeType.getName());
          }
       }

@@ -13,15 +13,15 @@
 
 package org.eclipse.osee.framework.ui.skynet.widgets.xviewer.skynet.column;
 
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 
 /**
  * @author Donald G. Dunne
  */
 public interface IAttributeColumn {
 
-   AttributeTypeToken getAttributeType();
+   AttributeTypeGeneric<?> getAttributeType();
 
-   void setAttributeType(AttributeTypeToken attributeType);
+   void setAttributeType(AttributeTypeGeneric<?> attributeType);
 
 }

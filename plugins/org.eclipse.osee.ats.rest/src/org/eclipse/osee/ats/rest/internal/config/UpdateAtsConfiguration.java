@@ -29,13 +29,13 @@ import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
 import org.eclipse.osee.framework.core.enums.CoreBranches;
 import org.eclipse.osee.framework.core.enums.DeletionFlag;
 import org.eclipse.osee.framework.core.enums.SystemUser;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.core.util.OseeInf;
 import org.eclipse.osee.framework.jdk.core.result.XResultData;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.framework.jdk.core.util.Lib;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 import org.eclipse.osee.framework.logging.OseeLog;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
 import org.eclipse.osee.orcs.data.AttributeReadable;
@@ -52,10 +52,12 @@ public class UpdateAtsConfiguration {
 
    private final AtsApi atsApi;
    private final OrcsApi orcsApi;
+   private final JaxRsApi jaxRsApi;
 
    public UpdateAtsConfiguration(AtsApi atsApi, OrcsApi orcsApi) {
       this.atsApi = atsApi;
       this.orcsApi = orcsApi;
+      this.jaxRsApi = orcsApi.jaxRsApi();
    }
 
    public XResultData createUpdateConfig(XResultData rd) {
@@ -84,7 +86,7 @@ public class UpdateAtsConfiguration {
       try {
          AtsViews databaseViews = getConfigViews();
          for (String viewsJson : getViewsJsonStrings()) {
-            AtsViews atsViews = JsonUtil.readValue(viewsJson, AtsViews.class);
+            AtsViews atsViews = orcsApi.jaxRsApi().readValue(viewsJson, AtsViews.class);
             // merge any new default view items to current database view items
             List<AtsAttributeValueColumn> toAdd = new LinkedList<>();
             for (AtsAttributeValueColumn defaultView : atsViews.getAttrColumns()) {
@@ -96,7 +98,7 @@ public class UpdateAtsConfiguration {
                      found = true;
                      break;
                   }
-                  if (!found && dbView.getAttrTypeName().equals(defaultView.getAttrTypeName())) {
+                  if (!found && dbView.getAttributeType().equals(defaultView.getAttributeType())) {
                      found = true;
                      break;
                   }
@@ -135,13 +137,13 @@ public class UpdateAtsConfiguration {
    }
 
    private String getViewsAttrValue(AtsViews defaultViews) {
-      return VIEWS_EQUAL_KEY + JsonUtil.toJson(defaultViews);
+      return VIEWS_EQUAL_KEY + jaxRsApi.toJson(defaultViews);
    }
 
    private void createUpdateColorColumnAttributes() {
       ColorColumns columns = new ColorColumns();
       columns.addColumn(ColorTeamColumn.getColor());
-      String colorColumnsJson = JsonUtil.toJson(columns);
+      String colorColumnsJson = jaxRsApi.toJson(columns);
       atsApi.setConfigValue(COLOR_COLUMN_KEY, colorColumnsJson);
    }
 
@@ -166,7 +168,7 @@ public class UpdateAtsConfiguration {
       String viewsStr = atsApi.getConfigValue(VIEWS_KEY);
       AtsViews views = null;
       if (Strings.isValid(viewsStr)) {
-         views = JsonUtil.readValue(viewsStr, AtsViews.class);
+         views = orcsApi.jaxRsApi().readValue(viewsStr, AtsViews.class);
       } else {
          views = new AtsViews();
       }
@@ -177,7 +179,7 @@ public class UpdateAtsConfiguration {
       String colorStr = atsApi.getConfigValue(COLOR_COLUMN_KEY);
       ColorColumns columns = null;
       if (Strings.isValid(colorStr)) {
-         columns = JsonUtil.readValue(colorStr, ColorColumns.class);
+         columns = jaxRsApi.readValue(colorStr, ColorColumns.class);
       } else {
          columns = new ColorColumns();
       }

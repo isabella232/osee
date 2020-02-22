@@ -25,6 +25,8 @@ import org.eclipse.osee.framework.core.data.RelationTypeJoin;
 import org.eclipse.osee.framework.core.data.RelationTypeToken;
 import org.eclipse.osee.framework.jdk.core.type.OseeStateException;
 
+import java.util.Collection;
+
 /**
  * @author Ryan D. Brooks
  */
@@ -116,6 +118,11 @@ public interface OrcsTokenService {
     * Register the given relation type token by its id. Throws OseeArgumentException if that id is already registered.
     */
    void registerRelationType(RelationTypeToken relationType);
+
+   /**
+    * @return all registered attribute types
+    */
+   Collection<AttributeTypeGeneric<?>> getAttributeTypes();
 
    /**
     * Get Iterable List of ids of Attributes that are taggable

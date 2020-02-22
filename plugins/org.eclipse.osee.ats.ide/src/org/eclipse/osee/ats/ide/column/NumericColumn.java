@@ -17,7 +17,7 @@ import org.eclipse.nebula.widgets.xviewer.core.model.SortDataType;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerAlign;
 import org.eclipse.osee.ats.api.data.AtsAttributeTypes;
 import org.eclipse.osee.ats.ide.util.xviewer.column.XViewerAtsAttributeValueColumn;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 
 /**
  * @author Donald G. Dunne
@@ -35,7 +35,7 @@ public class NumericColumn extends XViewerAtsAttributeValueColumn {
       return numeric2;
    }
 
-   public NumericColumn(AttributeTypeToken attributeType) {
+   public NumericColumn(AttributeTypeGeneric<?> attributeType) {
       super(attributeType, 40, XViewerAlign.Left, false, SortDataType.Float, true, "");
    }
 

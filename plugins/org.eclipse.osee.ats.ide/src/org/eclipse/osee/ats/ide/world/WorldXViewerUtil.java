@@ -21,16 +21,16 @@ import org.eclipse.nebula.widgets.xviewer.core.model.SortDataType;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerColumn;
 import org.eclipse.osee.ats.api.config.AtsAttributeValueColumn;
 import org.eclipse.osee.ats.api.data.AtsUserGroups;
+import org.eclipse.osee.ats.api.data.AtsTypeTokenProvider;
 import org.eclipse.osee.ats.ide.internal.Activator;
 import org.eclipse.osee.ats.ide.internal.AtsApiService;
 import org.eclipse.osee.ats.ide.util.AtsEditors;
 import org.eclipse.osee.ats.ide.util.xviewer.column.XViewerAtsAttributeValueColumn;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.IUserGroupArtifactToken;
-import org.eclipse.osee.framework.core.exception.OseeTypeDoesNotExist;
 import org.eclipse.osee.framework.logging.OseeLog;
-import org.eclipse.osee.framework.skynet.core.attribute.AttributeTypeManager;
 import org.eclipse.osee.framework.ui.skynet.widgets.xviewer.skynet.SkynetXViewerFactory;
 
 /**
@@ -72,7 +72,7 @@ public class WorldXViewerUtil {
       try {
          if (AtsApiService.get().getUserService().getCurrentUser().getUserGroups().contains(
             AtsUserGroups.AtsAddAttrColumns)) {
-            for (AttributeTypeToken attributeType : AttributeTypeManager.getAllTypes()) {
+            for (AttributeTypeGeneric<?> attributeType : AttributeTypeManager.getAllTypes()) {
                if (attributeType.getName().startsWith("ats.")) {
                   factory.registerColumns(SkynetXViewerFactory.getAttributeColumn(attributeType));
                }
@@ -96,12 +96,7 @@ public class WorldXViewerUtil {
       List<XViewerAtsAttributeValueColumn> configColumns = new ArrayList<>();
       for (AtsAttributeValueColumn column : columns) {
          try {
-            AttributeTypeToken attrType = null;
-            try {
-               attrType = AttributeTypeManager.getAttributeType(column.getAttrTypeId());
-            } catch (OseeTypeDoesNotExist ex) {
-               continue;
-            }
+            AttributeTypeGeneric<?> attrType = column.getAttributeType();
             XViewerAtsAttributeValueColumn valueColumn = new XViewerAtsAttributeValueColumn(attrType, column.getWidth(),
                AtsEditors.getXViewerAlign(column.getAlign()), column.isVisible(),
                SortDataType.valueOf(column.getSortDataType()), column.isColumnMultiEdit(), column.getDescription());

@@ -17,7 +17,7 @@ import org.eclipse.nebula.widgets.xviewer.core.model.SortDataType;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerAlign;
 import org.eclipse.osee.ats.api.data.AtsAttributeTypes;
 import org.eclipse.osee.ats.ide.util.xviewer.column.XViewerAtsAttributeValueColumn;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 
 /**
  * @author Donald G. Dunne
@@ -40,7 +40,7 @@ public class CategoryColumn extends XViewerAtsAttributeValueColumn {
       return category3;
    }
 
-   public CategoryColumn(AttributeTypeToken attributeType) {
+   public CategoryColumn(AttributeTypeGeneric<?> attributeType) {
       super(attributeType, 80, XViewerAlign.Left, false, SortDataType.String, true, "");
       setActionRollup(true);
    }

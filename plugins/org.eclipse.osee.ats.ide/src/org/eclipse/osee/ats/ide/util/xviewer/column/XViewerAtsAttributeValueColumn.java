@@ -35,13 +35,12 @@ import org.eclipse.osee.ats.ide.internal.AtsApiService;
 import org.eclipse.osee.ats.ide.util.AtsEditors;
 import org.eclipse.osee.ats.ide.util.PromptChangeUtil;
 import org.eclipse.osee.ats.ide.workflow.AbstractWorkflowArtifact;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 import org.eclipse.osee.framework.logging.OseeLog;
 import org.eclipse.osee.framework.skynet.core.artifact.Artifact;
-import org.eclipse.osee.framework.skynet.core.attribute.AttributeTypeManager;
 import org.eclipse.osee.framework.skynet.core.utility.Artifacts;
 import org.eclipse.osee.framework.ui.plugin.util.AWorkbench;
 import org.eclipse.osee.framework.ui.skynet.util.LogUtil;
@@ -62,18 +61,18 @@ public class XViewerAtsAttributeValueColumn extends XViewerAtsAttributeColumn im
    String booleanNotSetShow = null;
    List<String> multiLineColumns = Arrays.asList(AtsColumnId.Notes.getId());
 
-   public XViewerAtsAttributeValueColumn(AttributeTypeToken attributeType, int width, XViewerAlign align, boolean show, SortDataType sortDataType, boolean multiColumnEditable, String description) {
+   public XViewerAtsAttributeValueColumn(AttributeTypeGeneric<?> attributeType, int width, XViewerAlign align, boolean show, SortDataType sortDataType, boolean multiColumnEditable, String description) {
       super(attributeType, attributeType.getName(), attributeType.getUnqualifiedName(), width, align, show,
          sortDataType, multiColumnEditable, description);
    }
 
-   public XViewerAtsAttributeValueColumn(AttributeTypeToken attributeType, String id, String name, int width, XViewerAlign align, boolean show, SortDataType sortDataType, boolean multiColumnEditable, String description) {
+   public XViewerAtsAttributeValueColumn(AttributeTypeGeneric<?> attributeType, String id, String name, int width, XViewerAlign align, boolean show, SortDataType sortDataType, boolean multiColumnEditable, String description) {
       super(attributeType, id, name, width, align, show, sortDataType, multiColumnEditable, description);
    }
 
    public XViewerAtsAttributeValueColumn(AtsAttributeValueColumn column) {
-      super(AttributeTypeManager.getAttributeType(column.getAttrTypeId()), column.getId(), column.getName(),
-         column.getWidth(), AtsEditors.getXViewerAlign(column.getAlign()), column.isVisible(), getSortDataType(column),
+      super(column.getAttributeType(), column.getId(), column.getName(), column.getWidth(),
+         AtsEditors.getXViewerAlign(column.getAlign()), column.isVisible(), getSortDataType(column),
          column.isColumnMultiEdit(), column.getDescription());
       setInheritParent(column.isInheritParent());
       setActionRollup(column.isActionRollup());

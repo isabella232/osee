@@ -35,7 +35,7 @@ import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactImage;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.TransactionId;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
 import org.eclipse.osee.framework.core.enums.CoreRelationTypes;
@@ -145,7 +145,7 @@ public final class AtsConfigEndpointImpl implements AtsConfigEndpointApi {
 
       List<AtsAttributeValueColumn> columns = new LinkedList<>();
       for (String id : sortedIds) {
-         AttributeTypeToken attrType = idToToken.get(id);
+         AttributeTypeGeneric<?> attrType = idToToken.get(id);
          ColumnAlign columnAlign = ColumnAlign.Left;
          SortDataType sortDataType = SortDataType.String;
          int width = 60;
@@ -168,8 +168,7 @@ public final class AtsConfigEndpointImpl implements AtsConfigEndpointApi {
          }
 
          AtsAttributeValueColumn valueColumn = new AtsAttributeValueColumn();
-         valueColumn.setAttrTypeId(attrType.getId());
-         valueColumn.setAttrTypeName(attrType.getName());
+         valueColumn.setAttributeType(attrType);
          valueColumn.setWidth(width);
          valueColumn.setAlign(columnAlign);
          valueColumn.setVisible(true);

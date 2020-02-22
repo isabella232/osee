@@ -28,8 +28,8 @@ import org.eclipse.osee.ats.ide.internal.AtsApiService;
 import org.eclipse.osee.ats.ide.util.xviewer.column.XViewerAtsAttributeValueColumn;
 import org.eclipse.osee.ats.ide.workflow.AbstractWorkflowArtifact;
 import org.eclipse.osee.ats.ide.workflow.teamwf.TeamWorkFlowArtifact;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeId;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.framework.jdk.core.util.DateUtil;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
@@ -43,7 +43,7 @@ import org.eclipse.osee.framework.ui.skynet.util.LogUtil;
  */
 public abstract class AbstractWorkflowVersionDateColumn extends XViewerAtsAttributeValueColumn {
 
-   public AbstractWorkflowVersionDateColumn(String id, AttributeTypeToken attributeType) {
+   public AbstractWorkflowVersionDateColumn(String id, AttributeTypeGeneric<?> attributeType) {
       super(attributeType, id, attributeType.getUnqualifiedName(), 80, XViewerAlign.Left, false, SortDataType.Date,
          true, "");
    }

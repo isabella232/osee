@@ -16,7 +16,7 @@ package org.eclipse.osee.ats.ide.util.xviewer.column;
 import org.eclipse.nebula.widgets.xviewer.core.model.SortDataType;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerAlign;
 import org.eclipse.nebula.widgets.xviewer.core.model.XViewerColumn;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 import org.eclipse.osee.framework.ui.skynet.widgets.xviewer.skynet.column.IAttributeColumn;
 
@@ -25,7 +25,7 @@ import org.eclipse.osee.framework.ui.skynet.widgets.xviewer.skynet.column.IAttri
  */
 public class XViewerAtsAttributeColumn extends XViewerAtsColumn implements IAttributeColumn {
 
-   private AttributeTypeToken attributeType;
+   private AttributeTypeGeneric<?> attributeType;
 
    /**
     * XViewer uses copies of column definitions so originals that are registered are not corrupted. Classes extending
@@ -51,19 +51,19 @@ public class XViewerAtsAttributeColumn extends XViewerAtsColumn implements IAttr
       super();
    }
 
-   public XViewerAtsAttributeColumn(AttributeTypeToken attributeType, String id, String name, int width, XViewerAlign align, boolean show, SortDataType sortDataType, boolean multiColumnEditable, String description) {
+   public XViewerAtsAttributeColumn(AttributeTypeGeneric<?> attributeType, String id, String name, int width, XViewerAlign align, boolean show, SortDataType sortDataType, boolean multiColumnEditable, String description) {
       super(id, name, width, align, show, sortDataType, multiColumnEditable,
          Strings.isValid(description) ? description : attributeType.getDescription());
       this.attributeType = attributeType;
    }
 
    @Override
-   public AttributeTypeToken getAttributeType() {
+   public AttributeTypeGeneric<?> getAttributeType() {
       return attributeType;
    }
 
    @Override
-   public void setAttributeType(AttributeTypeToken attributeType) {
+   public void setAttributeType(AttributeTypeGeneric<?> attributeType) {
       this.attributeType = attributeType;
    }
 
