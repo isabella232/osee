@@ -57,6 +57,7 @@ import org.eclipse.osee.framework.core.executor.ExecutorAdmin;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.framework.jdk.core.util.Conditions;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 import org.eclipse.osee.logger.Log;
 import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
@@ -77,6 +78,7 @@ public class DispoApiImpl implements DispoApi {
    private DispoImporterFactory importerFactory;
    private DispoUpdateBroadcaster updateBroadcaster;
    private OrcsApi orcsApi;
+   private JaxRsApi jaxRsApi;
 
    private volatile DispoApiConfiguration config;
 
@@ -128,10 +130,14 @@ public class DispoApiImpl implements DispoApi {
       this.storage = storage;
    }
 
+   public void setJaxRsApi(JaxRsApi jaxRsApi) {
+      this.jaxRsApi = jaxRsApi;
+   }
+
    public void start(Map<String, Object> props) {
       logger.trace("Starting DispoApiImpl...");
       update(props);
-      importerFactory = new DispoImporterFactory(dataFactory, executor, config, logger);
+      importerFactory = new DispoImporterFactory(dataFactory, executor, config, logger, jaxRsApi);
       storage = new OrcsStorageImpl(orcsApi);
    }
 

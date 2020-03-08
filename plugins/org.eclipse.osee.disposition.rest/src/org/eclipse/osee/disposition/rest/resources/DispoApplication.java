@@ -26,6 +26,7 @@ import org.eclipse.osee.disposition.rest.messages.DispoItemMessageWriter;
 import org.eclipse.osee.disposition.rest.messages.DispoSetListMessageWriter;
 import org.eclipse.osee.disposition.rest.messages.DispoSetMessageReader;
 import org.eclipse.osee.disposition.rest.messages.DispoSetMessageWriter;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 
 /**
  * @author Angel Avila
@@ -34,11 +35,16 @@ import org.eclipse.osee.disposition.rest.messages.DispoSetMessageWriter;
 public final class DispoApplication extends Application {
 
    private DispoApi dispoApi;
+   private JaxRsApi jaxRsApi;
 
    private final Set<Object> singletons = new HashSet<>();
 
    public void setDispoApi(DispoApi dispoApi) {
       this.dispoApi = dispoApi;
+   }
+
+   public void setJaxRsApi(JaxRsApi jaxRsApi) {
+      this.jaxRsApi = jaxRsApi;
    }
 
    @Override
@@ -47,16 +53,16 @@ public final class DispoApplication extends Application {
    }
 
    public void start() {
-      singletons.add(new DispoSetMessageReader());
-      singletons.add(new DispoSetMessageWriter());
-      singletons.add(new DispoSetListMessageWriter());
-      singletons.add(new DispoItemMessageReader());
-      singletons.add(new DispoItemMessageWriter());
-      singletons.add(new DispoItemListMessageWriter());
-      singletons.add(new DispoAnnotationMessageReader());
-      singletons.add(new DispoAnnotationMessageWriter());
+      singletons.add(new DispoSetMessageReader(jaxRsApi));
+      singletons.add(new DispoSetMessageWriter(jaxRsApi));
+      singletons.add(new DispoSetListMessageWriter(jaxRsApi));
+      singletons.add(new DispoItemMessageReader(jaxRsApi));
+      singletons.add(new DispoItemMessageWriter(jaxRsApi));
+      singletons.add(new DispoItemListMessageWriter(jaxRsApi));
+      singletons.add(new DispoAnnotationMessageReader(jaxRsApi));
+      singletons.add(new DispoAnnotationMessageWriter(jaxRsApi));
 
-      singletons.add(new DispoProgramResource(dispoApi));
+      singletons.add(new DispoProgramResource(dispoApi, jaxRsApi));
       singletons.add(new ContinuousIntegrationResource(dispoApi));
    }
 

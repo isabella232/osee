@@ -26,13 +26,18 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import org.eclipse.osee.disposition.model.DispoItem;
 import org.eclipse.osee.disposition.rest.util.DispoUtil;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 
 /**
  * @author Angel Avila
  */
 public class DispoItemListMessageWriter implements MessageBodyWriter<List<DispoItem>> {
+   private final JaxRsApi jaxRsApi;
+
+   public DispoItemListMessageWriter(JaxRsApi jaxRsApi) {
+      this.jaxRsApi = jaxRsApi;
+   }
 
    @Override
    public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -55,7 +60,7 @@ public class DispoItemListMessageWriter implements MessageBodyWriter<List<DispoI
          DispoItem dispoItemData = DispoUtil.reconstructDispoItem(item, item.getIsIncludeDetails());
          reconstructedDispoItems.add(dispoItemData);
       }
-      String jsonString = JsonUtil.toJson(reconstructedDispoItems);
+      String jsonString = jaxRsApi.toJson(reconstructedDispoItems);
       entityStream.write(jsonString.getBytes(Strings.UTF_8));
    }
 }

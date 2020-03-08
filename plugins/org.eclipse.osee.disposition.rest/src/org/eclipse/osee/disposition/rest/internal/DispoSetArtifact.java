@@ -13,14 +13,19 @@
 
 package org.eclipse.osee.disposition.rest.internal;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import org.eclipse.osee.disposition.model.DispoSet;
 import org.eclipse.osee.disposition.model.Note;
 import org.eclipse.osee.disposition.model.OperationReport;
+import org.eclipse.osee.disposition.model.OperationSummaryEntry;
 import org.eclipse.osee.disposition.rest.util.DispoUtil;
 import org.eclipse.osee.framework.core.enums.DispoOseeTypes;
+import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.type.BaseIdentity;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
 
 /**
@@ -29,10 +34,12 @@ import org.eclipse.osee.orcs.data.ArtifactReadable;
 public class DispoSetArtifact extends BaseIdentity<String> implements DispoSet {
 
    private final ArtifactReadable artifact;
+   private final JaxRsApi jaxRsApi;
 
-   public DispoSetArtifact(ArtifactReadable artifact) {
+   public DispoSetArtifact(ArtifactReadable artifact, JaxRsApi jaxRsApi) {
       super(artifact.getIdString());
       this.artifact = artifact;
+      this.jaxRsApi = jaxRsApi;
    }
 
    @Override
@@ -54,7 +61,16 @@ public class DispoSetArtifact extends BaseIdentity<String> implements DispoSet {
    @Override
    public OperationReport getOperationSummary() {
       String operationSummaryJson = artifact.getSoleAttributeAsString(DispoOseeTypes.DispoOperationSummary, "{}");
-      return DispoUtil.jsonObjToOperationSummary(operationSummaryJson);
+
+      OperationReport summary = new OperationReport();
+      List<OperationSummaryEntry> entries = new LinkedList<>();
+      if (!operationSummaryJson.contains("entries")) {
+         return summary;
+      }
+      JsonNode entriesNode = JsonUtil.readTree(operationSummaryJson).get("entries");
+      entries = jaxRsApi.readValue(entriesNode.toString(), List.class);
+      summary.setEntries(entries);
+      return summary;
    }
 
    @Override

@@ -49,10 +49,10 @@ import org.eclipse.osee.framework.core.enums.CoverageOseeTypes;
 import org.eclipse.osee.framework.core.enums.DispoOseeTypes;
 import org.eclipse.osee.framework.core.enums.QueryOption;
 import org.eclipse.osee.framework.core.enums.SystemUser;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.type.ResultSet;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.OrcsBranch;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
@@ -65,11 +65,13 @@ import org.eclipse.osee.orcs.transaction.TransactionFactory;
  * @author Angel Avila
  */
 public class OrcsStorageImpl implements Storage {
-   private final OrcsApi orcsApi;
    public static final IOseeBranch dispoParent = IOseeBranch.create(5781701693103907161L, "Dispo Parent");
+   private final OrcsApi orcsApi;
+   private final JaxRsApi jaxRsApi;
 
    public OrcsStorageImpl(OrcsApi orcsApi) {
       this.orcsApi = orcsApi;
+      jaxRsApi = orcsApi.jaxRsApi();
    }
 
    private QueryFactory getQuery() {
@@ -165,7 +167,7 @@ public class OrcsStorageImpl implements Storage {
 
       List<DispoSet> toReturn = new ArrayList<>();
       for (ArtifactReadable art : results) {
-         DispoSetArtifact dispoSetArt = new DispoSetArtifact(art);
+         DispoSetArtifact dispoSetArt = new DispoSetArtifact(art, jaxRsApi);
          if (dispoSetArt.getDispoType().equals(type)) {
             toReturn.add(dispoSetArt);
          }
@@ -176,7 +178,7 @@ public class OrcsStorageImpl implements Storage {
    @Override
    public DispoSet findDispoSetsById(BranchId branch, String setId) {
       ArtifactReadable result = findDispoArtifact(branch, setId);
-      return new DispoSetArtifact(result);
+      return new DispoSetArtifact(result, jaxRsApi);
    }
 
    private ArtifactReadable findDispoArtifact(BranchId branch, String artId) {
@@ -215,7 +217,7 @@ public class OrcsStorageImpl implements Storage {
       tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoImportPath, descriptor.getImportPath());
       tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoImportState, descriptor.getImportState());
       tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoConfig, descriptor.getDispoType());
-      tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoNotesJson, JsonUtil.toJson(descriptor.getNotesList()));
+      tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoNotesJson, jaxRsApi.toJson(descriptor.getNotesList()));
       if (descriptor.getCiSet() == null) {
          tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoCiSet, "NOCI");
          tx.setSoleAttributeValue(creatdArtId, DispoOseeTypes.DispoRerunList, "NOCI");
@@ -255,7 +257,7 @@ public class OrcsStorageImpl implements Storage {
    @Override
    public void updateDispoSet(UserId author, BranchId branch, String setId, DispoSet newData) {
       ArtifactReadable dispoSet = findDispoArtifact(branch, setId);
-      DispoSetArtifact origSetAs = new DispoSetArtifact(dispoSet);
+      DispoSetArtifact origSetAs = new DispoSetArtifact(dispoSet, jaxRsApi);
 
       String name = newData.getName();
       String importPath = newData.getImportPath();
@@ -277,7 +279,7 @@ public class OrcsStorageImpl implements Storage {
       }
       if (notesList != null && !notesList.equals(origSetAs.getNotesList())) {
          tx.setSoleAttributeFromString(dispoSet, DispoOseeTypes.DispoNotesJson,
-            JsonUtil.toJson(origSetAs.getNotesList()));
+            jaxRsApi.toJson(origSetAs.getNotesList()));
       }
       if (ciSet != null && !ciSet.equals(origSetAs.getCiSet())) {
          tx.setSoleAttributeFromString(dispoSet, DispoOseeTypes.DispoCiSet, ciSet);
@@ -346,9 +348,9 @@ public class OrcsStorageImpl implements Storage {
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoItemNeedsRerun, item.getNeedsRerun());
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoItemAborted, item.getAborted());
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoDiscrepanciesJson,
-            JsonUtil.toJson(item.getDiscrepanciesList()));
+            jaxRsApi.toJson(item.getDiscrepanciesList()));
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoAnnotationsJson,
-            JsonUtil.toJson(item.getAnnotationsList()));
+            jaxRsApi.toJson(item.getAnnotationsList()));
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoItemVersion, item.getVersion());
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoItemAssignee, item.getAssignee());
          tx.setSoleAttributeValue(createdItem, DispoOseeTypes.DispoItemMachine, item.getMachine());
@@ -397,11 +399,11 @@ public class OrcsStorageImpl implements Storage {
       }
       if (newDiscrepancies != null && !newDiscrepancies.equals(origItem.getDiscrepanciesList())) {
          tx.setSoleAttributeFromString(currentItemArt, DispoOseeTypes.DispoDiscrepanciesJson,
-            JsonUtil.toJson(newDiscrepancies));
+            jaxRsApi.toJson(newDiscrepancies));
       }
       if (newAnnotations != null && !newAnnotations.equals(origItem.getAnnotationsList())) {
          tx.setSoleAttributeFromString(currentItemArt, DispoOseeTypes.DispoAnnotationsJson,
-            JsonUtil.toJson(newAnnotations));
+            jaxRsApi.toJson(newAnnotations));
       }
       if (assignee != null && !assignee.equals(origItem.getAssignee())) {
          tx.setSoleAttributeFromString(currentItemArt, DispoOseeTypes.DispoItemAssignee, assignee);
@@ -619,8 +621,7 @@ public class OrcsStorageImpl implements Storage {
       TransactionBuilder tx = getTxFactory().createTransaction(branch, author, "Update Dispo Operation Report");
 
       tx.setSoleAttributeFromString(dispoSet, DispoOseeTypes.DispoImportState, newReport.getStatus().getName());
-      tx.setSoleAttributeFromString(dispoSet, DispoOseeTypes.DispoOperationSummary,
-         DispoUtil.operationReportToString(newReport));
+      tx.setSoleAttributeFromString(dispoSet, DispoOseeTypes.DispoOperationSummary, jaxRsApi.toJson(newReport));
       tx.commit();
    }
 

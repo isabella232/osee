@@ -27,6 +27,7 @@ Import-Package:
  org.eclipse.osee.framework.jdk.core.util.io.xml,
  org.eclipse.osee.framework.resource.management,
  org.eclipse.osee.framework.resource.management.util,
+ org.eclipse.osee.jaxrs,
  org.eclipse.osee.logger,
  org.eclipse.osee.orcs,
  org.eclipse.osee.orcs.data,

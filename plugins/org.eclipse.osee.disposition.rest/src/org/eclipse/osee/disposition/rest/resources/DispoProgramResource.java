@@ -38,7 +38,7 @@ import org.eclipse.osee.disposition.rest.DispoApi;
 import org.eclipse.osee.disposition.rest.DispoRoles;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.IOseeBranch;
-import org.eclipse.osee.framework.core.util.JsonUtil;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 
 /**
  * @author Angel Avila
@@ -47,9 +47,11 @@ import org.eclipse.osee.framework.core.util.JsonUtil;
 public class DispoProgramResource {
 
    private final DispoApi dispoApi;
+   private final JaxRsApi jaxRsApi;
 
-   public DispoProgramResource(DispoApi dispoApi) {
+   public DispoProgramResource(DispoApi dispoApi, JaxRsApi jaxRsApi) {
       this.dispoApi = dispoApi;
+      this.jaxRsApi = jaxRsApi;
    }
 
    /**
@@ -139,7 +141,7 @@ public class DispoProgramResource {
          status = Status.OK;
       }
 
-      String branchListJson = JsonUtil.toJson(branchList);
+      String branchListJson = jaxRsApi.toJson(branchList);
       return Response.status(status).entity(branchListJson).build();
    }
 

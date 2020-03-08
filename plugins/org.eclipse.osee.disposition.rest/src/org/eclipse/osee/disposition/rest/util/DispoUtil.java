@@ -21,7 +21,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -67,10 +66,6 @@ public final class DispoUtil {
    public static boolean isNumericLocations(String str) {
       Matcher matcher = pattern.matcher(str.trim());
       return matcher.matches();
-   }
-
-   public static String operationReportToString(OperationReport report) {
-      return JsonUtil.toJson(report);
    }
 
    public static OperationReport cleanOperationReport(OperationReport origReport) {
@@ -281,19 +276,6 @@ public final class DispoUtil {
          testScriptNameToPath.put(name, path);
       }
       return testScriptNameToPath;
-   }
-
-   @SuppressWarnings("unchecked")
-   public static OperationReport jsonObjToOperationSummary(String jObj) {
-      OperationReport summary = new OperationReport();
-      List<OperationSummaryEntry> entries = new LinkedList<>();
-      if (!jObj.contains("entries")) {
-         return summary;
-      }
-      JsonNode entriesNode = JsonUtil.readTree(jObj).get("entries");
-      entries = JsonUtil.readValue(entriesNode.toString(), List.class);
-      summary.setEntries(entries);
-      return summary;
    }
 
    public static <T> List<T> jsonStringToList(String jObj, Class<T> valueType) {

@@ -22,13 +22,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
 import org.eclipse.osee.disposition.model.DispoSetData;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.util.Lib;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 
 /**
  * @author Angel Avila
  */
 public class DispoSetMessageReader implements MessageBodyReader<DispoSetData> {
+   private final JaxRsApi jaxRsApi;
+
+   public DispoSetMessageReader(JaxRsApi jaxRsApi) {
+      this.jaxRsApi = jaxRsApi;
+   }
 
    @Override
    public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -38,6 +43,6 @@ public class DispoSetMessageReader implements MessageBodyReader<DispoSetData> {
    @Override
    public DispoSetData readFrom(Class<DispoSetData> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
       String inputStreamToString = Lib.inputStreamToString(entityStream);
-      return JsonUtil.readValue(inputStreamToString, DispoSetData.class);
+      return jaxRsApi.readValue(inputStreamToString, DispoSetData.class);
    }
 }

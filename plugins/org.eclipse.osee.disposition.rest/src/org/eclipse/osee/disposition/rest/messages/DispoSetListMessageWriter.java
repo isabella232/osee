@@ -24,13 +24,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import org.eclipse.osee.disposition.model.DispoSet;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
+import org.eclipse.osee.jaxrs.JaxRsApi;
 
 /**
  * @author Angel Avila
  */
 public class DispoSetListMessageWriter implements MessageBodyWriter<List<DispoSet>> {
+   private final JaxRsApi jaxRsApi;
+
+   public DispoSetListMessageWriter(JaxRsApi jaxRsApi) {
+      this.jaxRsApi = jaxRsApi;
+   }
 
    @Override
    public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -48,7 +53,7 @@ public class DispoSetListMessageWriter implements MessageBodyWriter<List<DispoSe
 
    @Override
    public void writeTo(List<DispoSet> dispoSets, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
-      String jsonString = JsonUtil.toJson(dispoSets);
+      String jsonString = jaxRsApi.toJson(dispoSets);
       entityStream.write(jsonString.getBytes(Strings.UTF_8));
    }
 }
