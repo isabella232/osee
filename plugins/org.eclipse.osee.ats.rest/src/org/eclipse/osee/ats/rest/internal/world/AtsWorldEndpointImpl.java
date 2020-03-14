@@ -30,6 +30,7 @@ import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.column.IAtsColumnId;
 import org.eclipse.osee.ats.api.config.AtsConfigurations;
 import org.eclipse.osee.ats.api.data.AtsArtifactTypes;
+import org.eclipse.osee.ats.api.data.AtsAttributeTypes;
 import org.eclipse.osee.ats.api.data.AtsRelationTypes;
 import org.eclipse.osee.ats.api.query.AtsSearchData;
 import org.eclipse.osee.ats.api.user.AtsUser;
@@ -39,12 +40,16 @@ import org.eclipse.osee.ats.core.column.AtsColumnId;
 import org.eclipse.osee.ats.rest.AtsApiServer;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
+import org.eclipse.osee.framework.core.enums.CoreBranches;
 import org.eclipse.osee.framework.jdk.core.result.ResultRows;
 import org.eclipse.osee.framework.jdk.core.util.AHTML;
+import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.framework.jdk.core.util.Conditions;
 import org.eclipse.osee.framework.jdk.core.util.ElapsedTime;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
+import org.eclipse.osee.orcs.OrcsApi;
 import org.eclipse.osee.orcs.data.ArtifactReadable;
+import org.eclipse.osee.orcs.search.QueryBuilder;
 
 /**
  * @author Donald G. Dunne
@@ -54,12 +59,15 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
 
    private final AtsApiServer atsApiServer;
    private final AtsApi atsApi;
+   private final OrcsApi orcsApi;
+
    public final static List<String> namespaces =
       Arrays.asList("WorldXViewer", "BacklogXViewer", "SprintXViewer", "GoalXViewer", "TaskXViewer");
 
    public AtsWorldEndpointImpl(AtsApiServer atsApiServer) {
       this.atsApiServer = atsApiServer;
       this.atsApi = atsApiServer;
+      this.orcsApi = atsServer.getOrcsApi();
    }
 
    @Override
@@ -266,16 +274,31 @@ public class AtsWorldEndpointImpl implements AtsWorldEndpointApi {
 
    @Override
    public ResultRows search(AtsSearchData atsSearchData) {
-      AtsWorldResultRowOperation op = new AtsWorldResultRowOperation(atsApi, atsSearchData);
-      ResultRows rows = op.run();
-      return rows;
+      AtsWorldResultRowOperation op = new AtsWorldResultRowOperation(atsApi, atsServer.getOrcsApi(), atsSearchData);
+      return op.run();
    }
 
    @Override
    public ResultRows searchNew(AtsSearchData atsSearchData) {
-      AtsWorldResultRowOperation op = new AtsWorldResultRowOperation(atsApi, atsSearchData);
+      AtsWorldResultRowOperation op = new AtsWorldResultRowOperation(atsApi, atsServer.getOrcsApi(), atsSearchData);
       op.setNew(true);
-      ResultRows rows = op.run();
-      return rows;
+      return op.run();
+   }
+
+   @Override
+   public List<ArtifactReadable> teamWfByProgram(ArtifactId program, String state) {
+      QueryBuilder query = orcsApi.getQueryFactory().fromBranch(CoreBranches.COMMON);
+
+      Collection<ArtifactId> teamDefs =
+         query.andTypeEquals(AtsArtifactTypes.TeamDefinition).andAttributeIs(AtsAttributeTypes.ProgramId,
+            program.getIdString()).asArtifactIds();
+      Collection<String> teamDefStrs = Collections.transform(teamDefs, String::valueOf);
+
+      query = query.andAttributeIs(AtsAttributeTypes.TeamDefinitionReference, teamDefStrs);
+
+      if (Strings.isValid(state)) {
+         query.andAttributeIs(AtsAttributeTypes.CurrentStateType, state);
+      }
+      return query.asArtifacts();
    }
 }

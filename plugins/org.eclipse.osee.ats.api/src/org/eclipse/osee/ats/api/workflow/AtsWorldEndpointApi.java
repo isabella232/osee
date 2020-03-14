@@ -14,18 +14,21 @@
 package org.eclipse.osee.ats.api.workflow;
 
 import java.util.Collection;
+import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.nebula.widgets.xviewer.core.model.CustomizeData;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.query.AtsSearchData;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.jdk.core.result.ResultRows;
+import org.eclipse.osee.orcs.data.ArtifactReadable;
 
 /**
  * @author Donald G. Dunne
@@ -87,4 +90,10 @@ public interface AtsWorldEndpointApi {
    @Consumes(MediaType.APPLICATION_JSON)
    @Produces(MediaType.APPLICATION_JSON)
    ResultRows searchNew(AtsSearchData atsSearchData);
+
+   @GET
+   @Path("/{program}/workflowsInState")
+   @Consumes(MediaType.APPLICATION_JSON)
+   @Produces(MediaType.APPLICATION_JSON)
+   List<ArtifactReadable> teamWfByProgram(@PathParam("program") ArtifactId program, @QueryParam("state") String state);
 }
