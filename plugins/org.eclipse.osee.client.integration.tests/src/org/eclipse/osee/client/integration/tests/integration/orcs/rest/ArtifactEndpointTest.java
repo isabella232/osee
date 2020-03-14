@@ -22,6 +22,8 @@ import org.eclipse.osee.client.demo.DemoChoice;
 import org.eclipse.osee.client.test.framework.OseeClientIntegrationRule;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
+import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.enums.CoreArtifactTokens;
 import org.eclipse.osee.framework.core.enums.CoreArtifactTypes;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
@@ -105,29 +107,34 @@ public class ArtifactEndpointTest {
    @Test
    public void getArtifactTokensByAttribute() {
       List<ArtifactToken> users =
-         artifactEndpoint.getArtifactTokensByAttribute(CoreAttributeTypes.Email, "", true, CoreArtifactTypes.User);
+         getArtifactTokensByAttribute(CoreAttributeTypes.Email, "", true, CoreArtifactTypes.User);
       Assert.assertFalse(users.isEmpty());
       users.clear();
-      users = artifactEndpoint.getArtifactTokensByAttribute(CoreAttributeTypes.Name, "OSEE System", true,
-         CoreArtifactTypes.User);
+      users = getArtifactTokensByAttribute(CoreAttributeTypes.Name, "OSEE System", true, CoreArtifactTypes.User);
       Assert.assertFalse(users.isEmpty());
       users.clear();
-      users = artifactEndpoint.getArtifactTokensByAttribute(CoreAttributeTypes.Name, "", true, CoreArtifactTypes.User);
+      users = getArtifactTokensByAttribute(CoreAttributeTypes.Name, "", true, CoreArtifactTypes.User);
       Assert.assertTrue(users.isEmpty());
    }
 
    @Test
    public void getArtifactIdsByAttribute() {
-      List<ArtifactId> users =
-         artifactEndpoint.getArtifactIdsByAttribute(CoreAttributeTypes.Email, "", true, CoreArtifactTypes.User);
+      List<ArtifactId> users = getArtifactIdsByAttribute(CoreAttributeTypes.Email, "", true, CoreArtifactTypes.User);
       Assert.assertFalse(users.isEmpty());
       users.clear();
-      users = artifactEndpoint.getArtifactIdsByAttribute(CoreAttributeTypes.Name, "OSEE System", true,
-         CoreArtifactTypes.User);
+      users = getArtifactIdsByAttribute(CoreAttributeTypes.Name, "OSEE System", true, CoreArtifactTypes.User);
       Assert.assertFalse(users.isEmpty());
       users.clear();
-      users = artifactEndpoint.getArtifactIdsByAttribute(CoreAttributeTypes.Name, "", true, CoreArtifactTypes.User);
+      users = getArtifactIdsByAttribute(CoreAttributeTypes.Name, "", true, CoreArtifactTypes.User);
       Assert.assertTrue(users.isEmpty());
+   }
+
+   private List<ArtifactId> getArtifactIdsByAttribute(AttributeTypeToken attributeType, String value, boolean exists, ArtifactTypeToken artifactType) {
+      return artifactEndpoint.getArtifactIdsByAttribute(attributeType, Arrays.asList(value), exists, artifactType);
+   }
+
+   public List<ArtifactToken> getArtifactTokensByAttribute(AttributeTypeToken attributeType, String value, boolean exists, ArtifactTypeToken artifactType) {
+      return artifactEndpoint.getArtifactTokensByAttribute(attributeType, Arrays.asList(value), exists, artifactType);
    }
 
    @Test
@@ -167,8 +174,8 @@ public class ArtifactEndpointTest {
 
       artifactEndpoint.deleteArtifact(COMMON, toDelete);
 
-      List<ArtifactId> artifacts = artifactEndpoint.getArtifactIdsByAttribute(CoreAttributeTypes.Name, "TestUser", true,
-         CoreArtifactTypes.PlainText);
+      List<ArtifactId> artifacts =
+         getArtifactIdsByAttribute(CoreAttributeTypes.Name, "TestUser", true, CoreArtifactTypes.PlainText);
       Assert.assertTrue(artifacts.isEmpty());
    }
 
@@ -178,8 +185,8 @@ public class ArtifactEndpointTest {
 
       artifactEndpoint.setSoleAttributeValue(COMMON, artifact, CoreAttributeTypes.Name, "ResetNameAttribute");
 
-      List<ArtifactId> artifacts = artifactEndpoint.getArtifactIdsByAttribute(CoreAttributeTypes.Name,
-         "ResetNameAttribute", true, CoreArtifactTypes.PlainText);
+      List<ArtifactId> artifacts =
+         getArtifactIdsByAttribute(CoreAttributeTypes.Name, "ResetNameAttribute", true, CoreArtifactTypes.PlainText);
       Assert.assertFalse(artifacts.isEmpty());
    }
 

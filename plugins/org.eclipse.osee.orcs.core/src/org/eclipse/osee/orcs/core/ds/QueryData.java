@@ -483,6 +483,16 @@ public final class QueryData implements QueryBuilder, HasOptions, HasBranch {
    }
 
    @Override
+   public QueryBuilder andAttributeIs(AttributeTypeId attributeType, String... values) {
+      return andAttributeIs(attributeType, Arrays.asList(values));
+   }
+
+   @Override
+   public QueryBuilder andAttributeIs(AttributeTypeId attributeType, Collection<String> values) {
+      return addAndCheck(new CriteriaAttributeRaw(Collections.singleton(attributeType), values));
+   }
+
+   @Override
    public QueryBuilder and(AttributeTypeId attributeType, String value, QueryOption... options) {
       return and(Collections.singleton(attributeType), Collections.singleton(value), options);
    }

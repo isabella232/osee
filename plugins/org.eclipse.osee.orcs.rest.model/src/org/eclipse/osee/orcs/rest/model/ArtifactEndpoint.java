@@ -68,17 +68,17 @@ public interface ArtifactEndpoint {
    @GET
    @Path("attType/{attributeType}/token")
    @Produces(MediaType.APPLICATION_JSON)
-   List<ArtifactToken> getArtifactTokensByAttribute(@PathParam("attributeType") AttributeTypeToken attributeType, @QueryParam("value") String value, @DefaultValue("true") @QueryParam("exists") boolean exists, @DefaultValue("-1") @QueryParam("artifactType") ArtifactTypeToken artifactType);
+   List<ArtifactToken> getArtifactTokensByAttribute(@PathParam("attributeType") AttributeTypeToken attributeType, @QueryParam("value") List<String> values, @DefaultValue("true") @QueryParam("exists") boolean exists, @DefaultValue("-1") @QueryParam("artifactType") ArtifactTypeToken artifactType);
 
    @GET
    @Path("attType/{attributeType}/id")
    @Produces(MediaType.APPLICATION_JSON)
-   List<ArtifactId> getArtifactIdsByAttribute(@PathParam("attributeType") AttributeTypeToken attributeType, @QueryParam("value") String value, @DefaultValue("true") @QueryParam("exists") boolean exists, @DefaultValue("-1") @QueryParam("artifactType") ArtifactTypeToken artifactType);
+   List<ArtifactId> getArtifactIdsByAttribute(@PathParam("attributeType") AttributeTypeToken attributeType, @QueryParam("value") List<String> values, @DefaultValue("true") @QueryParam("exists") boolean exists, @DefaultValue("-1") @QueryParam("artifactType") ArtifactTypeToken artifactType);
 
    @GET
    @Path("map")
    @Produces(MediaType.APPLICATION_JSON)
-   List<Map<String, Object>> getArtifactMaps(@DefaultValue("-1") @QueryParam("attributeType") AttributeTypeToken attributeType, @QueryParam("representation") String representation, @QueryParam("value") String value, @DefaultValue("true") @QueryParam("exists") boolean exists, @DefaultValue("-1") @QueryParam("artifactType") ArtifactTypeToken artifactType, @DefaultValue("-1") @QueryParam("view") ArtifactId view);
+   List<Map<String, Object>> getArtifactMaps(@DefaultValue("-1") @QueryParam("attributeType") AttributeTypeToken attributeType, @QueryParam("representation") String representation, @QueryParam("value") List<String> values, @DefaultValue("true") @QueryParam("exists") boolean exists, @DefaultValue("-1") @QueryParam("artifactType") ArtifactTypeToken artifactType, @DefaultValue("-1") @QueryParam("view") ArtifactId view);
 
    @GET
    @Path("type/{artifactType}/token")

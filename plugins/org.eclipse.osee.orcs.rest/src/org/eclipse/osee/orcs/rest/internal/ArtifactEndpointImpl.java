@@ -32,6 +32,7 @@ import org.eclipse.osee.framework.core.data.TransactionToken;
 import org.eclipse.osee.framework.core.data.UserId;
 import org.eclipse.osee.framework.jdk.core.type.MatchLocation;
 import org.eclipse.osee.framework.jdk.core.type.MultipleItemsExist;
+import org.eclipse.osee.framework.jdk.core.type.OseeArgumentException;
 import org.eclipse.osee.framework.jdk.core.type.ResultSet;
 import org.eclipse.osee.framework.jdk.core.util.Collections;
 import org.eclipse.osee.orcs.OrcsAdmin;
@@ -147,15 +148,22 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
       return new AttributeEndpointImpl(artifactId, branch, orcsApi, query, uriInfo);
    }
 
-   private <T> T getArtifactXByAttribute(QueryBuilder query, AttributeTypeToken attributeType, String value, boolean exists, ArtifactTypeToken artifactType, Supplier<T> queryMethod) {
+   private <T> T getArtifactXByAttribute(QueryBuilder query, AttributeTypeToken attributeType, List<String> values, boolean exists, ArtifactTypeToken artifactType, Supplier<T> queryMethod) {
       if (artifactType.isValid()) {
          query.andIsOfType(artifactType);
       }
       if (attributeType.isValid()) {
          if (exists) {
-            query.andAttributeIs(attributeType, value);
+            query.andAttributeIs(attributeType, values);
          } else {
-            query.andNotExists(attributeType, value);
+            int size = values.size();
+            if (size == 0) {
+               query.andNotExists(attributeType);
+            } else if (size == 1) {
+               query.andNotExists(attributeType, values.get(0));
+            } else {
+               throw new OseeArgumentException("Expected 0 or 1 values not %s", size);
+            }
          }
       }
       return queryMethod.get();
@@ -167,9 +175,9 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
     * type but with a different value.
     */
    @Override
-   public List<ArtifactToken> getArtifactTokensByAttribute(AttributeTypeToken attributeType, String value, boolean exists, ArtifactTypeToken artifactType) {
+   public List<ArtifactToken> getArtifactTokensByAttribute(AttributeTypeToken attributeType, List<String> values, boolean exists, ArtifactTypeToken artifactType) {
       QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
-      return getArtifactXByAttribute(query, attributeType, value, exists, artifactType, query::asArtifactTokens);
+      return getArtifactXByAttribute(query, attributeType, values, exists, artifactType, query::asArtifactTokens);
    }
 
    /**
@@ -178,9 +186,9 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
     * type but with a different value.
     */
    @Override
-   public List<ArtifactId> getArtifactIdsByAttribute(AttributeTypeToken attributeType, String value, boolean exists, ArtifactTypeToken artifactType) {
+   public List<ArtifactId> getArtifactIdsByAttribute(AttributeTypeToken attributeType, List<String> values, boolean exists, ArtifactTypeToken artifactType) {
       QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch);
-      return getArtifactXByAttribute(query, attributeType, value, exists, artifactType, query::asArtifactIds);
+      return getArtifactXByAttribute(query, attributeType, values, exists, artifactType, query::asArtifactIds);
    }
 
    /**
@@ -189,9 +197,9 @@ public class ArtifactEndpointImpl implements ArtifactEndpoint {
     * type but with a different value.
     */
    @Override
-   public List<Map<String, Object>> getArtifactMaps(AttributeTypeToken attributeType, String representation, String value, boolean exists, ArtifactTypeToken artifactType, ArtifactId view) {
+   public List<Map<String, Object>> getArtifactMaps(AttributeTypeToken attributeType, String representation, List<String> values, boolean exists, ArtifactTypeToken artifactType, ArtifactId view) {
       QueryBuilder query = orcsApi.getQueryFactory().fromBranch(branch, view);
-      return getArtifactXByAttribute(query, attributeType, value, exists, artifactType, query::asArtifactMaps);
+      return getArtifactXByAttribute(query, attributeType, values, exists, artifactType, query::asArtifactMaps);
    }
 
    @Override

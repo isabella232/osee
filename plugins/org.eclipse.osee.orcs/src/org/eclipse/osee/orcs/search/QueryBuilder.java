@@ -277,6 +277,10 @@ public interface QueryBuilder extends Query {
 
    QueryBuilder andAttributeIs(AttributeTypeId attributeType, String value);
 
+   QueryBuilder andAttributeIs(AttributeTypeId attributeType, String... values);
+
+   QueryBuilder andAttributeIs(AttributeTypeId attributeType, Collection<String> values);
+
    QueryBuilder follow(RelationTypeSide relationTypeSide);
 
    /**
