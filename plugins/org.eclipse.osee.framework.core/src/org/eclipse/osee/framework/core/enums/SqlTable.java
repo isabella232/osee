@@ -56,8 +56,8 @@ public class SqlTable extends NamedBase {
          ATTRIBUTE_ATRR_ID.getName());
 
    }
-   public static final SqlTable RELATION_TABLE = new SqlTable("osee_relation_link", "rel", ObjectType.RELATION);
 
+   public static final SqlTable RELATION_TABLE = new SqlTable("osee_relation_link", "rel", ObjectType.RELATION);
    public static final SqlColumn RELATION_LINK_REL_LINK_ID = RELATION_TABLE.addColumn("REL_LINK_ID", JDBCType.BIGINT);
    public static final SqlColumn RELATION_LINK_REL_LINK_TYPE_ID =
       RELATION_TABLE.addColumn("REL_LINK_TYPE_ID", JDBCType.BIGINT);
@@ -65,7 +65,6 @@ public class SqlTable extends NamedBase {
    public static final SqlColumn RELATION_LINK_B_ART_ID = RELATION_TABLE.addColumn("B_ART_ID", JDBCType.BIGINT);
    public static final SqlColumn RELATION_LINK_RATIONALE = RELATION_TABLE.addVarCharColumn("RATIONALE", 4000);
    public static final SqlColumn RELATION_LINK_GAMMA_ID = RELATION_TABLE.addColumn("GAMMA_ID", JDBCType.BIGINT);
-
    static {
       RELATION_TABLE.setPrimaryKeyConstraint(RELATION_LINK_GAMMA_ID);
       RELATION_TABLE.createIndex("OSEE_RELATION__R_G_IDX", true, RELATION_LINK_REL_LINK_ID.getName(),
@@ -73,6 +72,20 @@ public class SqlTable extends NamedBase {
       RELATION_TABLE.createIndex("OSEE_RELATION__A_IDX", true, RELATION_LINK_A_ART_ID.getName());
       RELATION_TABLE.createIndex("OSEE_RELATION__B_IDX", true, RELATION_LINK_B_ART_ID.getName());
 
+   }
+
+   public static final SqlTable RELATION_TABLE2 = new SqlTable("osee_relation", "rel", ObjectType.RELATION, 4);
+   public static final SqlColumn RELATION_REL_TYPE = RELATION_TABLE.addColumn("REL_TYPE", JDBCType.BIGINT);
+   public static final SqlColumn RELATION_A_ART_ID = RELATION_TABLE.addColumn("A_ART_ID", JDBCType.BIGINT);
+   public static final SqlColumn RELATION_B_ART_ID = RELATION_TABLE.addColumn("B_ART_ID", JDBCType.BIGINT);
+   public static final SqlColumn RELATION_REL_ART_ID = RELATION_TABLE.addColumn("REL_ART_ID", JDBCType.BIGINT);
+   public static final SqlColumn RELATION_REL_ORDER = RELATION_TABLE.addColumn("REL_ORDER", JDBCType.INTEGER);
+   public static final SqlColumn RELATION_GAMMA_ID = RELATION_TABLE.addColumn("GAMMA_ID", JDBCType.BIGINT);
+   static {
+      RELATION_TABLE.setPrimaryKeyConstraint(RELATION_REL_TYPE, RELATION_A_ART_ID, RELATION_B_ART_ID,
+         RELATION_REL_ART_ID, RELATION_REL_ORDER);
+      RELATION_TABLE.createIndex("OSEE_RELATION__G_IDX", true, RELATION_GAMMA_ID.getName());
+      RELATION_TABLE.createIndex("OSEE_RELATION__B_IDX", true, RELATION_B_ART_ID.getName());
    }
 
    public static final SqlTable BRANCH_TABLE = new SqlTable("osee_branch", "br", ObjectType.BRANCH);
