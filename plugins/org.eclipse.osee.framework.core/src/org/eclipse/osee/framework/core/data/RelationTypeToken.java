@@ -29,6 +29,11 @@ public interface RelationTypeToken extends NamedId {
    RelationTypeToken SENTINEL = create(Id.SENTINEL, Named.SENTINEL, null, null, null, null, null, null);
 
    public static @NonNull RelationTypeToken create(long id, String name, RelationTypeMultiplicity relationTypeMultiplicity, RelationSorter order, ArtifactTypeToken artifactTypeA, String sideAName, ArtifactTypeToken artifactTypeB, String sideBName) {
+      return create(id, name, relationTypeMultiplicity, order, artifactTypeA, sideAName, artifactTypeB, sideBName,
+         ArtifactTypeToken.SENTINEL);
+   }
+
+   public static @NonNull RelationTypeToken create(long id, String name, RelationTypeMultiplicity relationTypeMultiplicity, RelationSorter order, ArtifactTypeToken artifactTypeA, String sideAName, ArtifactTypeToken artifactTypeB, String sideBName, ArtifactTypeToken relationArtifactType) {
       final class RelationTypeTokenImpl extends NamedIdBase implements RelationTypeToken {
          private final RelationTypeMultiplicity relationTypeMultiplicity;
          private final RelationSorter order;
