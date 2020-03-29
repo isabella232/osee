@@ -30,7 +30,7 @@ public class RelationTypeSideNotExistsSqlHandler extends AbstractRelationSqlHand
 
       RelationTypeSide relationType = criteria.getType();
       writer.write("NOT EXISTS (SELECT 1 FROM ");
-      String relAlias = writer.writeTable(SqlTable.RELATION_TABLE);
+      String relAlias = writer.writeTable(criteria.getType());
       writer.write(", ");
       String txsAlias = writer.writeTable(SqlTable.TXS_TABLE);
       writer.write(" WHERE ");

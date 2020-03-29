@@ -79,7 +79,7 @@ public class RelatedToSqlHandler extends SqlHandler<CriteriaRelatedTo> {
       if (criteria.hasMultipleIds()) {
          jIdAlias = writer.addTable(SqlTable.OSEE_JOIN_ID_TABLE);
       }
-      relAlias = writer.addTable(SqlTable.RELATION_TABLE);
+      relAlias = writer.addTable(criteria.getType());
       txsAlias = writer.addTable(SqlTable.TXS_TABLE, ObjectType.RELATION);
    }
 

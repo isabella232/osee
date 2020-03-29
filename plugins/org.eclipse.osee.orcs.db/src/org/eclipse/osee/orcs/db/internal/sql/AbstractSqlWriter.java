@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import org.eclipse.osee.framework.core.data.BranchId;
+import org.eclipse.osee.framework.core.data.RelationTypeToken;
 import org.eclipse.osee.framework.core.enums.CoreTupleTypes;
 import org.eclipse.osee.framework.core.enums.ModificationType;
 import org.eclipse.osee.framework.core.enums.ObjectType;
@@ -398,6 +399,10 @@ public abstract class AbstractSqlWriter implements HasOptions {
       return addTable(table, table.getObjectType());
    }
 
+   public String addTable(RelationTypeToken relationType) {
+      return addTable(getRelationTable(relationType));
+   }
+
    public void addTable(String tableName) {
       tableEntries.add(tableName);
    }
@@ -420,6 +425,14 @@ public abstract class AbstractSqlWriter implements HasOptions {
       String alias = getNextAlias(table);
       write("%s %s", table.getName(), alias);
       return alias;
+   }
+
+   public String writeTable(RelationTypeToken relationType) {
+      return writeTable(getRelationTable(relationType));
+   }
+
+   private TableEnum getRelationTable(RelationTypeToken relationType) {
+      return relationType.isVersion2() ? TableEnum.RELATION_TABLE2 : TableEnum.RELATION_TABLE;
    }
 
    public void write(String format, Object... params) {

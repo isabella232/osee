@@ -52,7 +52,7 @@ public class FollowRelationSqlHandler extends SqlHandler<CriteriaRelationTypeFol
       if (sourceArtTable != null) {
          writer.addTable(sourceArtTable);
       }
-      relAlias = writer.addTable(SqlTable.RELATION_TABLE);
+      relAlias = writer.addTable(criteria.getType());
       relTxsAlias = writer.addTable(SqlTable.TXS_TABLE, ObjectType.RELATION);
    }
 

@@ -30,7 +30,7 @@ public class RelationTypeSideExistsSqlHandler extends AbstractRelationSqlHandler
    @Override
    public void addTables(AbstractSqlWriter writer) {
       super.addTables(writer);
-      relAlias = writer.addTable(SqlTable.RELATION_TABLE);
+      relAlias = writer.addTable(criteria.getType());
       txsAlias = writer.addTable(SqlTable.TXS_TABLE, ObjectType.RELATION);
    }
 
