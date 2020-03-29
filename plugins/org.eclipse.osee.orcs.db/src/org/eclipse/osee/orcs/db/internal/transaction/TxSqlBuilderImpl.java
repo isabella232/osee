@@ -56,6 +56,7 @@ import org.eclipse.osee.orcs.db.internal.transaction.TransactionWriter.SqlOrderE
  */
 public class TxSqlBuilderImpl implements OrcsVisitor, TxSqlBuilder {
 
+   private static final long SPACING = (long) Math.pow(2.0, 18.0);
    private final SqlJoinFactory sqlJoinFactory;
    private final IdentityManager idManager;
    private final JdbcClient jdbcClient;
@@ -295,5 +296,29 @@ public class TxSqlBuilderImpl implements OrcsVisitor, TxSqlBuilder {
 
    private void addRow(SqlOrderEnum sqlKey, Object... data) {
       dataItemInserts.put(sqlKey, data);
+   }
+
+   private int calculateInsertionOrderIndexWhenEmpty() {
+      return 0;
+   }
+
+   private int calculateHeadInsertionOrderIndex(int currentHeadIndex) {
+      long idealIndex = currentHeadIndex - SPACING;
+      if (idealIndex > Integer.MIN_VALUE) {
+         return (int) idealIndex;
+      }
+      return calculateInsertionOrderIndex(Integer.MIN_VALUE, currentHeadIndex);
+   }
+
+   private int calculatEndInsertionOrderIndex(int currentEndIndex) {
+      long idealIndex = currentEndIndex + SPACING;
+      if (idealIndex < Integer.MAX_VALUE) {
+         return (int) idealIndex;
+      }
+      return calculateInsertionOrderIndex(currentEndIndex, Integer.MAX_VALUE);
+   }
+
+   private int calculateInsertionOrderIndex(int afterIndex, int beforeIndex) {
+      return (int) ((long) (afterIndex) + beforeIndex) / 2;
    }
 }
