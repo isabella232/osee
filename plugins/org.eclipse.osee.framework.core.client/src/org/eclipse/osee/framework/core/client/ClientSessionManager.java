@@ -24,10 +24,15 @@ import org.eclipse.osee.framework.jdk.core.util.Strings;
 /**
  * @author Roberto E. Escobar
  */
-public class ClientSessionManager {
+public final class ClientSessionManager {
+   private static InternalClientSessionManager internal;
 
    private ClientSessionManager() {
       //
+   }
+
+   public static void setInternalSessionManager(InternalClientSessionManager internalSessionManager) {
+      internal = internalSessionManager;
    }
 
    public static final String getStatusId() {
@@ -35,19 +40,19 @@ public class ClientSessionManager {
    }
 
    public static boolean isSessionValid() {
-      return InternalClientSessionManager.getInstance().isSessionValid();
+      return internal.isSessionValid();
    }
 
    public static void ensureSessionCreated() {
-      InternalClientSessionManager.getInstance().ensureSessionCreated();
+      internal.ensureSessionCreated();
    }
 
    private static OseeSessionGrant getSessionGrant() {
-      return InternalClientSessionManager.getInstance().getOseeSessionGrant();
+      return internal.getOseeSessionGrant();
    }
 
    public static IdeClientSession getSession() {
-      return InternalClientSessionManager.getInstance().getOseeSession();
+      return internal.getOseeSession();
    }
 
    public static UserToken getCurrentUserToken() {
@@ -96,19 +101,19 @@ public class ClientSessionManager {
    }
 
    public static List<String> getAuthenticationProtocols() {
-      return InternalClientSessionManager.getInstance().getAuthenticationProtocols();
+      return internal.getAuthenticationProtocols();
    }
 
    public static void authenticateAsAnonymous() {
-      InternalClientSessionManager.getInstance().authenticateAsAnonymous();
+      internal.authenticateAsAnonymous();
    }
 
    public static void authenticate(ICredentialProvider credentialProvider) {
-      InternalClientSessionManager.getInstance().authenticate(credentialProvider);
+      internal.authenticate(credentialProvider);
    }
 
    public static void releaseSession() {
-      InternalClientSessionManager.getInstance().releaseSession();
+      internal.releaseSession();
    }
 
    public static String getDatabaseInfo() {
@@ -116,7 +121,6 @@ public class ClientSessionManager {
    }
 
    public static IdeClientSession getSafeSession() {
-      return InternalClientSessionManager.getInstance().getSafeSession();
+      return internal.getSafeSession();
    }
-
 }

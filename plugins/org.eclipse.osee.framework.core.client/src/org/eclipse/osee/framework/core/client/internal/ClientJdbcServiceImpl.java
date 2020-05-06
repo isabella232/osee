@@ -18,6 +18,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Map.Entry;
 import java.util.Properties;
+import org.eclipse.osee.framework.core.JaxRsApi;
+import org.eclipse.osee.framework.core.client.ClientSessionManager;
 import org.eclipse.osee.framework.core.data.OseeSessionGrant;
 import org.eclipse.osee.jdbc.JdbcClient;
 import org.eclipse.osee.jdbc.JdbcClientBuilder;
@@ -32,6 +34,15 @@ import org.eclipse.osee.jdbc.JdbcService;
 public class ClientJdbcServiceImpl implements JdbcService {
 
    private final JdbcClientExtended clientProxy = createClientProxy();
+
+   private JaxRsApi jaxRsApi;
+   private InternalClientSessionManager sessionManager;
+
+   public void setJaxRsApi(JaxRsApi jaxRsApi) {
+      this.jaxRsApi = jaxRsApi;
+   }
+      sessionManager = new InternalClientSessionManager(jaxRsApi);
+      ClientSessionManager.setInternalSessionManager(sessionManager);
 
    @Override
    public String getId() {
@@ -112,8 +123,7 @@ public class ClientJdbcServiceImpl implements JdbcService {
       }
 
       private OseeSessionGrant getDbInfo() {
-         OseeSessionGrant sessionGrant = InternalClientSessionManager.getInstance().getOseeSessionGrant();
-         return sessionGrant;
+         return sessionManager.getOseeSessionGrant();
       }
 
       private JdbcClient newClient(OseeSessionGrant sessionGrant) {
@@ -132,5 +142,4 @@ public class ClientJdbcServiceImpl implements JdbcService {
          return builder.build();
       }
    }
-
 }

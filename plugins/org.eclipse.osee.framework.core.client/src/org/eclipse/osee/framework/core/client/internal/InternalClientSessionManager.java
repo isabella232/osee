@@ -14,12 +14,9 @@
 package org.eclipse.osee.framework.core.client.internal;
 
 import java.net.InetAddress;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
+import org.eclipse.osee.framework.core.JaxRsApi;
 import org.eclipse.osee.framework.core.client.AnonymousCredentialProvider;
 import org.eclipse.osee.framework.core.client.BaseCredentialProvider;
 import org.eclipse.osee.framework.core.client.ICredentialProvider;
@@ -37,21 +34,21 @@ import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.logging.BaseStatus;
 import org.eclipse.osee.framework.logging.OseeLog;
 import org.eclipse.osee.framework.server.ide.api.SessionEndpoint;
-import org.eclipse.osee.jaxrs.client.JaxRsClient;
 
 /**
  * @author Roberto E. Escobar
  */
 public class InternalClientSessionManager {
    public static final String STATUS_ID = "Session Manager";
-   private static final InternalClientSessionManager instance = new InternalClientSessionManager();
 
    private final OseeClientInfo clientInfo;
+   private final JaxRsApi jaxRsApi;
    private OseeSessionGrant oseeSessionGrant;
    private IdeClientSession oseeSession;
 
-   private InternalClientSessionManager() {
+   InternalClientSessionManager(JaxRsApi jaxRsApi) {
       clearData();
+      this.jaxRsApi = jaxRsApi;
       this.clientInfo = new OseeClientInfo();
       clientInfo.setClientAddress(HttpServer.getServerAddressForExternalCommunication(),
          HttpServer.getDefaultServicePort());
@@ -61,10 +58,6 @@ public class InternalClientSessionManager {
       } catch (Exception ex) {
          clientInfo.setClientMachineName(clientInfo.getClientAddress());
       }
-   }
-
-   public static InternalClientSessionManager getInstance() {
-      return instance;
    }
 
    public boolean isSessionValid() {
@@ -172,11 +165,7 @@ public class InternalClientSessionManager {
 
    private void internalReleaseSession(String sessionId) {
       try {
-         SessionEndpoint sessionEp = getSessionEp();
-         Response response = sessionEp.releaseIdeClientSession(sessionId);
-         if (response.getStatus() != Status.OK.getStatusCode()) {
-            throw new OseeCoreException("Unable to Release Session " + response.toString());
-         }
+         getSessionEp().releaseIdeClientSession(sessionId);
          clearData();
       } catch (Exception ex) {
          OseeLog.log(Activator.class, Level.SEVERE, ex);
@@ -184,17 +173,7 @@ public class InternalClientSessionManager {
    }
 
    public List<String> getAuthenticationProtocols() {
-      List<String> toReturn = new ArrayList<>();
-      try {
-         SessionEndpoint sessionEp = getSessionEp();
-         Response response = sessionEp.getIdeClientProtocols();
-         @SuppressWarnings("unchecked")
-         List<String> protocols = response.readEntity(LinkedList.class);
-         toReturn.addAll(protocols);
-      } catch (Exception ex) {
-         OseeLog.log(Activator.class, Level.SEVERE, ex);
-      }
-      return toReturn;
+      return getSessionEp().getIdeClientProtocols();
    }
 
    private void clearData() {
@@ -203,17 +182,10 @@ public class InternalClientSessionManager {
    }
 
    private OseeSessionGrant internalAcquireSession(OseeCredential credential) {
-      SessionEndpoint sessionEp = getSessionEp();
-      Response response = sessionEp.createIdeClientSession(credential);
-      OseeSessionGrant sessionGrant = response.readEntity(OseeSessionGrant.class);
-      return sessionGrant;
+      return getSessionEp().createIdeClientSession(credential);
    }
 
-   private static SessionEndpoint getSessionEp() {
-      String appServer = OseeClientProperties.getOseeApplicationServer();
-      String atsUri = String.format("%s/ide", appServer);
-      JaxRsClient jaxRsClient = JaxRsClient.newBuilder().createThreadSafeProxyClients(true).build();
-      return jaxRsClient.target(atsUri).newProxy(SessionEndpoint.class);
+   private SessionEndpoint getSessionEp() {
+      return jaxRsApi.newProxy("ide", SessionEndpoint.class);
    }
-
 }
