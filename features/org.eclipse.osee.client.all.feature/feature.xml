@@ -16,8 +16,6 @@
    <license url="%licenseURL">
       %license
    </license>
-   
-   
    <includes
          id="org.eclipse.osee.client.feature"
          version="0.0.0"/>
