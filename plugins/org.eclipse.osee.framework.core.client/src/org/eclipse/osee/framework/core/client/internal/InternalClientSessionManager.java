@@ -105,7 +105,7 @@ public class InternalClientSessionManager {
          try {
             OseeCredential credential = credentialProvider.getCredential();
             clearData();
-            oseeSessionGrant = internalAcquireSession(credential);
+            oseeSessionGrant = getSessionEp().createIdeClientSession(credential);
             if (oseeSessionGrant == null) {
                return;
             } else if (SystemUser.UnAuthenticated.getUserId().equals(oseeSessionGrant.getUserToken().getUserId())) {
@@ -179,10 +179,6 @@ public class InternalClientSessionManager {
    private void clearData() {
       this.oseeSession = null;
       this.oseeSessionGrant = null;
-   }
-
-   private OseeSessionGrant internalAcquireSession(OseeCredential credential) {
-      return getSessionEp().createIdeClientSession(credential);
    }
 
    private SessionEndpoint getSessionEp() {

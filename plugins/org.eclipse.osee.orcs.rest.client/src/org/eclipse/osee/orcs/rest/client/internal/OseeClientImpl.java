@@ -28,6 +28,7 @@ import org.eclipse.osee.framework.core.JaxRsApi;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.jdk.core.util.Conditions;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
+import org.eclipse.osee.framework.server.ide.api.SessionEndpoint;
 import org.eclipse.osee.framework.server.ide.api.client.ClientEndpoint;
 import org.eclipse.osee.jaxrs.client.JaxRsClient;
 import org.eclipse.osee.jaxrs.client.JaxRsExceptions;
@@ -204,6 +205,11 @@ public class OseeClientImpl implements OseeClient, QueryExecutor {
    @Override
    public ActivityLogEndpoint getActivityLogEndpoint() {
       return jaxRsApi.newProxy("", ActivityLogEndpoint.class);
+   }
+   
+   @Override
+   public SessionEndpoint getSessionEndpoint() {
+      return jaxRsApi.newProxy("", SessionEndpoint.class);
    }
 
    @Override

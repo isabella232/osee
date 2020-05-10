@@ -18,6 +18,7 @@ import org.eclipse.osee.define.api.DataRightsEndpoint;
 import org.eclipse.osee.define.api.DefineBranchEndpointApi;
 import org.eclipse.osee.define.api.RenderEndpoint;
 import org.eclipse.osee.framework.core.data.BranchId;
+import org.eclipse.osee.framework.server.ide.api.SessionEndpoint;
 import org.eclipse.osee.framework.server.ide.api.client.ClientEndpoint;
 import org.eclipse.osee.orcs.rest.model.ApplicabilityEndpoint;
 import org.eclipse.osee.orcs.rest.model.ApplicabilityUiEndpoint;
@@ -69,4 +70,6 @@ public interface OseeClient {
 
    DefineBranchEndpointApi getDefineBranchEndpoint();
 
+
+   SessionEndpoint getSessionEndpoint();
 }
