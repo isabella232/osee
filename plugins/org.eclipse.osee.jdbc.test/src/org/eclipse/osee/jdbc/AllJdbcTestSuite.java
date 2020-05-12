@@ -13,7 +13,6 @@
 
 package org.eclipse.osee.jdbc;
 
-import org.eclipse.osee.jdbc.internal.InternalTestSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -21,7 +20,7 @@ import org.junit.runners.Suite;
  * @author Roberto E. Escobar
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({InternalTestSuite.class, JdbcRunFunctionTest.class})
+@Suite.SuiteClasses({JdbcRunFunctionTest.class})
 public class AllJdbcTestSuite {
    // Test Suite
 }

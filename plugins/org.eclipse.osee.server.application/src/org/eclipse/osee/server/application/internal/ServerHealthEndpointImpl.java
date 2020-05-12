@@ -20,7 +20,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -34,7 +33,6 @@ import org.eclipse.osee.framework.core.util.HttpProcessor.AcquireResult;
 import org.eclipse.osee.framework.jdk.core.util.AHTML;
 import org.eclipse.osee.framework.jdk.core.util.Lib;
 import org.eclipse.osee.framework.jdk.core.util.OseeProperties;
-import org.eclipse.osee.jdbc.JdbcClient;
 import org.eclipse.osee.jdbc.JdbcService;
 import org.eclipse.osee.server.application.internal.model.ServerStatus;
 import org.eclipse.osee.server.application.internal.model.StatusKey;
@@ -46,15 +44,14 @@ import org.eclipse.osee.server.application.internal.operations.BuildServerStatus
 @Path("/health")
 public final class ServerHealthEndpointImpl {
    private final IApplicationServerManager applicationServerManager;
-   private final Map<String, JdbcService> jdbcServices;
+   private final JdbcService jdbcService;
    private final IAuthenticationManager authManager;
    private final ActivityLog activityLog;
    private ObjectMapper mapper;
-   private static final String GET_VALUE_SQL = "Select OSEE_VALUE FROM osee_info where OSEE_KEY = ?";
 
-   public ServerHealthEndpointImpl(IApplicationServerManager applicationServerManager, Map<String, JdbcService> jdbcServices, IAuthenticationManager authManager, ActivityLog activityLog) {
+   public ServerHealthEndpointImpl(IApplicationServerManager applicationServerManager, JdbcService jdbcService, IAuthenticationManager authManager, ActivityLog activityLog) {
       this.applicationServerManager = applicationServerManager;
-      this.jdbcServices = jdbcServices;
+      this.jdbcService = jdbcService;
       this.authManager = authManager;
       this.activityLog = activityLog;
    }
@@ -103,20 +100,10 @@ public final class ServerHealthEndpointImpl {
    }
 
    private String serverStatusAsll(boolean details) {
-
       // Retrieve servers from OseeInfo
-      String serversStr =
-         OseeInfo.getValue(jdbcServices.values().iterator().next().getClient(), OseeProperties.OSEE_HEALTH_SERVERS_KEY);
+      String serversStr = OseeInfo.getValue(jdbcService.getClient(), OseeProperties.OSEE_HEALTH_SERVERS_KEY);
       serversStr = serversStr.replaceAll(" ", "");
       List<String> servers = new ArrayList<>();
-      for (String server : serversStr.split(",")) {
-         servers.add(server);
-      }
-
-      // Retrieve servers from OseeInfo
-      serversStr =
-         getValue(jdbcServices.values().iterator().next().getClient(), OseeProperties.OSEE_HEALTH_SERVERS_KEY);
-      serversStr = serversStr.replaceAll(" ", "");
       for (String server : serversStr.split(",")) {
          servers.add(server);
       }
@@ -179,10 +166,4 @@ public final class ServerHealthEndpointImpl {
       }
       sb.append(AHTML.addRowMultiColumnTable(values.toArray(new String[values.size()])));
    }
-
-   private String getValue(JdbcClient jdbcClient, String key) {
-      String toReturn = jdbcClient.fetch("", GET_VALUE_SQL, key);
-      return toReturn;
-   }
-
 }

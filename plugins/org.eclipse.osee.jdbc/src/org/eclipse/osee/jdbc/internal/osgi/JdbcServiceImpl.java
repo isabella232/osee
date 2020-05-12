@@ -50,7 +50,7 @@ import org.osgi.service.component.annotations.Reference;
 /**
  * @author Roberto E. Escobar
  */
-@Component(configurationPid = "OseeJdbc", factory = "org.eclipse.osee.jdbc.JdbcService", property = {
+@Component(configurationPid = "OseeJdbc", property = {
    JDBC_SERVER__HOST + "=127.0.0.1",
    JDBC_SERVER__PORT + "=8088",
    JDBC_SERVER__DB_DATA_PATH + "=file:demo/hsql/osee.hsql.db",
