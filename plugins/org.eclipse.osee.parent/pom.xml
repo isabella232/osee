@@ -96,12 +96,7 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/mylyn/drops/3.5.1/v20110422-0200/</url>
 		</repository>
-			
-		<repository>
-			<id>findbugs</id>
-			<layout>p2</layout>
-			<url>http://findbugs.cs.umd.edu/eclipse</url>
-		</repository>
+
 		
 		<!--  <repository>
 			<id>orbit</id>
