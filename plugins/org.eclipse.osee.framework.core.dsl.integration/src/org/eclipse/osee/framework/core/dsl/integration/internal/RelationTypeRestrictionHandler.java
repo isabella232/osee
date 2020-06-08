@@ -16,6 +16,7 @@ package org.eclipse.osee.framework.core.dsl.integration.internal;
 import java.util.Collection;
 import java.util.Collections;
 import org.eclipse.osee.framework.core.access.AccessDetail;
+import org.eclipse.osee.framework.core.OrcsTokenService;
 import org.eclipse.osee.framework.core.access.AccessDetailCollector;
 import org.eclipse.osee.framework.core.access.Scope;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
@@ -41,9 +42,11 @@ import org.eclipse.osee.framework.core.enums.RelationSide;
 public class RelationTypeRestrictionHandler implements RestrictionHandler<RelationTypeRestriction> {
 
    private final ArtifactMatchInterpreter matcherInterpreter;
+   private final OrcsTokenService tokenService;
 
-   public RelationTypeRestrictionHandler(ArtifactMatchInterpreter matcherInterpreter) {
+   public RelationTypeRestrictionHandler(ArtifactMatchInterpreter matcherInterpreter, OrcsTokenService tokenService) {
       this.matcherInterpreter = matcherInterpreter;
+      this.tokenService = tokenService;
    }
 
    @Override
@@ -102,29 +105,14 @@ public class RelationTypeRestrictionHandler implements RestrictionHandler<Relati
    private Collection<RelationTypeToken> getRelationTypes(ArtifactProxy artifactProxy, RelationTypeRestriction restriction) {
       Collection<RelationTypeToken> types;
       if (restriction.isRelationTypeMatch()) {
-         types = artifactProxy.getValidRelationTypes();
+         types = tokenService.getValidRelationTypes(artifactProxy.getArtifactType());
       } else {
          XRelationType xRelationType = restriction.getRelationTypeRef();
          Long typeToMatch = OseeUtil.checkAndGetUuid(xRelationType);
-         RelationTypeToken relationType = getRelationType(typeToMatch, artifactProxy);
-         if (relationType != null) {
-            types = Collections.singleton(relationType);
-         } else {
-            types = Collections.emptyList();
-         }
+         Collection<RelationTypeToken> relationTypes =
+            tokenService.getValidRelationTypes(artifactProxy.getArtifactType());
+         types = relationTypes.contains(typeToMatch) ? Collections.singleton(typeToMatch) : Collections.emptyList();
       }
       return types;
-   }
-
-   private RelationTypeToken getRelationType(Long typeToMatch, ArtifactProxy artifactProxy) {
-      RelationTypeToken toReturn = null;
-      Collection<RelationTypeToken> relationTypes = artifactProxy.getValidRelationTypes();
-      for (RelationTypeToken relationType : relationTypes) {
-         if (relationType.equals(typeToMatch)) {
-            toReturn = relationType;
-            break;
-         }
-      }
-      return toReturn;
    }
 }

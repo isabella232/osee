@@ -19,7 +19,6 @@ import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.IOseeBranch;
-import org.eclipse.osee.framework.core.data.RelationTypeToken;
 import org.eclipse.osee.framework.core.dsl.integration.ArtifactDataProvider.ArtifactProxy;
 
 /**
@@ -29,34 +28,23 @@ public class MockArtifactProxy implements ArtifactProxy {
 
    private final ArtifactTypeToken artifactType;
    private final Collection<ArtifactProxy> hierarchy;
-   private final Collection<RelationTypeToken> validRelationTypes;
    private final ArtifactToken artifactObject;
-
-   public MockArtifactProxy(ArtifactToken artifactObject) {
-      this(artifactObject.getArtifactType(), artifactObject, Collections.emptyList(), Collections.emptyList());
-   }
-
-   public MockArtifactProxy(ArtifactToken artifactObject, RelationTypeToken validRelationType) {
-      this(artifactObject.getArtifactType(), artifactObject, Collections.emptyList(),
-         Collections.singleton(validRelationType));
-   }
-
-   public MockArtifactProxy(ArtifactTypeToken artifactType, RelationTypeToken validRelationType) {
-      this(artifactType, null, Collections.emptyList(), Collections.singleton(validRelationType));
-   }
 
    public MockArtifactProxy() {
       this((ArtifactTypeToken) null);
    }
 
-   public MockArtifactProxy(ArtifactTypeToken artifactType) {
-      this(artifactType, null, Collections.emptyList(), Collections.emptyList());
+   public MockArtifactProxy(ArtifactToken artifactObject) {
+      this(artifactObject.getArtifactType(), artifactObject);
    }
 
-   private MockArtifactProxy(ArtifactTypeToken artifactType, ArtifactToken artifactObject, Collection<ArtifactProxy> hierarchy, Collection<RelationTypeToken> validRelationTypes) {
+   public MockArtifactProxy(ArtifactTypeToken artifactType) {
+      this(artifactType, null);
+   }
+
+   private MockArtifactProxy(ArtifactTypeToken artifactType, ArtifactToken artifactObject) {
       this.artifactType = artifactType;
-      this.hierarchy = hierarchy;
-      this.validRelationTypes = validRelationTypes;
+      this.hierarchy = Collections.emptyList();
       this.artifactObject = artifactObject;
    }
 
@@ -68,11 +56,6 @@ public class MockArtifactProxy implements ArtifactProxy {
    @Override
    public ArtifactTypeToken getArtifactType() {
       return artifactType;
-   }
-
-   @Override
-   public Collection<RelationTypeToken> getValidRelationTypes() {
-      return validRelationTypes;
    }
 
    @Override

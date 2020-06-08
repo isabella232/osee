@@ -18,7 +18,6 @@ import java.util.Iterator;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.IOseeBranch;
-import org.eclipse.osee.framework.core.data.RelationTypeToken;
 import org.eclipse.osee.framework.core.dsl.integration.ArtifactDataProvider.ArtifactProxy;
 import org.eclipse.osee.framework.core.dsl.integration.mocks.DslAsserts;
 import org.eclipse.osee.framework.core.dsl.integration.mocks.MockModel;
@@ -281,11 +280,6 @@ public class ArtifactMatchInterpreterTest {
 
          @Override
          public ArtifactTypeToken getArtifactType() {
-            return null;
-         }
-
-         @Override
-         public Collection<RelationTypeToken> getValidRelationTypes() {
             return null;
          }
 

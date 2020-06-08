@@ -15,6 +15,7 @@ package org.eclipse.osee.framework.core.dsl.integration.internal;
 
 import java.util.Collection;
 import org.eclipse.osee.framework.core.access.AccessDetailCollector;
+import org.eclipse.osee.framework.core.OrcsTokenService;
 import org.eclipse.osee.framework.core.data.IAccessContextId;
 import org.eclipse.osee.framework.core.dsl.integration.AccessModelInterpreter;
 import org.eclipse.osee.framework.core.dsl.integration.ArtifactDataProvider;
@@ -29,9 +30,14 @@ public class AccessModelInterpreterProxy implements AccessModelInterpreter {
 
    private ArtifactDataProvider artifactDataProvider;
    private AccessModelInterpreter proxiedService;
+   private OrcsTokenService tokenService;
 
    public void setArtifactDataProvider(ArtifactDataProvider artifactDataProvider) {
       this.artifactDataProvider = artifactDataProvider;
+   }
+
+   public void setOrcsTokenService(OrcsTokenService tokenService) {
+      this.tokenService = tokenService;
    }
 
    public void start() {
@@ -54,7 +60,7 @@ public class AccessModelInterpreterProxy implements AccessModelInterpreter {
             new ArtifactMatchRestrictionHandler(matcher),
             new ArtifactTypeRestrictionHandler(),
             new AttributeTypeRestrictionHandler(),
-            new RelationTypeRestrictionHandler(matcher)};
+            new RelationTypeRestrictionHandler(matcher, tokenService)};
 
          proxiedService = new AccessModelInterpreterImpl(artifactDataProvider, matcher, restrictionHandlers);
       }

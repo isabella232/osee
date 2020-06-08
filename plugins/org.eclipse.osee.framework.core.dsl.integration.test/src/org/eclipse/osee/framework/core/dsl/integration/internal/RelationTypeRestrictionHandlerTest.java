@@ -13,12 +13,13 @@
 
 package org.eclipse.osee.framework.core.dsl.integration.internal;
 
-import static org.eclipse.osee.framework.core.enums.CoreArtifactTypes.AbstractSoftwareRequirement;
 import static org.eclipse.osee.framework.core.enums.CoreArtifactTypes.SoftwareRequirementMsWord;
+import static org.eclipse.osee.framework.core.enums.CoreRelationTypes.CodeRequirement;
 import static org.eclipse.osee.framework.core.enums.CoreRelationTypes.DevelopmentalVerification;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.osee.framework.core.access.AccessDetail;
+import org.eclipse.osee.framework.core.OrcsTokenService;
 import org.eclipse.osee.framework.core.access.AccessDetailCollector;
 import org.eclipse.osee.framework.core.access.Scope;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
@@ -36,9 +37,11 @@ import org.eclipse.osee.framework.core.dsl.oseeDsl.XArtifactMatcher;
 import org.eclipse.osee.framework.core.dsl.oseeDsl.XArtifactType;
 import org.eclipse.osee.framework.core.dsl.oseeDsl.XRelationSideEnum;
 import org.eclipse.osee.framework.core.dsl.oseeDsl.XRelationType;
+import org.eclipse.osee.framework.core.enums.CoreArtifactTypes;
 import org.eclipse.osee.framework.core.enums.CoreRelationTypes;
 import org.eclipse.osee.framework.core.enums.PermissionEnum;
 import org.eclipse.osee.framework.core.enums.RelationSide;
+import org.eclipse.osee.framework.core.util.OsgiUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -48,9 +51,11 @@ import org.junit.Test;
  * @author Roberto E. Escobar
  */
 public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTest<RelationTypeRestriction> {
+   private static final OrcsTokenService tokenService =
+      OsgiUtil.getService(OrcsTokenService.class, OrcsTokenService.class);
 
    public RelationTypeRestrictionHandlerTest() {
-      super(new RelationTypeRestrictionHandler(new ArtifactMatchInterpreter()),
+      super(new RelationTypeRestrictionHandler(new ArtifactMatchInterpreter(), tokenService),
          MockModel.createRelationTypeRestriction(), MockModel.createAttributeTypeRestriction());
    }
 
@@ -62,8 +67,8 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setPermission(AccessPermissionEnum.ALLOW);
       restriction.setRelationTypeRef(relationTypeRef);
 
-      // Artifact Data has no relation types therefore relation type will not match
-      MockArtifactProxy artData = new MockArtifactProxy();
+      // Artifact Data relation type will not match
+      MockArtifactProxy artData = new MockArtifactProxy(CoreArtifactTypes.BranchView);
       Scope expectedScope = new Scope().add("fail");
       DslAsserts.assertNullAccessDetail(getRestrictionHandler(), restriction, artData, expectedScope);
    }
@@ -78,7 +83,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setRelationTypeRef(relationTypeRef);
       restriction.setRestrictedToSide(XRelationSideEnum.SIDE_A);
 
-      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord);
       RelationTypeSide expectedObject = new RelationTypeSide(testRelationType, RelationSide.SIDE_A);
       Scope expectedScope = new Scope();
       DslAsserts.assertAccessDetail(getRestrictionHandler(), restriction, artData, expectedObject, PermissionEnum.WRITE,
@@ -95,7 +100,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setRelationTypeRef(relationTypeRef);
       restriction.setRestrictedToSide(XRelationSideEnum.SIDE_A);
 
-      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord);
       RelationTypeSide expectedObject = new RelationTypeSide(testRelationType, RelationSide.SIDE_A);
       Scope expectedScope = new Scope();
       DslAsserts.assertAccessDetail(getRestrictionHandler(), restriction, artData, expectedObject, PermissionEnum.WRITE,
@@ -112,7 +117,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setRelationTypeRef(relationTypeRef);
       restriction.setRestrictedToSide(XRelationSideEnum.SIDE_B);
 
-      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord);
 
       RelationTypeSide expectedObject = new RelationTypeSide(testRelationType, RelationSide.SIDE_B);
       Scope expectedScope = new Scope();
@@ -130,7 +135,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setRelationTypeRef(relationTypeRef);
       restriction.setRestrictedToSide(XRelationSideEnum.SIDE_B);
 
-      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord);
       RelationTypeSide expectedObject = new RelationTypeSide(testRelationType, RelationSide.SIDE_B);
       Scope expectedScope = new Scope();
       DslAsserts.assertAccessDetail(getRestrictionHandler(), restriction, artData, expectedObject, PermissionEnum.WRITE,
@@ -148,7 +153,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setRelationTypeRef(relationTypeRef);
       restriction.setRestrictedToSide(XRelationSideEnum.BOTH);
 
-      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord);
       RelationTypeSide expectedObject1 = new RelationTypeSide(testRelationType, RelationSide.SIDE_A);
       RelationTypeSide expectedObject2 = new RelationTypeSide(testRelationType, RelationSide.SIDE_B);
 
@@ -183,7 +188,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
 
       RelationTypeToken testRelationType = DevelopmentalVerification;
 
-      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(SoftwareRequirementMsWord);
       RelationTypeSide expectedObject1 = new RelationTypeSide(testRelationType, RelationSide.SIDE_A);
       RelationTypeSide expectedObject2 = new RelationTypeSide(testRelationType, RelationSide.SIDE_B);
 
@@ -211,7 +216,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
 
    @Test
    public void testProcessDataArtifactTypeMatch() {
-      XArtifactType artifactTypeRef = MockModel.createXArtifactType(AbstractSoftwareRequirement);
+      XArtifactType artifactTypeRef = MockModel.createXArtifactType(CoreArtifactTypes.FunctionMsWord);
 
       RelationTypeRestriction restriction = MockModel.createRelationTypeRestriction();
       restriction.setPermission(AccessPermissionEnum.ALLOW);
@@ -224,11 +229,11 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setRestrictedToSide(XRelationSideEnum.SIDE_B);
 
       RelationTypeToken testRelationType = DevelopmentalVerification;
+      ArtifactToken expectedAccessObject =
+         ArtifactToken.valueOf(1, "Another Artifact", CoreArtifactTypes.SoftwareRequirementMsWord);
+      MockArtifactProxy artData = new MockArtifactProxy(expectedAccessObject);
 
-      ArtifactToken expectedAccessObject = ArtifactToken.valueOf(1, "Another Artifact", SoftwareRequirementMsWord);
-      MockArtifactProxy artData = new MockArtifactProxy(expectedAccessObject, testRelationType);
-
-      RelationTypeSide expectedObject = new RelationTypeSide(testRelationType, RelationSide.SIDE_B);
+      RelationTypeSide expectedObject = new RelationTypeSide(CodeRequirement, RelationSide.SIDE_B);
 
       Scope expectedScope = new Scope();
       expectedScope.addSubPath(artData.getName());
@@ -253,7 +258,7 @@ public class RelationTypeRestrictionHandlerTest extends BaseRestrictionHandlerTe
       restriction.setPredicate(predicate);
 
       ArtifactToken dummy = ArtifactToken.valueOf(43, artifactName, SoftwareRequirementMsWord);
-      MockArtifactProxy artData = new MockArtifactProxy(dummy, testRelationType);
+      MockArtifactProxy artData = new MockArtifactProxy(dummy);
       RelationTypeSide expectedObject = new RelationTypeSide(testRelationType, RelationSide.SIDE_B);
       DslAsserts.assertAccessDetail(getRestrictionHandler(), restriction, artData, expectedObject, PermissionEnum.WRITE,
          expectedScope);

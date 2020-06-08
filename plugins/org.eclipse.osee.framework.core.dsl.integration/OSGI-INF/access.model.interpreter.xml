@@ -6,4 +6,5 @@
    </service>
    <reference bind="setArtifactDataProvider" cardinality="1..1" interface="org.eclipse.osee.framework.core.dsl.integration.ArtifactDataProvider" name="ArtifactDataProvider" policy="static"/>
    <reference cardinality="1..1" interface="org.eclipse.core.resources.IWorkspace" name="IWorkspace" policy="static"/>
+   <reference bind="setOrcsTokenService" cardinality="1..1" interface="org.eclipse.osee.framework.core.OrcsTokenService" name="OrcsTokenService" policy="static"/>
 </scr:component>
