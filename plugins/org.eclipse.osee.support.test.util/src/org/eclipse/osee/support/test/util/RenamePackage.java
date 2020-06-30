@@ -20,6 +20,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import org.eclipse.osee.framework.core.JaxRsApi;
+import org.eclipse.osee.jaxrs.client.JaxRsApiImpl;
+import org.eclipse.osee.orcs.rest.client.internal.OseeClientImpl;
 
 /*
 *
@@ -32,8 +35,22 @@ public class RenamePackage {
    static String[] classes;
    static int classCount = 0;
    static int classCounter = 0;
+   private static JaxRsApi jaxRsApi;
 
    public static void main(String[] args) {
+      OseeClientImpl cli = new OseeClientImpl();
+      JaxRsApiImpl impl = new JaxRsApiImpl();
+
+      jaxRsApi = new JaxRsApiImpl();
+      if (impl == null) {
+         System.out.println("jaxrs is null");
+      } else {
+         System.out.println("jaxrs is not null");
+
+      }
+      impl.start();
+      String s = jaxRsApi.toJson("iuhiuh : hiuhih");
+      System.out.println("s: " + s);
       Scanner scan = new Scanner(System.in);
 
       System.out.println("What package do you want to rename?");

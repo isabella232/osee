@@ -22,4 +22,5 @@ Import-Package: javax.ws.rs,
  org.eclipse.osee.jaxrs.client,
  org.eclipse.osee.orcs.rest.model,
  org.eclipse.osee.orcs.rest.model.search.artifact
-Export-Package: org.eclipse.osee.orcs.rest.client
+Export-Package: org.eclipse.osee.orcs.rest.client,
+ org.eclipse.osee.orcs.rest.client.internal

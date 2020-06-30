@@ -24,13 +24,7 @@ import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 import org.apache.cxf.jaxrs.client.spec.ClientImpl.WebTargetImpl;
 import org.eclipse.osee.framework.core.JaxRsApi;
 import org.eclipse.osee.framework.core.OrcsTokenService;
-import org.eclipse.osee.framework.core.data.ArtifactTypeId;
-import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
-import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
-import org.eclipse.osee.framework.core.data.AttributeTypeId;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.OseeClient;
-import org.eclipse.osee.framework.core.data.RelationTypeToken;
 import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.type.OseeStateException;
@@ -54,14 +48,14 @@ public final class JaxRsApiImpl implements JaxRsApi {
    public void start() {
       SimpleModule module = JsonUtil.createModule();
 
-      JsonUtil.addDeserializer(module, AttributeTypeGeneric.class, tokenService::getAttributeType);
-      JsonUtil.addDeserializer(module, AttributeTypeToken.class, tokenService::getAttributeType);
-      JsonUtil.addDeserializer(module, AttributeTypeId.class, tokenService::getAttributeType);
+      //  JsonUtil.addDeserializer(module, AttributeTypeGeneric.class, tokenService::getAttributeType);
+      //    JsonUtil.addDeserializer(module, AttributeTypeToken.class, tokenService::getAttributeType);
+      //  JsonUtil.addDeserializer(module, AttributeTypeId.class, tokenService::getAttributeType);
 
-      JsonUtil.addDeserializer(module, ArtifactTypeToken.class, tokenService::getArtifactType);
-      JsonUtil.addDeserializer(module, ArtifactTypeId.class, tokenService::getArtifactType);
+      //JsonUtil.addDeserializer(module, ArtifactTypeToken.class, tokenService::getArtifactType);
+      //JsonUtil.addDeserializer(module, ArtifactTypeId.class, tokenService::getArtifactType);
 
-      JsonUtil.addDeserializer(module, RelationTypeToken.class, tokenService::getRelationType);
+      //   JsonUtil.addDeserializer(module, RelationTypeToken.class, tokenService::getRelationType);
 
       mapper = JsonUtil.createStandardDateObjectMapper(module);
       typeFactory = mapper.getTypeFactory();
@@ -76,6 +70,11 @@ public final class JaxRsApiImpl implements JaxRsApi {
 
    @Override
    public String toJson(Object object) {
+      System.out.println("mapper " + mapper);
+      System.out.println("object " + object);
+      SimpleModule module = JsonUtil.createModule();
+
+      mapper = JsonUtil.createStandardDateObjectMapper(module);
       return JsonUtil.toJson(mapper, object);
    }
 

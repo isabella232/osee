@@ -20,6 +20,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.eclipse.osee.ats.api.user.AtsUser;
 import org.eclipse.osee.ats.api.user.IAtsUserService;
+import org.eclipse.osee.framework.core.JaxRsApi;
 import org.eclipse.osee.framework.core.enums.Active;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 import org.json.JSONArray;
@@ -31,7 +32,13 @@ import org.json.JSONObject;
 @Path("user")
 public final class UserResource {
 
+   public static void Main(String[] args) {
+      String s = jaxRsApi.toJson("");
+      System.out.println("s: " + s);
+   }
+
    private final IAtsUserService userService;
+   private static JaxRsApi jaxRsApi;
 
    public UserResource(IAtsUserService userService) {
       this.userService = userService;
@@ -44,6 +51,8 @@ public final class UserResource {
       if (Strings.isValid(activeStr)) {
          active = Active.valueOf(activeStr);
       }
+      String array = "";
+      String s = jaxRsApi.toJson("");
       JSONArray arr = new JSONArray();
       for (AtsUser user : userService.getUsers(active)) {
          JSONObject obj = new JSONObject();
@@ -52,8 +61,10 @@ public final class UserResource {
          obj.put("email", user.getEmail());
          obj.put("active", user.isActive());
          obj.put("accountId", user.getStoreObject().getId());
-         arr.put(obj);
+         array = jaxRsApi.toJson(obj);
+         //  arr.put(obj);
       }
-      return arr.toString();
+      System.out.println("OBBBBBBBBJJJJ " + array);
+      return array;
    }
 }

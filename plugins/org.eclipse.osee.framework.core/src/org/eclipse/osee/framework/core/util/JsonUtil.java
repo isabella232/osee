@@ -96,6 +96,9 @@ public class JsonUtil {
 
    public static String toJson(ObjectMapper mapper, Object object) {
       try {
+         System.out.println("mapper " + mapper);
+         System.out.println("object " + object);
+
          return mapper.writeValueAsString(object);
       } catch (JsonProcessingException ex) {
          throw OseeCoreException.wrap(ex);
