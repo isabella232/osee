@@ -17,6 +17,7 @@ import static org.eclipse.osee.jdbc.JdbcException.newJdbcException;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -35,10 +36,14 @@ public final class JdbcServiceConfigParser {
       Map<String, JdbcServiceConfig> toReturn = new LinkedHashMap<>();
       if (Strings.isValid(source)) {
          try {
+            LinkedList jsonList = new LinkedList();
+
             JSONArray array = new JSONArray(source);
             for (int index = 0; index < array.length(); index++) {
+
                JSONObject object = array.getJSONObject(index);
                JdbcServiceConfig newConfig = asConfig(object);
+               System.out.println("config: " + newConfig.toString());
                if (!newConfig.isEmpty()) {
                   checkId(newConfig);
                   JdbcServiceConfig oldConfig = toReturn.put(newConfig.getId(), newConfig);

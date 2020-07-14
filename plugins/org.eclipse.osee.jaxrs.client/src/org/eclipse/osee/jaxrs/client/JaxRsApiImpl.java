@@ -48,14 +48,14 @@ public final class JaxRsApiImpl implements JaxRsApi {
    public void start() {
       SimpleModule module = JsonUtil.createModule();
 
-      //  JsonUtil.addDeserializer(module, AttributeTypeGeneric.class, tokenService::getAttributeType);
-      //    JsonUtil.addDeserializer(module, AttributeTypeToken.class, tokenService::getAttributeType);
-      //  JsonUtil.addDeserializer(module, AttributeTypeId.class, tokenService::getAttributeType);
+      //JsonUtil.addDeserializer(module, AttributeTypeGeneric.class, tokenService::getAttributeType);
+      // JsonUtil.addDeserializer(module, AttributeTypeToken.class, tokenService::getAttributeType);
+      // JsonUtil.addDeserializer(module, AttributeTypeId.class, tokenService::getAttributeType);
 
       //JsonUtil.addDeserializer(module, ArtifactTypeToken.class, tokenService::getArtifactType);
-      //JsonUtil.addDeserializer(module, ArtifactTypeId.class, tokenService::getArtifactType);
+      //  JsonUtil.addDeserializer(module, ArtifactTypeId.class, tokenService::getArtifactType);
 
-      //   JsonUtil.addDeserializer(module, RelationTypeToken.class, tokenService::getRelationType);
+      //JsonUtil.addDeserializer(module, RelationTypeToken.class, tokenService::getRelationType);
 
       mapper = JsonUtil.createStandardDateObjectMapper(module);
       typeFactory = mapper.getTypeFactory();
@@ -75,6 +75,7 @@ public final class JaxRsApiImpl implements JaxRsApi {
       SimpleModule module = JsonUtil.createModule();
 
       mapper = JsonUtil.createStandardDateObjectMapper(module);
+      // System.out.println("to return: "+mapper.writeValueAsString(object));
       return JsonUtil.toJson(mapper, object);
    }
 

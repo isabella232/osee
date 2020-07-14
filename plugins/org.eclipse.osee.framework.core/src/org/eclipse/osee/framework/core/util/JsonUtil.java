@@ -84,6 +84,11 @@ public class JsonUtil {
 
    public static JsonNode readTree(ObjectMapper mapper, String json) {
       try {
+         System.out.println("read mapper: " + mapper);
+
+         System.out.println("read mapper to string: " + mapper.toString());
+         System.out.println("read json: " + json);
+
          return mapper.readTree(json);
       } catch (IOException ex) {
          throw OseeCoreException.wrap(ex);
@@ -98,7 +103,8 @@ public class JsonUtil {
       try {
          System.out.println("mapper " + mapper);
          System.out.println("object " + object);
-
+         mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+         System.out.println("WRITE AS VALUE" + mapper.writeValueAsString(object));
          return mapper.writeValueAsString(object);
       } catch (JsonProcessingException ex) {
          throw OseeCoreException.wrap(ex);

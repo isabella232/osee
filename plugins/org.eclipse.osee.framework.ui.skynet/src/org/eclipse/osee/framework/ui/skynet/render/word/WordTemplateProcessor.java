@@ -19,6 +19,9 @@ import static org.eclipse.osee.framework.core.enums.CoreAttributeTypes.WordTempl
 import static org.eclipse.osee.framework.core.enums.CoreBranches.COMMON;
 import static org.eclipse.osee.framework.core.enums.DeletionFlag.EXCLUDE_DELETED;
 import static org.eclipse.osee.framework.core.enums.PresentationType.PREVIEW;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.CharacterCodingException;
 import java.util.ArrayList;
@@ -79,6 +82,7 @@ import org.eclipse.osee.framework.ui.skynet.render.RenderingUtil;
 import org.eclipse.osee.framework.ui.skynet.render.WordTemplateRenderer;
 import org.eclipse.osee.framework.ui.skynet.util.WordUiUtil;
 import org.eclipse.osee.framework.ui.swt.Displays;
+import org.eclipse.osee.jaxrs.client.JaxRsApiImpl;
 import org.eclipse.osee.orcs.rest.model.ApplicabilityEndpoint;
 import org.eclipse.swt.program.Program;
 import org.json.JSONArray;
@@ -201,14 +205,31 @@ public class WordTemplateProcessor {
       try {
          attributeElements.clear();
          metadataElements.clear();
-         JSONObject jsonObject = new JSONObject(masterTemplateOptions);
-         elementType = jsonObject.getString("ElementType");
+         //JSONObject jsonObject = new JSONObject(masterTemplateOptions);
+         JaxRsApiImpl impl = new JaxRsApiImpl();
+         impl.start();
+         String json = impl.toJson(masterTemplateOptions);
+         HashMap jsonMap = new HashMap();
+         ObjectMapper OM = impl.getObjectMapper();
+
+         JsonNode node = OM.readTree(masterTemplateOptions);
+         System.out.println("node: " + node.asText());
+         System.out.print("element type: " + node.get("ElementType"));
+
+         // JsonNodeFactory n = OM.getNodeFactory();
+         //ObjectNode no= n.objectNode();
+         //no.
+         System.out.println("json: " + json);
+         // JsonParser jp = new JsonParser();
+         System.out.println("master temp: " + masterTemplateOptions);
+         // int i = 3 / 0;
+         elementType = node.get("ElementType").asText();
          if (elementType.equals(ARTIFACT)) {
             parseAttributeOptions(masterTemplateOptions);
             parseMetadataOptions(masterTemplateOptions);
             parseOutliningOptions(masterTemplateOptions);
          }
-      } catch (JSONException ex) {
+      } catch (IOException ex) {
          OseeCoreException.wrapAndThrow(ex);
       }
       // Need to check if all attributes will be published.  If so set the AllAttributes option.
@@ -372,9 +393,14 @@ public class WordTemplateProcessor {
             wordMl.addWordMl(templateContent.substring(lastEndIndex, matcher.start()));
             lastEndIndex = matcher.end();
 
-            JSONObject jsonObject = new JSONObject(templateOptions);
-            elementType = jsonObject.getString("ElementType");
+            //   JSONObject jsonObject = new JSONObject(templateOptions);
+            // elementType = jsonObject.getString("ElementType");
+            JaxRsApiImpl impl = new JaxRsApiImpl();
+            impl.start();
+            ObjectMapper OM = impl.getObjectMapper();
 
+            JsonNode node = OM.readTree(templateOptions);
+            elementType = node.get("ElementType").toString();
             if (elementType.equals(ARTIFACT)) {
                parseOutliningOptions(templateOptions);
 
@@ -400,7 +426,7 @@ public class WordTemplateProcessor {
 
       } catch (CharacterCodingException ex) {
          OseeCoreException.wrapAndThrow(ex);
-      } catch (JSONException ex) {
+      } catch (IOException ex) {
          OseeCoreException.wrapAndThrow(ex);
       }
 
@@ -468,6 +494,16 @@ public class WordTemplateProcessor {
       try {
          JSONObject jsonObject = new JSONObject(result);
          JSONArray results = jsonObject.getJSONArray("results");
+         System.out.println("parse orcs: " + results);
+         int lk = 3 / 0;
+         JaxRsApiImpl impl = new JaxRsApiImpl();
+         impl.start();
+         String json = impl.toJson(result);
+         HashMap jsonMap = new HashMap();
+         ObjectMapper OM = impl.getObjectMapper();
+
+         JsonNode node = OM.readTree(result);
+
          if (results.length() >= 1) {
             JSONArray artifactIds = results.getJSONObject(0).getJSONArray("artifacts");
             JSONObject id = null;
@@ -478,7 +514,7 @@ public class WordTemplateProcessor {
                artifacts.add(artifact);
             }
          }
-      } catch (JSONException ex) {
+      } catch (Exception ex) {
          OseeCoreException.wrapAndThrow(ex);
       }
 
@@ -768,7 +804,7 @@ public class WordTemplateProcessor {
                      publishInLine, footer);
                }
             }
-         } else {            
+         } else {
             AttributeType attributeType = AttributeTypeManager.getType(attributeName);
             if (artifact.isAttributeTypeValid(attributeType)) {
                processAttribute(artifact, wordMl, attributeElement, attributeType, false, presentationType,

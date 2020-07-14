@@ -33,9 +33,9 @@
 		<h2 id="Requirements">Requirements</h2>
 		<ul>
 			<li>System with at least 4GB of RAM</li>
-			<li>Java Runtime Environment (JRE) 1.6</li>
+			<li>Java Runtime Environment (JRE) 1.8</li>
 			<li>
-				<a href="https://www.eclipse.org/downloads/packages/release/Kepler/SR2" target="osee_external">Eclipse Kepler 4.3.2</a>
+				<a href="https://www.eclipse.org/downloads/packages/release/Neon/2" target="osee_external">Eclipse Neon 2</a>
 			</li>
 			<li>Relational Databases: OSEE comes bundled with H2. For additional database support, see 
 				<a href="Supported_Databases" title="OSEE/Users_Guide/Getting_Started#Supported_Databases">Supported Databases</a>.
@@ -48,7 +48,7 @@
 		<h3 id="Quick_Server_Installation">Quick Server Installation</h3>
 		<p>If you are interested in a quick start, and are not setting up a custom database installation, setting up the OSEE server with the bundled HSQLDB database is simple.</p>
 		<ul>
-			<li>Create a directory to place your server in, and unzip the downloaded server zip file (e.g. org.eclipse.osee.server.runtime.zip) into that directory.</li>
+			<li>Create a directory to place your server in, and unzip the downloaded server zip file (e.g. org.eclipse.osee.x.server.runtime.zip) into that directory.</li>
 		</ul>
 		<p>You should end up with the following files and directories:</p>
 		<dl>
@@ -100,16 +100,17 @@
 				<br/>
 			</li>
 			<li>In the 
-				<i>Add Repository</i> dialog, choose the Archive button, then navigate the file browser to the Client Update file downloaded in step one. 
+				<i>Add Repository</i> dialog, choose the Archive button, then navigate the file browser to the Client Update file downloaded in step one, "org.eclipse.osee.client.all.p2.zip". 
 				<b>Please note that the use of the software you are about to access may be subject to third party terms and conditions and you are responsible for abiding by such terms and conditions.</b>
 			</li>
 			<li>Click on the 
-				<i>OK</i> button to store update site information.
+				<i>OK</i> button to store update site information, "Eclipse OSEE Client All - (Incubation)".
 			</li>
 			<li>Select the OSEE update site entry and all features listed under its category. Click the 
 				<i>Next</i> button. 
 				<img border="0" src="images/AvailableSoftware.png"/>
 			</li>
+			<li>If you receive a security popup Window regarding unsigned content, click OK.</li>
 			<li>The update manager calculates dependencies and offers you a list of features to install. Select the needed ones and click the 
 				<i>Next</i> button.
 			</li>
@@ -191,10 +192,13 @@
 				<a href="http://www.postgresql.org/download" target="osee_external">http://www.postgresql.org/download</a>
 			</li>
 			<li>Follow PostgreSQL installation instructions</li>
-			<li>By default, the PostgreSQL database server is configured to allow only local connections. If remote connections are to be allowed, edit postgresql.conf and pg_hba.conf to set the necessary permissions. (To setup an unsecured database instance set listen_address to * in the postgresql.conf file and add the following line to the pg_hba.conf file: host  all  all  0.0.0.0/0  trust)</li>
+			<li>By default, the PostgreSQL database server is configured to allow only local connections. If remote connections are to be allowed, edit postgresql.conf and pg_hba.conf to set the necessary </li>
+		</ol>
+		<p>permissions. (To setup an unsecured database instance set listen_address to * in the postgresql.conf file and add the following line to the pg_hba.conf file: host  all  all  0.0.0.0/0  trust). These two files are located in the \PostgreSQL\&lt;version&gt;\data directory. </p>
+		<ol>
 			<li>Configure PostgreSQL for OSEE
 				<ol>
-					<li>Launch pgAdmin (in windows Start-&gt;All Programs-&gt;PostgreSQL*-&gt;pgAdmin III)</li>
+					<li>Launch pgAdmin (in windows Start-&gt;All Programs-&gt;PostgreSQL*-&gt;pgAdmin *)</li>
 					<li>Double click on PostgreSQL Database Server (listed under Servers on the left hand side)
 						<ol>
 							<li>If you are prompted for a password type the password selected during installation (user should be postgres by default)</li>
@@ -202,38 +206,53 @@
 					</li>
 					<li>Create an "osee" user
 						<ol>
-							<li>Right-click on Login Roles (at the bottom of the tree on the left hand side) and select "New Login Role..."</li>
+							<li>Right-click on Login/Group Roles (in the tree on the left hand side) and select "Create -&gt; Login/Group Role..."</li>
 							<li>Enter the following in the dialog:
 								<ol>
-									<li>Role Name: osee</li>
-									<li>"Can login" should be checked</li>
-									<li>Password: osee</li>
-									<li>Password (again): osee</li>
-									<li>Role Privileges--select all of the following:
+									<li>General Tab
 										<ol>
-											<li>Inherits rights from parent roles</li>
-											<li>Superuser</li>
-											<li>Can create database objects</li>
-											<li>Can modify catalog directly</li>
+											<li>Name: osee</li>
+										</ol>
+									</li>
+									<li>Definition Tab
+										<ol>
+											<li>Password: osee</li>
+										</ol>
+									</li>
+									<li>Privileges Tab
+										<ol>
+											<li>Can login? Yes</li>
+											<li>Superuser:  Yes</li>
+											<li>Create roles?  Yes</li>
+											<li>Create databases:  Yes</li>
+											<li>Update catalog?  Yes</li>
 										</ol>
 									</li>
 								</ol>
 							</li>
-							<li>Click 'OK'</li>
+							<li>Click 'Save'</li>
 							<li>You should now have an "osee" user under Login Roles</li>
 						</ol>
 					</li>
 					<li>Expand the "Databases" item in the tree
 						<ol>
-							<li>Create the "OSEE" database by right-clicking on "Databases" and selecting "New Database..."</li>
+							<li>Create the "OSEE" database by right-clicking on "Databases" and selecting "Create -&gt; Database..."</li>
 							<li>Enter the following in the dialog:
 								<ol>
-									<li>Name: OSEE</li>
-									<li>Owner: osee</li>
-									<li>Encoding: UTF-8</li>
+									<li>General Tab
+										<ol>
+											<li>Database: OSEE</li>
+											<li>Owner: osee</li>
+										</ol>
+									</li>
+									<li>Definition Tab
+										<ol>
+											<li>Encoding: UTF-8</li>
+										</ol>
+									</li>
 								</ol>
 							</li>
-							<li>Click 'OK'</li>
+							<li>Click 'Save'</li>
 							<li>You should now have an "OSEE" Database under Databases</li>
 						</ol>
 					</li>
@@ -241,20 +260,24 @@
 						<ol>
 							<li>Create the "osee" schema:
 								<ol>
-									<li>Right click on "Schemas" and select "New Schema..."</li>
+									<li>Right click on "Schemas" and select "Create -&gt; Schema..."</li>
 									<li>Enter the following in the dialog:
 										<ol>
-											<li>Name: osee</li>
-											<li>Owner: osee</li>
+											<li>General Tab
+												<ol>
+													<li>Name: osee</li>
+													<li>Owner: osee</li>
+												</ol>
+											</li>
 										</ol>
 									</li>
-									<li>Click 'OK'</li>
+									<li>Click 'Save'</li>
 									<li>You should now have an "osee" schema under schemas</li>
 								</ol>
 							</li>
-							<li>The relational database is now configured. Proceed to OSEE Database Initialization</li>
 						</ol>
 					</li>
+					<li>The relational database is now configured. Proceed to OSEE Database Initialization</li>
 				</ol>
 			</li>
 		</ol>
@@ -275,7 +298,7 @@
 				<i>runH2.sh</i> for H2 on Unix. It is straightforward to convert the downloaded scripts to Windows batch files.
 				<ul>
 					<li>If running PostgreSQL, be sure to add the driver bundle (
-						<a href="http://www.eclipse.org/osee/downloads/" target="osee_external">downloads</a>) to the server installation.  Unzip the files into the server installation and add org.postgresql.driver@start to the bundles in config.ini.
+						<a href="http://www.eclipse.org/osee/downloads/" target="osee_external">downloads</a>) to the server installation.  Unzip the files into the server installation and add org.postgresql.driver@start to the bundles in config.ini.  In addition, add the org.postgresql.driver_&lt;version&gt;.jar file to the plugins directory in the Eclipse installation.
 					</li>
 				</ul>
 			</li>

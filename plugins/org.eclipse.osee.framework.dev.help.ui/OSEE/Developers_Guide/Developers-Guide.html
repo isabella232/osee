@@ -372,163 +372,173 @@ ${type_declaration}
 			<br/>
 		</p>
 		<h2 id="Custom_Data_Model">Custom Data Model</h2>
-		<p>The data model in OSEE is extensible and user configurable. Users can define new artifact, attribute, and relation types and their constraints such as multiplicity and applicability. Type inheritance allows similar types to be defined and modified without tedious redundancy because similar types inherit what is common from their super type. </p>
-		<p>The OSEE data model is defined using a tabular format involving 5 tables. See the following 
-			<a href="http://git.eclipse.org/c/osee/org.eclipse.osee.git/tree/plugins/org.eclipse.osee.framework.skynet.core/support" target="osee_external">link</a> for an example. 
+		<p>The data model in OSEE is extensible and runtime user configurable without modification to code or the database schema. Users can define new artifact, attribute, and relation types and their constraints such as multiplicity and applicability. Type inheritance allows similar types to be defined and modified without tedious redundancy because the types inherit what is common from their super type. </p>
+		<p>The OSEE data model is defined using a XText grammar designed by the OSEE Team.  This allows for editing of the types (object model) configuration much the way you would edit source code.  This includes command completion and error notation when an incorrect syntax or keyword is used. </p>
+		<p>
+			<b>Example of the OSEE Types Editor</b>
 		</p>
-		<p>The full data model can be defined using a single spreadsheet or be divided among multiple spreadsheets that can reference types defined in any spreadsheet. </p>
-		<h3 id="Artifact_Type_Table">Artifact Type Table</h3>
-		<table class="wikitable" border="1">
-			<tr>
-				<th>Column Name </th>
-				<th>Description</th>
-			</tr>
-			<tr>
-				<td>Artifact Type Name </td>
-				<td>any valid UTF-8 characters with a max length of 75 bytes</td>
-			</tr>
-			<tr>
-				<td>Super Type Name </td>
-				<td>The super artifact type from which this type will inherit associated attributes and relations. Another concrete artifact type or an abstract one that exists only in data model definition.</td>
-			</tr>
-		</table>
-		<h3 id="Artifact_Factory">Artifact Factory</h3>
-		<p>When defining new artifact types, by default, the Java class used to create the artifact at runtime is <code>org.eclipse.osee.framework.skynet.core.artifact.Artifact</code>. When a specialized subtype of Artifact is desired, the extension point <code>org.eclipse.osee.framework.skynet.core.ArtifactFactory</code> can be used to contribute an artifact factory that extends the class <code>org.eclipse.osee.framework.skynet.core.artifact.ArtifactFactory</code>. The factory's <code>isResponsibleFor(String artifactTypeName)</code> method determines if a particular factory will be used to construct an artifact of a given artifact type. Thus the artifact factory extension point can be used to case user defined artifact types to be constructed at runtime using a custom Java class that extends Artifact. </p>
-		<h3 id="Attribute_Type_Table">Attribute Type Table</h3>
-		<table class="wikitable" border="1">
-			<tr>
-				<th>Column Name </th>
-				<th>Description</th>
-			</tr>
-			<tr>
-				<td>Attribute Base Type </td>
-			</tr>
-			<tr>
-				<td>Attribute Data Provider </td>
-				<td>The attribute data provider is responsible for storing and retrieving attribute data. Fully qualified java class name of a class that implements <code>org.eclipse.osee.framework.skynet.core.attribute.providers.IAttributeDataProvider</code>. <code>org.eclipse.osee.framework.skynet.core.DefaultAttributeDataProvider</code> may be used when the data to be stored does not exceeded 4000 bytes, otherwise <code>org.eclipse.osee.framework.skynet.core.UriAttributeDataProvider</code> may be used.</td>
-			</tr>
-			<tr>
-				<td>Attribute Type Name </td>
-				<td>Any valid UTF-8 characters with a max length of 500 bytes</td>
-			</tr>
-			<tr>
-				<td>File Extension </td>
-				<td>Any valid UTF-8 characters with a max length of 50 bytes; only applies when using the <code>org.eclipse.osee.framework.skynet.core.UriAttributeDataProvider</code></td>
-			</tr>
-			<tr>
-				<td>Tagger ID </td>
-				<td>If the attrbiute’s content is to be included in the search index for the quick search, use <code>DefaultAttributeTaggerProvider</code>, otherwise leave blank.</td>
-			</tr>
-			<tr>
-				<td>Default Value </td>
-				<td>The initial value given an attribute upon initialization, this may be left blank</td>
-			</tr>
-			<tr>
-				<td>Validity Xml </td>
-				<td>For the attribute base type <code>org.eclipse.osee.framework.skynet.core.EnumeratedAttribute</code>, specifies the valid enumerations. For example, &lt;Page_Type&gt;&lt;Enum&gt;Portrait&lt;/Enum&gt;&lt;Enum&gt;Landscape&lt;/Enum&gt;&lt;/Page_Type&gt;</td>
-			</tr>
-			<tr>
-				<td>Min Occurrence </td>
-				<td>The framework with prevent having lest than this number of this attribute type on a single artifact</td>
-			</tr>
-			<tr>
-				<td>Max Occurrence </td>
-				<td>The framework with prevent adding more than this number of this attribute type to a single artifact</td>
-			</tr>
-			<tr>
-				<td>Tip Text </td>
-				<td>Text to describe an attribute. Any valid UTF-8 characters with a max length of 4000 bytes</td>
-			</tr>
-		</table>
-		<h3 id="Artifact_Type_.2F_Attribute_Type_Mapping_Table">Artifact Type / Attribute Type Mapping Table</h3>
-		<table class="wikitable" border="1">
-			<tr>
-				<th>Column Name </th>
-				<th>Description</th>
-			</tr>
-			<tr>
-				<td>Artifact Type Name </td>
-				<td>Exact name of an artifact type defined above (or previously)</td>
-			</tr>
-			<tr>
-				<td>Attribute Type Name </td>
-				<td>Exact name of an attribute type defined above (or previously) to be associated with the corresponding artifact type</td>
-			</tr>
-		</table>
-		<h3 id="Relation_Type_Table">Relation Type Table</h3>
-		<table class="wikitable" border="1">
-			<tr>
-				<th>Column Name </th>
-				<th>Description</th>
-			</tr>
-			<tr>
-				<td>Relation Type Name </td>
-				<td>Any valid UTF-8 characters with a max length of 50 bytes</td>
-			</tr>
-			<tr>
-				<td>Side A Name </td>
-				<td>Descriptive name for the A side of the relation. Any valid UTF-8 characters with a max length of 50 bytes</td>
-			</tr>
-			<tr>
-				<td>A to B Phrase </td>
-				<td>An optional phrase that describe the relation between the artifacts from the side A perspective. Any valid UTF-8 characters with a max length of 50 bytes</td>
-			</tr>
-			<tr>
-				<td>Side B Name </td>
-				<td>Descriptive name for the B side of the relation. Any valid UTF-8 characters with a max length of 50 bytes</td>
-			</tr>
-			<tr>
-				<td>B to A Phrase </td>
-				<td>An optional phrase that describe the relation between the artifacts from the side B perspective. Any valid UTF-8 characters with a max length of 50 bytes</td>
-			</tr>
-			<tr>
-				<td>Short Name </td>
-				<td>Five or less characters is typical. This abbreviated name is used in the user interface when space is at a premium</td>
-			</tr>
-			<tr>
-				<td>Ordered </td>
-				<td><code>Yes</code> to have artifacts on the same side of this relation type use a user defined ordered, otherwise <code>No</code></td>
-			</tr>
-		</table>
-		<h3 id="Artifact_Type_.2F_Relation_Type_Mapping_Table">Artifact Type / Relation Type Mapping Table</h3>
-		<table class="wikitable" border="1">
-			<tr>
-				<th>Column Name </th>
-				<th>Description</th>
-			</tr>
-			<tr>
-				<td>Artifact Type </td>
-				<td>Exact name of an artifact type defined above (or previously)</td>
-			</tr>
-			<tr>
-				<td>Relation Type </td>
-				<td>Exact name of an relation type defined above (or previously)</td>
-			</tr>
-			<tr>
-				<td>Side A Max </td>
-				<td>An artifact of type "Artifact Type" can be on side "A", "Side A Max" number of times for relation links of type "Relation Type"</td>
-			</tr>
-			<tr>
-				<td>Side B Max </td>
-				<td>An artifact of type "Artifact Type" can be on side "B", "Side B Max" number of times for relation links of type "Relation Type"</td>
-			</tr>
-		</table>
-		<h2 id="Importing_an_OSEE_Data_Model">Importing an OSEE Data Model</h2>
-		<p>To import changes to the data model for an existing OSEE database: </p>
+		<p>
+			<a href="http://wiki.eclipse.org/File:OSEE_Types_Sheet_Example.png" title="File:OSEE_Types_Sheet_Example.png" target="osee_external">File:OSEE_Types_Sheet_Example.png</a>
+		</p>
+		<p>
+			<b>Command Completion Example</b>
+		</p>
+		<p>
+			<a href="http://wiki.eclipse.org/File:OSEE_Command_Completion_Example.png" title="File:OSEE_Command_Completion_Example.png" target="osee_external">File:OSEE_Command_Completion_Example.png</a>
+		</p>
+		<p>
+			<b>Error Handling Example</b>
+		</p>
+		<p>
+			<a href="http://wiki.eclipse.org/File:OSEE_Editor_Error_Example.png" title="File:OSEE_Editor_Error_Example.png" target="osee_external">File:OSEE_Editor_Error_Example.png</a>
+		</p>
+		<p>The OSEE types definitions are stored in artifacts and cached during startup.  They are edited in OSEE like any other artifact.  Simply select the artifact &gt; right-click &gt; open with &gt; OSEE DSL Editor.  Convention is to root them off the Common Branch default hierarchy.</p>
+		<p>
+			<a href="http://wiki.eclipse.org/File:OSEE_Types_Sheet_Artifacts.png" title="File:OSEE_Types_Sheet_Artifacts.png" target="osee_external">File:OSEE_Types_Sheet_Artifacts.png</a>
+		</p>
+		<h3 id="Artifact_Definitions">Artifact Definitions</h3>
+		<p>All artifact types extend the type "Artifact".  The snippet below of the artifact type definition shows some types required by all OSEE configurations.</p>
+		<pre>
+artifactType "Artifact" {       &lt;-- Main Artifact type
+	id 1                    &lt;-- Unique long artifact id
+	attribute "Name"        &lt;-- List of Attributes that are valid for this Artifact Type
+	attribute "Annotation"
+	attribute "Content URL"
+	attribute "Static Id"
+	attribute "Relation Order"
+}
+
+artifactType "User" extends "Artifact" {   &lt;-- User artifact extending Artifact
+	id 5
+	attribute "Active"    &lt;-- Adding more attributes to those inherited from Artifact
+	attribute "Phone"
+	attribute "Email"
+	attribute "Street Address"
+	attribute "Dictionary"
+	...
+}
+</pre>
+		<h3 id="Attribute_Definitions">Attribute Definitions</h3>
+		<p>Attribute types define characteristics (fields) of an artifact.  They are strongly typed which supports data validation and editors and applications can know how to handle the values returned.  </p>
+		<p>Here's an example of the "Name" attribute that exists on every Artifact.</p>
+		<pre>
+attributeType "Name" extends StringAttribute {     &lt;-- extends one of the base Attribute Types
+	id 1152921504606847088                     &lt;-- unique long id of attribute type
+	dataProvider DefaultAttributeDataProvider  &lt;-- different dataProviders exist to store data differently
+	min 1                                      &lt;-- minimum number of Attributes per artifact.  can be 0..n
+	max 1                                      &lt;-- maximum number of Attributes allowed.  can be 1..n
+	taggerId DefaultAttributeTaggerProvider    &lt;-- defines the tagger is used to split the value for searching
+	description "Descriptive Name"             &lt;-- description of what this Attribute stores
+	defaultValue "unnamed"                     &lt;-- default value to be used when min==1
+	mediaType "text/plain"                     &lt;-- media types for this Attribute
+}
+
+oseeEnumType "enum.req.subsystem" {              &lt;-- Valid Enumerated values for the Subsystem attribute
+	id 3458764513820541310
+	entry "Robot_API"
+	entry "Robot_Survivability_Equipment"
+	entry "Robot_Systems_Management"
+	entry "Chassis"
+	...
+}
+
+attributeType "Subsystem" extends EnumeratedAttribute {   &lt;-- Enumerated Attribute definition
+	id 1152921504606847112
+	dataProvider DefaultAttributeDataProvider
+	min 1
+	max 1
+	taggerId DefaultAttributeTaggerProvider
+	enumType "enum.req.subsystem"         &lt;-- Enumeration definition from above
+	defaultValue "Unspecified"
+	mediaType "text/plain"
+}
+</pre>
+		<p>
+			<b>Valid Attribute Base-Types are:</b>
+		</p>
+		<ul>
+			<li>org.eclipse.osee.framework.skynet.core.BooleanAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.CompressedContentAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.JavaObjectAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.DateAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.FloatingPointAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.IntegerAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.StringAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.EnumeratedAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.WordTemplateAttribute</li>
+			<li>org.eclipse.osee.framework.skynet.core.WordWholeDocumentAttribute</li>
+		</ul>
+		<h3 id="Relation_Definitions">Relation Definitions</h3>
+		<p>Relations provide bi-directional links between artifacts on a branch.  Like Artifact and Attribute types, Relation types are strongly typed.  You can identify which artifact types are allowed to be on each side of the relation.  You can also specify the multiplicity.</p>
+		<pre>
+relationType "Code-Requirement" {   &lt;-- Relation type name
+	id 2305843009213694296      &lt;-- Unique long id
+	sideAName "code"                 &lt;-- Name of the Artifacts on side A
+	sideAArtifactType "Code Unit"    &lt;-- Valid Artifact Type for side A
+	sideBName "requirement"          &lt;-- Name of the Artifacts on side B
+	sideBArtifactType "Requirement"  &lt;-- Valid Artifact Type for side B
+	defaultOrderType Unordered       &lt;-- Default Order Type
+	multiplicity MANY_TO_MANY     &lt;-- Multiplicity (any number of code can relate to any number of req)
+}
+
+relationType "Component-Requirement" {
+	id 2305843009213694297
+	sideAName "component"
+	sideAArtifactType "Component"
+	sideBName "requirement"
+	sideBArtifactType "Requirement"
+	defaultOrderType Unordered
+	multiplicity ONE_TO_MANY     &lt;-- Multiplicity (one component can relate to multiple requirements)
+}
+
+</pre>
+		<p>As described above, you can use command completion to see the valid values.  An example is "multiplicity".</p>
+		<p>
+			<a href="http://wiki.eclipse.org/File:OSEE_Multiplicity_Options_Example.png" title="File:OSEE_Multiplicity_Options_Example.png" target="osee_external">File:OSEE_Multiplicity_Options_Example.png</a>
+		</p>
+		<h3 id="Making_Types_Changes_in_Production">Making Types Changes in Production</h3>
 		<ol>
-			<li>In Package Explorer, Select a file(s) containing the OSEE data model to import. If there are any enum overrides, you must select them either explicitly or by import statement (hierarchically). </li>
-			<li>Right click and select <code>Import...</code> </li>
-			<li>Under the <code>OSEE</code> category, select <code>OSEE Types</code> </li>
-			<li>Ensure that all types files are included in <code>Resolved dependencies</code> and <code>Report Changes</code> is checked. Select Finish. </li>
-			<li>Review all tabs to ensure that all changes are expected. 
+			<li>Search for OSEE Type Definition artifact types or find the types artifact on the Default Hierarchy of the Common Branch</li>
+			<li>Select &gt; Right-Click &gt; Open With &gt; DSL Editor</li>
+			<li>Edit the types</li>
+			<li>Remove all errors</li>
+			<li>Save the editor</li>
+			<li>Refresh the server types caches, do one of the following
 				<ol>
-					<li><code>Osee Default Enum</code> will always show up on <code>OseeEnum Types</code> tab </li>
-					<li>Ensure each column's data is correct. All "true" values are what is being changed. </li>
+					<li>You should be prompted to update caches upon save.  Select Yes for a single-server deployment.</li>
+					<li>POST to server urls &lt;SERVER_ADDRESS&gt;/orcs/types/invalidate-caches</li>
+					<li>curl -X POST &lt;SERVER_ADDRESS&gt;/orcs/types/invalidate-caches</li>
+					<li>A server restart will also reload the new types, but is not required</li>
 				</ol>
 			</li>
-			<li>When ready to persist changes, you must restart the client (Still Necessary??) and only run import once with <code>Persist Changes</code> checked</li>
+			<li>If the code needs a new version of the types sheets (eg: Type sheet grammar has changed), See Types Versioning section below.</li>
 		</ol>
-		<p>To automatically import the data model during database initialization use the extension point <code>org.eclipse.osee.framework.skynet.core.OseeTypes</code> </p>
+		<h3 id="Types_and_Access_Control_Versioning">Types and Access Control Versioning</h3>
+		<p>As of the 24.0 line, the OSEE Types and Access Control Artifacts are "Versioned".  This allows the "Production" version of the code to use one version of the types while another release line is being developed or prepared for release.</p>
+		<h4 id="OSEE_Types_Instructions">OSEE Types Instructions</h4>
+		<p>Prior to 0.24.0, types were loaded based on the Artifact Type.  After this, types are loaded by using the OrcsTypesData.OSEE_TYPE_VERSION to index into the tuple table and grab the gamma_ids of the types attributes to load.  Thus this code variable needs to match up with the tuple entries for the new version of the types sheet(s).</p>
+		<p>
+			<b>To create a new types version</b>
+		</p>
+		<ul>
+			<li>Copy the existing types artifact and paste into OSEE Types folder.  Types artifacts should be named for the last release they were used for (eg "Osee Type Config - 0.25.0") to reduce confusion.</li>
+			<li>Make appropriate grammar and types changes in the new types sheets</li>
+			<li>Update the code version number in org.eclipse.osee.framework.core.data.OrcsTypesData.OSEE_TYPE_VERSION to next number</li>
+			<li>Update the tuple table to point to new OSEE Types Sheets gamma ids using OSEE_TYPE_VERSION number from last step at the web page &lt;SERVER_ADDRESS&gt;/orcs/types/config/ui/main.html
+				<ul>
+					<li>NOTE: This MUST be done for each instance of OSEE database even if types didn't update</li>
+				</ul>
+			</li>
+			<li>While both production and developmental types sheets are in play, type changes MUST be made in both types sheets or one version will not see the types changes and produce errors.</li>
+			<li>Types artifacts should be moved to a Retired OSEE Types folder when no longer used by any production releases.  This helps reduce confusion for admins.</li>
+		</ul>
+		<h4 id="Access_Control_Instructions">Access Control Instructions</h4>
+		<ul>
+			<li>Copy the "ATS CM Access Control" artifact on common and paste with new name</li>
+			<li>Replace the version at end of name</li>
+			<li>Update AtsArtifactToken.AtsCmAccessControl token with new ids</li>
+			<li>Make whatever access changes using DSL Editor on production to the newly created artifact</li>
+		</ul>
 		<h2 id="OSEE_Branches">OSEE Branches</h2>
 		<p>
 			<a href="http://wiki.eclipse.org/OSEE/Branches" target="osee_external">OSEE Branches</a> 
@@ -902,9 +912,9 @@ ${type_declaration}
 					</li>
 					<li>org.eclipse.osee.x.parent
 						<ol>
-							<li>org.eclipse.osee.server.parent</li>
+							<li>org.eclipse.osee.x.server.parent</li>
 							<li>org.eclipse.osee.orcs.parent</li>
-							<li>org.eclipse.osee.core.server.parent</li>
+							<li>org.eclipse.osee.x.core.parent</li>
 						</ol>
 					</li>
 				</ol>
@@ -948,7 +958,7 @@ ${type_declaration}
 				<td>OSEE Client IDE All-In-One Win32 x86 64-bit</td>
 			</tr>
 			<tr>
-				<td rowspan="4">plugins/org.eclipse.osee.server.p2/target</td>
+				<td rowspan="4">plugins/org.eclipse.osee.x.server.p2/target</td>
 				<td>repository/</td>
 				<td>OSEE Application Server P2 Site </td>
 			</tr>
@@ -957,11 +967,11 @@ ${type_declaration}
 				<td>OSEE Application Server</td>
 			</tr>
 			<tr>
-				<td>org.eclipse.osee.server.p2.zip</td>
+				<td>org.eclipse.osee.x.server.p2.zip</td>
 				<td>OSEE Application Server Archived Update Site</td>
 			</tr>
 			<tr>
-				<td>org.eclipse.osee.server.runtime.zip</td>
+				<td>org.eclipse.osee.x.server.runtime.zip</td>
 				<td>OSEE Application Server Zipped Runtime</td>
 			</tr>
 			<tr></tr>
@@ -976,8 +986,6 @@ ${type_declaration}
 				<a href="http://wiki.eclipse.org/OSEE/Users_Guide/Getting_Started#Supported_Databases" title="OSEE/Users Guide/Getting Started#Supported_Databases" target="osee_external">Supported Databases</a> to complete this step.
 			</li>
 		</ul>
-		<h2 id="Database_Schema">Database Schema</h2>
-		<p>TODO: add html generated from SKYNET_VERSIONING.xml file.</p>
 		<h2 id="How_to_Define_Classes_for_Coverage_Importing">How to Define Classes for Coverage Importing</h2>
 		<p>The following steps walk a developer through defining the classes necessary to begin importing coverage data into the OSEE application.&nbsp; Please keep in mind that these are meant to be simplified examples and developers are encouraged to 'get creative' when adapting these examples to their own particular context.
 			<br/> 

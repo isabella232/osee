@@ -74,6 +74,7 @@ import org.eclipse.osee.framework.ui.skynet.widgets.XListDropViewer;
 import org.eclipse.osee.framework.ui.skynet.widgets.XModifiedListener;
 import org.eclipse.osee.framework.ui.skynet.widgets.XWidget;
 import org.eclipse.osee.framework.ui.skynet.widgets.util.SwtXWidgetRenderer;
+import org.eclipse.osee.jaxrs.client.JaxRsApiImpl;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -240,6 +241,12 @@ public class PublishWithSpecifiedTemplate extends AbstractBlam {
       ArrayList<Artifact> artifacts = new ArrayList<>();
       try {
          String result = ServiceUtil.getOseeClient().runOrcsScript(orcsQuery);
+         System.out.println("result in publish: " + result);
+         JaxRsApiImpl impl = new JaxRsApiImpl();
+         impl.start();
+         HashMap jsonArray = new HashMap();
+         String toJson = impl.toJson(result);
+         // jsonArray.put(key, value);
          JSONObject jsonObject = new JSONObject(result);
          JSONArray results = jsonObject.getJSONArray("results");
          if (results.length() >= 1 && branch != null) {
@@ -255,7 +262,7 @@ public class PublishWithSpecifiedTemplate extends AbstractBlam {
       } catch (JSONException ex) {
          OseeCoreException.wrapAndThrow(ex);
       }
-      return artifacts;
+      return null;
    }
 
    private void parseQueryForBranchName(String orcsQuery) {

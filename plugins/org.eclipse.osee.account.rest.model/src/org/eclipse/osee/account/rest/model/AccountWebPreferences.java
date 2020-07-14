@@ -1,23 +1,26 @@
 /*********************************************************************
- * Copyright (c) 2015 Boeing
- *
- * This program and the accompanying materials are made
- * available under the terms of the Eclipse Public License 2.0
- * which is available at https://www.eclipse.org/legal/epl-2.0/
- *
- * SPDX-License-Identifier: EPL-2.0
- *
- * Contributors:
- *     Boeing - initial API and implementation
- **********************************************************************/
+* Copyright (c) 2015 Boeing
+*
+* This program and the accompanying materials are made
+* available under the terms of the Eclipse Public License 2.0
+* which is available at https://www.eclipse.org/legal/epl-2.0/
+*
+* SPDX-License-Identifier: EPL-2.0
+*
+* Contributors:
+*     Boeing - initial API and implementation
+**********************************************************************/
 
 package org.eclipse.osee.account.rest.model;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import org.eclipse.osee.jaxrs.client.JaxRsApiImpl;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -39,33 +42,45 @@ public class AccountWebPreferences {
 
    private void initPreferences(String string, String team) {
       try {
+         //   int i = 3 / 0;
+         JaxRsApiImpl impl = new JaxRsApiImpl();
+         impl.start();
+         String json = impl.toJson(string);
+         HashMap jsonMap = new HashMap();
+         ObjectMapper OM = impl.getObjectMapper();
+
+         JsonNode node = OM.readTree(string);
+
          JSONObject jObject = new JSONObject(string);
          JSONObject linkJsonObject = jObject.getJSONObject("links");
          @SuppressWarnings("unchecked")
          Iterator<String> keys = linkJsonObject.keys();
          while (keys.hasNext()) {
             String next = keys.next();
-            JSONObject linkJObject = linkJsonObject.getJSONObject(next);
+            JsonNode linkJObject = OM.readTree(next);
+            JSONObject linkJObject2 = linkJsonObject.getJSONObject(next);
             Link link = new Link();
             if (linkJObject.has("name")) {
-               link.setName(linkJObject.getString("name"));
+               link.setName(linkJObject.get("name").toString());
+
             }
             if (linkJObject.has("url")) {
-               link.setUrl(linkJObject.getString("url"));
+               link.setUrl(linkJObject.get("url").toString());
             }
             if (linkJObject.has("tags")) {
-               JSONArray array = linkJObject.getJSONArray("tags");
-               for (int x = 0; x < array.length(); x++) {
-                  link.getTags().add(array.getString(x));
+               List<String> array = linkJObject.findValuesAsText("tags");
+               JSONArray array2 = linkJObject2.getJSONArray("tags");
+               for (int x = 0; x < array.size(); x++) {
+                  link.getTags().add(array.get(x));
                }
             }
             link.setTeam(team);
-            link.setId(linkJObject.getString("id"));
+            link.setId(linkJObject.get("id").toString());
             linksMap.put(next, link);
          }
 
-      } catch (JSONException ex) {
-         //
+      } catch (Exception ex) {
+         System.out.println("Exception:" + ex);
       }
    }
 

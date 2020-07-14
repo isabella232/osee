@@ -8,8 +8,10 @@ Eclipse-ExtensibleAPI: true
 Bundle-Activator: org.eclipse.osee.framework.ui.skynet.internal.Activator
 Service-Component: OSGI-INF/*.xml
 Bundle-Vendor: Eclipse Open System Engineering Environment
-Import-Package: com.fasterxml.jackson.core.type,
+Import-Package: com.fasterxml.jackson.core,
+ com.fasterxml.jackson.core.type,
  com.fasterxml.jackson.databind,
+ com.fasterxml.jackson.databind.node,
  com.google.common.base,
  com.google.common.cache,
  com.google.common.collect,

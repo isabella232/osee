@@ -29,7 +29,11 @@ public class UserResourceTest extends AbstractRestTest {
    @Test
    public void testGet() throws Exception {
       String json = getJson("/ats/user");
+      System.out.println("test get: " + json);
       JsonNode users = JsonUtil.readTree(json);
+      System.out.println("users: " + users);
+
+      System.out.println("user size: " + users.size());
       Assert.assertTrue(users.size() >= 9);
       Assert.assertEquals(3333,
          JsonUtil.getArrayElement(users, "name", DemoUsers.Joe_Smith.getName()).get("id").asInt());
