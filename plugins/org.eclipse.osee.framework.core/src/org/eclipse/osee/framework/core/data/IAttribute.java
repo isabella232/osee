@@ -20,7 +20,7 @@ public interface IAttribute<T> extends AttributeId {
 
    T getValue();
 
-   AttributeTypeToken getAttributeType();
+   AttributeTypeGeneric<T> getAttributeType();
 
    String getDisplayableString();
 

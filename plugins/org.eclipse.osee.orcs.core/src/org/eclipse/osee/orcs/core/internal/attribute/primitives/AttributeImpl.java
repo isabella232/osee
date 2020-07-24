@@ -18,7 +18,7 @@ import java.io.InputStream;
 import java.lang.ref.Reference;
 import org.eclipse.osee.framework.core.OrcsTokenService;
 import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.GammaId;
 import org.eclipse.osee.framework.core.enums.ModificationType;
 import org.eclipse.osee.framework.jdk.core.type.BaseId;
@@ -193,11 +193,15 @@ public abstract class AttributeImpl<T> extends BaseId implements Comparable<Attr
       return containerReference.get();
    }
 
+   protected T getDefaultValue() {
+
+   }
+
    /**
     * @return attributeType Attribute Type Information
     */
    @Override
-   public AttributeTypeToken getAttributeType() {
+   public <T> AttributeTypeGeneric<T> getAttributeType() {
       return attributeData.getType();
    }
 

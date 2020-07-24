@@ -30,6 +30,7 @@ import java.util.Set;
 import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.AttributeId;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeId;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
@@ -452,7 +453,7 @@ public abstract class AttributeManagerImpl extends BaseId implements HasOrcsData
    }
 
    @Override
-   public <T> Attribute<T> createAttribute(AttributeTypeToken attributeType) {
+   public <T> Attribute<T> createAttribute(AttributeTypeGeneric<T> attributeType) {
       checkTypeValid(attributeType);
       checkMultiplicityCanAdd(attributeType);
       Attribute<T> attr = attributeFactory.createAttributeWithDefaults(this, getOrcsData(), attributeType);

@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.List;
 import org.eclipse.osee.framework.core.data.AttributeId;
 import org.eclipse.osee.framework.core.data.AttributeTypeEnum;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.enums.DeletionFlag;
 import org.eclipse.osee.framework.core.enums.EnumToken;
@@ -78,7 +79,7 @@ public interface AttributeManager extends AttributeContainer {
 
    void deleteAttributesWithValue(AttributeTypeToken attributeType, Object value);
 
-   <T> Attribute<T> createAttribute(AttributeTypeToken attributeType);
+   <T> Attribute<T> createAttribute(AttributeTypeGeneric<T> attributeType);
 
    <T> Attribute<T> createAttribute(AttributeTypeToken attributeType, T value);
 

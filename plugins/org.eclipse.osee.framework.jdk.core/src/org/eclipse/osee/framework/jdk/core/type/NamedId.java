@@ -22,7 +22,7 @@ import org.eclipse.osee.framework.jdk.core.util.Strings;
  */
 public interface NamedId extends Named, Id {
 
-   public static NamedId SENTINEL = new NamedIdBase(-1L, Named.SENTINEL);
+   public static NamedId SENTINEL = new NamedIdBase(Id.SENTINEL, Named.SENTINEL);
    public static Pattern nameIdPattern = Pattern.compile("\\[(.*)\\]-\\[(.*)\\]");
 
    default String toStringWithId() {

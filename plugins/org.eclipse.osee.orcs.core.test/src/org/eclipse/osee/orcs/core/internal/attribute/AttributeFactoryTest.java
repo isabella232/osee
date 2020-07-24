@@ -23,7 +23,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.eclipse.osee.framework.core.OrcsTokenService;
-import org.eclipse.osee.framework.core.data.AttributeTypeToken;
+import org.eclipse.osee.framework.core.data.AttributeTypeString;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
 import org.eclipse.osee.framework.core.enums.DeletionFlag;
 import org.eclipse.osee.orcs.core.ds.Attribute;
@@ -63,7 +63,7 @@ public class AttributeFactoryTest {
    // @formatter:on
 
    private AttributeFactory factory;
-   private final AttributeTypeToken attributeType = CoreAttributeTypes.Name;
+   private final AttributeTypeString attributeType = CoreAttributeTypes.Name;
 
    @Before
    public void init() {

@@ -22,6 +22,7 @@ import org.eclipse.osee.framework.core.data.ArtifactId;
 import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.AttributeId;
+import org.eclipse.osee.framework.core.data.AttributeTypeGeneric;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.BranchId;
 import org.eclipse.osee.framework.core.data.GammaId;
@@ -109,7 +110,7 @@ public interface TransactionBuilder {
 
    void setName(ArtifactId art, String value);
 
-   AttributeId createAttribute(ArtifactId art, AttributeTypeToken attributeType);
+   <T> AttributeId createAttribute(ArtifactId art, AttributeTypeGeneric<T> attributeType);
 
    <T> AttributeId createAttribute(ArtifactId art, AttributeTypeToken attributeType, T value);
 

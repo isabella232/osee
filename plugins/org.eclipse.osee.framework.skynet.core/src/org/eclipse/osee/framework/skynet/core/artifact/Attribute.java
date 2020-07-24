@@ -237,7 +237,7 @@ public abstract class Attribute<T> implements Comparable<Attribute<T>>, IAttribu
     * @return attributeType Attribute Type Information
     */
    @Override
-   public AttributeTypeToken getAttributeType() {
+   public AttributeTypeGeneric<T> getAttributeType() {
       return AttributeTypeManager.getAttributeType(attributeTypeToken.getId());
    }
 
