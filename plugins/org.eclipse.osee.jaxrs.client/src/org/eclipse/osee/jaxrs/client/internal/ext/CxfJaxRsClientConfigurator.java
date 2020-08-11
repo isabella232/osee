@@ -92,7 +92,6 @@ public final class CxfJaxRsClientConfigurator implements JaxRsClientConfigurator
       // Ensure CXF JAX-RS implementation is loaded
       RuntimeDelegate runtimeDelegate = new org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl();
       RuntimeDelegate.setInstance(runtimeDelegate);
-
       new org.apache.cxf.jaxrs.client.spec.ClientBuilderImpl();
       System.setProperty(JAVAX_WS_RS_CLIENT_BUILDER_PROPERTY, DEFAULT_JAXRS_CLIENT_BUILDER_IMPL);
    }
@@ -251,7 +250,13 @@ public final class CxfJaxRsClientConfigurator implements JaxRsClientConfigurator
 
    private static void register(ClientBuilder builder, Iterable<? extends Object> objects) {
       for (Object object : objects) {
-         builder.register(object);
+         try {
+            builder.register(object);
+         }
+
+         catch (Exception f) {
+            System.out.println("Class is not found: " + f);
+         }
       }
    }
 

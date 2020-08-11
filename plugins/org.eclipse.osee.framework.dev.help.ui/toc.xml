@@ -19,14 +19,15 @@
 			</topic>
 		</topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#Custom_Data_Model" label="Custom Data Model">
-			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Artifact_Type_Table" label="Artifact Type Table"></topic>
-			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Artifact_Factory" label="Artifact Factory"></topic>
-			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Attribute_Type_Table" label="Attribute Type Table"></topic>
-			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Artifact_Type_.2F_Attribute_Type_Mapping_Table" label="Artifact Type / Attribute Type Mapping Table"></topic>
-			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Relation_Type_Table" label="Relation Type Table"></topic>
-			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Artifact_Type_.2F_Relation_Type_Mapping_Table" label="Artifact Type / Relation Type Mapping Table"></topic>
+			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Artifact_Definitions" label="Artifact Definitions"></topic>
+			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Attribute_Definitions" label="Attribute Definitions"></topic>
+			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Relation_Definitions" label="Relation Definitions"></topic>
+			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Making_Types_Changes_in_Production" label="Making Types Changes in Production"></topic>
+			<topic href="OSEE/Developers_Guide/Developers-Guide.html#Types_and_Access_Control_Versioning" label="Types and Access Control Versioning">
+				<topic href="OSEE/Developers_Guide/Developers-Guide.html#OSEE_Types_Instructions" label="OSEE Types Instructions"></topic>
+				<topic href="OSEE/Developers_Guide/Developers-Guide.html#Access_Control_Instructions" label="Access Control Instructions"></topic>
+			</topic>
 		</topic>
-		<topic href="OSEE/Developers_Guide/Developers-Guide.html#Importing_an_OSEE_Data_Model" label="Importing an OSEE Data Model"></topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#OSEE_Branches" label="OSEE Branches"></topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#Workspace_Setup" label="Workspace Setup"></topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#Downloading_and_Configuring_Eclipse" label="Downloading and Configuring Eclipse"></topic>
@@ -58,7 +59,6 @@
 				<topic href="OSEE/Developers_Guide/Developers-Guide.html#OSEE_System_Requirements" label="OSEE System Requirements"></topic>
 			</topic>
 		</topic>
-		<topic href="OSEE/Developers_Guide/Developers-Guide.html#Database_Schema" label="Database Schema"></topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#How_to_Define_Classes_for_Coverage_Importing" label="How to Define Classes for Coverage Importing"></topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#OSEE_Web_Development" label="OSEE Web Development"></topic>
 		<topic href="OSEE/Developers_Guide/Developers-Guide.html#Helpful_links" label="Helpful links"></topic>

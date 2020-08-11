@@ -1,0 +1,932 @@
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective settings
+[WARNING] Unrecognised tag: 'repositories' (position: START_TAG seen ...</proxies>\n\n           <repositories>... @19:26)  @ C:\Users\b3091894\.m2\settings.xml, line 19, column 26
+[WARNING] 
+[INFO] Scanning for projects...
+[WARNING] No explicit target runtime environment configuration. Build is platform dependent.
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.logger:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\pom.xml
+[INFO] Adding repository file:C:/UserData/rabbit/org.eclipse.osee/plugins/org.eclipse.osee.dep.p2/target/repository/
+[INFO] Adding repository http://download.eclipse.org/mylyn/drops/3.5.1/v20110422-0200
+[INFO] Adding repository http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.11.v20180605
+[INFO] Adding repository http://findbugs.cs.umd.edu/eclipse
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.logger:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.logger:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.logger.slf4j:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger.slf4j\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.logger.slf4j:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger.slf4j\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.logger.slf4j:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger.slf4j\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.logback.config:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logback.config\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.logback.config:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logback.config\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.logback.config:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logback.config\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.activity.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.activity.api\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.activity.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.activity.api\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.activity.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.activity.api\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.console.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.console.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.console.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.console.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.console.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.console.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.console.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.console.admin.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.console.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.console.admin.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.console.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.console.admin.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.cache.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.cache.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.cache.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.cache.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.cache.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.cache.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.cache.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.cache.admin.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.cache.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.cache.admin.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.cache.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.cache.admin.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.jdk.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.jdk.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.jdk.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.jdk.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.jdk.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.jdk.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.config.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.config.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.config.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.config.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.config.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.config.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.config.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.config.admin.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.config.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.config.admin.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.config.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.config.admin.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.admin.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.admin.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.admin.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.authorization.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authorization.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.authorization.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authorization.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.authorization.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authorization.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.authorization.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authorization.admin.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.authorization.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authorization.admin.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.authorization.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authorization.admin.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.ldap:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.ldap\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.ldap:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.ldap\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.ldap:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.ldap\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.ldap.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.ldap.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.ldap.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.ldap.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.authentication.ldap.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.authentication.ldap.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.account.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.account.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.account.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.account.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.admin.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.account.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.admin.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.account.admin.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.admin.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.logging:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.logging\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.logging:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.logging\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.logging:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.logging\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.logging.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.logging.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.logging.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.logging.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.logging.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.logging.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.mail.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail.api\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.mail.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail.api\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.mail.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail.api\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.mail:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.mail:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.mail:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.mail.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.mail.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.mail.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.mail.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.template.engine:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.template.engine\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.template.engine:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.template.engine\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.template.engine:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.template.engine\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.template.engine.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.template.engine.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.template.engine.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.template.engine.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.template.engine.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.template.engine.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.server:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.server\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.server:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.server\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.server:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.server\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.server.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.server.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.server.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.server.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.server.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.server.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.client\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.client\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.client\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.client.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.client.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.client.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.client.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jaxrs.client.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jaxrs.client.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.model\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.model\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.model\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.client\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.client\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.account.rest.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.account.rest.client\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jdbc:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jdbc\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jdbc:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jdbc\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jdbc:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jdbc\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.jdbc.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jdbc.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.jdbc.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jdbc.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.jdbc.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.jdbc.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.core.server.external.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.server.external.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.core.server.external.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.server.external.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.core.server.external.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.server.external.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.core.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.core.server.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.core.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.core.server.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.core.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.core.server.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.integration:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.integration\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.integration:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.integration\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.integration:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.integration\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.integration.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.integration.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.integration.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.integration.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.integration.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.integration.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.model\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.model\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.model\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.model.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.model.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.model.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.model.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.model.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.model.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.resource.management:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.resource.management\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.resource.management:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.resource.management\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.resource.management:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.resource.management\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.resource.management.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.resource.management.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.resource.management.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.resource.management.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.resource.management.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.resource.management.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.activity:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.activity\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.activity:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.activity\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.activity:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.activity\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.core.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.core.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.core.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.db:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.db\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.db:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.db\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.db:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.db\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.db.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.db.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.db.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.db.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.db.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.db.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.model\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.model\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.model\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.client\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.client\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.client\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.rest.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.authorization:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.authorization\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.authorization:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.authorization\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.authorization:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.authorization\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.account.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.account.admin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.account.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.account.admin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.account.admin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.account.admin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.orcs.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.orcs.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.vcast:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.vcast\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.vcast:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.vcast\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.vcast:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.vcast\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest.model\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest.model\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest.model:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest.model\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.rest.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.disposition.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.disposition.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.disposition.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.disposition.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.disposition.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.api\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.api\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.api\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.core.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.core.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.core.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.rest\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.rest\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.rest\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.rest.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.rest.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.rest.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.server.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.server.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.server.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.server.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.server.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.server.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.server.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.server.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.server.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.define.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.api\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.define.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.api\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.define.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.api\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.define.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.rest\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.define.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.rest\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.define.rest:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.rest\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.define.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.rest.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.define.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.rest.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.define.rest.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.rest.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.app:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.app\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.app:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.app\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.app:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.app\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.app.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.app.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.app.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.app.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.app.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.app.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.authentication.ldap.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.authentication.ldap.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.authentication.ldap.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.authentication.ldap.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.authentication.ldap.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.authentication.ldap.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.server:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.server\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.server:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.server\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.server:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.server\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.server.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.server.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.server.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.server.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.server.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.server.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.server.ide.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.server.ide.api\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.server.ide.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.server.ide.api\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.server.ide.api:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.server.ide.api\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.server.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.server.ide\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.server.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.server.ide\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.server.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.server.ide\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.web.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.web.ui\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.web.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.web.ui\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.web.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.web.ui\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.server.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.server.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.server.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.server.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.server.application:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.server.application\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.server.application:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.server.application\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.server.application:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.server.application\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.core.runtime.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.runtime.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.core.runtime.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.runtime.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.core.runtime.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.runtime.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.core.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.core.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.core.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.core.plugin.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.plugin.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.core.plugin.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.plugin.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.core.plugin.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.plugin.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.plugin.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.plugin.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.plugin.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.plugin.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.plugin.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.plugin.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.core.ui.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.ui.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.core.ui.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.ui.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.core.ui.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.core.ui.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.plugin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.plugin\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.plugin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.plugin\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.plugin:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.plugin\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.swt:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.swt\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.swt:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.swt\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.swt:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.swt\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.ws:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.ws\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.ws:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.ws\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.ws:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.ws\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.external.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.external.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.external.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.external.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.external.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.external.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:jms.activemq.launch:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\jms.activemq.launch\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:jms.activemq.launch:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\jms.activemq.launch\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:jms.activemq.launch:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\jms.activemq.launch\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:jms.libraries:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\jms.libraries\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:jms.libraries:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\jms.libraries\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:jms.libraries:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\jms.libraries\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.runtime.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.runtime.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.runtime.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.runtime.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.runtime.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.runtime.p2\pom.xml
+[INFO] Computing target platform for MavenProject: postgresql:org.postgresql.driver:8.3.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.postgresql.driver\pom.xml
+[INFO] Resolving dependencies of MavenProject: postgresql:org.postgresql.driver:8.3.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.postgresql.driver\pom.xml
+[INFO] Resolving class path of MavenProject: postgresql:org.postgresql.driver:8.3.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.postgresql.driver\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.lifecycle:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.lifecycle\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.lifecycle:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.lifecycle\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.lifecycle:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.lifecycle\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.lifecycle.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.lifecycle.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.lifecycle.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.lifecycle.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.lifecycle.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.lifecycle.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access.provider:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access.provider\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access.provider:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access.provider\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.access.provider:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.access.provider\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.branch.gantt:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.branch.gantt\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.branch.gantt:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.branch.gantt\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.branch.gantt:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.branch.gantt\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.client\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.client\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.client:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.client\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.database.init:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.database.init\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.database.init:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.database.init\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.database.init:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.database.init\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.event.res:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.event.res\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.event.res:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.event.res\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.event.res:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.event.res\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.event.res.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.event.res.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.event.res.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.event.res.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.messaging.event.res.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.messaging.event.res.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.dev.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.dev.help.ui\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.dev.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.dev.help.ui\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.dev.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.dev.help.ui\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.help.ui\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.help.ui\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.help.ui\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.skynet.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.skynet.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.skynet.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.skynet.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.skynet.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.skynet.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.skynet.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.skynet.core.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.skynet.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.skynet.core.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.skynet.core.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.skynet.core.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.templates:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.templates\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.templates:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.templates\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.templates:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.templates\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ote.define:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ote.define\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ote.define:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ote.define\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ote.define:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ote.define\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.skynet:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.skynet\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.skynet:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.skynet\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.skynet:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.skynet\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.skynet.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.skynet.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.skynet.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.skynet.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.skynet.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.skynet.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui.integration:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui.integration\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui.integration:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui.integration\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui.integration:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui.integration\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui.integration.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui.integration.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui.integration.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui.integration.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.core.dsl.ui.integration.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.core.dsl.ui.integration.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.branch.graph:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.branch.graph\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.branch.graph:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.branch.graph\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.branch.graph:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.branch.graph\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.data.model.editor:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.data.model.editor\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.data.model.editor:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.data.model.editor\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.data.model.editor:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.data.model.editor\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.product:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.product\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.product:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.product\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.product:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.ui.product\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ote.ui.define:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ote.ui.define\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ote.ui.define:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ote.ui.define\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ote.ui.define:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ote.ui.define\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.define.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.ide\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.define.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.ide\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.define.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.ide\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.define.ide.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.ide.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.define.ide.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.ide.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.define.ide.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.define.ide.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.framework.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.framework.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.framework.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.framework.ui.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.framework.ui.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.ui.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.framework.ui.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.doors.connector.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.doors.connector.core\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.doors.connector.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.doors.connector.core\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.doors.connector.core:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.doors.connector.core\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.doors.connector.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.doors.connector.ui\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.doors.connector.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.doors.connector.ui\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.doors.connector.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.doors.connector.ui\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.doors.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.doors.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.doors.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.doors.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.doors.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.doors.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.demo:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.demo\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.demo:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.demo\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.demo:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.demo\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.test.framework:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.test.framework\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.test.framework:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.test.framework\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.test.framework:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.test.framework\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.test.framework.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.test.framework.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.test.framework.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.test.framework.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.test.framework.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.test.framework.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.client.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.client.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.client.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.integration.tests:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.integration.tests\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.integration.tests:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.integration.tests\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.integration.tests:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.integration.tests\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.dev.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.dev.help.ui.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.dev.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.dev.help.ui.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.dev.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.dev.help.ui.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.framework.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.help.ui.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.help.ui.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.framework.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.help.ui.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.support.test.util:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.support.test.util\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.support.test.util:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.support.test.util\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.support.test.util:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.support.test.util\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.help.ui\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.help.ui\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.help.ui:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.help.ui\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.demo:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.demo\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.demo:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.demo\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.demo:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.demo\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.ide.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.ide.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.ide.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.demo.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.ide.demo.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.demo.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.ide.demo.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.demo.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.ats.ide.demo.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.integration.tests:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.integration.tests\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.integration.tests:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.integration.tests\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.integration.tests:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.integration.tests\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.help.ui.test\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.help.ui.test\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.ats.ide.help.ui.test:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.ats.ide.help.ui.test\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.client.all.feature\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.client.all.feature\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.feature:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\features\org.eclipse.osee.client.all.feature\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.all.p2\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.all.p2\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.p2:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.all.p2\pom.xml
+[INFO] Computing target platform for MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.product:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.all.product\pom.xml
+[INFO] Resolving dependencies of MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.product:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.all.product\pom.xml
+[INFO] Resolving class path of MavenProject: org.eclipse.osee:org.eclipse.osee.client.all.product:0.26.0-SNAPSHOT @ C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.client.all.product\pom.xml
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] OSEE MASTER - Parent (Incubation)                                  [pom]
+[INFO] OSEE Target Definition (Incubation)          [eclipse-target-definition]
+[INFO] OSEE X Master - Parent (Incubation)                                [pom]
+[INFO] OSEE X Core - Parent (Incubation)                                  [pom]
+[INFO] OSEE Logger - (Incubation)                              [eclipse-plugin]
+[INFO] OSEE JDK Core - (Incubation)                            [eclipse-plugin]
+[INFO] OSEE Logger SLF4J - (Incubation)                        [eclipse-plugin]
+[INFO] OSEE Server - Parent (Incubation)                                  [pom]
+[INFO] OSEE Logback Config - (Incubation)                      [eclipse-plugin]
+[INFO] OSEE Legacy Logging - (Incubation)                      [eclipse-plugin]
+[INFO] OSEE ORCS - Parent (Incubation)                                    [pom]
+[INFO] OSEE Framework Core - (Incubation)                      [eclipse-plugin]
+[INFO] OSEE Activity Logging API - (Incubation)                [eclipse-plugin]
+[INFO] OSEE Console Admin - (Incubation)                       [eclipse-plugin]
+[INFO] OSEE Console Admin Test - (Incubation)             [eclipse-test-plugin]
+[INFO] OSEE Cache Admin - (Incubation)                         [eclipse-plugin]
+[INFO] OSEE Cache Admin Test - (Incubation)               [eclipse-test-plugin]
+[INFO] OSEE JDK Core Test - (Incubation)                  [eclipse-test-plugin]
+[INFO] OSEE Config Admin - (Incubation)                        [eclipse-plugin]
+[INFO] OSEE Config Admin Test - (Incubation)              [eclipse-test-plugin]
+[INFO] OSEE Authentication Admin - (Incubation)                [eclipse-plugin]
+[INFO] OSEE Authentication Admin Test - (Incubation)      [eclipse-test-plugin]
+[INFO] OSEE Authorization Admin - (Incubation)                 [eclipse-plugin]
+[INFO] OSEE Authorization Admin Test - (Incubation)       [eclipse-test-plugin]
+[INFO] OSEE LDAP Authentication Provider - (Incubation)        [eclipse-plugin]
+[INFO] OSEE LDAP Authentication Provider Test - (Incubation) [eclipse-test-plugin]
+[INFO] OSEE JAX-RS (Incubation)                                [eclipse-plugin]
+[INFO] OSEE JAX-RS Client - (Incubation)                       [eclipse-plugin]
+[INFO] OSEE Account REST Model - (Incubation)                  [eclipse-plugin]
+[INFO] OSEE Account Admin - (Incubation)                       [eclipse-plugin]
+[INFO] OSEE Account Admin Test - (Incubation)             [eclipse-test-plugin]
+[INFO] OSEE Legacy Logging Test - (Incubation)            [eclipse-test-plugin]
+[INFO] OSEE Mail API - (Incubation)                            [eclipse-plugin]
+[INFO] OSEE Mail - (Incubation)                                [eclipse-plugin]
+[INFO] OSEE Mail Test - (Incubation)                      [eclipse-test-plugin]
+[INFO] OSEE Template Engine - (Incubation)                     [eclipse-plugin]
+[INFO] OSEE Template Engine Test - (Incubation)           [eclipse-test-plugin]
+[INFO] OSEE Framework Core Model - (Incubation)                [eclipse-plugin]
+[INFO] OSEE Framework Resource Management - (Incubation)       [eclipse-plugin]
+[INFO] PostgreSQL JDBC Driver                                  [eclipse-plugin]
+[INFO] OSEE JDBC - (Incubation)                                [eclipse-plugin]
+[INFO] OSEE ORCS - (Incubation)                                [eclipse-plugin]
+[INFO] OSEE JAX-RS Server - (Incubation)                       [eclipse-plugin]
+[INFO] OSEE JAX-RS Server Test - (Incubation)             [eclipse-test-plugin]
+[INFO] OSEE JAX-RS Client Test - (Incubation)             [eclipse-test-plugin]
+[INFO] OSEE Account REST API - (Incubation)                    [eclipse-plugin]
+[INFO] OSEE Account REST API Test (Incubation)            [eclipse-test-plugin]
+[INFO] OSEE Account REST Client - (Incubation)                 [eclipse-plugin]
+[INFO] OSEE JDBC Test - (Incubation)                      [eclipse-test-plugin]
+[INFO] OSEE Core Legacy Server - (Incubation)                  [eclipse-plugin]
+[INFO] OSEE Activity Logging Impl - (Incubation)               [eclipse-plugin]
+[INFO] OSEE App - (Incubation)                                 [eclipse-plugin]
+[INFO] OSEE ORCS Rest Model - (Incubation)                     [eclipse-plugin]
+[INFO] OSEE X ATS - Parent (Incubation)                                   [pom]
+[INFO] OSEE Ats Api - (Incubation)                             [eclipse-plugin]
+[INFO] OSEE ATS Core (Incubation)                              [eclipse-plugin]
+[INFO] OSEE Ats Rest - (Incubation)                            [eclipse-plugin]
+[INFO] OSEE X ATS Feature - (Incubation)                      [eclipse-feature]
+[INFO] OSEE Disposition - Parent (Incubation)                             [pom]
+[INFO] OSEE Disposition REST Model (Incubation)                [eclipse-plugin]
+[INFO] OSEE VectorCAST - (Incubation)                          [eclipse-plugin]
+[INFO] OSEE Disposition REST - (Incubation)                    [eclipse-plugin]
+[INFO] OSEE Disposition Feature (Incubation)                  [eclipse-feature]
+[INFO] OSEE ORCS DSL - (Incubation)                            [eclipse-plugin]
+[INFO] OSEE ORCS Core - (Incubation)                           [eclipse-plugin]
+[INFO] OSEE ORCS DB - (Incubation)                             [eclipse-plugin]
+[INFO] OSEE ORCS Rest - (Incubation)                           [eclipse-plugin]
+[INFO] OSEE Define API- (Incubation)                           [eclipse-plugin]
+[INFO] OSEE Server Ide Api - (Incubation)                      [eclipse-plugin]
+[INFO] OSEE ORCS REST Client (Incubation)                      [eclipse-plugin]
+[INFO] OSEE ORCS Account Admin - (Incubation)                  [eclipse-plugin]
+[INFO] ORCS Authorization - (Incubation)                       [eclipse-plugin]
+[INFO] OSEE Server Application - (Incubation)                  [eclipse-plugin]
+[INFO] OSEE Web UI - (Incubation)                              [eclipse-plugin]
+[INFO] OSEE ORCS DSL Integration - (Incubation)                [eclipse-plugin]
+[INFO] OSEE Server Ide - (Incubation)                          [eclipse-plugin]
+[INFO] OSEE LDAP Authentication - (Incubation)                 [eclipse-plugin]
+[INFO] OSEE Define Rest - (Incubation)                         [eclipse-plugin]
+[INFO] OSEE X Core External Feature - (Incubation)            [eclipse-feature]
+[INFO] OSEE X Core - p2 Site (Incubation)                  [eclipse-repository]
+[INFO] OSEE Framework Core Test - (Incubation)            [eclipse-test-plugin]
+[INFO] ORCS DSL Test- (Incubation)                        [eclipse-test-plugin]
+[INFO] OSEE Framework Core Model Test- (Incubation)       [eclipse-test-plugin]
+[INFO] OSEE Framework Resource Management Test- (Incubation) [eclipse-test-plugin]
+[INFO] OSEE ORCS Core Test - (Incubation)                 [eclipse-test-plugin]
+[INFO] OSEE ORCS DB Test - (Incubation)                   [eclipse-test-plugin]
+[INFO] OSEE ORCS Rest Test - (Incubation)                 [eclipse-test-plugin]
+[INFO] OSEE ORCS - p2 Site (Incubation)                    [eclipse-repository]
+[INFO] OSEE Disposition Rest Test - (Incubation)          [eclipse-test-plugin]
+[INFO] OSEE Disposition - p2 Site (Incubation)             [eclipse-repository]
+[INFO] OSEE ATS Core Test (Incubation)                    [eclipse-test-plugin]
+[INFO] OSEE ATS Server Rest Test(Incubation)              [eclipse-test-plugin]
+[INFO] OSEE X ATS - p2 Site (Incubation)                   [eclipse-repository]
+[INFO] OSEE Define Rest Test - (Incubation)               [eclipse-test-plugin]
+[INFO] OSEE App Test - (Incubation)                       [eclipse-test-plugin]
+[INFO] OSEE Core Legacy Server Test - (Incubation)        [eclipse-test-plugin]
+[INFO] OSEE Server - p2 Site (Incubation)                  [eclipse-repository]
+[INFO] OSEE IDE Client - Parent (Incubation)                              [pom]
+[INFO] OSEE Runtime - Parent (Incubation)                                 [pom]
+[INFO] JMS Libraries (Incubation)                              [eclipse-plugin]
+[INFO] JMS ActiveMQ Launch (Incubation)                        [eclipse-plugin]
+[INFO] OSEE Core Feature (Incubation)                         [eclipse-feature]
+[INFO] OSEE Plugin Core (Incubation)                           [eclipse-plugin]
+[INFO] OSEE Messaging (Incubation)                             [eclipse-plugin]
+[INFO] OSEE Core Plugin Feature (Incubation)                  [eclipse-feature]
+[INFO] OSEE UI SWT (Incubation)                                [eclipse-plugin]
+[INFO] OSEE UI Plugin (Incubation)                             [eclipse-plugin]
+[INFO] OSEE UI WS (Incubation)                                 [eclipse-plugin]
+[INFO] OSEE Core UI Feature (Incubation)                      [eclipse-feature]
+[INFO] OSEE Client External Feature (Incubation)              [eclipse-feature]
+[INFO] OSEE Core Runtime Feature (Incubation)                 [eclipse-feature]
+[INFO] OSEE Messaging Test (Incubation)                   [eclipse-test-plugin]
+[INFO] OSEE Runtime - p2 Site (Incubation)                 [eclipse-repository]
+[INFO] OSEE Life-cycle (Incubation)                            [eclipse-plugin]
+[INFO] OSEE Life-cycle Test (Incubation)                  [eclipse-test-plugin]
+[INFO] OSEE Client - Parent (Incubation)                                  [pom]
+[INFO] OSEE Core Client (Incubation)                           [eclipse-plugin]
+[INFO] OSEE Messaging Event Res (Incubation)                   [eclipse-plugin]
+[INFO] OSEE Skynet (Incubation)                                [eclipse-plugin]
+[INFO] OSEE Access (Incubation)                                [eclipse-plugin]
+[INFO] OSEE Access Test (Incubation)                      [eclipse-test-plugin]
+[INFO] OSEE ORCS DSL UI - (Incubation)                         [eclipse-plugin]
+[INFO] OSEE Help (Incubation)                                  [eclipse-plugin]
+[INFO] OSEE UI Skynet (Incubation)                             [eclipse-plugin]
+[INFO] OSEE Database Init (Incubation)                         [eclipse-plugin]
+[INFO] OSEE ORCS DSL UI Integration - (Incubation)             [eclipse-plugin]
+[INFO] OSEE Framework Access (Incubation)                      [eclipse-plugin]
+[INFO] OSEE Access (Incubation)                                [eclipse-plugin]
+[INFO] OSEE Messaging Event Res Test (Incubation)         [eclipse-test-plugin]
+[INFO] OSEE Dev Help (Incubation)                              [eclipse-plugin]
+[INFO] OSEE Skynet Test (Incubation)                      [eclipse-test-plugin]
+[INFO] OSEE Templates (Incubation)                             [eclipse-plugin]
+[INFO] OSEE OTE Define (Incubation)                            [eclipse-plugin]
+[INFO] OSEE UI Skynet Test (Incubation)                   [eclipse-test-plugin]
+[INFO] OSEE ORCS DSL UI Integration Test - (Incubation)   [eclipse-test-plugin]
+[INFO] OSEE UI Branch Graph (Incubation)                       [eclipse-plugin]
+[INFO] OSEE UI Data Model Editor (Incubation)                  [eclipse-plugin]
+[INFO] OSEE UI Product (Incubation)                            [eclipse-plugin]
+[INFO] OSEE OTE UI Define (Incubation)                         [eclipse-plugin]
+[INFO] OSEE Define IDE (Incubation)                            [eclipse-plugin]
+[INFO] OSEE Define IDE Test (Incubation)                  [eclipse-test-plugin]
+[INFO] OSEE Framework Feature (Incubation)                    [eclipse-feature]
+[INFO] OSEE Framework Ui Feature (Incubation)                 [eclipse-feature]
+[INFO] OSEE Doors Connector Core (Incubation)                  [eclipse-plugin]
+[INFO] OSEE Doors Connector UI (Incubation)                    [eclipse-plugin]
+[INFO] OSEE Doors Feature (Incubation)                        [eclipse-feature]
+[INFO] OSEE Client Demo (Incubation)                           [eclipse-plugin]
+[INFO] OSEE Client Test Framework (Incubation)                 [eclipse-plugin]
+[INFO] OSEE Client Test Framework - p2 Site (Incubation)   [eclipse-repository]
+[INFO] OSEE Client Feature (Incubation)                       [eclipse-feature]
+[INFO] OSEE Client Integration Tests (Incubation)         [eclipse-test-plugin]
+[INFO] OSEE Client - p2 Site                               [eclipse-repository]
+[INFO] OSEE Framework Dev Help UI Test - (Incubation)     [eclipse-test-plugin]
+[INFO] OSEE Framework Help UI Test - (Incubation)         [eclipse-test-plugin]
+[INFO] OSEE Support Test Util (Incubation)                     [eclipse-plugin]
+[INFO] OSEE ATS - Parent (Incubation)                                     [pom]
+[INFO] OSEE ATS Help (Incubation)                              [eclipse-plugin]
+[INFO] OSEE ATS IDE Client (Incubation)                        [eclipse-plugin]
+[INFO] OSEE ATS IDE Demo (Incubation)                          [eclipse-plugin]
+[INFO] OSEE ATS Feature (Incubation)                          [eclipse-feature]
+[INFO] OSEE ATS IDE Demo Feature (Incubation)                 [eclipse-feature]
+[INFO] OSEE ATS IDE Integration Tests (Incubation)        [eclipse-test-plugin]
+[INFO] OSEE ATS - p2 Site                                  [eclipse-repository]
+[INFO] OSEE ATS Help Test - (Incubation)                  [eclipse-test-plugin]
+[INFO] OSEE MASTER - Parent (Incubation)                                  [pom]
+[INFO] OSEE Client All Feature (Incubation)                   [eclipse-feature]
+[INFO] OSEE All Client - p2 Site                           [eclipse-repository]
+[INFO] OSEE Client IDE - Product                           [eclipse-repository]
+[INFO] 
+[INFO] --------------< org.eclipse.osee:org.eclipse.osee.parent >--------------
+[INFO] Building OSEE MASTER - Parent (Incubation) 0.26.0-SNAPSHOT       [1/168]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ org.eclipse.osee.parent ---
+[INFO] 
+[INFO] --- tycho-source-plugin:0.22.0:plugin-source (plugin-source) @ org.eclipse.osee.parent ---
+[INFO] 
+[INFO] --- tycho-source-feature-plugin:0.22.0:source-feature (source-feature) @ org.eclipse.osee.parent ---
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.22.0:p2-metadata (attach-p2-metadata) @ org.eclipse.osee.parent ---
+[INFO] 
+[INFO] ------------< org.eclipse.osee:org.eclipse.osee.dep.target >------------
+[INFO] Building OSEE Target Definition (Incubation) 0.26.0-SNAPSHOT     [2/168]
+[INFO] ---------------------[ eclipse-target-definition ]----------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ org.eclipse.osee.dep.target ---
+[INFO] 
+[INFO] --- tycho-source-plugin:0.22.0:plugin-source (plugin-source) @ org.eclipse.osee.dep.target ---
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.22.0:package-target-definition (default-package-target-definition) @ org.eclipse.osee.dep.target ---
+[INFO] 
+[INFO] --- tycho-source-feature-plugin:0.22.0:source-feature (source-feature) @ org.eclipse.osee.dep.target ---
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.22.0:p2-metadata (attach-p2-metadata) @ org.eclipse.osee.dep.target ---
+[INFO] 
+[INFO] -------------< org.eclipse.osee:org.eclipse.osee.x.parent >-------------
+[INFO] Building OSEE X Master - Parent (Incubation) 0.26.0-SNAPSHOT     [3/168]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ org.eclipse.osee.x.parent ---
+[INFO] 
+[INFO] --- tycho-source-plugin:0.22.0:plugin-source (plugin-source) @ org.eclipse.osee.x.parent ---
+[INFO] 
+[INFO] --- tycho-source-feature-plugin:0.22.0:source-feature (source-feature) @ org.eclipse.osee.x.parent ---
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.22.0:p2-metadata (attach-p2-metadata) @ org.eclipse.osee.x.parent ---
+[INFO] 
+[INFO] --------< org.eclipse.osee:org.eclipse.osee.core.server.parent >--------
+[INFO] Building OSEE X Core - Parent (Incubation) 0.26.0-SNAPSHOT       [4/168]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ org.eclipse.osee.core.server.parent ---
+[INFO] 
+[INFO] --- tycho-source-plugin:0.22.0:plugin-source (plugin-source) @ org.eclipse.osee.core.server.parent ---
+[INFO] 
+[INFO] --- tycho-source-feature-plugin:0.22.0:source-feature (source-feature) @ org.eclipse.osee.core.server.parent ---
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.22.0:p2-metadata (attach-p2-metadata) @ org.eclipse.osee.core.server.parent ---
+[INFO] 
+[INFO] --------------< org.eclipse.osee:org.eclipse.osee.logger >--------------
+[INFO] Building OSEE Logger - (Incubation) 0.26.0-SNAPSHOT              [5/168]
+[INFO] ---------------------------[ eclipse-plugin ]---------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ org.eclipse.osee.logger ---
+[INFO] Deleting C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\target
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.22.0:build-qualifier (default-build-qualifier) @ org.eclipse.osee.logger ---
+[INFO] The project's OSGi version is 0.26.0.v202008050141-DEV
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.22.0:validate-id (default-validate-id) @ org.eclipse.osee.logger ---
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.22.0:validate-version (default-validate-version) @ org.eclipse.osee.logger ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ org.eclipse.osee.logger ---
+[debug] execute contextualize
+[INFO] Using 'ISO-8859-1' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\src\main\resources
+[INFO] 
+[INFO] --- tycho-compiler-plugin:0.22.0:compile (default-compile) @ org.eclipse.osee.logger ---
+[INFO] Compiling 1 source file to C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ org.eclipse.osee.logger ---
+[debug] execute contextualize
+[INFO] Using 'ISO-8859-1' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\src\test\resources
+[INFO] 
+[INFO] --- tycho-source-plugin:0.22.0:plugin-source (plugin-source) @ org.eclipse.osee.logger ---
+[WARNING] bundle localization file C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\plugin.properties not found
+[INFO] Building jar: C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\target\org.eclipse.osee.logger-0.26.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- target-platform-configuration:0.22.0:target-platform (default-target-platform) @ org.eclipse.osee.logger ---
+[INFO] 
+[INFO] --- tycho-packaging-plugin:0.22.0:package-plugin (default-package-plugin) @ org.eclipse.osee.logger ---
+[INFO] Building jar: C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.logger\target\org.eclipse.osee.logger-0.26.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.22.0:p2-metadata-default (default-p2-metadata-default) @ org.eclipse.osee.logger ---
+[INFO] 
+[INFO] --- tycho-source-feature-plugin:0.22.0:source-feature (source-feature) @ org.eclipse.osee.logger ---
+[INFO] 
+[INFO] --- tycho-p2-plugin:0.22.0:p2-metadata (attach-p2-metadata) @ org.eclipse.osee.logger ---
+[INFO] 
+[INFO] --------< org.eclipse.osee:org.eclipse.osee.framework.jdk.core >--------
+[INFO] Building OSEE JDK Core - (Incubation) 0.26.0-SNAPSHOT            [6/168]
+[INFO] ---------------------------[ eclipse-plugin ]---------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ org.eclipse.osee.framework.jdk.core ---
+[INFO] Deleting C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core\target
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] OSEE MASTER - Parent (Incubation) 0.26.0-SNAPSHOT .. SUCCESS [  0.128 s]
+[INFO] OSEE Target Definition (Incubation) ................ SUCCESS [  0.376 s]
+[INFO] OSEE X Master - Parent (Incubation) ................ SUCCESS [  0.019 s]
+[INFO] OSEE X Core - Parent (Incubation) .................. SUCCESS [  0.013 s]
+[INFO] OSEE Logger - (Incubation) ......................... SUCCESS [  1.728 s]
+[INFO] OSEE JDK Core - (Incubation) ....................... FAILURE [  2.070 s]
+[INFO] OSEE Logger SLF4J - (Incubation) ................... SKIPPED
+[INFO] OSEE Server - Parent (Incubation) .................. SKIPPED
+[INFO] OSEE Logback Config - (Incubation) ................. SKIPPED
+[INFO] OSEE Legacy Logging - (Incubation) ................. SKIPPED
+[INFO] OSEE ORCS - Parent (Incubation) .................... SKIPPED
+[INFO] OSEE Framework Core - (Incubation) ................. SKIPPED
+[INFO] OSEE Activity Logging API - (Incubation) ........... SKIPPED
+[INFO] OSEE Console Admin - (Incubation) .................. SKIPPED
+[INFO] OSEE Console Admin Test - (Incubation) ............. SKIPPED
+[INFO] OSEE Cache Admin - (Incubation) .................... SKIPPED
+[INFO] OSEE Cache Admin Test - (Incubation) ............... SKIPPED
+[INFO] OSEE JDK Core Test - (Incubation) .................. SKIPPED
+[INFO] OSEE Config Admin - (Incubation) ................... SKIPPED
+[INFO] OSEE Config Admin Test - (Incubation) .............. SKIPPED
+[INFO] OSEE Authentication Admin - (Incubation) ........... SKIPPED
+[INFO] OSEE Authentication Admin Test - (Incubation) ...... SKIPPED
+[INFO] OSEE Authorization Admin - (Incubation) ............ SKIPPED
+[INFO] OSEE Authorization Admin Test - (Incubation) ....... SKIPPED
+[INFO] OSEE LDAP Authentication Provider - (Incubation) ... SKIPPED
+[INFO] OSEE LDAP Authentication Provider Test - (Incubation) SKIPPED
+[INFO] OSEE JAX-RS (Incubation) ........................... SKIPPED
+[INFO] OSEE JAX-RS Client - (Incubation) .................. SKIPPED
+[INFO] OSEE Account REST Model - (Incubation) ............. SKIPPED
+[INFO] OSEE Account Admin - (Incubation) .................. SKIPPED
+[INFO] OSEE Account Admin Test - (Incubation) ............. SKIPPED
+[INFO] OSEE Legacy Logging Test - (Incubation) ............ SKIPPED
+[INFO] OSEE Mail API - (Incubation) ....................... SKIPPED
+[INFO] OSEE Mail - (Incubation) ........................... SKIPPED
+[INFO] OSEE Mail Test - (Incubation) ...................... SKIPPED
+[INFO] OSEE Template Engine - (Incubation) ................ SKIPPED
+[INFO] OSEE Template Engine Test - (Incubation) ........... SKIPPED
+[INFO] OSEE Framework Core Model - (Incubation) ........... SKIPPED
+[INFO] OSEE Framework Resource Management - (Incubation) .. SKIPPED
+[INFO] PostgreSQL JDBC Driver 8.3.0-SNAPSHOT .............. SKIPPED
+[INFO] OSEE JDBC - (Incubation) ........................... SKIPPED
+[INFO] OSEE ORCS - (Incubation) ........................... SKIPPED
+[INFO] OSEE JAX-RS Server - (Incubation) .................. SKIPPED
+[INFO] OSEE JAX-RS Server Test - (Incubation) ............. SKIPPED
+[INFO] OSEE JAX-RS Client Test - (Incubation) ............. SKIPPED
+[INFO] OSEE Account REST API - (Incubation) ............... SKIPPED
+[INFO] OSEE Account REST API Test (Incubation) ............ SKIPPED
+[INFO] OSEE Account REST Client - (Incubation) ............ SKIPPED
+[INFO] OSEE JDBC Test - (Incubation) ...................... SKIPPED
+[INFO] OSEE Core Legacy Server - (Incubation) ............. SKIPPED
+[INFO] OSEE Activity Logging Impl - (Incubation) .......... SKIPPED
+[INFO] OSEE App - (Incubation) ............................ SKIPPED
+[INFO] OSEE ORCS Rest Model - (Incubation) ................ SKIPPED
+[INFO] OSEE X ATS - Parent (Incubation) ................... SKIPPED
+[INFO] OSEE Ats Api - (Incubation) ........................ SKIPPED
+[INFO] OSEE ATS Core (Incubation) ......................... SKIPPED
+[INFO] OSEE Ats Rest - (Incubation) ....................... SKIPPED
+[INFO] OSEE X ATS Feature - (Incubation) .................. SKIPPED
+[INFO] OSEE Disposition - Parent (Incubation) ............. SKIPPED
+[INFO] OSEE Disposition REST Model (Incubation) ........... SKIPPED
+[INFO] OSEE VectorCAST - (Incubation) ..................... SKIPPED
+[INFO] OSEE Disposition REST - (Incubation) ............... SKIPPED
+[INFO] OSEE Disposition Feature (Incubation) .............. SKIPPED
+[INFO] OSEE ORCS DSL - (Incubation) ....................... SKIPPED
+[INFO] OSEE ORCS Core - (Incubation) ...................... SKIPPED
+[INFO] OSEE ORCS DB - (Incubation) ........................ SKIPPED
+[INFO] OSEE ORCS Rest - (Incubation) ...................... SKIPPED
+[INFO] OSEE Define API- (Incubation) ...................... SKIPPED
+[INFO] OSEE Server Ide Api - (Incubation) ................. SKIPPED
+[INFO] OSEE ORCS REST Client (Incubation) ................. SKIPPED
+[INFO] OSEE ORCS Account Admin - (Incubation) ............. SKIPPED
+[INFO] ORCS Authorization - (Incubation) .................. SKIPPED
+[INFO] OSEE Server Application - (Incubation) ............. SKIPPED
+[INFO] OSEE Web UI - (Incubation) ......................... SKIPPED
+[INFO] OSEE ORCS DSL Integration - (Incubation) ........... SKIPPED
+[INFO] OSEE Server Ide - (Incubation) ..................... SKIPPED
+[INFO] OSEE LDAP Authentication - (Incubation) ............ SKIPPED
+[INFO] OSEE Define Rest - (Incubation) .................... SKIPPED
+[INFO] OSEE X Core External Feature - (Incubation) ........ SKIPPED
+[INFO] OSEE X Core - p2 Site (Incubation) ................. SKIPPED
+[INFO] OSEE Framework Core Test - (Incubation) ............ SKIPPED
+[INFO] ORCS DSL Test- (Incubation) ........................ SKIPPED
+[INFO] OSEE Framework Core Model Test- (Incubation) ....... SKIPPED
+[INFO] OSEE Framework Resource Management Test- (Incubation) SKIPPED
+[INFO] OSEE ORCS Core Test - (Incubation) ................. SKIPPED
+[INFO] OSEE ORCS DB Test - (Incubation) ................... SKIPPED
+[INFO] OSEE ORCS Rest Test - (Incubation) ................. SKIPPED
+[INFO] OSEE ORCS - p2 Site (Incubation) ................... SKIPPED
+[INFO] OSEE Disposition Rest Test - (Incubation) .......... SKIPPED
+[INFO] OSEE Disposition - p2 Site (Incubation) ............ SKIPPED
+[INFO] OSEE ATS Core Test (Incubation) .................... SKIPPED
+[INFO] OSEE ATS Server Rest Test(Incubation) .............. SKIPPED
+[INFO] OSEE X ATS - p2 Site (Incubation) .................. SKIPPED
+[INFO] OSEE Define Rest Test - (Incubation) ............... SKIPPED
+[INFO] OSEE App Test - (Incubation) ....................... SKIPPED
+[INFO] OSEE Core Legacy Server Test - (Incubation) ........ SKIPPED
+[INFO] OSEE Server - p2 Site (Incubation) ................. SKIPPED
+[INFO] OSEE IDE Client - Parent (Incubation) .............. SKIPPED
+[INFO] OSEE Runtime - Parent (Incubation) ................. SKIPPED
+[INFO] JMS Libraries (Incubation) ......................... SKIPPED
+[INFO] JMS ActiveMQ Launch (Incubation) ................... SKIPPED
+[INFO] OSEE Core Feature (Incubation) ..................... SKIPPED
+[INFO] OSEE Plugin Core (Incubation) ...................... SKIPPED
+[INFO] OSEE Messaging (Incubation) ........................ SKIPPED
+[INFO] OSEE Core Plugin Feature (Incubation) .............. SKIPPED
+[INFO] OSEE UI SWT (Incubation) ........................... SKIPPED
+[INFO] OSEE UI Plugin (Incubation) ........................ SKIPPED
+[INFO] OSEE UI WS (Incubation) ............................ SKIPPED
+[INFO] OSEE Core UI Feature (Incubation) .................. SKIPPED
+[INFO] OSEE Client External Feature (Incubation) .......... SKIPPED
+[INFO] OSEE Core Runtime Feature (Incubation) ............. SKIPPED
+[INFO] OSEE Messaging Test (Incubation) ................... SKIPPED
+[INFO] OSEE Runtime - p2 Site (Incubation) ................ SKIPPED
+[INFO] OSEE Life-cycle (Incubation) ....................... SKIPPED
+[INFO] OSEE Life-cycle Test (Incubation) .................. SKIPPED
+[INFO] OSEE Client - Parent (Incubation) .................. SKIPPED
+[INFO] OSEE Core Client (Incubation) ...................... SKIPPED
+[INFO] OSEE Messaging Event Res (Incubation) .............. SKIPPED
+[INFO] OSEE Skynet (Incubation) ........................... SKIPPED
+[INFO] OSEE Access (Incubation) ........................... SKIPPED
+[INFO] OSEE Access Test (Incubation) ...................... SKIPPED
+[INFO] OSEE ORCS DSL UI - (Incubation) .................... SKIPPED
+[INFO] OSEE Help (Incubation) ............................. SKIPPED
+[INFO] OSEE UI Skynet (Incubation) ........................ SKIPPED
+[INFO] OSEE Database Init (Incubation) .................... SKIPPED
+[INFO] OSEE ORCS DSL UI Integration - (Incubation) ........ SKIPPED
+[INFO] OSEE Framework Access (Incubation) ................. SKIPPED
+[INFO] OSEE Access (Incubation) ........................... SKIPPED
+[INFO] OSEE Messaging Event Res Test (Incubation) ......... SKIPPED
+[INFO] OSEE Dev Help (Incubation) ......................... SKIPPED
+[INFO] OSEE Skynet Test (Incubation) ...................... SKIPPED
+[INFO] OSEE Templates (Incubation) ........................ SKIPPED
+[INFO] OSEE OTE Define (Incubation) ....................... SKIPPED
+[INFO] OSEE UI Skynet Test (Incubation) ................... SKIPPED
+[INFO] OSEE ORCS DSL UI Integration Test - (Incubation) ... SKIPPED
+[INFO] OSEE UI Branch Graph (Incubation) .................. SKIPPED
+[INFO] OSEE UI Data Model Editor (Incubation) ............. SKIPPED
+[INFO] OSEE UI Product (Incubation) ....................... SKIPPED
+[INFO] OSEE OTE UI Define (Incubation) .................... SKIPPED
+[INFO] OSEE Define IDE (Incubation) ....................... SKIPPED
+[INFO] OSEE Define IDE Test (Incubation) .................. SKIPPED
+[INFO] OSEE Framework Feature (Incubation) ................ SKIPPED
+[INFO] OSEE Framework Ui Feature (Incubation) ............. SKIPPED
+[INFO] OSEE Doors Connector Core (Incubation) ............. SKIPPED
+[INFO] OSEE Doors Connector UI (Incubation) ............... SKIPPED
+[INFO] OSEE Doors Feature (Incubation) .................... SKIPPED
+[INFO] OSEE Client Demo (Incubation) ...................... SKIPPED
+[INFO] OSEE Client Test Framework (Incubation) ............ SKIPPED
+[INFO] OSEE Client Test Framework - p2 Site (Incubation) .. SKIPPED
+[INFO] OSEE Client Feature (Incubation) ................... SKIPPED
+[INFO] OSEE Client Integration Tests (Incubation) ......... SKIPPED
+[INFO] OSEE Client - p2 Site .............................. SKIPPED
+[INFO] OSEE Framework Dev Help UI Test - (Incubation) ..... SKIPPED
+[INFO] OSEE Framework Help UI Test - (Incubation) ......... SKIPPED
+[INFO] OSEE Support Test Util (Incubation) ................ SKIPPED
+[INFO] OSEE ATS - Parent (Incubation) ..................... SKIPPED
+[INFO] OSEE ATS Help (Incubation) ......................... SKIPPED
+[INFO] OSEE ATS IDE Client (Incubation) ................... SKIPPED
+[INFO] OSEE ATS IDE Demo (Incubation) ..................... SKIPPED
+[INFO] OSEE ATS Feature (Incubation) ...................... SKIPPED
+[INFO] OSEE ATS IDE Demo Feature (Incubation) ............. SKIPPED
+[INFO] OSEE ATS IDE Integration Tests (Incubation) ........ SKIPPED
+[INFO] OSEE ATS - p2 Site ................................. SKIPPED
+[INFO] OSEE ATS Help Test - (Incubation) .................. SKIPPED
+[INFO] OSEE MASTER - Parent (Incubation) .................. SKIPPED
+[INFO] OSEE Client All Feature (Incubation) ............... SKIPPED
+[INFO] OSEE All Client - p2 Site .......................... SKIPPED
+[INFO] OSEE Client IDE - Product 0.26.0-SNAPSHOT .......... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 02:28 min
+[INFO] Finished at: 2020-08-04T18:41:23-07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-clean-plugin:2.5:clean (default-clean) on project org.eclipse.osee.framework.jdk.core: Failed to clean project: Failed to delete C:\UserData\rabbit\org.eclipse.osee\plugins\org.eclipse.osee.framework.jdk.core\target\org.eclipse.osee.framework.jdk.core-0.26.0-SNAPSHOT.jar -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :org.eclipse.osee.framework.jdk.core
