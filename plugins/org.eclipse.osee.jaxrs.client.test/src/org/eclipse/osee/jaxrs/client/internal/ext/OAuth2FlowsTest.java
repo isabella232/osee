@@ -29,17 +29,18 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+//import java.util.function.Consumer;
+import org.apache.cxf.rs.security.oauth2.client.Consumer;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import org.apache.cxf.rs.security.oauth2.client.OAuthClientUtils.Consumer;
 import org.apache.cxf.rs.security.oauth2.common.AccessTokenValidation;
 import org.apache.cxf.rs.security.oauth2.common.ClientAccessToken;
 import org.apache.cxf.rs.security.oauth2.common.OAuthAuthorizationData;
+import org.apache.cxf.rs.security.oauth2.common.OAuthPermission;
 import org.apache.cxf.rs.security.oauth2.common.OOBAuthorizationResponse;
-import org.apache.cxf.rs.security.oauth2.common.Permission;
 import org.apache.cxf.rs.security.oauth2.utils.OAuthConstants;
 import org.eclipse.osee.jaxrs.client.JaxRsConfirmAccessHandler;
 import org.eclipse.osee.jaxrs.client.JaxRsConfirmAccessHandler.ConfirmAccessRequest;
@@ -60,7 +61,7 @@ import org.mockito.stubbing.Answer;
 
 /**
  * Test Case for {@link OAuth2Flows}
- * 
+ *
  * @author Roberto E. Escobar
  */
 public class OAuth2FlowsTest {
@@ -101,26 +102,26 @@ public class OAuth2FlowsTest {
    @Mock private OAuth2Transport transport;
    @Mock private OwnerCredentials owner;
    @Mock private Consumer client;
-   
+
    @Mock private JaxRsConfirmAccessHandler handler;
    @Captor private ArgumentCaptor<Form> formCaptor;
    @Captor private ArgumentCaptor<Map<String, String>> paramsCaptor;
    @Captor private ArgumentCaptor<URI> authUriCaptor;
-   
+
    @Mock private Response response1;
    @Mock private OAuthAuthorizationData authData;
    @Mock private OOBAuthorizationResponse oobResponse;
    @Mock private MultivaluedMap<String, Object> headers;
-   
+
    @Mock private Response response2;
    @Captor private ArgumentCaptor<ConfirmAccessRequest> confirmCaptor;
    @Mock private ConfirmAccessResponse confirmResponse;
-   
+
    //@formatter:on
 
    private OAuth2Flows flows;
    private ClientAccessToken token;
-   private Permission permission;
+   private OAuthPermission permission;
    private Map<String, String> appProperties;
    private AccessTokenValidation tokenValidation;
 
@@ -133,16 +134,16 @@ public class OAuth2FlowsTest {
       token = new ClientAccessToken(OAuthConstants.BEARER_TOKEN_TYPE, TOKEN_ID);
       token.setRefreshToken(REFRESH_TOKEN);
       token.setApprovedScope(SCOPES);
+      //client.get
 
       when(client.getKey()).thenReturn(CLIENT_ID);
       when(client.getSecret()).thenReturn(CLIENT_SECRET);
 
       when(owner.getUsername()).thenReturn(USERNAME);
       when(owner.getPassword()).thenReturn(PASSWORD);
-
-      permission = new Permission(PERMISSION_NAME, PERMISSION_DESCR);
-      permission.setDefault(true);
-      List<? extends Permission> permissions = Arrays.asList(permission);
+      permission = new OAuthPermission(PERMISSION_NAME, PERMISSION_DESCR);
+      permission.setDefaultPermission(true);
+      List<? extends OAuthPermission> permissions = Arrays.asList(permission);
 
       appProperties = new HashMap<>();
       appProperties.put("prop1", "a");
