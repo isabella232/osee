@@ -48,7 +48,11 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+<<<<<<< HEAD
 
+=======
+         
+>>>>>>> refactor[TW17838]: Resolve 3rd Party Security Vulnerabilities for Apache CXF
    <plugin
          id="org.eclipse.oss.ajax"
          download-size="0"
@@ -61,7 +65,28 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>   
-             
+   
+   <plugin
+         id="org.apache.cxf.cxf-rt-rs-security-jose"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+   <plugin
+         id="org.apache.cxf.cxf-rt-rs-json-basic"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+  
+   <plugin
+         id="org.apache.cxf.jaxrs.model.wadl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>                    
+  
    <plugin
          id="org.eclipse.jdt.annotation"
          download-size="0"
@@ -612,7 +637,7 @@
          id="javax.annotation"
          download-size="0"
          install-size="0"
-         version="1.2.0"
+         version="1.3.0"
          unpack="false"/>
 
    <plugin
@@ -714,54 +739,47 @@
          unpack="false"/>
 
    <plugin
-         id="org.apache.cxf.core"
+         id="org.apache.cxf.cxf-rt-rs-security-oauth2"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.11"
          unpack="false"/>
+    
+   <plugin
+         id="org.apache.cxf.cxf-core"
+         download-size="0"
+         install-size="0"
+         version="3.2.11"
+         unpack="false"/>
+
+  <plugin
+         id="org.apache.cxf.cxf-rt-transports-http"
+         download-size="0"
+         install-size="0"
+         version="3.2.11"
+         unpack="false"/> 
 
    <plugin
-         id="org.apache.cxf.jaxrs.client"
+         id="org.apache.cxf.cxf-rt-rs-client"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.11"
          unpack="false"/>
-
-   <plugin
-         id="org.apache.cxf.jaxrs.frontend"
+ 
+     <plugin
+         id="org.apache.cxf.cxf-rt-frontend-jaxrs"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.cxf.jaxrs.model.wadl"
+         version="3.2.11"
+         unpack="false"/> 
+         
+    <plugin
+         id="org.apache.cxf.cxf-rt-security"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.cxf.jaxrs.provider"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.cxf.rs.security.oauth2"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.cxf.transport.http"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
+         version="3.2.11"
+         unpack="false"/>         
+         
    <plugin
          id="com.ctc.wstx"
          download-size="0"
@@ -818,13 +836,6 @@
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
-         id="org.apache.cxf.core.config"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/>
 
    <plugin
          id="org.eclipse.text"

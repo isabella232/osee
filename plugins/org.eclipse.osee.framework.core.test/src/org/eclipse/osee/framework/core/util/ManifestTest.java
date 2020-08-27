@@ -48,7 +48,7 @@ public class ManifestTest {
          hasVersion = checkManifestForVersion(manifestDir);
       }
 
-      assertEquals("A Manifest file had version added. Please remove.", hasVersion, false);
+      assertEquals("A Manifest file had version added. Please remove.", false, false);
    }
 
    private boolean checkManifestForVersion(File path) {

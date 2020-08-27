@@ -24,6 +24,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Form;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
 import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.apache.cxf.rs.security.oauth2.common.AccessTokenValidation;
@@ -42,7 +43,7 @@ import org.eclipse.osee.jaxrs.server.internal.security.oauth2.OAuthUtil;
  * Filter used to protect resource server end-points. This filter is used when the resource server is not located in the
  * same JVM as the authorization server. When a request is processed, the resource server will contact the authorization
  * server and validate the access token provided by the request through the HTTP authorization header.
- * 
+ *
  * @author Roberto E. Escobar
  */
 @Provider
@@ -71,7 +72,7 @@ public class JaxRsOAuthResourceServerFilter implements ContainerRequestFilter {
    }
 
    public void setAudiences(List<String> audiences) {
-      delegate.setAudiences(audiences);
+      delegate.setAudience(audiences.toString());
    }
 
    @Override
@@ -135,6 +136,11 @@ public class JaxRsOAuthResourceServerFilter implements ContainerRequestFilter {
             public AccessTokenValidation validateAccessToken(MessageContext mc, final String authScheme, final String accessToken) throws OAuthServiceException {
                return getRemoteTokenValidation(authScheme, accessToken);
             }
+
+            @Override
+            public AccessTokenValidation validateAccessToken(MessageContext arg0, String arg1, String arg2, MultivaluedMap<String, String> arg3) throws OAuthServiceException {
+               return null;
+            }
          };
       }
 
@@ -164,6 +170,11 @@ public class JaxRsOAuthResourceServerFilter implements ContainerRequestFilter {
                   throw new OAuthServiceException("Error validating access token", ex.getCause());
                }
             }
+
+            @Override
+            public AccessTokenValidation validateAccessToken(MessageContext arg0, String arg1, String arg2, MultivaluedMap<String, String> arg3) throws OAuthServiceException {
+               return null;
+            }
          };
       }
 
@@ -191,6 +202,10 @@ public class JaxRsOAuthResourceServerFilter implements ContainerRequestFilter {
 
          public void setClient(JaxRsClient client) {
             this.client = client;
+         }
+
+         public AccessTokenValidation validateAccessToken(MessageContext mc, String authScheme, String accessToken) throws OAuthServiceException {
+            return null;
          }
 
          public void setValidationServerUri(String validationServerUri) {

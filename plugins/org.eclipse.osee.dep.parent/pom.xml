@@ -88,10 +88,19 @@
           <repository>
 			<id>findbugs</id>
 			<layout>p2</layout>
+<<<<<<< HEAD
 			<url>http://findbugs.cs.umd.edu/eclipse</url>
           </repository>
           
           <repository>
+=======
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/I20200706165208/repository</url>
+
+	  </repository>
+		
+	
+<repository>
+>>>>>>> refactor[TW17838]: Resolve 3rd Party Security Vulnerabilities for Apache CXF
 			<id>eclipse</id>
 			<layout>p2</layout>
 			<url>${eclipse-site}</url>

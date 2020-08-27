@@ -29,11 +29,21 @@
 						<configuration>
 							<excludes>
 								<plugin id="org.apache.xerces" />
+								<plugin id="org.apache.cxf.cxf-core" />
+								<plugin id="org.apache.cxf.cxf-rt-security" />
+								<plugin id="org.apache.cxf.cxf-rt-transports-http" />
+							        <plugin id="org.apache.cxf.cxf-rt-rs-security-oauth2" />
+							  	<plugin id="org.apache.cxf.cxf-rt-rs-security-oauth" />
+							        <plugin id="org.apache.cxf.cxf-rt-rs-security-jose" />
+							        <plugin id="org.apache.cxf.cxf-rt-rs-json-basic" />
+								<plugin id="org.apache.cxf.cxf-rt-rs-client" />
+								<plugin id="org.apache.cxf.cxf-rt-frontend-jaxrs" />								
 								<plugin id="org.eclipse.m2e.maven.runtime" />
 								<plugin id="org.eclipse.m2e.archetype.common" />
-								<plugin id="org.eclipse.m2e.maven.indexer" />
+								<plugin id="org.eclipse.m2e.mwsaven.indexer" />
 								<plugin id="org.eclipse.m2e.workspace.cli" />
 								<plugin id="javax.xml" />
+<<<<<<< HEAD
 								<plugin id="javax.mail" />
 								<plugin id="javax.xml.rpc" />
 								<plugin id="org.apache.commons.discovery" />
@@ -41,6 +51,9 @@
 								<feature id="edu.umd.cs.findbugs.plugin.eclipse" />
 								<feature id="org.eclipse.mylyn.context_feature" />
 								<feature id="org.eclipse.mylyn.team_feature" />
+=======
+								<plugin id="javax.ws.rs-api" />
+>>>>>>> refactor[TW17838]: Resolve 3rd Party Security Vulnerabilities for Apache CXF
 								<plugin id="org.apache.xml.resolver" />
 								<plugin id="org.apache.xml.serializer" />	
 								<plugin id="org.apache.axis" />								
@@ -55,7 +68,12 @@
 								<plugin id="javax.wsdl" />
 								<plugin id="org.eclipse.m2e.maven.runtime.slf4j.simple" />
 								<plugin id="org.eclipse.xtext" />
+<<<<<<< HEAD
 								<plugin id="org.antlr.runtime" />							
+=======
+								<plugin id="org.antlr.runtime" />
+								<plugin id="javax.annotation" />
+>>>>>>> refactor[TW17838]: Resolve 3rd Party Security Vulnerabilities for Apache CXF
 								<plugin id="org.cyberneko.html" />
 								<plugin id="org.apache.commons.io" />
 								<plugin id="org.apache.commons.cli" />
@@ -164,6 +182,9 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
