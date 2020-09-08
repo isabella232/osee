@@ -13,16 +13,27 @@
 
 package org.eclipse.osee.framework.skynet.core.attribute;
 
+import org.eclipse.osee.framework.core.enums.EnumToken;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
 
 /**
  * @author Ryan D. Brooks
  */
-public class EnumeratedAttribute extends StringAttribute {
+public class EnumeratedAttribute extends CharacterBackedAttribute<EnumToken> {
 
    @Override
    public String getDisplayableString() {
       String toDisplay = getAttributeDataProvider().getDisplayableString();
       return Strings.isValid(toDisplay) ? toDisplay : "Unspecified";
+   }
+
+   @Override
+   public EnumToken getValue() {
+      return convertStringToValue(getAttributeDataProvider().getValueAsString());
+   }
+
+   @Override
+   public EnumToken convertStringToValue(String value) {
+      return getAttributeType().toEnum().valueFromStorageString(value);
    }
 }

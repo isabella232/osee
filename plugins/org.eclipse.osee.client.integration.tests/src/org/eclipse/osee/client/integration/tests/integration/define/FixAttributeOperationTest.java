@@ -112,8 +112,8 @@ public class FixAttributeOperationTest {
          assertRow(data, 0, branchWorking.getName(), itemId, "Robot API", CoreAttributeTypes.Partition.getName(),
             "Unspecified, Navigation, Navigation", "Unspecified, Navigation");
 
-         Artifact testRobotAPI =
-            ArtifactQuery.getArtifactFromTypeAndName(CoreArtifactTypes.SoftwareRequirementMsWord, "Robot API", branchWorking);
+         Artifact testRobotAPI = ArtifactQuery.getArtifactFromTypeAndName(CoreArtifactTypes.SoftwareRequirementMsWord,
+            "Robot API", branchWorking);
 
          List<String> values = testRobotAPI.getAttributesToStringList(CoreAttributeTypes.Partition);
          Collections.sort(values);
@@ -129,8 +129,8 @@ public class FixAttributeOperationTest {
       assertRow(data, 0, branchWorking.getName(), itemId, "Robot API", CoreAttributeTypes.Partition.getName(),
          "Unspecified, Navigation, Navigation", "Unspecified, Navigation");
 
-      Artifact testRobotAPI =
-         ArtifactQuery.getArtifactFromTypeAndName(CoreArtifactTypes.SoftwareRequirementMsWord, "Robot API", branchWorking);
+      Artifact testRobotAPI = ArtifactQuery.getArtifactFromTypeAndName(CoreArtifactTypes.SoftwareRequirementMsWord,
+         "Robot API", branchWorking);
 
       List<String> values = testRobotAPI.getAttributesToStringList(CoreAttributeTypes.Partition);
       Collections.sort(values);
@@ -168,7 +168,7 @@ public class FixAttributeOperationTest {
 
       Artifact robotAPI =
          ArtifactQuery.getArtifactFromTypeAndName(CoreArtifactTypes.SoftwareRequirementMsWord, "Robot API", branch);
-      robotAPI.addAttribute(CoreAttributeTypes.Partition, "Navigation");
+      robotAPI.addAttribute(CoreAttributeTypes.Partition, CoreAttributeTypes.Partition.Navigation);
 
       itemId = robotAPI.getIdString();
 
