@@ -38,6 +38,7 @@
 							   <plugin id="org.apache.cxf.cxf-rt-rs-security-oauth" />
 							   <plugin id="org.apache.cxf.cxf-rt-rs-security-jose" />
 							   <plugin id="org.apache.cxf.cxf-rt-rs-json-basic" />
+							   <plugin id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs" />
 							   <plugin id="org.apache.cxf.cxf-rt-rs-client" />
 							   <plugin id="javax.annotation" />
 							   <plugin id="org.apache.cxf.cxf-rt-frontend-jaxrs" />	

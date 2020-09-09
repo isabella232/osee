@@ -43,6 +43,7 @@
 								<plugin id="org.eclipse.m2e.mwsaven.indexer" />
 								<plugin id="org.eclipse.m2e.workspace.cli" />
 								<plugin id="javax.xml" />
+								 <plugin id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs" />
 								<plugin id="javax.ws.rs-api" />
 								<plugin id="org.apache.xml.resolver" />
 								<plugin id="org.apache.xml.serializer" />								

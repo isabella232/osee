@@ -66,14 +66,21 @@
          id="org.apache.cxf.cxf-rt-rs-security-jose"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.12"
          unpack="false"/>
+         
+   <plugin
+         id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs"
+         download-size="0"
+         install-size="0"
+         version="3.2.12"
+         unpack="false"/>         
          
    <plugin
          id="org.apache.cxf.cxf-rt-rs-json-basic"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.12"
          unpack="false"/>
   
    <plugin
@@ -103,12 +110,7 @@
          version="0.0.0"
          unpack="false"/>   
 
-	<plugin
-         id="org.xerial.sqlite"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>  
+	  
 
    <plugin
          id="com.jcraft.jsch"
@@ -507,42 +509,42 @@
          id="org.eclipse.jetty.http"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.io"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.security"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.server"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.servlet"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.util"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>   
 
    <plugin
@@ -738,42 +740,42 @@
          id="org.apache.cxf.cxf-rt-rs-security-oauth2"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
     
    <plugin
          id="org.apache.cxf.cxf-core"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
 
   <plugin
          id="org.apache.cxf.cxf-rt-transports-http"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/> 
 
    <plugin
          id="org.apache.cxf.cxf-rt-rs-client"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
  
      <plugin
          id="org.apache.cxf.cxf-rt-frontend-jaxrs"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/> 
          
     <plugin
          id="org.apache.cxf.cxf-rt-security"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>         
          
    <plugin

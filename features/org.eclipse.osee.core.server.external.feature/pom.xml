@@ -38,6 +38,7 @@
 							   <plugin id="javax.servlet" />
 							   <plugin id="javax.ws.rs" />
 							   <plugin id="javax.wsdl" />
+							   <plugin id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs" />
 							   <plugin id="org.apache.cxf.cxf-rt-rs-security-jose" />
 							   <plugin id="org.apache.cxf.cxf-rt-rs-json-basic" />
 							   <plugin id="javax.xml.bind" />

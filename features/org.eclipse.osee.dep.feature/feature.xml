@@ -384,21 +384,9 @@
       <import plugin="org.eclipse.equinox.app"/>
       <import plugin="org.eclipse.equinox.security"/>
       <import plugin="org.eclipse.equinox.common"/>
-      <import plugin="org.eclipse.jetty.http" version="9.4.11"/>
       <import plugin="org.eclipse.osgi.util" />
-      <import plugin="org.eclipse.jetty.io" version="9.4.11"/>
-      <import plugin="org.eclipse.jetty.security" version="9.4.11"/>
-      <import plugin="org.eclipse.jetty.server" version="9.4.11"/>
-      <import plugin="org.eclipse.jetty.servlet" version="9.4.11"/>
-      <import plugin="org.eclipse.jetty.util" version="9.4.11" />
       <import plugin="javax.annotation" version="1.2.0" match="greaterOrEqual"/>      
-      <import plugin="org.eclipse.jetty.http"/>
       <import plugin="org.eclipse.osgi.util"/>
-      <import plugin="org.eclipse.jetty.io"/>
-      <import plugin="org.eclipse.jetty.security"/>
-      <import plugin="org.eclipse.jetty.server"/>
-      <import plugin="org.eclipse.jetty.servlet"/>
-      <import plugin="org.eclipse.jetty.util"/>      
       <import plugin="org.apache.commons.dbcp" version="1.4.0" match="compatible"/>
       <import plugin="org.apache.commons.pool" version="1.6.0" match="compatible"/>
       <import plugin="com.lowagie.text" version="2.0.0" match="compatible"/>
@@ -429,13 +417,19 @@
          id="org.apache.cxf.cxf-rt-rs-security-jose"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.12"
+         unpack="false"/>
+           <plugin
+         id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs"
+         download-size="0"
+         install-size="0"
+         version="3.2.12"
          unpack="false"/>
    <plugin
          id="org.apache.cxf.cxf-rt-rs-json-basic"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.12"
          unpack="false"/>
         
      <plugin
@@ -667,12 +661,7 @@
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
-         id="org.xerial.sqlite"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+
 
    <plugin
          id="rest.assured"
@@ -713,42 +702,42 @@
          id="org.apache.cxf.cxf-core"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
          
    <plugin
          id="org.apache.cxf.cxf-rt-transports-http"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>       
  								
    <plugin
          id="org.apache.cxf.cxf-rt-rs-security-oauth2"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
           
     <plugin
          id="org.apache.cxf.cxf-rt-rs-client"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
  
      <plugin
          id="org.apache.cxf.cxf-rt-frontend-jaxrs"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/> 
     
     <plugin
          id="org.apache.cxf.cxf-rt-security"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
          
     
@@ -1993,7 +1982,7 @@
          id="org.eclipse.jetty.webapp"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>    
          
    <plugin
@@ -2007,7 +1996,7 @@
          id="org.eclipse.jetty.xml"
          download-size="0"
          install-size="0"
-         version="9.4.11"
+         version="9.4.17"
          unpack="false"/>    
           
    <plugin

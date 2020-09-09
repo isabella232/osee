@@ -48,8 +48,15 @@
          id="org.apache.cxf.cxf-rt-rs-security-jose"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.12"
          unpack="false"/>
+         
+     <plugin
+         id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs"
+         download-size="0"
+         install-size="0"
+         version="3.2.12"
+         unpack="false"/>         
      
      <plugin
          id="org.apache.cxf.jaxrs.model.wadl"
@@ -62,7 +69,7 @@
          id="org.apache.cxf.cxf-rt-rs-json-basic"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.2.12"
          unpack="false"/>     
    
     <plugin
@@ -491,14 +498,14 @@
          id="org.apache.cxf.cxf-rt-rs-security-oauth2"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/> 
 
    <plugin
          id="org.apache.cxf.cxf-rt-transports-http"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/> 
          
    <plugin
@@ -512,21 +519,21 @@
          id="org.apache.cxf.cxf-rt-rs-client"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
  
      <plugin
          id="org.apache.cxf.cxf-rt-frontend-jaxrs"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/> 
   
     <plugin
          id="org.apache.cxf.cxf-rt-security"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.2.12"
          unpack="false"/>
 
    <plugin

@@ -34,6 +34,7 @@
 							   <plugin id="org.apache.cxf.cxf-rt-rs-security-oauth2" />
 							   <plugin id="org.apache.cxf.cxf-rt-rs-security-oauth" />
 								<plugin id="org.apache.cxf.cxf-rt-frontend-jaxrs" />
+								<plugin id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs" />
 						      <plugin id="org.apache.cxf.cxf-core" />
 								<plugin id="org.apache.xerces" />
 								<plugin id="javax.xml" />
