@@ -50,6 +50,7 @@ public final class JdbcUtil {
 
    public static <O extends Object> void setInputParametersForStatement(PreparedStatement preparedStatement, int intialIndex, O... data) throws JdbcException {
       int preparedIndex = intialIndex;
+
       for (Object dataValue : data) {
          setInputParameterForStatement(preparedStatement, dataValue, preparedIndex++);
       }
