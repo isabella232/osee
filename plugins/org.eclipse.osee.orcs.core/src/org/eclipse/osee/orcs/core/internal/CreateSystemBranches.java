@@ -57,14 +57,14 @@ public class CreateSystemBranches {
       query = orcsApi.getQueryFactory().fromBranch(COMMON);
    }
 
-   public TransactionId create(String typeModel) {
+   public TransactionId create() {
       orcsApi.getKeyValueOps().putByKey(BASE, BASE.getName());
 
       populateSystemBranch();
 
       orcsApi.getBranchOps().createTopLevelBranch(COMMON, SystemUser.OseeSystem);
 
-      return populateCommonBranch(typeModel);
+      return populateCommonBranch();
    }
 
    private void populateSystemBranch() {
@@ -75,7 +75,7 @@ public class CreateSystemBranches {
       tx.commit();
    }
 
-   private TransactionId populateCommonBranch(String typeModel) {
+   private TransactionId populateCommonBranch() {
       TransactionBuilder tx = txFactory.createTransaction(COMMON, SystemUser.OseeSystem, "Add Common branch artifacts");
 
       orcsApi.tokenService().getArtifactTypeJoins().forEach(tx::addOrcsTypeJoin);
@@ -112,7 +112,7 @@ public class CreateSystemBranches {
 
       createDataRights(tx, documentTemplateFolder);
 
-      ArtifactId typesAccessFolder = createOrcsTypesArtifacts(typeModel, oseeConfig);
+      ArtifactId typesAccessFolder = createOrcsTypesArtifacts(oseeConfig);
 
       addFrameworkAccessModel(tx, typesAccessFolder);
 
@@ -197,7 +197,7 @@ public class CreateSystemBranches {
       }
    }
 
-   private ArtifactId createOrcsTypesArtifacts(String typeModel, ArtifactId oseeConfig) {
+   private ArtifactId createOrcsTypesArtifacts(ArtifactId oseeConfig) {
       TransactionBuilder tx = txFactory.createTransaction(COMMON, SystemUser.OseeSystem, "Add Types to Common Branch");
       ArtifactId typesFolder =
          query.andId(CoreArtifactTokens.OseeTypesAndAccessFolder).getResults().getAtMostOneOrDefault(
@@ -205,9 +205,6 @@ public class CreateSystemBranches {
       if (typesFolder.isInvalid()) {
          typesFolder = tx.createArtifact(oseeConfig, CoreArtifactTokens.OseeTypesAndAccessFolder);
       }
-      ArtifactId types = tx.createArtifact(typesFolder, CoreArtifactTypes.OseeTypeDefinition, "OSEE Types");
-      tx.setSoleAttributeValue(types, CoreAttributeTypes.Active, true);
-      tx.setSoleAttributeFromString(types, CoreAttributeTypes.UriGeneralStringData, typeModel);
       tx.commit();
 
       tx = txFactory.createTransaction(COMMON, SystemUser.OseeSystem, "Add OseeTypeDef Tuples to Common Branch");
