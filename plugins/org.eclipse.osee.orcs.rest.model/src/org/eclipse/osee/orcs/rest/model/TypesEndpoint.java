@@ -29,10 +29,6 @@ import org.eclipse.osee.framework.core.data.OrcsTypesVersion;
 public interface TypesEndpoint {
 
    @GET
-   @Produces({OrcsMediaType.APPLICATION_ORCS_TYPES, MediaType.TEXT_PLAIN})
-   Response getTypes();
-
-   @GET
    @Path("config")
    @Produces({MediaType.APPLICATION_JSON})
    Response getConfig();

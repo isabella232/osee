@@ -14,15 +14,10 @@
 package org.eclipse.osee.orcs.rest.internal;
 
 import static org.eclipse.osee.framework.core.enums.CoreBranches.COMMON;
-import static org.eclipse.osee.orcs.rest.internal.OrcsRestUtil.executeCallable;
-import java.io.OutputStream;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.StreamingOutput;
 import org.eclipse.osee.framework.core.data.AttributeId;
 import org.eclipse.osee.framework.core.data.OrcsTypesConfig;
 import org.eclipse.osee.framework.core.data.OrcsTypesData;
@@ -51,24 +46,10 @@ import org.eclipse.osee.orcs.transaction.TransactionBuilder;
 public class TypesEndpointImpl implements TypesEndpoint {
    private final OrcsApi orcsApi;
    private final JdbcService jdbcService;
-   private final OrcsTypes orcsTypes;
 
    public TypesEndpointImpl(OrcsApi orcsApi, JdbcService jdbcService) {
       this.orcsApi = orcsApi;
       this.jdbcService = jdbcService;
-      this.orcsTypes = orcsApi.getOrcsTypes();
-   }
-
-   @Override
-   public Response getTypes() {
-      return Response.ok().entity(new StreamingOutput() {
-
-         @Override
-         public void write(OutputStream output) throws WebApplicationException {
-            Callable<Void> op = orcsTypes.writeTypes(output);
-            executeCallable(op);
-         }
-      }).build();
    }
 
    public static final String LOAD_OSEE_TYPE_DEF_NAME_AND_ID =
@@ -182,5 +163,4 @@ public class TypesEndpointImpl implements TypesEndpoint {
       tx.commit();
       return Response.ok(version).build();
    }
-
 }

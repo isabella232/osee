@@ -20,7 +20,9 @@ import org.eclipse.osee.framework.core.dsl.OseeDslResourceUtil;
 import org.eclipse.osee.framework.core.dsl.integration.OseeDslProvider;
 import org.eclipse.osee.framework.core.dsl.oseeDsl.OseeDsl;
 import org.eclipse.osee.framework.core.enums.CoreArtifactTokens;
+import org.eclipse.osee.framework.core.enums.CoreArtifactTypes;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
+import org.eclipse.osee.framework.core.util.OseeInf;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.skynet.core.artifact.Artifact;
 import org.eclipse.osee.framework.skynet.core.artifact.search.ArtifactQuery;
@@ -43,7 +45,8 @@ public abstract class AbstractOseeDslProvider implements OseeDslProvider {
 
    @Override
    public void loadDsl() {
-      String accessModel = "" + getModelFromStorage();
+      String coreTypes = OseeInf.getResourceContents("OseeTypes_Framework.osee", CoreArtifactTypes.class);
+      String accessModel = coreTypes + getModelFromStorage();
       try {
          oseeDsl = OseeDslResourceUtil.loadModel(locationUri, accessModel).getModel();
       } catch (Exception ex) {
