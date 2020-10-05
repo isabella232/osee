@@ -32,7 +32,7 @@ import org.eclipse.osee.framework.jdk.core.type.OseeArgumentException;
 public interface ArtifactTypeToken extends NamedId, ArtifactTypeId {
    ArtifactTypeToken SENTINEL = valueOf(Id.SENTINEL, Named.SENTINEL);
 
-   public static ArtifactTypeToken valueOf(long id, String name, ArtifactTypeToken... superTypes) {
+   static ArtifactTypeToken valueOf(long id, String name, ArtifactTypeToken... superTypes) {
       return new AttributeMultiplicity(id, NamespaceToken.OSEE, name, false, Arrays.asList(superTypes)).get();
    }
 
@@ -42,7 +42,7 @@ public interface ArtifactTypeToken extends NamedId, ArtifactTypeId {
       //This implementation should never be called
    }
 
-   public static ArtifactTypeToken create(Long id, NamespaceToken namespace, String name, boolean isAbstract, List<ArtifactTypeToken> superTypes) {
+   static ArtifactTypeToken create(Long id, NamespaceToken namespace, String name, boolean isAbstract, List<ArtifactTypeToken> superTypes) {
       return new AttributeMultiplicity(id, namespace, name, isAbstract, superTypes).get();
    }
 
@@ -89,15 +89,15 @@ public interface ArtifactTypeToken extends NamedId, ArtifactTypeId {
 
    List<ArtifactTypeToken> getSuperTypes();
 
-   public List<AttributeTypeToken> getValidAttributeTypes();
+   List<AttributeTypeToken> getValidAttributeTypes();
 
-   public boolean isValidAttributeType(AttributeTypeId attributeType);
+   boolean isValidAttributeType(AttributeTypeId attributeType);
 
-   public int getMin(AttributeTypeToken attributeType);
+   int getMin(AttributeTypeToken attributeType);
 
-   public int getMax(AttributeTypeToken attributeType);
+   int getMax(AttributeTypeToken attributeType);
 
-   public <T extends EnumToken> List<T> getValidEnumValues(AttributeTypeEnum<T> attributeType);
+   <T extends EnumToken> List<T> getValidEnumValues(AttributeTypeEnum<T> attributeType);
 
    public static ArtifactTypeToken create(Long id, NamespaceToken namespace, String name, boolean isAbstract, AttributeMultiplicity attributeTypes, List<ArtifactTypeToken> superTypes) {
       final class ArtifactTypeTokenImpl extends NamedIdBase implements ArtifactTypeToken {

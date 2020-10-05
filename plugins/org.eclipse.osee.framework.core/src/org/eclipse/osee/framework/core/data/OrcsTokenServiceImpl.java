@@ -27,6 +27,7 @@ import org.eclipse.osee.framework.core.enums.RelationSide;
 import org.eclipse.osee.framework.core.exception.OseeTypeDoesNotExist;
 import org.eclipse.osee.framework.jdk.core.type.NamedId;
 import org.eclipse.osee.framework.jdk.core.type.OseeArgumentException;
+import org.eclipse.osee.framework.jdk.core.type.OseeStateException;
 
 /**
  * @author Ryan D. Brooks
@@ -61,6 +62,24 @@ public final class OrcsTokenServiceImpl implements OrcsTokenService {
          throw new OseeTypeDoesNotExist("Artifact type [%s] is not available.", id);
       }
       return artifactType;
+   }
+
+   @Override
+   public ArtifactTypeToken getArtifactTypeDescendant(ArtifactTypeToken artifactType) {
+      List<ArtifactTypeToken> descendants = artifactType.getAllDescendantTypes();
+      ArtifactTypeToken leafDescendant = artifactType;
+      for (ArtifactTypeToken descendant : descendants) {
+         if (!descendant.isAbstract()) {
+            if (leafDescendant == artifactType) {
+               leafDescendant = descendant;
+            } else {
+               throw new OseeStateException("Artifact type %s has more than one concreate descendant types",
+                  artifactType);
+            }
+         }
+      }
+
+      return leafDescendant;
    }
 
    @Override

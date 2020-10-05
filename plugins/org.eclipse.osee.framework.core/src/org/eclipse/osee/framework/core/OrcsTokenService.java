@@ -23,6 +23,7 @@ import org.eclipse.osee.framework.core.data.AttributeTypeJoin;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.RelationTypeJoin;
 import org.eclipse.osee.framework.core.data.RelationTypeToken;
+import org.eclipse.osee.framework.jdk.core.type.OseeStateException;
 
 /**
  * @author Ryan D. Brooks
@@ -33,6 +34,13 @@ public interface OrcsTokenService {
     * @return singleton full artifact type token with the given id or throw OseeTypeDoesNotExist if not found
     */
    ArtifactTypeToken getArtifactType(Long id);
+
+   /**
+    * @param artifactType
+    * @return the non-abstract leaf artifact type that extends the given type or the type itself if no such type exists
+    * @throws OseeStateException when there is more than one artifact type that extends this artifact type
+    */
+   ArtifactTypeToken getArtifactTypeDescendant(ArtifactTypeToken artifactType);
 
    /**
     * @return singleton full artifact type token with the given name or throw OseeTypeDoesNotExist if not found
