@@ -56,7 +56,7 @@ public class DataStoreAdminImpl implements DataStoreAdmin {
    public void createDataStore() {
       Supplier<Iterable<JdbcMigrationResource>> schemaProvider = new DynamicSchemaResourceProvider(logger);
 
-      JdbcMigrationOptions options = new JdbcMigrationOptions(true, true);
+      JdbcMigrationOptions options = new JdbcMigrationOptions(false, true);
       Conditions.checkExpressionFailOnTrue(jdbcClient.getConfig().isProduction(),
          "Error - attempting to initialize a production datastore.");
 
