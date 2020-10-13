@@ -36,9 +36,5 @@
    <includes
          id="org.eclipse.osee.ats.ide.demo.feature"
          version="0.0.0"/>
-   
-   <includes
-         id="org.eclipse.osee.dep.feature"
-         version="0.0.0"/>    
-    
+       
 </feature>
