@@ -40,5 +40,12 @@
    <includes
          id="org.eclipse.osee.dep.feature"
          version="0.0.0"/>    
-    
+       
+  <plugin
+         id="org.eclipse.mylyn.discovery.ui"
+         download-size="0"
+         install-size="0"
+         version="3.5.0"
+         unpack="false" />
+
 </feature>
