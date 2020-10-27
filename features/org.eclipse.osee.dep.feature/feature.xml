@@ -414,7 +414,7 @@
          id="org.eclipse.mylyn.discovery.ui"
          download-size="0"
          install-size="0"
-         version="3.5.0"
+         version="3.24.0"
          unpack="false" />
 
    <plugin
@@ -717,14 +717,28 @@
          id="org.eclipse.mylyn.resources.ui"
          download-size="0"
          install-size="0"
-         version="3.5.0"
+         version="3.24.0"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.mylyn.monitor.ui"
          download-size="0"
          install-size="0"
-         version="3.5.0"
+         version="3.24.0"
+         unpack="false"/>
+ 
+   <plugin
+         id="org.eclipse.mylyn.commons.workbench"
+         download-size="0"
+         install-size="0"
+         version="3.24.0"
+         unpack="false"/> 
+ 
+   <plugin
+         id="org.eclipse.mylyn.discovery.core"
+         download-size="0"
+         install-size="0"
+         version="3.24.0"
          unpack="false"/>
  
    <plugin
@@ -773,7 +787,7 @@
          id="org.eclipse.mylyn.commons.ui"
          download-size="0"
          install-size="0"
-         version="3.5.0"
+         version="3.24.0"
          unpack="false"/>
 
    <plugin
