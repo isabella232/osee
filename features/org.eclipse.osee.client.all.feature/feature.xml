@@ -37,7 +37,10 @@
          id="org.eclipse.osee.ats.ide.demo.feature"
          version="0.0.0"/>
    
-  
+  <includes
+         id="org.eclipse.osee.dep.feature"
+         version="0.0.0"/>
+   
        
   <plugin
          id="org.eclipse.mylyn.discovery.ui"
