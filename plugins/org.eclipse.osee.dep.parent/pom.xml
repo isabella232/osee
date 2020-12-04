@@ -77,10 +77,10 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/mylyn/releases/3.5/</url>
 			</repository>
- 	 	<repository>
+ 		<repository>
 			<id>jetty</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.11.v20180605/</url>
+			<url>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.17.v20190418/</url>
 			</repository>
  	 <repository>
 			<id>orbit</id>
@@ -91,7 +91,8 @@
  	 <repository>
 			<id>orbit_newer</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/tools/orbit/downloads/drops/I20200706165208/repository</url>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository</url>
+
 	  </repository>
 		
 	

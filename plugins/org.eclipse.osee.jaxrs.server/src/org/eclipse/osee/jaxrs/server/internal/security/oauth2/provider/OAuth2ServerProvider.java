@@ -304,8 +304,7 @@ public class OAuth2ServerProvider {
       if (object instanceof AbstractAccessTokenValidator) {
          AbstractAccessTokenValidator validator = (AbstractAccessTokenValidator) object;
          validator.setRealm(config.getRealm());
-
-         validator.setAudiences(audiences);
+         //  validator.setAudience(audiences.toString());
          validator.setTokenValidators(tokenValidators);
       }
 
@@ -339,7 +338,8 @@ public class OAuth2ServerProvider {
 
       if (object instanceof AccessTokenService) {
          AccessTokenService accessTokenService = (AccessTokenService) object;
-         accessTokenService.setAudiences(audiences);
+         //accessTokenService.setAudiences(audiences);
+
          accessTokenService.setGrantHandlers(grantHandlers);
       }
 

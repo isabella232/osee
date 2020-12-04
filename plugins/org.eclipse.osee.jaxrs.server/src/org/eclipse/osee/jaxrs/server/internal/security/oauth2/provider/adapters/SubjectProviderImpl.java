@@ -27,6 +27,8 @@ import javax.ws.rs.core.MultivaluedMap;
 import org.apache.cxf.jaxrs.ext.MessageContext;
 import org.apache.cxf.jaxrs.ext.MessageContextImpl;
 import org.apache.cxf.phase.PhaseInterceptorChain;
+import org.apache.cxf.rs.security.oauth2.common.Client;
+import org.apache.cxf.rs.security.oauth2.common.OAuthRedirectionState;
 import org.apache.cxf.rs.security.oauth2.common.UserSubject;
 import org.apache.cxf.rs.security.oauth2.provider.OAuthServiceException;
 import org.apache.cxf.rs.security.oauth2.utils.OAuthConstants;
@@ -104,7 +106,7 @@ public class SubjectProviderImpl implements SubjectProvider {
    }
 
    // Create Authenticity Session Token
-   @Override
+
    public String createSessionToken(MessageContext mc, MultivaluedMap<String, String> params, UserSubject subject) {
       logger.debug("Create Session Token - subject[%s]", subject);
 
@@ -158,7 +160,6 @@ public class SubjectProviderImpl implements SubjectProvider {
       return sessionAuthenticityToken;
    }
 
-   @Override
    public UserSubject createUserSubject(MessageContext mc) throws OAuthServiceException {
       UserSubject subject = mc.getContent(UserSubject.class);
       if (subject == null) {
@@ -255,7 +256,6 @@ public class SubjectProviderImpl implements SubjectProvider {
       return toReturn;
    }
 
-   @Override
    public UserSubject createSubject(String username, String password) {
       OseePrincipal principal = authenticate(OAuthConstants.BASIC_SCHEME, username, password);
       return OAuthUtil.newUserSubject(principal);
@@ -289,5 +289,25 @@ public class SubjectProviderImpl implements SubjectProvider {
       }
 
       return subject;
+   }
+
+   @Override
+   public String createSessionToken(MessageContext arg0, MultivaluedMap<String, String> arg1, UserSubject arg2, OAuthRedirectionState arg3) {
+      return null;
+   }
+
+   @Override
+   public OAuthRedirectionState getSessionState(MessageContext arg0, String arg1, UserSubject arg2) {
+      return null;
+   }
+
+   @Override
+   public UserSubject createUserSubject(MessageContext arg0, MultivaluedMap<String, String> arg1) throws OAuthServiceException {
+      return null;
+   }
+
+   @Override
+   public UserSubject createSubject(Client arg0, String arg1, String arg2) {
+      return null;
    }
 }

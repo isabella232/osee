@@ -235,6 +235,7 @@ public abstract class AbstractSqlWriter implements HasOptions {
 
    public void writeBranchFilter(String txsAlias) {
       BranchId branch = rootQueryData.getBranch();
+
       if (branch.isValid()) {
          write(" AND ");
          writeEqualsParameter(txsAlias, "branch_id", branch);
