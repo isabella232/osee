@@ -101,11 +101,6 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.17.v20190418/</url>
 			</repository>
-		<repository>
-			<id>findbugs</id>
-			<layout>p2</layout>
-			<url>http://findbugs.cs.umd.edu/eclipse</url>
-		</repository>
 		
 		<!--  <repository>
 			<id>orbit</id>

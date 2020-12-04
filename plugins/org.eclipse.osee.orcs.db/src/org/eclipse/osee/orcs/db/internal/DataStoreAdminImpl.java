@@ -65,7 +65,7 @@ public class DataStoreAdminImpl implements DataStoreAdmin {
       Conditions.checkExpressionFailOnTrue(jdbcClient.getConfig().isProduction(),
          "Error - attempting to initialize a production datastore.");
 
-      jdbcClient.migrate(options, schemaProvider.get());
+      jdbcClient.createDataStore(options, schemaProvider.get());
 
       String attributeDataPath = ResourceConstants.getAttributeDataPath(properties);
       logger.info("Deleting application server binary data [%s]...", attributeDataPath);
@@ -83,7 +83,7 @@ public class DataStoreAdminImpl implements DataStoreAdmin {
       for (PermissionEnum permission : PermissionEnum.values()) {
          data.add(new Object[] {permission.getPermId(), permission.getName()});
       }
-      jdbcClient.runBatchUpdate("INSERT INTO OSEE_PERMISSION (PERMISSION_ID, PERMISSION_NAME) VALUES (?,?)", data);
+      jdbcClient.runBatchUpdate("INSERT INTO OSEE_PERMISSION (PERMISSION_ID, PERMISSION_NAME) VALUES (?,?);", data);
    }
 
    @Override
