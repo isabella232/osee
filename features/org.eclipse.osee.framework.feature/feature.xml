@@ -74,42 +74,42 @@
          id="org.apache.cxf.cxf-core"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
          
    <plugin
          id="org.apache.cxf.cxf-rt-transports-http"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>       
  								
    <plugin
          id="org.apache.cxf.cxf-rt-rs-security-oauth2"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
           
     <plugin
          id="org.apache.cxf.cxf-rt-rs-client"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
  
      <plugin
          id="org.apache.cxf.cxf-rt-frontend-jaxrs"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/> 
     
     <plugin
          id="org.apache.cxf.cxf-rt-security"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
 
 	<plugin

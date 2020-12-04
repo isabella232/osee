@@ -446,9 +446,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false" />
-<<<<<<< HEAD
                       
-=======
      
   <plugin
          id="org.apache.cxf.cxf-rt-rs-security-jose"
@@ -470,7 +468,6 @@
          version="0.0.0"
          unpack="false"/> 
                                
->>>>>>> refactor[TW17838]: Resolve 3rd Party Security Vulnerabilities for Apache CXF
     <plugin
          id="net.bytebuddy.byte-buddy"
          download-size="0"
@@ -641,7 +638,6 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-<<<<<<< HEAD
 
    <plugin
          id="org.apache.cxf.core.config"
@@ -679,9 +675,6 @@
          version="0.0.0"
          unpack="false"/>
          
-=======
-           
->>>>>>> refactor[TW17838]: Resolve 3rd Party Security Vulnerabilities for Apache CXF
    <plugin
          id="org.apache.log4j"
          download-size="0"
@@ -848,42 +841,42 @@
          id="org.apache.cxf.cxf-core"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
          
    <plugin
          id="org.apache.cxf.cxf-rt-transports-http"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>       
  								
    <plugin
          id="org.apache.cxf.cxf-rt-rs-security-oauth2"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
           
     <plugin
          id="org.apache.cxf.cxf-rt-rs-client"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
  
      <plugin
          id="org.apache.cxf.cxf-rt-frontend-jaxrs"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/> 
     
     <plugin
          id="org.apache.cxf.cxf-rt-security"
          download-size="0"
          install-size="0"
-         version="3.2.11"
+         version="3.3.6"
          unpack="false"/>
          
     
