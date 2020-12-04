@@ -19,10 +19,6 @@
  
     
     <includes
-         id="edu.umd.cs.findbugs.plugin.eclipse"
-         version="0.0.0"/>
-    
-    <includes
          id="org.eclipse.m2e.feature"
         version="0.0.0"/>
     
