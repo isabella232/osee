@@ -17,6 +17,8 @@
 
 		<updateProduct os="win32" ws="win32" arch="x86_64" jreVersion="1.6.0_31" />
 		<updateProduct os="linux" ws="gtk" arch="x86_64" jreVersion="1.6.0_30" />
+		<updateProduct os="macosx" ws="cocoa" arch="x86_64" jreVersion="_" />
+
 	</target>
 
 	<!-- *************************************************************** -->
