@@ -44,7 +44,7 @@
 		<subversive-version>4.0</subversive-version>
 		<polarion-version>3.0</polarion-version>
 
-	        <egit-site>http://download.eclipse.org/egit/updates-4.4/</egit-site>
+	        <egit-site>https://archive.eclipse.org/egit/updates-4.4/</egit-site>
 		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/${orbit-version}/repository</orbit-site>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
 		<eclipse-ip-site>https://github.com/osee-dev/osee.external.releases/raw/master/org.eclipse.ip</eclipse-ip-site>
