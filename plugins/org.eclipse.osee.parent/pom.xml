@@ -91,11 +91,11 @@
 
  	<repositories> 		
 	
-		<repository>
-			<id>mylyn</id>
+  <repository>
+			<id>mylyn2</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/mylyn/releases/3.5/</url>
-		</repository>
+			<url>http://download.eclipse.org/mylyn/drops/3.5.1/v20110422-0200/</url>
+	 </repository>
 
 		
 		<!--  <repository>
