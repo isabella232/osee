@@ -2088,7 +2088,7 @@
          id="org.eclipse.jetty.webapp"
          download-size="0"
          install-size="0"
-         version="9.4.35"
+         version="9.4.17"
          unpack="false"/>    
          
    <plugin
@@ -2102,7 +2102,7 @@
          id="org.eclipse.jetty.xml"
          download-size="0"
          install-size="0"
-         version="9.4.35"
+         version="9.4.17"
          unpack="false"/>    
           
    <plugin
