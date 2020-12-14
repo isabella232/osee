@@ -42,6 +42,7 @@ public class OseePreparedStatement implements Closeable {
    }
 
    public void addToBatch(Object... params) {
+
       for (int i = 0; i < params.length; i++) {
          JdbcUtil.setInputParameterForStatement(preparedStatement, params[i], i + 1);
       }

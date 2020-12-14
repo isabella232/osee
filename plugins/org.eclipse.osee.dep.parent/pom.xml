@@ -78,19 +78,18 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/mylyn/drops/3.5.1/v20110422-0200/</url>
 	 </repository>
-			
+ 	 	<repository>
+			<id>jetty</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.17.v20190418/</url>
+			</repository>	
  	 <repository>
 			<id>orbit</id>
 			<layout>p2</layout>
 			<url>${orbit-site}</url>
 	  </repository>
 	  
-          <repository>
-			<id>findbugs</id>
-			<layout>p2</layout>
-			<url>http://findbugs.cs.umd.edu/eclipse</url>
-          </repository>
-          
+        
           <repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
