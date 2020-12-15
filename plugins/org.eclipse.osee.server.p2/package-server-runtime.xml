@@ -71,7 +71,7 @@
 	<!-- *************************************************************** -->
 
 	<target name="postgreSqlLaunch">
-		<createLaunch filepath="${server-path}/runPostgreSqlLocal.sh" cm.cfg.uri="etc/osee.postgresql.json" serverport="8089" launcher="${equinox-launcher-jar}" extraVMArgs="-Dosee.authentication.protocol=trustAll" />
+		<createLaunch filepath="${server-path}/runPostgreSqlLocal.sh" cm.cfg.uri="etc/osee.postgresql.json" serverport="8089" launcher="${equinox-launcher-jar}" extraVMArgs="-Dosee.authentication.protocol=demo" />
 	</target>
 
 	<target name="hsqlLaunch">
