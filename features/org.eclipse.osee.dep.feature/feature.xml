@@ -390,7 +390,6 @@
       <import plugin="org.eclipse.equinox.common"/>
       <import plugin="org.eclipse.osgi.util" />
       <import plugin="javax.annotation" version="1.2.0" match="greaterOrEqual"/>      
-      <import plugin="org.eclipse.osgi.util"/>
       <import plugin="org.apache.commons.dbcp" version="1.4.0" match="compatible"/>
       <import plugin="org.apache.commons.pool" version="1.6.0" match="compatible"/>
       <import plugin="com.lowagie.text" version="2.0.0" match="compatible"/>
@@ -400,42 +399,42 @@
          id="org.eclipse.jetty.io"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="9.4.35"
          unpack="false" />
 
    <plugin
          id="org.eclipse.jetty.http"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="9.4.35"
          unpack="false" />
 
    <plugin
          id="org.eclipse.jetty.security"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="9.4.35"
          unpack="false" />
    
     <plugin
          id="org.eclipse.jetty.server"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="9.4.35"
          unpack="false" />
          
     <plugin
          id="org.eclipse.jetty.servlet"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="9.4.35"
          unpack="false" />  
          
     <plugin
          id="org.eclipse.jetty.util"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="9.4.35"
          unpack="false" />
                       
     <plugin
@@ -465,21 +464,21 @@
          install-size="0"
          version="3.3.6"
          unpack="false"/>
-           <plugin
+   
+   <plugin
          id="org.apache.cxf.cxf-rt-rs-security-jose-jaxrs"
          download-size="0"
          install-size="0"
          version="3.3.6"
          unpack="false"/>
+   
    <plugin
          id="org.apache.cxf.cxf-rt-rs-json-basic"
          download-size="0"
          install-size="0"
          version="3.3.6"
          unpack="false"/>
-       
-
-                               
+                                   
     <plugin
          id="org.flywaydb.core"
          download-size="0"
@@ -637,6 +636,13 @@
          version="0.0.0"
          unpack="false"/>
 
+
+   <plugin
+         id="org.apache.cxf.transport.http"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
            
    <plugin
          id="org.apache.log4j"
@@ -1964,7 +1970,12 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+   <plugin
+         id="org.eclipse.jetty.util.ajax"
+         download-size="0"
+         install-size="0"
+         version="9.4.35"
+         unpack="false"/>  
    <plugin
          id="org.apache.batik.xml"
          download-size="0"
@@ -2088,7 +2099,7 @@
          id="org.eclipse.jetty.webapp"
          download-size="0"
          install-size="0"
-         version="9.4.17"
+         version="0.0.0"
          unpack="false"/>    
          
    <plugin
@@ -2102,7 +2113,7 @@
          id="org.eclipse.jetty.xml"
          download-size="0"
          install-size="0"
-         version="9.4.17"
+         version="0.0.0"
          unpack="false"/>    
           
    <plugin
