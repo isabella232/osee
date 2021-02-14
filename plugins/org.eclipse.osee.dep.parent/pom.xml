@@ -22,8 +22,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<tycho-version>0.22.0</tycho-version>
-		<tycho-extras-version>0.22.0</tycho-extras-version>
+		<tycho-version>1.7.0</tycho-version>
+		<tycho-extras-version>1.7.0</tycho-extras-version>
 
 		<build-alias>-DEV</build-alias>
 
@@ -45,7 +45,8 @@
 		<polarion-version>3.0</polarion-version>
 
 		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/${orbit-version}/repository</orbit-site>
-		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
+		  <eclipse-site>http://download.eclipse.org/releases/2020-06/202006171000/</eclipse-site>
+	<!--  	<eclipse-site>http://download.eclipse.org/releases/2020-06/202006171000</eclipse-site> -->
 		<eclipse-ip-site>https://github.com/osee-dev/osee.external.releases/raw/master/org.eclipse.ip</eclipse-ip-site>
 		<papyrus-site>http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/${platform-version-name}</papyrus-site>
 	  	<nebula-site>http://download.eclipse.org/nebula/releases/2.4.2</nebula-site> 
@@ -80,19 +81,25 @@
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.37.v20210219/</url>
 	  </repository>	
-          
-    <repository>
-			<id>mylyn2</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/mylyn/drops/3.5.1/v20110422-0200/</url>
-	 </repository>
- 		
- 	 <repository>
-			<id>orbit</id>
-			<layout>p2</layout>
-			<url>${orbit-site}</url>
-	  </repository>
 	  
+ 		 <repository>
+			<id>mylyn</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/mylyn/drops/3.20.0/v20160608-1917/</url>
+	 </repository>
+  
+ 	<repository>
+			<id>egit</id>
+			<layout>p2</layout>
+			<url>http://archive.eclipse.org/egit/updates-5.0/</url>
+	  </repository>
+ 	
+ 	<repository>
+			<id>orbit_newer</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20201130205003/repository</url>
+	  </repository>
+ 		   
      <repository>
 			<id>findbugs</id>
 			<layout>p2</layout>
@@ -104,13 +111,13 @@
 			<layout>p2</layout>
 			<url>${eclipse-site}</url>
 	  </repository>
-		
+     
      <repository>
 			<id>polarion</id>
 			<layout>p2</layout>
 			<url>${polarion-site}</url>
 	  </repository>		
-		
+	  	
 	  <repository>
 			<id>eclipse-ip</id>
 			<layout>p2</layout>
@@ -141,6 +148,12 @@
 			<url>${emma-site}</url>
 	    </repository>
 	
+		 <repository>
+			<id>ecf</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/rt/ecf/3.14.18/site.p2/3.14.9.v20200713-0653</url>
+	    </repository>
+	    
 </repositories>
 	
 
@@ -182,16 +195,9 @@
 							<ws>win32</ws>
 							<arch>x86_64</arch>
 						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
+						
+						
+			
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
@@ -220,16 +226,8 @@
 							<ws>win32</ws>
 							<arch>x86_64</arch>
 						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
+						
+					
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
