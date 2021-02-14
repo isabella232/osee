@@ -13,6 +13,7 @@
 
 package org.eclipse.osee.framework.core.dsl.ui.integration.internal;
 
+import com.google.inject.*;
 import org.eclipse.osee.framework.core.dsl.ui.OseeDslAccess;
 import org.eclipse.osee.framework.ui.skynet.DslGrammar;
 import org.eclipse.osee.framework.ui.skynet.DslGrammarStorageAdapter;

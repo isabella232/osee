@@ -122,7 +122,7 @@ public class JsonUtil {
 
    public static <T> T readValue(ObjectMapper mapper, String json, TypeReference<Map<String, String>> typeReference) {
       try {
-         return mapper.readValue(json, typeReference);
+         return (T) mapper.readValue(json, typeReference);
       } catch (IOException ex) {
          throw OseeCoreException.wrap(ex);
       }

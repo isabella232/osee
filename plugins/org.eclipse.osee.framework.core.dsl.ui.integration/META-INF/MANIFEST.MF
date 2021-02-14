@@ -6,7 +6,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-Version: 0.26.0.qualifier
 Bundle-Vendor: Eclipse Open System Engineering Environment
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: javax.ws.rs.client,
+Import-Package: com.google.inject,
+ javax.ws.rs.client,
  javax.ws.rs.core,
  org.eclipse.core.commands.common,
  org.eclipse.core.resources,
@@ -70,7 +71,6 @@ Require-Bundle: org.eclipse.osee.framework.core.dsl,
  org.eclipse.ui.ide,
  org.eclipse.ui.views,
  org.eclipse.jface,
- org.eclipse.xtext,
  org.eclipse.ui.editors,
  org.eclipse.osee.framework.ui.skynet
 Export-Package: org.eclipse.osee.framework.core.dsl.ui.integration,

@@ -60,8 +60,8 @@ public class AtsBranchAccessManagerTest {
    public void cleanup() {
       TeamWorkFlowArtifact teamArt =
          (TeamWorkFlowArtifact) DemoTestUtil.getUncommittedActionWorkflow(DemoWorkType.Requirements);
-      SkynetTransaction transaction = TransactionManager.createTransaction(AtsApiService.get().getAtsBranch(),
-         "testGetContextIdArtifact cleanup");
+      SkynetTransaction transaction =
+         TransactionManager.createTransaction(AtsApiService.get().getAtsBranch(), "testGetContextIdArtifact cleanup");
       Artifact teamDefArt = AtsApiService.get().getQueryServiceIde().getArtifact(teamArt.getTeamDefinition());
       teamDefArt.deleteAttributes(CoreAttributeTypes.AccessContextId);
       teamDefArt.persist(transaction);

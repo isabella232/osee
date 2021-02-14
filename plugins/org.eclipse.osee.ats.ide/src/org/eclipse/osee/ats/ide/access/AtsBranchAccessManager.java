@@ -150,8 +150,7 @@ public class AtsBranchAccessManager implements IArtifactEventListener, EventHand
       try {
          contextIds.addAll(getFromArtifact(AtsApiService.get().getQueryServiceIde().getArtifact(teamWf)));
          if (contextIds.isEmpty()) {
-            for (IAtsActionableItem aia : AtsApiService.get().getActionableItemService().getActionableItems(
-               teamWf)) {
+            for (IAtsActionableItem aia : AtsApiService.get().getActionableItemService().getActionableItems(teamWf)) {
                Artifact artifact = AtsApiService.get().getQueryServiceIde().getArtifact(aia);
                if (artifact != null) {
                   contextIds.addAll(getFromArtifact(artifact));
@@ -161,8 +160,7 @@ public class AtsBranchAccessManager implements IArtifactEventListener, EventHand
                }
             }
             if (contextIds.isEmpty()) {
-               Artifact artifact =
-                  AtsApiService.get().getQueryServiceIde().getArtifact(teamWf.getTeamDefinition());
+               Artifact artifact = AtsApiService.get().getQueryServiceIde().getArtifact(teamWf.getTeamDefinition());
                if (artifact != null) {
                   contextIds.addAll(getFromArtifact(artifact));
                }

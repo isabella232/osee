@@ -229,16 +229,17 @@ public class AtsDbConfigDemoOp {
    private void createSawPlTeamConfig(IAtsConfigTx cfgTx, IAtsConfigTxTeamDef topTeam, IAtsConfigTxActionableItem topActionableItem) {
 
       // SAW PL
-      IAtsConfigTxTeamDef sawPlTeamDef = topTeam.createChildTeamDef(topTeam.getTeamDef(), DemoArtifactToken.SAW_PL_TeamDef) //
-         .andProgram(DemoArtifactToken.SAW_PL_Program) //
-         .andLeads(DemoUsers.Kay_Jason) //
-         .andMembers(DemoUsers.Kay_Jason, DemoUsers.Michael_John, DemoUsers.Steven_Kohn) //
-         .andWorkDef(AtsWorkDefinitionTokens.WorkDef_Team_Default) //
-         .andVersion(DemoArtifactToken.SAW_Product_Line, ReleasedOption.UnReleased, DemoBranches.SAW_PL,
-            NextRelease.Next) //
-         .andVersion(DemoArtifactToken.SAW_Hardening_Branch, ReleasedOption.UnReleased,
-            DemoBranches.SAW_PL_Hardening_Branch, NextRelease.Next) //
-         .andRelatedPeerWorkflowDefinition(AtsWorkDefinitionTokens.WorkDef_Review_PeerToPeer_Demo);
+      IAtsConfigTxTeamDef sawPlTeamDef =
+         topTeam.createChildTeamDef(topTeam.getTeamDef(), DemoArtifactToken.SAW_PL_TeamDef) //
+            .andProgram(DemoArtifactToken.SAW_PL_Program) //
+            .andLeads(DemoUsers.Kay_Jason) //
+            .andMembers(DemoUsers.Kay_Jason, DemoUsers.Michael_John, DemoUsers.Steven_Kohn) //
+            .andWorkDef(AtsWorkDefinitionTokens.WorkDef_Team_Default) //
+            .andVersion(DemoArtifactToken.SAW_Product_Line, ReleasedOption.UnReleased, DemoBranches.SAW_PL,
+               NextRelease.Next) //
+            .andVersion(DemoArtifactToken.SAW_Hardening_Branch, ReleasedOption.UnReleased,
+               DemoBranches.SAW_PL_Hardening_Branch, NextRelease.Next) //
+            .andRelatedPeerWorkflowDefinition(AtsWorkDefinitionTokens.WorkDef_Review_PeerToPeer_Demo);
 
       // SAW PL Team Defs
       sawPlTeamDef.createChildTeamDef(sawPlTeamDef.getTeamDef(), DemoArtifactToken.SAW_PL_Code_TeamDef) //

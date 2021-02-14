@@ -63,9 +63,6 @@ Import-Package: com.fasterxml.jackson.core.type,
  org.eclipse.osee.framework.core.client,
  org.eclipse.osee.framework.core.client.server,
  org.eclipse.osee.framework.core.data,
- org.eclipse.osee.framework.core.dsl,
- org.eclipse.osee.framework.core.dsl.oseeDsl,
- org.eclipse.osee.framework.core.dsl.oseeDsl.util,
  org.eclipse.osee.framework.core.enums,
  org.eclipse.osee.framework.core.event,
  org.eclipse.osee.framework.core.exception,
@@ -88,6 +85,9 @@ Import-Package: com.fasterxml.jackson.core.type,
  org.eclipse.osee.orcs.rest.client,
  org.eclipse.osee.orcs.rest.model,
  org.eclipse.osee.orcs.rest.model.search.artifact,
- org.osgi.service.event
+ org.osgi.service.event,
+ org.eclipse.osee.framework.core.dsl,
+ org.eclipse.osee.framework.core.dsl.oseeDsl,
+ org.eclipse.osee.framework.core.dsl.oseeDsl.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Service-Component: OSGI-INF/*.xml

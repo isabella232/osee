@@ -24,17 +24,40 @@
    <includes
          id="org.eclipse.osee.disposition.feature"
          version="0.0.0"/>
-    
+   
    <includes
          id="org.eclipse.jgit"
-         version="5.0.0"/>
-
+         version="5.0.0.201806131550-r"/>
+   
+   <plugin
+         id="io.github.classgraph"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+  <plugin
+         id="org.eclipse.jgit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+     
+   
+   <plugin
+         id="javax.activation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+          
    <plugin
          id="org.apache.cxf.cxf-rt-rs-service-description"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+
            
    <plugin
          id="org.postgresql.driver"
@@ -47,7 +70,7 @@
          id="org.objectweb.asm"
          download-size="0"
          install-size="0"
-         version="6.1.1"
+         version="8.0.1.v20200420-1007"
          unpack="false"/>                
        
    <plugin
@@ -275,7 +298,7 @@
          unpack="false"/>
 
    <plugin
-         id="javax.mail.glassfish"
+         id="javax.mail"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -318,13 +341,6 @@
 
    <plugin
          id="ch.qos.logback.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="javax.activation"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -402,13 +418,6 @@
 
    <plugin
          id="javax.xml"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.equinox.util"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -496,7 +505,7 @@
          id="com.google.guava"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="27.1.0.v20190517-1946"
          unpack="false"/>
 
    <plugin
@@ -510,49 +519,49 @@
          id="org.eclipse.jetty.http"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.io"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.security"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.server"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.servlet"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jetty.util"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>   
    
    <plugin
          id="org.eclipse.jetty.util.ajax"
          download-size="0"
          install-size="0"
-         version="9.4.37"
+         version="9.4.37.v20210219"
          unpack="false"/>
 	   
    <plugin
@@ -849,14 +858,14 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+<!--
    <plugin
          id="org.eclipse.xpand"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
+-->
    <plugin
          id="org.eclipse.xtext.generator"
          download-size="0"
@@ -864,6 +873,12 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="com.google.gson"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
    <plugin
          id="org.eclipse.osee.server.application"
          download-size="0"
