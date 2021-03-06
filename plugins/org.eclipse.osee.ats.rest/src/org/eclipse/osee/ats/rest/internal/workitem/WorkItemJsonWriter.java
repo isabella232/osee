@@ -47,7 +47,6 @@ import org.eclipse.osee.framework.core.data.AttributeId;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.data.GammaId;
 import org.eclipse.osee.framework.core.data.IRelationLink;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.type.ResultSet;
 import org.eclipse.osee.framework.jdk.core.util.DateUtil;
 import org.eclipse.osee.framework.jdk.core.util.Strings;
@@ -69,18 +68,11 @@ public class WorkItemJsonWriter implements MessageBodyWriter<IAtsWorkItem> {
 
    public void setOrcsApi(OrcsApi orcsApi) {
       this.orcsApi = orcsApi;
+      this.jsonFactory = orcsApi.jaxRsApi().getFactory();
    }
 
    public void setAtsApiServer(AtsApiServer atsApiServer) {
       this.atsApiServer = atsApiServer;
-   }
-
-   public void start() {
-      jsonFactory = JsonUtil.getFactory();
-   }
-
-   public void stop() {
-      jsonFactory = null;
    }
 
    @Override

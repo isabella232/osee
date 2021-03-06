@@ -13,6 +13,7 @@
 
 package org.eclipse.osee.framework.core;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collection;
@@ -69,6 +70,8 @@ public interface JaxRsApi {
    <T> T newProxy(WebTarget target, Class<T> clazz);
 
    ObjectMapper getObjectMapper();
+
+   JsonFactory getFactory();
 
    <T> T newProxy(String path, Class<T> clazz);
 

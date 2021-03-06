@@ -71,18 +71,11 @@ public class ConfigJsonWriter implements MessageBodyWriter<IAtsConfigObject> {
 
    public void setOrcsApi(OrcsApi orcsApi) {
       this.orcsApi = orcsApi;
+      this.jsonFactory = orcsApi.jaxRsApi().getFactory();
    }
 
    public void setAtsApiServer(AtsApiServer atsApiServer) {
       this.atsApiServer = atsApiServer;
-   }
-
-   public void start() {
-      jsonFactory = JsonUtil.getFactory();
-   }
-
-   public void stop() {
-      jsonFactory = null;
    }
 
    @Override

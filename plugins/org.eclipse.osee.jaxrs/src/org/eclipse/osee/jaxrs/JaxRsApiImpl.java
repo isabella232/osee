@@ -13,6 +13,7 @@
 
 package org.eclipse.osee.jaxrs;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -81,7 +82,7 @@ public final class JaxRsApiImpl implements JaxRsApi {
 
       JsonUtil.addDeserializer(module, RelationTypeToken.class, tokenService::getRelationType);
 
-      mapper = JsonUtil.createStandardDateObjectMapper(module);
+      mapper = JsonUtil.createObjectMapper(module);
       typeFactory = mapper.getTypeFactory();
       createClientFactory(mapper, tokenService);
       baseUrl = System.getProperty(OseeClient.OSEE_APPLICATION_SERVER, OseeClient.DEFAULT_URL);
@@ -207,6 +208,11 @@ public final class JaxRsApiImpl implements JaxRsApi {
    @Override
    public ObjectMapper getObjectMapper() {
       return mapper;
+   }
+
+   @Override
+   public JsonFactory getFactory() {
+      return mapper.getFactory();
    }
 
    @Override

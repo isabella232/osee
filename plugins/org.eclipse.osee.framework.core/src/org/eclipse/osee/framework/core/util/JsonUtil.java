@@ -13,7 +13,6 @@
 
 package org.eclipse.osee.framework.core.util;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.Version;
@@ -68,16 +67,10 @@ import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
  */
 public class JsonUtil {
 
-   private static ObjectMapper mapper = createStandardDateObjectMapper(createModule());
-   private static ObjectMapper mapper2 =
-      createObjectMapper(createModule()).setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm a z"));
+   private static ObjectMapper mapper = createObjectMapper(createModule());
 
    public static ObjectMapper getMapper() {
       return mapper;
-   }
-
-   public static JsonFactory getFactory() {
-      return mapper2.getFactory();
    }
 
    public static JsonNode readTree(String json) {
@@ -162,10 +155,6 @@ public class JsonUtil {
       return false;
    }
 
-   public static ObjectMapper createStandardDateObjectMapper(Module module) {
-      return createObjectMapper(module).setDateFormat(new SimpleDateFormat("MMM d, yyyy h:mm:ss aa"));
-   }
-
    public static <T extends Id> void addDeserializer(SimpleModule module, Class<T> clazz, Function<Long, T> creator) {
       module.addDeserializer(clazz, new IdDeserializer<>(clazz, creator));
    }
@@ -196,7 +185,7 @@ public class JsonUtil {
       return module;
    }
 
-   private static ObjectMapper createObjectMapper(Module module) {
+   public static ObjectMapper createObjectMapper(Module module) {
       ObjectMapper objectMapper = new ObjectMapper();
       objectMapper.registerModule(module);
 
@@ -221,6 +210,8 @@ public class JsonUtil {
       DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
       prettyPrinter.indentObjectsWith(new DefaultIndenter("  ", "\n"));
       objectMapper.setDefaultPrettyPrinter(prettyPrinter);
+
+      objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm a z"));
 
       return objectMapper;
    }

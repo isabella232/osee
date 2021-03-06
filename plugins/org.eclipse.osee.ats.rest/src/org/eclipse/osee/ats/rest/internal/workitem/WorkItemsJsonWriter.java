@@ -33,7 +33,6 @@ import org.eclipse.osee.ats.api.AtsApi;
 import org.eclipse.osee.ats.api.IAtsWorkItem;
 import org.eclipse.osee.ats.api.workflow.WorkItemWriterOptions;
 import org.eclipse.osee.ats.rest.AtsApiServer;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.util.Lib;
 import org.eclipse.osee.jaxrs.mvc.IdentityView;
 import org.eclipse.osee.orcs.OrcsApi;
@@ -51,6 +50,7 @@ public class WorkItemsJsonWriter implements MessageBodyWriter<Collection<IAtsWor
 
    public void setOrcsApi(OrcsApi orcsApi) {
       this.orcsApi = orcsApi;
+      this.jsonFactory = orcsApi.jaxRsApi().getFactory();
    }
 
    public UriInfo getUriInfo() {
@@ -63,14 +63,6 @@ public class WorkItemsJsonWriter implements MessageBodyWriter<Collection<IAtsWor
 
    public void setAtsApiServer(AtsApiServer atsApiServer) {
       this.atsApi = atsApiServer;
-   }
-
-   public void start() {
-      jsonFactory = JsonUtil.getFactory();
-   }
-
-   public void stop() {
-      jsonFactory = null;
    }
 
    @Override

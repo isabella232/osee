@@ -13,7 +13,6 @@
 
 package org.eclipse.osee.ats.core.util;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -66,7 +65,6 @@ import org.eclipse.osee.framework.core.data.ArtifactToken;
 import org.eclipse.osee.framework.core.data.ArtifactTypeToken;
 import org.eclipse.osee.framework.core.data.AttributeTypeToken;
 import org.eclipse.osee.framework.core.enums.CoreAttributeTypes;
-import org.eclipse.osee.framework.core.util.JsonUtil;
 import org.eclipse.osee.framework.jdk.core.type.OseeArgumentException;
 import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 import org.eclipse.osee.framework.jdk.core.type.OseeStateException;
@@ -81,7 +79,6 @@ public class ActionFactory implements IAtsActionFactory {
    private final AtsApi atsApi;
 
    private IAtsTeamDefinition topTeamDefinition;
-   private JsonFactory jsonFactory;
    private IWorkItemListener workItemListener;
 
    public ActionFactory(AtsApi atsApi) {
@@ -666,17 +663,10 @@ public class ActionFactory implements IAtsActionFactory {
    public String getActionStateJson(Collection<IAtsWorkItem> workItems) {
       try {
          ActionFactoryOperations ops = new ActionFactoryOperations(atsApi);
-         return ops.getActionStateJson(workItems, getJsonFactory());
+         return ops.getActionStateJson(workItems);
       } catch (Exception ex) {
          throw OseeCoreException.wrap(ex);
       }
-   }
-
-   private JsonFactory getJsonFactory() {
-      if (jsonFactory == null) {
-         jsonFactory = JsonUtil.getFactory();
-      }
-      return jsonFactory;
    }
 
    public IWorkItemListener getWorkItemListener() {

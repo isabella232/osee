@@ -28,12 +28,14 @@ import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
 public class ActionFactoryOperations {
 
    private final AtsApi atsApi;
+   private final JsonFactory jsonFactory;
 
    public ActionFactoryOperations(AtsApi atsApi) {
       this.atsApi = atsApi;
+      jsonFactory = atsApi.jaxRsApi().getFactory();
    }
 
-   public String getActionStateJson(Collection<IAtsWorkItem> workItems, JsonFactory jsonFactory) {
+   public String getActionStateJson(Collection<IAtsWorkItem> workItems) {
       try {
          JsonGenerator writer = null;
          StringWriter stringWriter = new StringWriter();
