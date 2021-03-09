@@ -13,10 +13,8 @@
 
 package org.eclipse.osee.framework.core.util;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -31,7 +29,6 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.text.SimpleDateFormat;
-import java.util.Map;
 import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.osee.framework.core.data.ApplicabilityId;
@@ -66,12 +63,7 @@ import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
  * @author Ryan D. Brooks
  */
 public class JsonUtil {
-
    private static ObjectMapper mapper = createObjectMapper(createModule());
-
-   public static ObjectMapper getMapper() {
-      return mapper;
-   }
 
    public static JsonNode readTree(String json) {
       return readTree(mapper, json);
@@ -109,18 +101,6 @@ public class JsonUtil {
       }
    }
 
-   public static <T> T readValue(String json, TypeReference<Map<String, String>> typeReference) {
-      return readValue(mapper, json, typeReference);
-   }
-
-   public static <T> T readValue(ObjectMapper mapper, String json, TypeReference<Map<String, String>> typeReference) {
-      try {
-         return mapper.readValue(json, typeReference);
-      } catch (IOException ex) {
-         throw OseeCoreException.wrap(ex);
-      }
-   }
-
    /**
     * @param array must be a Json array of Json objects
     * @param expectedName the value of the "Name" field
@@ -136,14 +116,6 @@ public class JsonUtil {
          }
       }
       return null;
-   }
-
-   public static JsonNode getJsonParserTree(JsonParser jp) {
-      try {
-         return jp.getCodec().readTree(jp);
-      } catch (Exception ex) {
-         throw OseeCoreException.wrap(ex);
-      }
    }
 
    public static boolean hasAnnotation(Class<? extends Annotation> toMatch, Annotation[] annotations) {

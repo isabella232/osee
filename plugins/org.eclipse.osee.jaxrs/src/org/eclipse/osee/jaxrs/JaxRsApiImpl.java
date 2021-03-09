@@ -23,6 +23,7 @@ import com.google.common.cache.CacheBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -104,9 +105,18 @@ public final class JaxRsApiImpl implements JaxRsApi {
    }
 
    @Override
-   public <T> T readValue(String json, Class<? extends Collection> collectionClass, Class<?> elementClass) {
+   public <T, C extends Collection<T>> C readCollectionValue(String json, Class<? extends Collection> collectionClass, Class<T> elementClass) {
       try {
          return mapper.readValue(json, typeFactory.constructCollectionType(collectionClass, elementClass));
+      } catch (IOException ex) {
+         throw OseeCoreException.wrap(ex);
+      }
+   }
+
+   @Override
+   public <K, V> Map<K, V> readMapValue(String json, Class<K> keyClass, Class<V> valueClass) {
+      try {
+         return mapper.readValue(json, typeFactory.constructMapType(Map.class, keyClass, valueClass));
       } catch (IOException ex) {
          throw OseeCoreException.wrap(ex);
       }

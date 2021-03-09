@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Collection;
+import java.util.Map;
 import javax.ws.rs.client.WebTarget;
 
 /**
@@ -41,7 +42,16 @@ public interface JaxRsApi {
     */
    <T> T readValue(String json, Class<T> valueType);
 
-   <T> T readValue(String json, Class<? extends Collection> collectionClass, Class<?> elementClass);
+   /**
+    * Deserialize a collection of the specified type containing elements of type elementClass from the JSON content
+    * string
+    */
+   <T, C extends Collection<T>> C readCollectionValue(String json, Class<? extends Collection> collectionClass, Class<T> elementClass);
+
+   /**
+    * Deserialize a map of the specified key and value types from the JSON content string
+    */
+   <K, V> Map<K, V> readMapValue(String json, Class<K> keyClass, Class<V> valueClass);
 
    WebTarget newTarget(String path);
 
@@ -79,4 +89,5 @@ public interface JaxRsApi {
     * @return a WebTarget using the given absolute URL
     */
    WebTarget newTargetUrl(String url);
+
 }
