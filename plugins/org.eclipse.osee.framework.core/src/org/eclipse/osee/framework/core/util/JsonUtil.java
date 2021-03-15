@@ -101,7 +101,6 @@ public class JsonUtil {
       }
    }
 
-         return mapper.readValue(json, typeReference);
    /**
     * @param array must be a Json array of Json objects
     * @param expectedName the value of the "Name" field
