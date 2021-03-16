@@ -13,8 +13,11 @@
 
 package org.eclipse.osee.framework.core.util;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -29,6 +32,7 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 import java.util.function.Function;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.osee.framework.core.data.ApplicabilityId;
@@ -63,7 +67,18 @@ import org.eclipse.osee.framework.jdk.core.type.OseeCoreException;
  * @author Ryan D. Brooks
  */
 public class JsonUtil {
-   private static ObjectMapper mapper = createObjectMapper(createModule());
+
+   private static ObjectMapper mapper = createStandardDateObjectMapper(createModule());
+   private static ObjectMapper mapper2 =
+      createObjectMapper(createModule()).setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm a z"));
+
+   public static ObjectMapper getMapper() {
+      return mapper;
+   }
+
+   public static JsonFactory getFactory() {
+      return mapper2.getFactory();
+   }
 
    public static JsonNode readTree(String json) {
       return readTree(mapper, json);
@@ -101,6 +116,18 @@ public class JsonUtil {
       }
    }
 
+   public static <T> T readValue(String json, TypeReference<Map<String, String>> typeReference) {
+      return readValue(mapper, json, typeReference);
+   }
+
+   public static <T> T readValue(ObjectMapper mapper, String json, TypeReference<Map<String, String>> typeReference) {
+      try {
+         return (T) mapper.readValue(json, typeReference);
+      } catch (IOException ex) {
+         throw OseeCoreException.wrap(ex);
+      }
+   }
+
    /**
     * @param array must be a Json array of Json objects
     * @param expectedName the value of the "Name" field
@@ -108,6 +135,7 @@ public class JsonUtil {
     */
    public static JsonNode getArrayElement(JsonNode array, String key, String value) {
       for (JsonNode element : array) {
+         //
          JsonNode node = element.get(key);
          if (node != null) {
             if (value.equals(node.asText())) {
@@ -118,6 +146,14 @@ public class JsonUtil {
       return null;
    }
 
+   public static JsonNode getJsonParserTree(JsonParser jp) {
+      try {
+         return jp.getCodec().readTree(jp);
+      } catch (Exception ex) {
+         throw OseeCoreException.wrap(ex);
+      }
+   }
+
    public static boolean hasAnnotation(Class<? extends Annotation> toMatch, Annotation[] annotations) {
       for (Annotation annotation : annotations) {
          if (annotation.annotationType().isAssignableFrom(toMatch)) {
@@ -125,6 +161,10 @@ public class JsonUtil {
          }
       }
       return false;
+   }
+
+   public static ObjectMapper createStandardDateObjectMapper(Module module) {
+      return createObjectMapper(module).setDateFormat(new SimpleDateFormat("MMM d, yyyy h:mm:ss aa"));
    }
 
    public static <T extends Id> void addDeserializer(SimpleModule module, Class<T> clazz, Function<Long, T> creator) {
@@ -157,7 +197,7 @@ public class JsonUtil {
       return module;
    }
 
-   public static ObjectMapper createObjectMapper(Module module) {
+   private static ObjectMapper createObjectMapper(Module module) {
       ObjectMapper objectMapper = new ObjectMapper();
       objectMapper.registerModule(module);
 
@@ -182,8 +222,6 @@ public class JsonUtil {
       DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
       prettyPrinter.indentObjectsWith(new DefaultIndenter("  ", "\n"));
       objectMapper.setDefaultPrettyPrinter(prettyPrinter);
-
-      objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm a z"));
 
       return objectMapper;
    }
