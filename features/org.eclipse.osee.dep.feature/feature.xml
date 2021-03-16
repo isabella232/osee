@@ -385,7 +385,7 @@
    <includes
          id="org.eclipse.launchbar"
          version="0.0.0"/>
-  
+<!--  
    <includes
          id="org.polarion.eclipse.team.svn.connector"
          version="0.0.0"/>
@@ -393,7 +393,7 @@
    <includes
          id="org.polarion.eclipse.team.svn.connector.svnkit18"
          version="0.0.0"/>
-         	                   
+    -->     	                   
    <includes
          id="org.eclipse.eclemma.feature"
          version="0.0.0"/>
